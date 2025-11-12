@@ -1,0 +1,202 @@
+---
+title: Switch
+description: Toggle switch component with multiple sizes built on HeadlessUI
+---
+
+import { Switch } from '@hexpacket/ui';
+
+# Switch
+
+A toggle component built on HeadlessUI that provides an accessible on/off control. Supports multiple sizes, controlled and uncontrolled modes, and integrates seamlessly with forms.
+
+## Installation
+
+```tsx
+import { Switch } from '@hexpacket/ui';
+```
+
+## Basic Usage
+
+<Preview>
+  <div className="flex items-center gap-3">
+    <Switch defaultChecked />
+    <span>Enable notifications</span>
+  </div>
+</Preview>
+
+```tsx
+import { useState } from 'react';
+
+function Example() {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <Switch checked={enabled} onChange={setEnabled} />
+  );
+}
+```
+
+## Props API
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | - | Controlled checked state |
+| `onChange` | `(checked: boolean) => void` | - | Callback when state changes |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the switch |
+| `className` | `string` | - | CSS class for the switch container |
+| `thumbClassName` | `string` | - | CSS class for the switch thumb |
+| `disabled` | `boolean` | `false` | Disable the switch |
+| `defaultChecked` | `boolean` | - | Initial checked state (uncontrolled) |
+
+## Examples
+
+### Sizes
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-3">
+      <Switch size="sm" defaultChecked />
+      <span>Small</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <Switch size="md" defaultChecked />
+      <span>Medium (default)</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <Switch size="lg" defaultChecked />
+      <span>Large</span>
+    </div>
+  </div>
+</Preview>
+
+```tsx
+<div className="flex flex-col gap-4">
+  <Switch size="sm" checked={enabled} onChange={setEnabled} />
+  <Switch size="md" checked={enabled} onChange={setEnabled} />
+  <Switch size="lg" checked={enabled} onChange={setEnabled} />
+</div>
+```
+
+### Settings Panel
+
+<Preview>
+  <div className="space-y-4">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="font-medium">Email Notifications</div>
+        <div className="text-sm text-gray-500">Receive email updates</div>
+      </div>
+      <Switch defaultChecked />
+    </div>
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="font-medium">Dark Mode</div>
+        <div className="text-sm text-gray-500">Use dark theme</div>
+      </div>
+      <Switch />
+    </div>
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="font-medium">Analytics</div>
+        <div className="text-sm text-gray-500">Share anonymous usage data</div>
+      </div>
+      <Switch defaultChecked />
+    </div>
+  </div>
+</Preview>
+
+```tsx
+function SettingsPanel() {
+  const [settings, setSettings] = useState({
+    notifications: true,
+    darkMode: false,
+    analytics: true,
+  });
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="font-medium">Email Notifications</div>
+          <div className="text-sm text-gray-500">Receive email updates</div>
+        </div>
+        <Switch
+          checked={settings.notifications}
+          onChange={(checked) =>
+            setSettings({ ...settings, notifications: checked })
+          }
+        />
+      </div>
+      {/* More settings... */}
+    </div>
+  );
+}
+```
+
+### Disabled State
+
+<Preview>
+  <div className="flex gap-4">
+    <Switch checked disabled />
+    <Switch disabled />
+  </div>
+</Preview>
+
+```tsx
+<div className="flex gap-4">
+  <Switch checked disabled />
+  <Switch disabled />
+</div>
+```
+
+### Uncontrolled with Default Value
+
+<Preview>
+  <Switch defaultChecked={true} />
+</Preview>
+
+```tsx
+<Switch defaultChecked={true} />
+```
+
+## Keyboard Navigation
+
+The switch supports keyboard interaction:
+
+- **Space** or **Enter**: Toggle the switch
+- **Tab**: Move focus to next element
+- **Shift + Tab**: Move focus to previous element
+
+Note: The Enter key is prevented from default form submission behavior.
+
+## Accessibility
+
+- Built on HeadlessUI for WCAG compliance
+- Proper ARIA attributes automatically applied
+- Fully keyboard navigable
+- Focus visible for keyboard users
+- Works with screen readers
+- Disabled state properly communicated
+
+## Styling
+
+The component uses BEM-style class names:
+
+- `HPuiSwitch` - Main container
+- `HPuiSwitch--size-{sm|md|lg}` - Size modifiers
+- `HPuiSwitch__thumb` - Toggle thumb element
+- `HPuiSwitch__thumb--size-{sm|md|lg}` - Thumb size modifiers
+
+The switch also supports HeadlessUI data attributes:
+- `data-[checked]` - Applied when checked
+- `data-[disabled]` - Applied when disabled
+
+## Dependencies
+
+This component uses `@headlessui/react` for accessibility and behavior.
+
+## Related Components
+
+- [Checkbox](/docs/checkbox) - For multi-select options
+- [Radio](/docs/radio) - For mutually exclusive selections
+- [RHFSwitch](/docs/rhf-switch) - React Hook Form integration

@@ -1,0 +1,350 @@
+---
+title: ConfirmDialog
+description: Confirmation modal for user action validation
+---
+
+import { ConfirmDialog } from '@hexpacket/ui';
+
+# ConfirmDialog
+
+ConfirmDialog is a flexible confirmation modal component that prompts users for action validation. Built on top of the Dialog component, it provides a standardized interface for displaying confirmation prompts with customizable content, buttons, and behavior.
+
+## Installation
+
+```tsx
+import { ConfirmDialog } from '@hexpacket/ui';
+```
+
+## Basic Usage
+
+```tsx
+ConfirmDialog.show({
+  title: "Confirm Action",
+  content: "Are you sure you want to proceed?",
+  onConfirm: () => {
+    console.log('Confirmed');
+  }
+});
+```
+
+## API Reference
+
+### ConfirmDialog.show(options)
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `title` | `string` | - | Dialog title |
+| `content` | `ReactNode \| FC<{dismiss}>` | - | Dialog content |
+| `confirmButtonLabel` | `string` | `'Ok'` | Confirm button text |
+| `cancelButtonLabel` | `string` | `'Cancel'` | Cancel button text |
+| `onConfirm` | `(args) => void \| Promise<void>` | - | Confirm callback |
+| `onCancel` | `(args) => void \| Promise<void>` | - | Cancel callback |
+| `className` | `string` | - | CSS class for dialog |
+| `titleClassName` | `string` | - | CSS class for title |
+| `contentClassName` | `string` | - | CSS class for content |
+| `dismissOnEsc` | `boolean` | `false` | Close on Escape key |
+| `dismissOnOutsideClick` | `boolean` | `false` | Close on outside click |
+
+### Callback Arguments
+
+Both `onConfirm` and `onCancel` receive an object with:
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| `preventDefault` | `() => void` | Prevent auto-close |
+| `dismiss` | `() => void` | Manually close dialog |
+
+### ConfirmDialog.dismiss()
+
+Programmatically closes the confirm dialog from anywhere in your app.
+
+## Examples
+
+### Delete Confirmation
+
+```tsx
+function DeleteButton({ itemId }) {
+  const handleDelete = () => {
+    ConfirmDialog.show({
+      title: "Delete Item",
+      content: "Are you sure you want to delete this item? This action cannot be undone.",
+      confirmButtonLabel: "Delete",
+      cancelButtonLabel: "Cancel",
+      onConfirm: async () => {
+        await deleteItem(itemId);
+        showSuccessMessage("Item deleted successfully");
+      },
+      onCancel: () => {
+        console.log('Deletion cancelled');
+      }
+    });
+  };
+
+  return <button onClick={handleDelete}>Delete</button>;
+}
+```
+
+### Async Operations
+
+```tsx
+function SaveButton() {
+  const handleSave = () => {
+    ConfirmDialog.show({
+      title: "Save Changes",
+      content: "Would you like to save your changes before leaving?",
+      confirmButtonLabel: "Save & Exit",
+      cancelButtonLabel: "Discard",
+      onConfirm: async ({ preventDefault, dismiss }) => {
+        preventDefault(); // Prevent auto-close
+
+        try {
+          await saveFormData();
+          dismiss(); // Manually close after save
+          router.push("/dashboard");
+        } catch (error) {
+          showError("Failed to save changes");
+          dismiss();
+        }
+      }
+    });
+  };
+
+  return <button onClick={handleSave}>Save</button>;
+}
+```
+
+### Rich Content
+
+```tsx
+ConfirmDialog.show({
+  title: "Transfer Ownership",
+  content: ({ dismiss }) => (
+    <div className="space-y-4">
+      <p>Transfer project ownership to:</p>
+      <UserSelector onSelect={setSelectedUser} />
+      <button onClick={dismiss} className="text-sm text-blue-500">
+        Cancel transfer
+      </button>
+    </div>
+  ),
+  confirmButtonLabel: "Transfer Now",
+  cancelButtonLabel: "Go Back",
+  titleClassName: "text-warning",
+  contentClassName: "min-h-[200px]",
+  onConfirm: ({ dismiss }) => {
+    performTransfer();
+    dismiss();
+  }
+});
+```
+
+### Account Deletion
+
+```tsx
+function DeleteAccountButton() {
+  const handleDeleteAccount = () => {
+    ConfirmDialog.show({
+      title: "Delete Account",
+      content: "Are you sure you want to permanently delete your account? This action cannot be undone.",
+      confirmButtonLabel: "Delete",
+      cancelButtonLabel: "Keep Account",
+      className: "max-w-md",
+      onConfirm: async () => {
+        await deleteUserAccount();
+        showSuccessNotification("Account deleted successfully");
+        logout();
+      },
+      onCancel: () => {
+        trackAnalytics("account_deletion_cancelled");
+      }
+    });
+  };
+
+  return (
+    <button
+      onClick={handleDeleteAccount}
+      className="bg-red-500 text-white px-4 py-2 rounded"
+    >
+      Delete Account
+    </button>
+  );
+}
+```
+
+### Conditional Confirmation
+
+```tsx
+function PublishButton({ hasUnsavedChanges }) {
+  const handlePublish = () => {
+    if (hasUnsavedChanges) {
+      ConfirmDialog.show({
+        title: "Unsaved Changes",
+        content: "You have unsaved changes. Do you want to save them before publishing?",
+        confirmButtonLabel: "Save & Publish",
+        cancelButtonLabel: "Publish Anyway",
+        onConfirm: async () => {
+          await saveChanges();
+          await publish();
+        },
+        onCancel: async () => {
+          await publish();
+        }
+      });
+    } else {
+      publish();
+    }
+  };
+
+  return <button onClick={handlePublish}>Publish</button>;
+}
+```
+
+### Programmatic Dismissal
+
+```tsx
+function ProcessingComponent() {
+  const startProcess = () => {
+    // Show dialog
+    ConfirmDialog.show({
+      title: "Processing",
+      content: "Please wait while we process your request...",
+      confirmButtonLabel: "Cancel",
+      onConfirm: () => {
+        cancelProcess();
+      }
+    });
+
+    // Start long process
+    startLongRunningProcess().then(() => {
+      // Close from anywhere
+      ConfirmDialog.dismiss();
+      showSuccess("Process completed");
+    });
+  };
+
+  return <button onClick={startProcess}>Start Process</button>;
+}
+```
+
+### Custom Styling
+
+```tsx
+ConfirmDialog.show({
+  title: "Premium Feature",
+  content: "This feature requires a premium subscription. Would you like to upgrade?",
+  confirmButtonLabel: "Upgrade Now",
+  cancelButtonLabel: "Maybe Later",
+  className: "max-w-lg",
+  titleClassName: "text-2xl font-bold text-purple-600",
+  contentClassName: "text-gray-600 text-center py-6",
+  onConfirm: () => {
+    router.push("/upgrade");
+  }
+});
+```
+
+### Nested Dialogs
+
+```tsx
+function FirstDialog() {
+  const showSecond = () => {
+    ConfirmDialog.dismiss(); // Close first
+
+    ConfirmDialog.show({
+      title: "Second Confirmation",
+      content: "Are you absolutely sure?",
+      onConfirm: () => {
+        performFinalAction();
+      },
+      onCancel: () => {
+        // Re-open first dialog
+        ConfirmDialog.show(firstDialogOptions);
+      }
+    });
+  };
+
+  return (
+    <button onClick={() => {
+      ConfirmDialog.show({
+        title: "First Confirmation",
+        content: "This will trigger another confirmation.",
+        onConfirm: showSecond
+      });
+    }}>
+      Open Nested
+    </button>
+  );
+}
+```
+
+## Behavior
+
+### Auto-Close
+
+By default, the dialog automatically closes after:
+- Clicking confirm button (after `onConfirm` completes)
+- Clicking cancel button (after `onCancel` completes)
+
+### Manual Control
+
+Use `preventDefault()` to prevent auto-close and handle dismissal manually:
+
+```tsx
+onConfirm: async ({ preventDefault, dismiss }) => {
+  preventDefault(); // Don't auto-close
+
+  const result = await performOperation();
+
+  if (result.success) {
+    dismiss(); // Manually close
+  }
+  // Keep open if failed
+}
+```
+
+### Loading States
+
+The confirm and cancel buttons show loading spinners during async operations:
+
+```tsx
+onConfirm: async () => {
+  await longRunningOperation();
+  // Button shows spinner during this time
+}
+```
+
+### Keyboard Support
+
+- **Enter**: Triggers confirm action (when no focusable elements have focus)
+- **Escape**: Disabled by default (set `dismissOnEsc: true` to enable)
+
+## Accessibility
+
+- Built on Dialog component with full accessibility
+- Proper ARIA attributes
+- Keyboard navigation
+- Focus management
+- Loading states communicated to screen readers
+
+## Styling
+
+The component uses BEM-style class names:
+
+- `HPuiConfirmDialog__dialog` - Dialog container
+- `HPuiConfirmDialog__title` - Title element
+- `HPuiConfirmDialog__content` - Content wrapper
+- `HPuiConfirmDialog__actions` - Button container
+- `HPuiConfirmDialog__confirm-button` - Confirm button
+- `HPuiConfirmDialog__cancel-button` - Cancel button
+
+## Dependencies
+
+This component uses:
+- `Dialog` component for modal functionality
+- `LoadingButton` for action buttons with loading states
+
+## Related Components
+
+- [Dialog](/docs/dialog) - Base modal component
+- [Alert](/docs/alert) - Non-blocking notifications
+- [LoadingButton](/docs/loading-button) - Buttons with loading states

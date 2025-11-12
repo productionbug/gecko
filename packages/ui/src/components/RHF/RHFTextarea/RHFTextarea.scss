@@ -1,0 +1,13 @@
+.HPuiRHFTextarea {
+  &--error {
+    @apply border-red-300;
+  }
+
+  &--error:enabled:hover {
+    @apply border-red-500;
+  }
+
+  &--error:enabled:focus {
+    @apply border-red-500;
+  }
+}

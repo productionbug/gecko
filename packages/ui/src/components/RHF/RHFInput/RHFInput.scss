@@ -1,0 +1,13 @@
+.HPuiRHFInput {
+  &--error {
+    @apply border-red-300;
+  }
+
+  &--error:hover {
+    @apply border-red-500;
+  }
+
+  &--error:focus-within {
+    @apply border-red-500;
+  }
+}

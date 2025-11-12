@@ -1,0 +1,7 @@
+@import "../../../mixins.scss";
+
+.HPuiCalendar {
+  @include base-reset;
+
+  @apply min-w-[320px] max-w-[320px] mt-px rounded-md border border-border-primary px-3 py-4 text-sm;
+}

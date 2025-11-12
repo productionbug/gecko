@@ -1,0 +1,242 @@
+---
+title: Calendar
+description: Interactive calendar component for date selection with month/year navigation
+---
+
+import { Calendar } from '@hexpacket/ui';
+import { BasicCalendarExample, WithDefaultDateExample, ActiveDateExample, ProgrammaticControlExample, WithFormIntegrationExample } from '@/components/examples/calendar-examples';
+
+# Calendar
+
+An interactive calendar component for selecting dates. Features month/year navigation, three view modes (day/month/year), and programmatic control via ref.
+
+## Installation
+
+```tsx
+import { Calendar } from '@hexpacket/ui';
+```
+
+## Basic Usage
+
+<Preview>
+  <BasicCalendarExample />
+</Preview>
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { Calendar } from '@hexpacket/ui';
+
+function Example() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+
+  return (
+    <div className="space-y-4">
+      <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+      {selectedDate && <p className="text-sm text-gray-600">Selected: {selectedDate}</p>}
+    </div>
+  );
+}
+```
+
+## Props API
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `selectedDate` | `string \| null \| undefined` | - | Currently selected date in YYYY-MM-DD format |
+| `activeDate` | `string` | - | Date to highlight (doesn't select it) |
+| `onSelectDate` | `(date: string) => void` | - | Callback when date is selected |
+| `calendarRef` | `React.Ref<CalendarRef>` | - | Ref for programmatic control |
+| `className` | `string` | - | Additional CSS classes |
+| `style` | `React.CSSProperties` | - | Inline styles |
+
+## Date Format
+
+All dates must be in **ISO format: YYYY-MM-DD**
+
+```tsx
+// ✅ Correct
+selectedDate="2024-12-25"
+selectedDate="2024-01-01"
+
+// ❌ Incorrect
+selectedDate="12/25/2024"
+selectedDate="25-12-2024"
+```
+
+The component validates the date format and logs an error if invalid.
+
+## Examples
+
+### With Default Date
+
+Pre-select a date when the calendar loads:
+
+<Preview>
+  <WithDefaultDateExample />
+</Preview>
+
+```tsx
+const [selectedDate, setSelectedDate] = useState<string | undefined>('2024-06-15');
+
+<Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+```
+
+### Active Date Highlighting
+
+Use `activeDate` to highlight a date without selecting it:
+
+<Preview>
+  <ActiveDateExample />
+</Preview>
+
+```tsx
+const [selectedDate, setSelectedDate] = useState<string | undefined>();
+const activeDate = '2024-12-25'; // Highlight Christmas
+
+<Calendar
+  selectedDate={selectedDate}
+  activeDate={activeDate}
+  onSelectDate={setSelectedDate}
+/>
+```
+
+**Use Cases**:
+- Highlight today's date
+- Mark important dates (holidays, events)
+- Show reference dates while selecting
+
+### Programmatic Control
+
+Navigate to specific months/years using `calendarRef`:
+
+<Preview>
+  <ProgrammaticControlExample />
+</Preview>
+
+```tsx
+'use client';
+
+import { useState, useRef } from 'react';
+import { Calendar, Button } from '@hexpacket/ui';
+import type { CalendarRef } from '@hexpacket/ui';
+
+function Example() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+  const calendarRef = useRef<CalendarRef>(null);
+
+  const jumpToDate = (month: number, year: number) => {
+    calendarRef.current?.moveTo(month, year);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2">
+        <Button size="sm" variant="outlined" onClick={() => jumpToDate(1, 2025)}>
+          January 2025
+        </Button>
+        <Button size="sm" variant="outlined" onClick={() => jumpToDate(7, 2024)}>
+          July 2024
+        </Button>
+        <Button size="sm" variant="outlined" onClick={() => jumpToDate(12, 2023)}>
+          December 2023
+        </Button>
+      </div>
+      <Calendar
+        selectedDate={selectedDate}
+        onSelectDate={setSelectedDate}
+        calendarRef={calendarRef}
+      />
+    </div>
+  );
+}
+```
+
+#### CalendarRef API
+
+```tsx
+interface CalendarRef {
+  moveTo: (month: number, year: number) => void;
+}
+```
+
+**Parameters**:
+- `month`: 1-12 (January = 1, December = 12)
+- `year`: Full year (e.g., 2024, 2025)
+
+**Behavior**:
+- Switches view to Day mode
+- Displays the specified month/year
+- Does NOT select a date (only navigates)
+
+### With Form Integration
+
+Integrate Calendar with form submission:
+
+<Preview>
+  <WithFormIntegrationExample />
+</Preview>
+
+```tsx
+const [selectedDate, setSelectedDate] = useState<string | undefined>();
+const [submitted, setSubmitted] = useState(false);
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setSubmitted(true);
+  // In real app: submit form with selectedDate
+};
+
+<form onSubmit={handleSubmit} className="space-y-4">
+  <div>
+    <label className="block text-sm font-medium mb-2">Select Date</label>
+    <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+  </div>
+  <Button type="submit" disabled={!selectedDate}>
+    Submit
+  </Button>
+  {submitted && (
+    <p className="text-sm text-green-600">Form submitted with date: {selectedDate}</p>
+  )}
+</form>
+```
+
+## Styling
+
+The component uses BEM-style class names:
+
+- `HPuiCalendar` - Main container
+- `HPuiCalendar__header` - Month/year header
+- `HPuiCalendar__nav` - Navigation arrows
+- `HPuiCalendar__body` - Calendar grid
+- `HPuiCalendar__day` - Individual day cell
+- `HPuiCalendar__day--selected` - Selected day
+- `HPuiCalendar__day--active` - Active highlighted day
+- `HPuiCalendar__day--today` - Today's date
+- `HPuiCalendar__day--disabled` - Disabled day (different month)
+
+## Accessibility
+
+- Semantic HTML with proper table structure for day grid
+- Keyboard navigation with arrow keys
+- Tab to focus navigation buttons
+- Enter/Space to select dates
+- Screen reader announcements for date selection
+- ARIA labels for navigation controls
+
+## Best Practices
+
+1. **Always use ISO format**: Use YYYY-MM-DD for all date values
+2. **Validate dates**: Check date ranges and constraints in onSelectDate
+3. **Clear selection**: Provide a way to clear the selected date
+4. **Visual feedback**: Use activeDate to highlight important dates
+5. **Form integration**: Disable submit until date is selected
+6. **Error handling**: Show validation errors near the calendar
+7. **Responsive design**: Calendar adapts to container width
+8. **Initial state**: Consider pre-selecting today's date or using activeDate to highlight it
+
+## Related Components
+
+- [DateInput](/docs/date-input) - Input field with calendar popup
+- [RHFDateInput](/docs/rhf-date-input) - React Hook Form integrated date input

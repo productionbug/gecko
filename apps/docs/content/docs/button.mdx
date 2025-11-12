@@ -1,0 +1,259 @@
+---
+title: Button
+description: Flexible button component with multiple variants, sizes, and colors
+---
+
+import { Button } from '@hexpacket/ui';
+
+# Button
+
+A flexible button component that extends the native HTML button with customizable styles. Supports different variants (filled, outlined, ghost, icon), sizes, and colors. All styling is applied via TailwindCSS classes, which can be overridden using the `className` prop.
+
+## Installation
+
+```tsx
+import { Button } from '@hexpacket/ui';
+```
+
+## Basic Usage
+
+<Preview>
+  <Button>Click me</Button>
+</Preview>
+
+```tsx
+<Button>Click me</Button>
+```
+
+## Props API
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'filled' \| 'outlined' \| 'ghost' \| 'icon'` | `'filled'` | Button visual style |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Button size |
+| `color` | `'primary'` | `'primary'` | Button color scheme |
+| `disabled` | `boolean` | `false` | Disable the button |
+| `className` | `string` | - | CSS class for custom styling |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
+| ...rest | `ButtonHTMLAttributes` | - | All standard HTML button attributes |
+
+## Examples
+
+### Variants
+
+<Preview>
+  <div className="flex gap-3">
+    <Button variant="filled">Filled</Button>
+    <Button variant="outlined">Outlined</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="icon">🔥</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button variant="filled">Filled</Button>
+<Button variant="outlined">Outlined</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="icon">🔥</Button>
+```
+
+### Sizes
+
+<Preview>
+  <div className="flex items-center gap-3">
+    <Button size="xs">Extra Small</Button>
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+    <Button size="xl">Extra Large</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button size="xs">Extra Small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+<Button size="xl">Extra Large</Button>
+```
+
+### Outlined Buttons
+
+<Preview>
+  <div className="flex items-center gap-3">
+    <Button variant="outlined" size="sm">Small</Button>
+    <Button variant="outlined" size="md">Medium</Button>
+    <Button variant="outlined" size="lg">Large</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button variant="outlined" size="sm">Small</Button>
+<Button variant="outlined" size="md">Medium</Button>
+<Button variant="outlined" size="lg">Large</Button>
+```
+
+### Ghost Buttons
+
+<Preview>
+  <div className="flex gap-3">
+    <Button variant="ghost">Cancel</Button>
+    <Button variant="ghost">Learn More</Button>
+    <Button variant="ghost">Skip</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button variant="ghost">Cancel</Button>
+<Button variant="ghost">Learn More</Button>
+<Button variant="ghost">Skip</Button>
+```
+
+### Icon Buttons
+
+<Preview>
+  <div className="flex gap-3">
+    <Button variant="icon" size="sm">✏️</Button>
+    <Button variant="icon" size="md">🗑️</Button>
+    <Button variant="icon" size="lg">⚙️</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button variant="icon" size="sm">✏️</Button>
+<Button variant="icon" size="md">🗑️</Button>
+<Button variant="icon" size="lg">⚙️</Button>
+```
+
+### With Icons and Text
+
+<Preview>
+  <div className="flex gap-3">
+    <Button>
+      <span>+</span>
+      <span>Add Item</span>
+    </Button>
+    <Button variant="outlined">
+      <span>📥</span>
+      <span>Download</span>
+    </Button>
+  </div>
+</Preview>
+
+```tsx
+<Button>
+  <span>+</span>
+  <span>Add Item</span>
+</Button>
+
+<Button variant="outlined">
+  <span>📥</span>
+  <span>Download</span>
+</Button>
+```
+
+### Disabled State
+
+<Preview>
+  <div className="flex gap-3">
+    <Button disabled>Disabled</Button>
+    <Button variant="outlined" disabled>Disabled</Button>
+    <Button variant="ghost" disabled>Disabled</Button>
+  </div>
+</Preview>
+
+```tsx
+<Button disabled>Disabled</Button>
+<Button variant="outlined" disabled>Disabled</Button>
+<Button variant="ghost" disabled>Disabled</Button>
+```
+
+### Form Actions
+
+<Preview>
+  <div className="flex gap-3">
+    <Button type="submit" variant="filled">Submit</Button>
+    <Button type="reset" variant="outlined">Reset</Button>
+    <Button type="button" variant="ghost">Cancel</Button>
+  </div>
+</Preview>
+
+```tsx
+function MyForm() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Button type="submit" variant="filled">Submit</Button>
+      <Button type="reset" variant="outlined">Reset</Button>
+      <Button type="button" variant="ghost">Cancel</Button>
+    </form>
+  );
+}
+```
+
+## Custom Styling
+
+The component uses TailwindCSS classes that can be overridden. By default, the button adds spacing between child elements:
+
+<Preview>
+  <div className="flex gap-3">
+    <Button className="bg-cyan-500 hover:bg-cyan-600 gap-4 px-6 py-3">
+      <span>⭐</span>
+      <span>Custom Style</span>
+    </Button>
+    <Button variant="outlined" className="border-2 border-purple-500 text-purple-500">
+      Custom Border
+    </Button>
+  </div>
+</Preview>
+
+```tsx
+<Button
+  variant="filled"
+  className="bg-cyan-500 hover:bg-cyan-600 gap-4 px-6 py-3"
+>
+  <span>⭐</span>
+  <span>Custom Style</span>
+</Button>
+
+<Button
+  variant="outlined"
+  className="border-2 border-purple-500 text-purple-500"
+>
+  Custom Border
+</Button>
+```
+
+## Accessibility
+
+- Uses semantic `<button>` element
+- Fully keyboard navigable
+- Default `type="button"` prevents accidental form submission
+- Works with screen readers
+- Disabled state properly communicated
+- Focus visible for keyboard users
+
+## Styling
+
+The component uses BEM-style class names:
+
+- `HPuiButton` - Main button class
+- `HPuiButton--{variant}` - Variant modifier (filled, outlined, ghost, icon)
+- `HPuiButton--{variant}-{color}` - Combined variant and color
+- `HPuiButton--size-{size}` - Size modifier (xs, sm, md, lg, xl)
+
+## Default Behavior
+
+- **Type**: Defaults to `type="button"` to prevent accidental form submission
+- **Gap**: Automatically adds spacing between child elements
+- **Variant**: Defaults to `filled`
+- **Size**: Defaults to `md`
+- **Color**: Defaults to `primary`
+
+## Related Components
+
+- [LoadingButton](/docs/loading-button) - Button with loading state

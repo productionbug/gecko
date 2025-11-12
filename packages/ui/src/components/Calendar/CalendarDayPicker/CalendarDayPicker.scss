@@ -1,0 +1,42 @@
+@import "../../../mixins.scss";
+
+.HPuiCalendar {
+  &__day-picker-weekdays {
+    @apply mb-2 grid grid-cols-7 place-items-center font-medium opacity-40;
+  }
+
+  &__day-picker {
+    @apply grid grid-cols-7 gap-0;
+
+    &__button {
+      @include button-reset;
+
+      @apply hover:bg-surface-hover-strong relative flex h-full w-full cursor-pointer items-center justify-center place-self-center px-2 py-1 disabled:cursor-not-allowed;
+
+      &--today {
+        @apply text-primary-600;
+      }
+
+      &--selected,
+      &--focused {
+        @apply text-surface-tertiary;
+      }
+
+      &--selected &__text {
+        @apply text-text-inverse bg-primary-700;
+      }
+
+      &--focused &__text {
+        @apply bg-primary-600/25;
+      }
+
+      &--active-month-false &__text {
+        @apply opacity-40;
+      }
+
+      &__text {
+        @apply flex aspect-square basis-6 items-center justify-center rounded-full;
+      }
+    }
+  }
+}

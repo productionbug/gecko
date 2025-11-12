@@ -1,0 +1,11 @@
+@import "../../../mixins.scss";
+
+.HPuiRHFFileInput {
+  &--wrapper {
+    @include form-reset;
+  }
+
+  &--custom {
+    @apply hidden;
+  }
+}

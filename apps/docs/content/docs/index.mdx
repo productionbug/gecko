@@ -1,0 +1,110 @@
+---
+title: Getting Started
+description: Build beautiful, accessible React applications with HexPacket UI
+---
+
+# Welcome to HexPacket UI
+
+HexPacket UI is a comprehensive, production-ready React component library built with TypeScript, Tailwind CSS, and modern web standards. It provides carefully crafted components designed for building complex, accessible user interfaces.
+
+## Features
+
+- **🎨 Beautiful Design** - Modern, clean aesthetics with thoughtful spacing and typography
+- **♿️ Accessible** - WCAG compliant components with keyboard navigation and ARIA support
+- **🔧 Highly Customizable** - Extensive theming system with CSS variables and Tailwind integration
+- **📦 TypeScript First** - Full type safety with comprehensive type definitions
+- **🎯 Developer Experience** - Intuitive APIs, great documentation, and excellent IntelliSense
+- **📱 Responsive** - Mobile-first design that works across all screen sizes
+- **🚀 Performance** - Optimized bundle size with tree-shaking support
+- **🔌 React Hook Form** - Built-in integration with dedicated wrapper components
+
+## Quick Start
+
+### 1. Install the package
+
+```bash
+npm install @hexpacket/ui
+# or
+pnpm add @hexpacket/ui
+# or
+yarn add @hexpacket/ui
+```
+
+### 2. Import styles
+
+Add the CSS imports to your root layout or main entry file:
+
+```tsx
+import '@hexpacket/ui/styles.css';
+```
+
+For markdown component styling, also import:
+
+```tsx
+import '@hexpacket/ui/markdown.css';
+```
+
+### 3. Add HexpacketUIContainer
+
+Add `HexpacketUIContainer` to your layout (required for Dialog, Drawer, ConfirmDialog, and Toast components):
+
+```tsx
+import { HexpacketUIContainer } from '@hexpacket/ui';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <HexpacketUIContainer />
+      </body>
+    </html>
+  );
+}
+```
+
+### 4. Start using components
+
+```tsx
+import { Button, Input, Label } from '@hexpacket/ui';
+
+function LoginForm() {
+  return (
+    <form>
+      <div>
+        <Label>Email</Label>
+        <Input type="email" placeholder="you@example.com" />
+      </div>
+      <Button type="submit">Sign In</Button>
+    </form>
+  );
+}
+```
+
+## What's Next?
+
+Explore the documentation to learn more:
+
+- [Installation Guide](/docs/installation) - Detailed setup instructions and configuration
+- [Theming](/docs/theming) - Learn how to customize the design system
+- Browse components in the sidebar to see all available options
+
+## Requirements
+
+- **React**: 19.2.0 or higher
+- **React DOM**: 19.2.0 or higher
+- **Node.js**: 18.0.0 or higher (recommended)
+
+## Browser Support
+
+HexPacket UI supports all modern browsers:
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Community & Support
+
+- [GitHub Repository](https://github.com/hexpacket/ui)
+- [Report Issues](https://github.com/hexpacket/ui/issues)
