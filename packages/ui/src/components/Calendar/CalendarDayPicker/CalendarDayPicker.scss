@@ -6,12 +6,12 @@
   }
 
   &__day-picker {
-    @apply grid grid-cols-7 gap-0;
+    @apply grid grid-cols-7 gap-y-[1px];
 
     &__button {
       @include button-reset;
 
-      @apply aspect-square relative flex size-full cursor-pointer items-center justify-center place-self-center hover:bg-surface-hover-strong disabled:cursor-not-allowed;
+      @apply relative flex aspect-square size-full cursor-pointer items-center justify-center place-self-center hover:bg-surface-hover-strong disabled:cursor-not-allowed;
 
       &__text {
         @apply size-full;
@@ -52,7 +52,7 @@
       }
 
       &--in-range {
-        @apply relative bg-primary-100;
+        @apply relative bg-primary-700;
       }
 
       &--range-start {
@@ -84,6 +84,20 @@
 
       &__text {
         @apply relative z-10 flex aspect-square basis-6 items-center justify-center rounded-full;
+      }
+    }
+  }
+}
+
+.dark .HPuiCalendar {
+  &__day-picker {
+    &__button {
+      &--hover-preview {
+        @apply relative bg-primary-500;
+
+        &::before {
+          @apply bg-primary-500;
+        }
       }
     }
   }
