@@ -4,7 +4,8 @@ import { BaseDateInputProps } from "../BaseDateInput";
 
 export type DateFormat = "DD/MM/YYYY" | "MM/DD/YYYY" | "YYYY/MM/DD";
 
-export interface DateInputProps extends Omit<BaseDateInputProps, "renderCalendarIcon"> {
+export interface DateInputProps
+  extends Omit<BaseDateInputProps, "hasFocus" | "renderCalendarIcon"> {
   /**
    * Whether to hide the calendar popup. When false (default), calendar will be shown.
    * @default false

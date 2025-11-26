@@ -81,7 +81,6 @@ import { RHFDateInput, RHFInputGroup } from '@hexpacket/ui';
 const schema = z.object({
   validationStartDate: z.string()
     .min(1, 'Start date is required')
-    .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, 'Invalid date format (MM/DD/YYYY)')
 });
 
 function Example() {
@@ -140,7 +139,6 @@ const formatDate = (date: Date) => {
 const schema = z.object({
   rangeValidationBirthDate: z.string()
     .min(1, 'Birth date is required')
-    .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, 'Invalid date format')
     .refine((dateStr) => {
       const [month, day, year] = dateStr.split('/').map(Number);
       const date = new Date(year, month - 1, day);
@@ -197,10 +195,8 @@ import { RHFInput, RHFDateInput, RHFInputGroup, Button } from '@hexpacket/ui';
 const schema = z.object({
   formCheckInDate: z.string()
     .min(1, 'Check-in date is required')
-    .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, 'Invalid date format'),
   formCheckOutDate: z.string()
     .min(1, 'Check-out date is required')
-    .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, 'Invalid date format'),
   formGuestName: z.string().min(2, 'Guest name is required')
 }).refine((data) => {
   if (!data.formCheckInDate || !data.formCheckOutDate) return true;
@@ -260,15 +256,10 @@ RHFDateInput stores and displays dates in **MM/DD/YYYY** format (US date format)
 
 ### Validation Pattern
 
-Use this regex pattern to validate MM/DD/YYYY format:
-
 ```tsx
-const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
-
 const schema = z.object({
   date: z.string()
     .min(1, 'Date is required')
-    .regex(dateRegex, 'Invalid date format (MM/DD/YYYY)')
 });
 ```
 

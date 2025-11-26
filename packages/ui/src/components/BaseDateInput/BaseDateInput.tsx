@@ -33,7 +33,7 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   renderCalendarIcon,
   onStateUpdate,
   onSubmit,
-  ...rest
+  hasFocus
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -107,8 +107,6 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
     if (!year) return "YYYY";
     return year.padStart(4, "0");
   };
-
-  const isEmpty = !month && !day && !year;
 
   const handleMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = sanitizeNumericInput(e.target.value, 2);
@@ -284,6 +282,7 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   const segmentOrder = getSegmentOrder(format);
   const inputs = segmentOrder.map((segment) => allInputs[segment]);
 
+  const isEmpty = !month && !day && !year && !hasFocus;
   const isError =
     (!isEmpty && !isValidDate(parseInt(year, 10), parseInt(month, 10), parseInt(day, 10))) ||
     hasError;
@@ -295,22 +294,19 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
     !disabled && !readOnly && "HPuiDateInput--enabled",
     isError && "HPuiDateInput--error",
     isEmpty && "HPuiDateInput--empty",
+    hasFocus && "HPuiDateInput--focus",
     className
   );
 
   return (
-    <div
-      ref={containerRef}
-      className={containerClasses}
-      {...rest}
-      onClick={() => handleDisplayClick()}>
+    <div ref={containerRef} className={containerClasses} onClick={() => handleDisplayClick()}>
       {Boolean(prefix) && (
         <div className="HPuiDateInput__prefix">
           <DynamicComponentRenderer component={prefix} />
         </div>
       )}
 
-      {!!isEmpty && (
+      {!!isEmpty && !hasFocus && (
         <span className={classNames("HPuiDateInput__placeholder", placeholderClassName)}>
           {placeholder ?? generatePlaceholder(format, separator)}
         </span>
@@ -351,12 +347,6 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
         ))}
       </div>
 
-      {Boolean(suffix) && (
-        <div className="HPuiDateInput__suffix">
-          <DynamicComponentRenderer component={suffix} />
-        </div>
-      )}
-
       <div className="HPuiDateInput__icons">
         {!hideClearIcon && !isEmpty && !disabled && !readOnly && (
           <button
@@ -366,6 +356,12 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
             onClick={handleClear}>
             <div className="HPicon__clear" />
           </button>
+        )}
+
+        {Boolean(suffix) && (
+          <div className="HPuiDateInput__suffix">
+            <DynamicComponentRenderer component={suffix} />
+          </div>
         )}
 
         {renderCalendarIcon}

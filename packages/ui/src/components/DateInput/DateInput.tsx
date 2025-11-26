@@ -203,6 +203,7 @@ const DateInput: FC<DateInputProps> = ({
         renderCalendarIcon={renderCalendarIcon}
         onStateUpdate={handleStateUpdateInternal}
         onSubmit={handleSubmit}
+        hasFocus={openCalendar}
         {...rest}
       />
 

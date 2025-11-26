@@ -2,11 +2,7 @@ import type { FC, ReactNode } from "react";
 
 export type DateFormat = "DD/MM/YYYY" | "MM/DD/YYYY" | "YYYY/MM/DD";
 
-export interface BaseDateInputProps
-  extends Omit<
-    React.HTMLAttributes<HTMLDivElement>,
-    "onChange" | "onBlur" | "prefix" | "onSubmit"
-  > {
+export interface BaseDateInputProps {
   value?: string | null;
   onChange?: (value: string | null) => void;
   onSubmit?: () => void;
@@ -24,4 +20,5 @@ export interface BaseDateInputProps
   hideClearIcon?: boolean;
   hideCalendarIcon?: boolean;
   renderCalendarIcon?: ReactNode;
+  hasFocus?: boolean;
 }

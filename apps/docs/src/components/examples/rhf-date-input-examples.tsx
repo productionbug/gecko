@@ -21,13 +21,7 @@ export function BasicRHFDateInputExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    validationStartDate: z
-      .string()
-      .min(1, "Start date is required")
-      .regex(
-        /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/,
-        "Invalid date format (MM/DD/YYYY)"
-      )
+    validationStartDate: z.string().min(1, "Start date is required")
   });
 
   const methods = useForm({
@@ -85,7 +79,6 @@ export function WithDateRangeValidationExample() {
     rangeValidationBirthDate: z
       .string()
       .min(1, "Birth date is required")
-      .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, "Invalid date format")
       .refine(
         (dateStr) => {
           const [month, day, year] = dateStr.split("/").map(Number);
@@ -157,14 +150,8 @@ export function WithCustomCallbackExample() {
 export function CompleteFormExample() {
   const schema = z
     .object({
-      formCheckInDate: z
-        .string()
-        .min(1, "Check-in date is required")
-        .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, "Invalid date format"),
-      formCheckOutDate: z
-        .string()
-        .min(1, "Check-out date is required")
-        .regex(/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/, "Invalid date format"),
+      formCheckInDate: z.string().min(1, "Check-in date is required"),
+      formCheckOutDate: z.string().min(1, "Check-out date is required"),
       formGuestName: z.string().min(2, "Guest name is required")
     })
     .refine(
