@@ -79,13 +79,8 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   };
 
   const updateValue = (m: string, d: string, y: string) => {
-    const monthNum = parseInt(m, 10);
-    const dayNum = parseInt(d, 10);
-    const yearNum = parseInt(y, 10);
-
-    if (m && d && y && isValidDate(yearNum, monthNum, dayNum)) {
-      const isoDate = formatToISO(yearNum, monthNum, dayNum);
-      onChange?.(isoDate);
+    if (isValidDate(y, m, d)) {
+      onChange?.(formatToISO(y, m, d));
     } else {
       onChange?.(null);
     }
@@ -283,9 +278,7 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   const inputs = segmentOrder.map((segment) => allInputs[segment]);
 
   const isEmpty = !month && !day && !year && !hasFocus;
-  const isError =
-    (!isEmpty && !isValidDate(parseInt(year, 10), parseInt(month, 10), parseInt(day, 10))) ||
-    hasError;
+  const isError = (!isEmpty && !isValidDate(year, month, day)) || hasError;
 
   const containerClasses = classNames(
     "HPuiDateInput",

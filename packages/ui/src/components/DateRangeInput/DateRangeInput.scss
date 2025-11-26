@@ -1,0 +1,13 @@
+.HPuiDateRangeInputWrapper {
+  @apply w-full;
+}
+
+.HPuiDateRangeInput {
+  &__range-separator {
+    @apply pb-[1px] mx-1 select-none whitespace-nowrap text-text-secondary;
+  }
+}
+
+.HPuiDateRangeInput__calendar {
+  @apply bg-surface-primary;
+}

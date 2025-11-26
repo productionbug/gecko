@@ -2,6 +2,8 @@ export * from "./RHF/RHF.types";
 
 export * from "./Checkbox";
 export * from "./DateInput";
+export * from "./DateRangeInput";
+export * from "./BaseDateRangeInput";
 export * from "./Input";
 export * from "./Label";
 export * from "./InputError";

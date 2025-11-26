@@ -114,11 +114,7 @@ export function isDateInRange(
  * @param start - Start date string
  * @param end - End date string
  * */
-export function isDateBetween(
-  date: string,
-  start: string | null,
-  end: string | null
-): boolean {
+export function isDateBetween(date: string, start: string | null, end: string | null): boolean {
   if (!start || !end) return false;
   return date >= start && date <= end;
 }
@@ -139,6 +135,7 @@ export function formatDateRange(range: { from: string | null; to?: string | null
  * @param end - End date string
  * @returns true if end comes before start
  * */
-export function shouldSwapDates(start: string, end: string): boolean {
+export function shouldSwapDates(start?: string | null, end?: string | null): boolean {
+  if (!start || !end) return false;
   return end < start;
 }

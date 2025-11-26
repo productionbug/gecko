@@ -10,20 +10,36 @@ export const sanitizeNumericInput = (value: string, maxLength: number): string =
   return sanitized;
 };
 
-export const isValidDate = (year: number, month: number, day: number): boolean => {
-  if (year < 1000 || year > 9999) return false;
-  if (month < 1 || month > 12) return false;
-  if (day < 1 || day > 31) return false;
+export const isValidDate = (
+  year: string | number,
+  month: string | number,
+  day: string | number
+): boolean => {
+  const y = parseInt(String(year), 10);
+  const m = parseInt(String(month), 10);
+  const d = parseInt(String(day), 10);
 
-  const date = new Date(year, month - 1, day);
-  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+  if (!y || !m || !d) return false;
+  if (y < 1000 || y > 9999) return false;
+  if (m < 1 || m > 12) return false;
+  if (d < 1 || d > 31) return false;
+
+  const date = new Date(y, m - 1, d);
+  return date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d;
 };
 
-// Utility function to format date parts to ISO string
-export const formatToISO = (year: number, month: number, day: number): string => {
+export const formatToISO = (
+  year: string | number,
+  month: string | number,
+  day: string | number
+): string => {
   if (!isValidDate(year, month, day)) return "";
 
-  return `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+  const y = parseInt(String(year), 10);
+  const m = parseInt(String(month), 10);
+  const d = parseInt(String(day), 10);
+
+  return `${y}-${m.toString().padStart(2, "0")}-${d.toString().padStart(2, "0")}`;
 };
 
 // Utility function to parse ISO date to display parts
@@ -59,6 +75,5 @@ export const getSegmentOrder = (format: DateFormat): Array<"day" | "month" | "ye
 
 // Utility function to generate placeholder text from format and separator
 export const generatePlaceholder = (format: DateFormat, separator: string): string => {
-  const formattedPattern = format.replace(/\//g, separator);
-  return `Enter date (${formattedPattern})`;
+  return format.replace(/\//g, separator);
 };

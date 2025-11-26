@@ -77,11 +77,15 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
           let isHoverPreview = false;
 
           if (isRangeMode && selectedRange && isActiveMonth) {
-            isRangeStart = formattedDate === selectedRange.from;
-            isRangeEnd = selectedRange.to ? formattedDate === selectedRange.to : false;
+            const needsSwap = shouldSwapDates(selectedRange.from, selectedRange.to);
+            const normalizedFrom = needsSwap ? selectedRange.to : selectedRange.from;
+            const normalizedTo = needsSwap ? selectedRange.from : selectedRange.to;
 
-            if (selectedRange.from && selectedRange.to) {
-              isInRange = isDateInRange(formattedDate, selectedRange);
+            isRangeStart = formattedDate === normalizedFrom;
+            isRangeEnd = normalizedTo ? formattedDate === normalizedTo : false;
+
+            if (normalizedFrom && normalizedTo) {
+              isInRange = isDateInRange(formattedDate, { from: normalizedFrom, to: normalizedTo });
             }
 
             // Check if date is in hover preview range (only when start is selected but not end)
@@ -108,8 +112,8 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                 isHoverPreview && "HPuiCalendar__day-picker__button--hover-preview",
                 `HPuiCalendar__day-picker__button--active-month-${isActiveMonth}`,
                 activeDate === formattedDate &&
-                !isSelected &&
-                "HPuiCalendar__day-picker__button--focused"
+                  !isSelected &&
+                  "HPuiCalendar__day-picker__button--focused"
               )}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}

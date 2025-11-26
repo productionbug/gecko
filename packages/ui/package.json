@@ -16,6 +16,10 @@
     ".": "./src/index.ts"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "import:css": "node scripts/import-css.js",
     "postinstall": "pnpm run import:css",
