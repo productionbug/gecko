@@ -3,5 +3,17 @@
 .HPuiCalendar {
   @include base-reset;
 
-  @apply min-w-[320px] max-w-[320px] mt-px rounded-md border border-border-primary px-3 py-4 text-sm;
+  @apply mt-px min-w-[320px] max-w-[320px] rounded-md border border-border-primary px-3 py-4 text-sm;
+
+  &--calendars-2 {
+    @apply min-w-[680px] max-w-[680px];
+  }
+
+  &__dual {
+    @apply flex gap-4;
+
+    > * {
+      @apply min-w-[320px] max-w-[320px];
+    }
+  }
 }

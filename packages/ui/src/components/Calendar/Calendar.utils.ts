@@ -94,3 +94,51 @@ export function isValidISOFormat(date: string | null | undefined = ""): boolean 
   if (!date) return false;
   return /^\d{4}-\d{2}-\d{2}$/.test(date);
 }
+
+/**
+ * Check if a date is within a date range (inclusive)
+ * @param date - Date string in YYYY-MM-DD format
+ * @param range - Date range object with from and to dates
+ * */
+export function isDateInRange(
+  date: string,
+  range: { from: string | null; to?: string | null }
+): boolean {
+  if (!range.from || !range.to) return false;
+  return date >= range.from && date <= range.to;
+}
+
+/**
+ * Check if a date is between two dates (inclusive)
+ * @param date - Date string in YYYY-MM-DD format
+ * @param start - Start date string
+ * @param end - End date string
+ * */
+export function isDateBetween(
+  date: string,
+  start: string | null,
+  end: string | null
+): boolean {
+  if (!start || !end) return false;
+  return date >= start && date <= end;
+}
+
+/**
+ * Format a date range as a string
+ * @param range - Date range object with from and to dates
+ * */
+export function formatDateRange(range: { from: string | null; to?: string | null }): string {
+  if (!range.from) return "";
+  if (!range.to) return range.from;
+  return `${range.from} → ${range.to}`;
+}
+
+/**
+ * Check if dates should be swapped (end comes before start)
+ * @param start - Start date string
+ * @param end - End date string
+ * @returns true if end comes before start
+ * */
+export function shouldSwapDates(start: string, end: string): boolean {
+  return end < start;
+}

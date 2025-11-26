@@ -1,19 +1,45 @@
 import { classNames } from "../../../utils/classNames";
-import { generateCalendarDates, generateMonthNames, getTodayDate } from "../Calendar.utils";
+import {
+  generateCalendarDates,
+  generateMonthNames,
+  getTodayDate,
+  isDateBetween,
+  isDateInRange,
+  shouldSwapDates
+} from "../Calendar.utils";
 import { CalendarHeader } from "../CalendarHeader";
-import type { CalendarDayPickerProps } from "./CalendarDayPicker.types";
+import type {
+  CalendarDayPickerProps,
+  CalendarDayPickerRangeProps,
+  CalendarDayPickerSingleProps
+} from "./CalendarDayPicker.types";
 
-function CalendarDayPicker({
-  activeMonth,
-  activeYear,
-  activeDate,
-  selectedDate,
-  onSelectDate,
-  ...headerProps
-}: CalendarDayPickerProps) {
+function CalendarDayPicker(props: CalendarDayPickerProps) {
+  const { activeMonth, activeYear, activeDate, mode = "single", ...headerProps } = props;
+
   const today = getTodayDate();
   const { months } = generateMonthNames();
   const dates = generateCalendarDates(activeMonth, activeYear);
+
+  const isRangeMode = mode === "range";
+  const selectedRange = isRangeMode
+    ? (props as CalendarDayPickerRangeProps).selectedRange
+    : undefined;
+  const hoveredDate = isRangeMode ? (props as CalendarDayPickerRangeProps).hoveredDate : undefined;
+
+  const handleDateClick = (date: string) => {
+    if (isRangeMode) {
+      (props as CalendarDayPickerRangeProps).onSelectRange?.(date);
+    } else {
+      (props as CalendarDayPickerSingleProps).onSelectDate?.(date);
+    }
+  };
+
+  const handleDateHover = (date: string | null) => {
+    if (isRangeMode) {
+      (props as CalendarDayPickerRangeProps).onHoverDate?.(date);
+    }
+  };
 
   return (
     <>
@@ -30,12 +56,45 @@ function CalendarDayPicker({
 
       <div className="HPuiCalendar__day-picker">
         {dates.map((date) => {
+          const isActiveMonth = activeMonth === date.month;
+
+          if (isRangeMode && !isActiveMonth) {
+            return <span key={`${date.year}-${date.month}-${date.day}`} />;
+          }
+
           const formattedDate = `${date.year}-${(date.month + 1)
             .toString()
             .padStart(2, "0")}-${date.day.toString().padStart(2, "0")}`;
 
-          const isSelected = formattedDate === selectedDate;
           const isToday = formattedDate === today;
+
+          const isSelected =
+            !isRangeMode && formattedDate === (props as CalendarDayPickerSingleProps).selectedDate;
+
+          let isRangeStart = false;
+          let isRangeEnd = false;
+          let isInRange = false;
+          let isHoverPreview = false;
+
+          if (isRangeMode && selectedRange && isActiveMonth) {
+            isRangeStart = formattedDate === selectedRange.from;
+            isRangeEnd = selectedRange.to ? formattedDate === selectedRange.to : false;
+
+            if (selectedRange.from && selectedRange.to) {
+              isInRange = isDateInRange(formattedDate, selectedRange);
+            }
+
+            // Check if date is in hover preview range (only when start is selected but not end)
+            if (selectedRange.from && !selectedRange.to && hoveredDate) {
+              const [previewStart, previewEnd] = shouldSwapDates(selectedRange.from, hoveredDate)
+                ? [hoveredDate, selectedRange.from]
+                : [selectedRange.from, hoveredDate];
+
+              if (isDateBetween(formattedDate, previewStart, previewEnd)) {
+                isHoverPreview = true;
+              }
+            }
+          }
 
           return (
             <button
@@ -43,16 +102,20 @@ function CalendarDayPicker({
                 "HPuiCalendar__day-picker__button",
                 isToday && "HPuiCalendar__day-picker__button--today",
                 isSelected && "HPuiCalendar__day-picker__button--selected",
-                `HPuiCalendar__day-picker__button--active-month-${activeMonth === date.month}`,
+                isRangeStart && "HPuiCalendar__day-picker__button--range-start",
+                isRangeEnd && "HPuiCalendar__day-picker__button--range-end",
+                isInRange && "HPuiCalendar__day-picker__button--in-range",
+                isHoverPreview && "HPuiCalendar__day-picker__button--hover-preview",
+                `HPuiCalendar__day-picker__button--active-month-${isActiveMonth}`,
                 activeDate === formattedDate &&
                 !isSelected &&
                 "HPuiCalendar__day-picker__button--focused"
               )}
               key={`${date.year}-${date.month}-${date.day}`}
-              onClick={() => onSelectDate?.(formattedDate)}
-              type="button"
-            // TODO: add disable
-            >
+              onClick={() => handleDateClick(formattedDate)}
+              onMouseEnter={() => handleDateHover(formattedDate)}
+              onMouseLeave={() => handleDateHover(null)}
+              type="button">
               <span className="HPuiCalendar__day-picker__button__text">{date.day}</span>
             </button>
           );

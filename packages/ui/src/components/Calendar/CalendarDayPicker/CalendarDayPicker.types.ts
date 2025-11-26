@@ -1,7 +1,14 @@
-import type { CalendarActiveProps } from "../Calendar";
+import type { CalendarActiveProps, DateRange } from "../Calendar";
 import type { CalendarHeaderProps } from "../CalendarHeader";
 
-export interface CalendarDayPickerProps extends CalendarHeaderProps, CalendarActiveProps {
+interface CalendarDayPickerBaseProps extends CalendarHeaderProps, CalendarActiveProps {}
+
+export interface CalendarDayPickerSingleProps extends CalendarDayPickerBaseProps {
+  /**
+   * Selection mode: 'single' for single date selection
+   * */
+  mode?: "single";
+
   /**
    * Date string in the format 'YYYY-MM-DD'
    * */
@@ -12,3 +19,32 @@ export interface CalendarDayPickerProps extends CalendarHeaderProps, CalendarAct
    * */
   onSelectDate?: (date: string) => void;
 }
+
+export interface CalendarDayPickerRangeProps extends CalendarDayPickerBaseProps {
+  /**
+   * Selection mode: 'range' for date range selection
+   * */
+  mode: "range";
+
+  /**
+   * Selected date range with from and to dates
+   * */
+  selectedRange?: DateRange;
+
+  /**
+   * Currently hovered date for range preview
+   * */
+  hoveredDate?: string | null;
+
+  /**
+   * Callback function that is called when a date is clicked in range mode
+   * */
+  onSelectRange?: (date: string) => void;
+
+  /**
+   * Callback function that is called when a date is hovered
+   * */
+  onHoverDate?: (date: string | null) => void;
+}
+
+export type CalendarDayPickerProps = CalendarDayPickerSingleProps | CalendarDayPickerRangeProps;

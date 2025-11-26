@@ -193,10 +193,7 @@ const DateInput: FC<DateInputProps> = ({
         prefix={prefix}
         suffix={suffix}
         hasError={hasError}
-        className={classNames(
-          className,
-          openCalendar && "HPuiDateInput--calendar-open"
-        )}
+        className={classNames(className, openCalendar && "HPuiDateInput--calendar-open")}
         format={format}
         separator={separator}
         placeholder={placeholder}
@@ -210,17 +207,17 @@ const DateInput: FC<DateInputProps> = ({
       />
 
       {!hideCalendar && openCalendar && (
-        <Calendar
-          calendarRef={calendarRef}
-          className={classNames("HPuiDateInput__calendar", calendarClassName)}
-          onSelectDate={(date) => {
-            onChange?.(date);
-            setOpenCalendar(false);
-          }}
-          ref={(r) => refs.setFloating(r)}
-          selectedDate={value}
-          style={floatingStyles}
-        />
+        <div ref={(r) => refs.setFloating(r)} style={{ ...floatingStyles, zIndex: 9999 }}>
+          <Calendar
+            calendarRef={calendarRef}
+            className={classNames("HPuiDateInput__calendar", calendarClassName)}
+            onSelectDate={(date) => {
+              onChange?.(date);
+              setOpenCalendar(false);
+            }}
+            selectedDate={value}
+          />
+        </div>
       )}
     </div>
   );

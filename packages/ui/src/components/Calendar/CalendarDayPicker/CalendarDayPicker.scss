@@ -11,7 +11,11 @@
     &__button {
       @include button-reset;
 
-      @apply hover:bg-surface-hover-strong relative flex h-full w-full cursor-pointer items-center justify-center place-self-center px-2 py-1 disabled:cursor-not-allowed;
+      @apply aspect-square relative flex size-full cursor-pointer items-center justify-center place-self-center hover:bg-surface-hover-strong disabled:cursor-not-allowed;
+
+      &__text {
+        @apply size-full;
+      }
 
       &--today {
         @apply text-primary-600;
@@ -23,7 +27,7 @@
       }
 
       &--selected &__text {
-        @apply text-text-inverse bg-primary-700;
+        @apply bg-primary-700 text-text-inverse;
       }
 
       &--focused &__text {
@@ -34,8 +38,52 @@
         @apply opacity-40;
       }
 
+      &--range-start &__text,
+      &--range-end &__text {
+        @apply bg-primary-700 text-text-inverse;
+      }
+
+      &--range-start &__text {
+        @apply rounded-r-none;
+      }
+
+      &--range-end &__text {
+        @apply rounded-l-none;
+      }
+
+      &--in-range {
+        @apply relative bg-primary-100;
+      }
+
+      &--range-start {
+        @apply relative bg-transparent;
+
+        &::before {
+          content: "";
+          @apply absolute inset-y-0 right-0 z-[-1] w-1/2 bg-primary-100;
+        }
+      }
+
+      &--range-end {
+        @apply relative bg-transparent;
+
+        &::before {
+          content: "";
+          @apply absolute inset-y-0 left-0 z-[-1] w-1/2 bg-primary-100;
+        }
+      }
+
+      &--hover-preview {
+        @apply relative bg-primary-100;
+
+        &::before {
+          content: "";
+          @apply absolute inset-y-0 -left-px right-0 z-[-1] bg-primary-50;
+        }
+      }
+
       &__text {
-        @apply flex aspect-square basis-6 items-center justify-center rounded-full;
+        @apply relative z-10 flex aspect-square basis-6 items-center justify-center rounded-full;
       }
     }
   }

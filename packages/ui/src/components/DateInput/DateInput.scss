@@ -3,3 +3,7 @@
 .HPuiDateInputWrapper {
   @apply w-full;
 }
+
+.HPuiDateInput__calendar {
+  @apply bg-surface-primary;
+}
