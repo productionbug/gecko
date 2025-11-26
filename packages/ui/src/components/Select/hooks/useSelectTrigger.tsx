@@ -1,5 +1,5 @@
 import isEqual from "lodash.isequal";
-import isNil from "lodash.isnil";
+import { useMemo } from "react";
 
 import isTextIncludes from "../../../utils/isTextIncludes";
 import { isHideSelectOption } from "../Select.utils";
@@ -96,7 +96,17 @@ export const useSelectTrigger = <T,>() => {
     }
   };
 
-  const hasValue = multiple ? Array.isArray(value) && !!value?.length : !isNil(value);
+  const hasValue = useMemo(() => {
+    if (multiple) {
+      return Array.isArray(value) && !!value?.length;
+    }
+
+    if (value === "" || value === null) {
+      return !!options.find((opt) => isEqual(opt.value, value));
+    }
+
+    return value !== undefined;
+  }, [options, multiple, value]);
 
   return {
     hasValue,

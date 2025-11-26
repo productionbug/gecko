@@ -4,7 +4,6 @@ import { usePreventDefault } from "../../../hooks";
 import { classNames } from "../../../utils/classNames";
 import createLabel from "../../../utils/createLabel";
 import isEqual from "../../../utils/isEqual";
-import isNil from "../../../utils/isNil";
 import { DynamicComponentRenderer } from "../../DynamicComponentRenderer";
 import { isSelectTrigger } from "../Select.utils";
 import { useSelectTrigger } from "../hooks/useSelectTrigger";
@@ -86,9 +85,9 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
             !open && hasValue && "HPuiSelectButton__search--focusonly",
             !filterable && "HPuiSelectButton__search--focusonly",
             multiple &&
-              Array.isArray(value) &&
-              !!value?.length &&
-              "HPuiSelectButton__search--multi-selected"
+            Array.isArray(value) &&
+            !!value?.length &&
+            "HPuiSelectButton__search--multi-selected"
           )}
           data-keyword={filterable ? keyword : ""}>
           <input
@@ -110,7 +109,7 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
               filterable
                 ? handleInputChange
                 : // To prevent the react warning about uncontrolled input
-                  () => null
+                () => null
             }
             autoComplete="off"
             autoCapitalize="off"
@@ -207,9 +206,10 @@ function SelectButtonContent() {
     return null;
   }
 
-  const selectedOptionLabel = !isNil(value)
-    ? (options.find((option) => isEqual(option.value, value))?.label ?? createLabel(value))
-    : null;
+  const selectedOptionLabel =
+    value !== undefined
+      ? (options.find((option) => isEqual(option.value, value))?.label ?? createLabel(value))
+      : null;
 
   // To display like ghost text when filterable is true
   if (open && selectedOptionLabel && filterable) {
