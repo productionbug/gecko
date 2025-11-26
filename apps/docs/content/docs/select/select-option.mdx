@@ -204,12 +204,12 @@ Control when options appear using the `show` prop:
 
 ```tsx
 <Select value={value} onChange={setValue}>
-  <SelectOption value="draft" label="Draft" show="default" />
-  <SelectOption value="published" label="Published" show="default" />
+  <SelectOption value="draft" label="Draft" visibility="default" />
+  <SelectOption value="published" label="Published" visibility="default" />
+  <SelectOption value="archived" label="Archived" visibility="default" />
 
   {/* Always visible, even when filtering */}
-  <SelectOption value="separator" label="---" show="always" disabled />
-  <SelectOption value="admin-only" label="Admin Only" show="always" />
+  <SelectOption value="admin-only" label="Admin Only Status" visibility="always" />
 </Select>
 ```
 
@@ -271,7 +271,7 @@ const frameworks = [
 | `children` | `ReactNode \| (args) => ReactNode` | - | Custom content or render function |
 | `disabled` | `boolean` | `false` | Disable the option |
 | `hideCheckIcon` | `boolean` | `false` | Hide check icon for selected state |
-| `show` | `'default' \| 'always' \| 'empty' \| 'filtered-and-empty'` | `'default'` | Visibility control |
+| `visibility` | `'default' \| 'always' \| 'empty' \| 'filtered-and-empty'` | `'default'` | Visibility control |
 | `onClick` | `(args) => void` | - | Custom click handler |
 | `className` | `string` | - | CSS class for option |
 

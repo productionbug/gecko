@@ -7,7 +7,8 @@
     "dev": "next dev --port 3001",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hexpacket/ui": "workspace:*",

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { Button, RHFInput, RHFInputGroup } from "@hexpacket/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFInputExample() {
   const methods = useForm({
     defaultValues: {
-      username: ''
+      username: ""
     }
   });
 
@@ -21,14 +21,14 @@ export function BasicRHFInputExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    email: z.string().email('Invalid email address').min(1, 'Email is required')
+    email: z.string().email("Invalid email address").min(1, "Email is required")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      email: ''
+      email: ""
     }
   });
 
@@ -44,19 +44,13 @@ export function WithValidationExample() {
 export function WithPrefixSuffixExample() {
   const methods = useForm({
     defaultValues: {
-      amount: ''
+      amount: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
-      <RHFInput
-        name="amount"
-        type="number"
-        prefix="$"
-        suffix="USD"
-        placeholder="0.00"
-      />
+      <RHFInput name="amount" type="number" prefix="$" suffix="USD" placeholder="0.00" />
     </FormProvider>
   );
 }
@@ -64,13 +58,13 @@ export function WithPrefixSuffixExample() {
 export function WithTransformExample() {
   const methods = useForm({
     defaultValues: {
-      phone: ''
+      phone: ""
     }
   });
 
   const formatPhone = (value: string) => {
-    if (!value) return '';
-    const cleaned = value.replace(/\D/g, '');
+    if (!value) return "";
+    const cleaned = value.replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     if (match) {
       return `(${match[1]}) ${match[2]}-${match[3]}`;
@@ -79,7 +73,7 @@ export function WithTransformExample() {
   };
 
   const sanitizePhone = (value: string) => {
-    return value.replace(/\D/g, '');
+    return value.replace(/\D/g, "");
   };
 
   return (
@@ -99,7 +93,7 @@ export function WithTransformExample() {
 export function WithCustomSuffixExample() {
   const methods = useForm({
     defaultValues: {
-      password: ''
+      password: ""
     }
   });
 
@@ -109,11 +103,9 @@ export function WithCustomSuffixExample() {
         name="password"
         type="password"
         placeholder="Enter password"
-        suffix={({ fieldState }) =>
-          fieldState.error ? (
-            <span className="text-red-500 text-xs">❌</span>
-          ) : null
-        }
+        suffix={({ fieldState }) => {
+          return <>{fieldState.error ? <span className="text-red-500 text-xs">❌</span> : null}</>;
+        }}
       />
     </FormProvider>
   );
@@ -122,7 +114,7 @@ export function WithCustomSuffixExample() {
 export function DisabledExample() {
   const methods = useForm({
     defaultValues: {
-      readonly: 'Cannot edit this'
+      readonly: "Cannot edit this"
     }
   });
 
@@ -135,24 +127,24 @@ export function DisabledExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    username: z.string().min(3, 'Username must be at least 3 characters'),
-    email: z.string().email('Invalid email address'),
-    password: z.string().min(8, 'Password must be at least 8 characters')
+    username: z.string().min(3, "Username must be at least 3 characters"),
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      username: '',
-      email: '',
-      password: ''
+      username: "",
+      email: "",
+      password: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -170,9 +162,7 @@ export function CompleteFormExample() {
           <RHFInput name="password" type="password" placeholder="Enter password" />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

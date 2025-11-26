@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   Control,
   ControllerFieldState,
@@ -20,7 +21,7 @@ export interface RHFBaseProps {
    *
    * Eg. You have multiple `FormProvider` in your app and you want to use a specific control object.
    * */
-  control?: Control;
+  control?: Control<any>;
 }
 
 export interface RHFRenderArgs<T extends FieldValues> {

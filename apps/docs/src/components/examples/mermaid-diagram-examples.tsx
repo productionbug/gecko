@@ -241,7 +241,7 @@ flowchart LR
       <div className="border rounded-md p-4">
         <MermaidDiagram
           placeholder={<Spinner />}
-          renderError={({ message }) => <Alert variant="error">Error: {message}</Alert>}>
+          renderError={({ message }) => <Alert title={message} variant="error" />}>
           {showError ? invalidDiagram : validDiagram}
         </MermaidDiagram>
       </div>

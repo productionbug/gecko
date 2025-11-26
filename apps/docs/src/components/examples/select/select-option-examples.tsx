@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from "@hexpacket/ui";
+import { useState } from "react";
 
 export function BasicOptionExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -26,7 +26,7 @@ export function CustomContentExample() {
             <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold">
               JD
             </div>
-            <div className={focused ? 'font-semibold' : ''}>
+            <div className={focused ? "font-semibold" : ""}>
               <div className="font-medium">John Doe</div>
               <div className="text-sm text-gray-500">john@example.com</div>
             </div>
@@ -40,7 +40,7 @@ export function CustomContentExample() {
             <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-semibold">
               JS
             </div>
-            <div className={focused ? 'font-semibold' : ''}>
+            <div className={focused ? "font-semibold" : ""}>
               <div className="font-medium">Jane Smith</div>
               <div className="text-sm text-gray-500">jane@example.com</div>
             </div>
@@ -54,7 +54,7 @@ export function CustomContentExample() {
             <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-semibold">
               BJ
             </div>
-            <div className={focused ? 'font-semibold' : ''}>
+            <div className={focused ? "font-semibold" : ""}>
               <div className="font-medium">Bob Johnson</div>
               <div className="text-sm text-gray-500">bob@example.com</div>
             </div>
@@ -103,7 +103,7 @@ export function CustomClickExample() {
           label="Custom Action (click me)"
           onClick={({ selectCurrentOption, closeMenu }) => {
             setClickCount((prev) => prev + 1);
-            console.log('Custom action triggered!');
+            console.log("Custom action triggered!");
             selectCurrentOption();
             closeMenu();
           }}
@@ -132,7 +132,7 @@ export function PreventDefaultExample() {
           onClick={({ preventDefault, selectCurrentOption, closeMenu }) => {
             preventDefault();
 
-            if (window.confirm('Are you sure you want to delete this item?')) {
+            if (window.confirm("Are you sure you want to delete this item?")) {
               setConfirmed(true);
               selectCurrentOption();
               closeMenu();
@@ -140,7 +140,7 @@ export function PreventDefaultExample() {
           }}
         />
       </Select>
-      {confirmed && value === 'delete' && (
+      {confirmed && value === "delete" && (
         <p className="text-sm text-red-600">Item deletion confirmed!</p>
       )}
     </div>
@@ -152,11 +152,11 @@ export function VisibilityControlExample() {
 
   return (
     <Select value={value} onChange={setValue} placeholder="Select a status...">
-      <SelectOption value="draft" label="Draft" show="default" />
-      <SelectOption value="published" label="Published" show="default" />
-      <SelectOption value="archived" label="Archived" show="default" />
-      <SelectOption value="separator" label="---" show="always" disabled />
-      <SelectOption value="admin-only" label="Admin Only Status" show="always" />
+      <SelectOption value="draft" label="Draft" visibility="default" />
+      <SelectOption value="published" label="Published" visibility="default" />
+      <SelectOption value="archived" label="Archived" visibility="default" />
+      <hr />
+      <SelectOption value="admin-only" label="Admin Only Status" visibility="always" />
     </Select>
   );
 }
@@ -166,32 +166,32 @@ export function ComplexContentExample() {
 
   const frameworks = [
     {
-      id: 'react',
-      name: 'React',
-      description: 'A JavaScript library for building user interfaces',
-      popularity: 'Very High',
-      color: 'bg-blue-500'
+      id: "react",
+      name: "React",
+      description: "A JavaScript library for building user interfaces",
+      popularity: "Very High",
+      color: "bg-blue-500"
     },
     {
-      id: 'vue',
-      name: 'Vue',
-      description: 'The Progressive JavaScript Framework',
-      popularity: 'High',
-      color: 'bg-green-500'
+      id: "vue",
+      name: "Vue",
+      description: "The Progressive JavaScript Framework",
+      popularity: "High",
+      color: "bg-green-500"
     },
     {
-      id: 'angular',
-      name: 'Angular',
-      description: 'Platform for building mobile and desktop web applications',
-      popularity: 'Medium',
-      color: 'bg-red-500'
+      id: "angular",
+      name: "Angular",
+      description: "Platform for building mobile and desktop web applications",
+      popularity: "Medium",
+      color: "bg-red-500"
     },
     {
-      id: 'svelte',
-      name: 'Svelte',
-      description: 'Cybernetically enhanced web apps',
-      popularity: 'Growing',
-      color: 'bg-orange-500'
+      id: "svelte",
+      name: "Svelte",
+      description: "Cybernetically enhanced web apps",
+      popularity: "Growing",
+      color: "bg-orange-500"
     }
   ];
 
@@ -199,11 +199,11 @@ export function ComplexContentExample() {
     <Select value={value} onChange={setValue} placeholder="Choose a framework...">
       {frameworks.map((framework) => (
         <SelectOption key={framework.id} value={framework.id} label={framework.name}>
-          {({ selected, focused }) => (
+          {({ focused }) => (
             <div className="py-1">
               <div className="flex items-center gap-2">
                 <div className={`w-3 h-3 rounded-full ${framework.color}`} />
-                <span className={focused ? 'font-semibold' : 'font-medium'}>{framework.name}</span>
+                <span className={focused ? "font-semibold" : "font-medium"}>{framework.name}</span>
                 <span className="ml-auto text-xs bg-gray-100 px-2 py-0.5 rounded">
                   {framework.popularity}
                 </span>

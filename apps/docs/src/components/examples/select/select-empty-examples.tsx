@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectEmpty, SelectOption } from "@hexpacket/ui";
+import { useState } from "react";
 
 export function BasicEmptyExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -20,13 +20,15 @@ export function CustomMessageExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="dropdown" value={value} onChange={setValue} placeholder="Search products...">
+    <Select
+      filterable="dropdown"
+      value={value}
+      onChange={setValue}
+      placeholder="Search products...">
       <SelectOption value="laptop" label="Laptop" />
       <SelectOption value="phone" label="Phone" />
       <SelectOption value="tablet" label="Tablet" />
-      <SelectEmpty>
-        No products found. Try a different search term.
-      </SelectEmpty>
+      <SelectEmpty>No products found. Try a different search term.</SelectEmpty>
     </Select>
   );
 }
@@ -35,7 +37,11 @@ export function StyledEmptyExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="dropdown" value={value} onChange={setValue} placeholder="Search frameworks...">
+    <Select
+      filterable="dropdown"
+      value={value}
+      onChange={setValue}
+      placeholder="Search frameworks...">
       <SelectOption value="react" label="React" />
       <SelectOption value="vue" label="Vue" />
       <SelectOption value="angular" label="Angular" />
@@ -64,8 +70,7 @@ export function EmptyWithActionExample() {
             <button
               type="button"
               onClick={() => setShowForm(true)}
-              className="text-blue-600 hover:text-blue-700 font-medium text-sm"
-            >
+              className="text-blue-600 hover:text-blue-700 font-medium text-sm">
               + Create new tag
             </button>
           </div>
@@ -78,8 +83,7 @@ export function EmptyWithActionExample() {
           <button
             type="button"
             onClick={() => setShowForm(false)}
-            className="text-sm text-gray-500 mt-2"
-          >
+            className="text-sm text-gray-500 mt-2">
             Cancel
           </button>
         </div>
@@ -92,14 +96,18 @@ export function MultipleEmptyStatesExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="dropdown" value={value} onChange={setValue} placeholder="Search countries...">
+    <Select
+      filterable="dropdown"
+      value={value}
+      onChange={setValue}
+      placeholder="Search countries...">
       {/* Popular countries */}
       <SelectOption value="us" label="United States" />
       <SelectOption value="uk" label="United Kingdom" />
       <SelectOption value="ca" label="Canada" />
 
       {/* Always visible divider */}
-      <SelectOption value="divider" label="---" show="always" disabled />
+      <hr />
 
       {/* Help text shown when empty */}
       <SelectEmpty>
@@ -126,8 +134,7 @@ export function EmptyWithImageExample() {
               className="w-8 h-8 text-gray-400"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+              viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

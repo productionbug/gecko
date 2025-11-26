@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFInput, RHFError, Button } from '@hexpacket/ui';
+import { Button, RHFError, RHFInput } from "@hexpacket/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFErrorExample() {
   const schema = z.object({
-    errorUsername: z.string().min(3, 'Username must be at least 3 characters')
+    errorUsername: z.string().min(3, "Username must be at least 3 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      errorUsername: ''
+      errorUsername: ""
     }
   });
 
@@ -30,14 +30,14 @@ export function BasicRHFErrorExample() {
 
 export function WithCustomStylingExample() {
   const schema = z.object({
-    styledEmail: z.string().email('Invalid email address')
+    styledEmail: z.string().email("Invalid email address")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      styledEmail: ''
+      styledEmail: ""
     }
   });
 
@@ -53,14 +53,14 @@ export function WithCustomStylingExample() {
 
 export function WithCustomRenderExample() {
   const schema = z.object({
-    renderPassword: z.string().min(8, 'Password must be at least 8 characters')
+    renderPassword: z.string().min(8, "Password must be at least 8 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      renderPassword: ''
+      renderPassword: ""
     }
   });
 
@@ -71,13 +71,12 @@ export function WithCustomRenderExample() {
         <RHFError
           name="renderPassword"
           render={({ error }) => {
-            if (!error) return null;
+            if (!error) return <></>;
+
             return (
               <div className="flex items-center space-x-2 bg-red-50 p-2 rounded">
                 <span className="text-red-500 text-xl">⚠️</span>
-                <span className="text-sm font-medium text-red-600">
-                  {error?.message}
-                </span>
+                <span className="text-sm font-medium text-red-600">{error?.message}</span>
               </div>
             );
           }}
@@ -89,18 +88,18 @@ export function WithCustomRenderExample() {
 
 export function MultipleFieldsExample() {
   const schema = z.object({
-    multiUsername: z.string().min(3, 'Username must be at least 3 characters'),
-    multiEmail: z.string().email('Invalid email address'),
-    multiPassword: z.string().min(8, 'Password must be at least 8 characters')
+    multiUsername: z.string().min(3, "Username must be at least 3 characters"),
+    multiEmail: z.string().email("Invalid email address"),
+    multiPassword: z.string().min(8, "Password must be at least 8 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      multiUsername: '',
-      multiEmail: '',
-      multiPassword: ''
+      multiUsername: "",
+      multiEmail: "",
+      multiPassword: ""
     }
   });
 
@@ -131,14 +130,14 @@ export function MultipleFieldsExample() {
 
 export function WithIconExample() {
   const schema = z.object({
-    iconEmail: z.string().email('Please enter a valid email address')
+    iconEmail: z.string().email("Please enter a valid email address")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      iconEmail: ''
+      iconEmail: ""
     }
   });
 
@@ -149,11 +148,16 @@ export function WithIconExample() {
         <RHFError
           name="iconEmail"
           render={({ error }) => {
-            if (!error) return null;
+            if (!error) return <></>;
+
             return (
               <div className="flex items-center space-x-2">
                 <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 <span className="text-sm text-red-600">{error?.message}</span>
               </div>
@@ -167,14 +171,14 @@ export function WithIconExample() {
 
 export function WithControlPropExample() {
   const schema = z.object({
-    controlField: z.string().min(5, 'Must be at least 5 characters')
+    controlField: z.string().min(5, "Must be at least 5 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      controlField: ''
+      controlField: ""
     }
   });
 
@@ -189,32 +193,35 @@ export function WithControlPropExample() {
 }
 
 export function CompleteFormErrorExample() {
-  const schema = z.object({
-    formErrorUsername: z.string().min(3, 'Username must be at least 3 characters'),
-    formErrorEmail: z.string().email('Invalid email address'),
-    formErrorPassword: z.string()
-      .min(8, 'Password must be at least 8 characters')
-      .regex(/[0-9]/, 'Password must contain at least one number'),
-    formErrorConfirm: z.string()
-  }).refine((data) => data.formErrorPassword === data.formErrorConfirm, {
-    message: "Passwords don't match",
-    path: ['formErrorConfirm']
-  });
+  const schema = z
+    .object({
+      formErrorUsername: z.string().min(3, "Username must be at least 3 characters"),
+      formErrorEmail: z.string().email("Invalid email address"),
+      formErrorPassword: z
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .regex(/[0-9]/, "Password must contain at least one number"),
+      formErrorConfirm: z.string()
+    })
+    .refine((data) => data.formErrorPassword === data.formErrorConfirm, {
+      message: "Passwords don't match",
+      path: ["formErrorConfirm"]
+    });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      formErrorUsername: '',
-      formErrorEmail: '',
-      formErrorPassword: '',
-      formErrorConfirm: ''
+      formErrorUsername: "",
+      formErrorEmail: "",
+      formErrorPassword: "",
+      formErrorConfirm: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -244,9 +251,7 @@ export function CompleteFormErrorExample() {
           <RHFError name="formErrorConfirm" />
         </div>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

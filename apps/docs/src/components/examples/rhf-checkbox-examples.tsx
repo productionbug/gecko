@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFCheckbox, RHFInputGroup, Button } from '@hexpacket/ui';
+import { Button, RHFCheckbox, RHFInputGroup } from "@hexpacket/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function SingleCheckboxExample() {
   const methods = useForm({
@@ -27,7 +27,7 @@ export function SingleCheckboxExample() {
 export function SingleWithUncheckedValueExample() {
   const methods = useForm({
     defaultValues: {
-      enabled: 'no'
+      enabled: "no"
     }
   });
 
@@ -64,14 +64,14 @@ export function MultiSelectExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    terms: z.literal('agreed', { message: 'You must agree to the terms' })
+    terms: z.literal("agreed", { message: "You must agree to the terms" })
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      terms: null
+      terms: undefined
     }
   });
 
@@ -133,7 +133,7 @@ export function WithObjectValuesExample() {
     <FormProvider {...methods}>
       <RHFCheckbox
         name="settings"
-        value={{ feature: 'advanced', enabled: true }}
+        value={{ feature: "advanced", enabled: true }}
         label="Enable advanced features"
         single
       />
@@ -144,7 +144,7 @@ export function WithObjectValuesExample() {
 export function DisabledExample() {
   const methods = useForm({
     defaultValues: {
-      readonly: ['checked']
+      readonly: ["checked"]
     }
   });
 
@@ -160,24 +160,24 @@ export function DisabledExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    terms: z.literal('agreed', { message: 'You must agree to the terms' }),
+    terms: z.literal("agreed", { message: "You must agree to the terms" }),
     newsletter: z.string().nullable().optional(),
-    interests: z.array(z.string()).min(1, 'Select at least one interest')
+    interests: z.array(z.string()).min(1, "Select at least one interest")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      terms: null,
+      terms: undefined,
       newsletter: null,
       interests: []
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -209,9 +209,7 @@ export function CompleteFormExample() {
           </div>
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

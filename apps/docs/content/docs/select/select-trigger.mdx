@@ -29,7 +29,7 @@ function Example() {
 
   return (
     <Select multiple value={values} onChange={setValues}>
-      <SelectTrigger multiple>
+      <SelectTrigger<number> multiple>
         {({
           keyword,
           selectedOptions,
@@ -88,7 +88,7 @@ Add remove buttons to each chip:
 import { X } from 'lucide-react';
 
 <Select multiple value={values} onChange={setValues}>
-  <SelectTrigger multiple>
+  <SelectTrigger<number> multiple>
     {({
       keyword,
       selectedOptions,
@@ -195,7 +195,7 @@ Use Button components for chips:
 import { Button } from '@hexpacket/ui';
 
 <Select multiple value={values} onChange={setValues}>
-  <SelectTrigger multiple>
+  <SelectTrigger<number> multiple>
     {({ selectedOptions, handleChange, /* ... */ }) => (
       <div className="space-y-3">
         <Input placeholder="Select programming languages..." />

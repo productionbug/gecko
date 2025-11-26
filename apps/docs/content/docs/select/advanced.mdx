@@ -127,7 +127,7 @@ Add quick action buttons inside the dropdown:
 
 ```tsx
 <Select value={value} onChange={setValue}>
-  <SelectConsumer
+  <SelectConsumer<string>
     render={({ handleChange, closeMenu, value: currentValue }) => (
       <div className="p-2 border-t mt-2 flex gap-2">
         <Button

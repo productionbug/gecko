@@ -97,10 +97,6 @@ export function DifferentSizesExample() {
           <RHFSwitch name="medium" size="md" />
           <span>Medium switch (default)</span>
         </div>
-        <div className="flex items-center gap-2">
-          <RHFSwitch name="large" size="lg" />
-          <span>Large switch</span>
-        </div>
       </div>
     </FormProvider>
   );
@@ -136,7 +132,7 @@ export function WithValidationExample() {
   });
 
   const methods = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as never,
     mode: 'onBlur',
     defaultValues: {
       terms: false
@@ -164,7 +160,7 @@ export function CompleteFormExample() {
   });
 
   const methods = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as never,
     mode: 'onBlur',
     defaultValues: {
       notifications: true,

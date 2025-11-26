@@ -9,7 +9,7 @@ export function BasicTriggerExample() {
 
   return (
     <Select multiple value={values} onChange={setValues}>
-      <SelectTrigger multiple>
+      <SelectTrigger<number> multiple>
         {({ keyword, selectedOptions, handleInputChange, handleKeyboardInteraction, openMenu }) => (
           <div>
             <Input
@@ -54,7 +54,7 @@ export function ChipsWithRemoveExample() {
 
   return (
     <Select multiple value={values} onChange={setValues}>
-      <SelectTrigger multiple>
+      <SelectTrigger<number> multiple>
         {({ keyword, selectedOptions, handleChange, handleInputChange, handleKeyboardInteraction, openMenu }) => (
           <div>
             <Input
@@ -138,7 +138,7 @@ export function CustomStyledChipsExample() {
 
   return (
     <Select multiple value={values} onChange={setValues}>
-      <SelectTrigger multiple>
+      <SelectTrigger<number> multiple>
         {({ keyword, selectedOptions, handleChange, handleInputChange, handleKeyboardInteraction, openMenu }) => (
           <div className="space-y-3">
             <Input

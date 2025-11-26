@@ -110,7 +110,7 @@ export function CustomActionsExample() {
   return (
     <div className="space-y-4">
       <Select value={value} onChange={setValue} placeholder="Select a status...">
-        <SelectConsumer
+        <SelectConsumer<string>
           render={({ handleChange, closeMenu, value: currentValue }) => (
             <div className="p-2 border-t mt-2 flex gap-2">
               <Button

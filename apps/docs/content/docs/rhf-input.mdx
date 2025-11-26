@@ -157,9 +157,7 @@ const sanitizePhone = (value: string) => {
 <RHFInput
   name="password"
   type="password"
-  suffix={({ fieldState }) =>
-    fieldState.error ? <ErrorIcon /> : null
-  }
+  suffix={({ fieldState }) => <>fieldState.error ? <ErrorIcon /> : null</>}
 />
 ```
 
