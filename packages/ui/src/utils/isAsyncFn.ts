@@ -1,9 +1,9 @@
 export function isAsyncFn(fn: unknown): boolean {
-  if (typeof fn !== "function") throw new TypeError("Expected a function");
-
-  if (fn.constructor.name === "AsyncFunction") return true;
-
   try {
+    if (typeof fn !== "function") return false;
+
+    if (fn.constructor.name === "AsyncFunction") return true;
+
     const result = fn();
     return result instanceof Promise;
   } catch {

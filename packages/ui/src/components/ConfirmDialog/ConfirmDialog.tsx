@@ -129,7 +129,6 @@ export const show = (options: ConfirmDialogOptions) => {
  *   confirmButtonLabel: "Delete",
  *   cancelButtonLabel: "Keep Account",
  *   onConfirm: async () => {
- *     await deleteUserAccount();
  *     showSuccessNotification("Account deleted successfully");
  *   },
  *   onCancel: () => {
@@ -139,7 +138,8 @@ export const show = (options: ConfirmDialogOptions) => {
  * ```
  *
  * @example
- * Async operation with manual dismiss control:
+ * By default, if you pass an async function to `onConfirm` or `onCancel`, the dialog
+ * will show a loading state on the respective button until the promise resolves.
  *
  * ```tsx
  * ConfirmDialog.show({
@@ -148,12 +148,9 @@ export const show = (options: ConfirmDialogOptions) => {
  *   confirmButtonLabel: "Save & Exit",
  *   cancelButtonLabel: "Discard",
  *   className: "max-w-[500px]",
- *   onConfirm: async ({ preventDefault, dismiss }) => {
- *     preventDefault(); // Prevent auto-close while saving
- *
+ *   onConfirm: async () => {
  *     try {
  *       await saveFormData();
- *       dismiss(); // Manually close after successful save
  *       router.push("/dashboard");
  *     } catch (error) {
  *       showError("Failed to save changes");

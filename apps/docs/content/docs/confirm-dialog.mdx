@@ -4,6 +4,7 @@ description: Confirmation modal for user action validation
 ---
 
 import { ConfirmDialog } from '@hexpacket/ui';
+import { BasicConfirmDialogExample, DeleteConfirmDialogExample, RichContentConfirmDialogExample, CustomStylingConfirmDialogExample } from '@/components/examples/confirm-dialog-examples';
 
 # ConfirmDialog
 
@@ -16,6 +17,10 @@ import { ConfirmDialog } from '@hexpacket/ui';
 ```
 
 ## Basic Usage
+
+<Preview>
+  <BasicConfirmDialogExample />
+</Preview>
 
 ```tsx
 ConfirmDialog.show({
@@ -60,7 +65,11 @@ Programmatically closes the confirm dialog from anywhere in your app.
 
 ## Examples
 
-### Delete Confirmation
+### Delete Confirmation(Async)
+
+<Preview>
+  <DeleteConfirmDialogExample />
+</Preview>
 
 ```tsx
 function DeleteButton({ itemId }) {
@@ -84,36 +93,13 @@ function DeleteButton({ itemId }) {
 }
 ```
 
-### Async Operations
-
-```tsx
-function SaveButton() {
-  const handleSave = () => {
-    ConfirmDialog.show({
-      title: "Save Changes",
-      content: "Would you like to save your changes before leaving?",
-      confirmButtonLabel: "Save & Exit",
-      cancelButtonLabel: "Discard",
-      onConfirm: async ({ preventDefault, dismiss }) => {
-        preventDefault(); // Prevent auto-close
-
-        try {
-          await saveFormData();
-          dismiss(); // Manually close after save
-          router.push("/dashboard");
-        } catch (error) {
-          showError("Failed to save changes");
-          dismiss();
-        }
-      }
-    });
-  };
-
-  return <button onClick={handleSave}>Save</button>;
-}
-```
+> If you pass an async function to `onConfirm` or `onCancel`, the dialog will show a loading state on the button until the Promise resolves.
 
 ### Rich Content
+
+<Preview>
+  <RichContentConfirmDialogExample />
+</Preview>
 
 ```tsx
 ConfirmDialog.show({
@@ -138,95 +124,11 @@ ConfirmDialog.show({
 });
 ```
 
-### Account Deletion
-
-```tsx
-function DeleteAccountButton() {
-  const handleDeleteAccount = () => {
-    ConfirmDialog.show({
-      title: "Delete Account",
-      content: "Are you sure you want to permanently delete your account? This action cannot be undone.",
-      confirmButtonLabel: "Delete",
-      cancelButtonLabel: "Keep Account",
-      className: "max-w-md",
-      onConfirm: async () => {
-        await deleteUserAccount();
-        showSuccessNotification("Account deleted successfully");
-        logout();
-      },
-      onCancel: () => {
-        trackAnalytics("account_deletion_cancelled");
-      }
-    });
-  };
-
-  return (
-    <button
-      onClick={handleDeleteAccount}
-      className="bg-red-500 text-white px-4 py-2 rounded"
-    >
-      Delete Account
-    </button>
-  );
-}
-```
-
-### Conditional Confirmation
-
-```tsx
-function PublishButton({ hasUnsavedChanges }) {
-  const handlePublish = () => {
-    if (hasUnsavedChanges) {
-      ConfirmDialog.show({
-        title: "Unsaved Changes",
-        content: "You have unsaved changes. Do you want to save them before publishing?",
-        confirmButtonLabel: "Save & Publish",
-        cancelButtonLabel: "Publish Anyway",
-        onConfirm: async () => {
-          await saveChanges();
-          await publish();
-        },
-        onCancel: async () => {
-          await publish();
-        }
-      });
-    } else {
-      publish();
-    }
-  };
-
-  return <button onClick={handlePublish}>Publish</button>;
-}
-```
-
-### Programmatic Dismissal
-
-```tsx
-function ProcessingComponent() {
-  const startProcess = () => {
-    // Show dialog
-    ConfirmDialog.show({
-      title: "Processing",
-      content: "Please wait while we process your request...",
-      confirmButtonLabel: "Cancel",
-      onConfirm: () => {
-        cancelProcess();
-      }
-    });
-
-    // Start long process
-    startLongRunningProcess().then(() => {
-      // Close from anywhere
-      ConfirmDialog.dismiss();
-      showSuccess("Process completed");
-    });
-  };
-
-  return <button onClick={startProcess}>Start Process</button>;
-}
-```
-
 ### Custom Styling
+
+<Preview>
+  <CustomStylingConfirmDialogExample />
+</Preview>
 
 ```tsx
 ConfirmDialog.show({
@@ -241,40 +143,6 @@ ConfirmDialog.show({
     router.push("/upgrade");
   }
 });
-```
-
-### Nested Dialogs
-
-```tsx
-function FirstDialog() {
-  const showSecond = () => {
-    ConfirmDialog.dismiss(); // Close first
-
-    ConfirmDialog.show({
-      title: "Second Confirmation",
-      content: "Are you absolutely sure?",
-      onConfirm: () => {
-        performFinalAction();
-      },
-      onCancel: () => {
-        // Re-open first dialog
-        ConfirmDialog.show(firstDialogOptions);
-      }
-    });
-  };
-
-  return (
-    <button onClick={() => {
-      ConfirmDialog.show({
-        title: "First Confirmation",
-        content: "This will trigger another confirmation.",
-        onConfirm: showSecond
-      });
-    }}>
-      Open Nested
-    </button>
-  );
-}
 ```
 
 ## Behavior
@@ -304,12 +172,22 @@ onConfirm: async ({ preventDefault, dismiss }) => {
 
 ### Loading States
 
-The confirm and cancel buttons show loading spinners during async operations:
+When `onConfirm` or `onCancel` returns a Promise (async function), the dialog automatically:
+- Awaits the Promise
+- Shows loading spinner on the button
+- Closes after completion
 
 ```tsx
 onConfirm: async () => {
   await longRunningOperation();
-  // Button shows spinner during this time
+}
+```
+
+To skip the loading indicator while still calling an async function:
+
+```tsx
+onConfirm: () => {
+  myAsyncFunction();
 }
 ```
 
