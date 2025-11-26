@@ -29,7 +29,8 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
     multiple,
     placeholder,
     placeholderClassName,
-    children
+    children,
+    handleChange
   } = useSelect();
 
   const id = useId();
@@ -37,6 +38,17 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
   const { hasValue, handleInputChange, handleKeyboardInteraction } = useSelectTrigger();
 
   const trigger = useMemo(() => Children.toArray(children).find(isSelectTrigger), [children]);
+
+  const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (disabled) return;
+
+    if (multiple) {
+      return;
+    }
+
+    handleChange(undefined);
+  };
 
   if (trigger) {
     return trigger;
@@ -119,11 +131,19 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
         </div>
       </div>
 
-      <DynamicComponentRenderer
-        component={
-          suffix ?? <span className="HPicon__arrow-right HPuiSelectTrigger__arrow-right-icon" />
-        }
-      />
+      <div className="HPuiSelectButton__icons">
+        {!multiple && hasValue && !disabled && (
+          <button className="HPuiSelectButton__clear-button" type="button" onClick={handleClear}>
+            <div className="HPicon__clear" />
+          </button>
+        )}
+
+        <DynamicComponentRenderer
+          component={
+            suffix ?? <span className="HPicon__arrow-right HPuiSelectTrigger__arrow-right-icon" />
+          }
+        />
+      </div>
     </div>
   );
 }

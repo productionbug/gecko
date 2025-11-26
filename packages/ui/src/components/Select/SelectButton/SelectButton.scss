@@ -3,7 +3,7 @@
 .HPuiSelectButton {
   @include button-reset;
 
-  @apply relative flex min-h-10 w-full items-center gap-3 rounded-md border border-border-secondary py-1 pl-3 pr-2 text-text-primary;
+  @apply relative flex min-h-10 w-full items-center gap-2 rounded-md border border-border-secondary py-1 pl-3 pr-3 text-text-primary;
 
   &--enabled {
     @apply cursor-pointer;
@@ -86,8 +86,16 @@
     }
   }
 
+  &__icons {
+    @apply flex items-center gap-1;
+  }
+
   &--disabled &__value {
     @apply text-text-disabled;
+  }
+
+  &__clear-button {
+    @apply flex cursor-pointer self-center;
   }
 
   &__search {

@@ -452,7 +452,7 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
             disabled={disabled || readOnly}
             className="HPuiDateInput__clear-button"
             onClick={handleClear}>
-            <div className="HPuiDateInput__clear-icon" />
+            <div className="HPicon__clear" />
           </button>
         )}
 

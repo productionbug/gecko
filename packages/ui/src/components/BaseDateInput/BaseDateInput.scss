@@ -112,15 +112,8 @@
     @apply flex cursor-pointer items-center justify-center p-1;
   }
 
-  &__clear-button:hover &__clear-icon {
+  &__clear-button:hover .HPicon__clear {
     @apply bg-text-secondary;
-  }
-
-  &__clear-icon {
-    @include icon;
-
-    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11 4.26025L4 11.2603M4 4.26025L11 11.2603" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11 4.26025L4 11.2603M4 4.26025L11 11.2603" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   }
 
   &__calendar-icon {
