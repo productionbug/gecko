@@ -8,17 +8,17 @@
 }
 
 :root {
-  --hpui-primary-50: 254 250 245;
-  --hpui-primary-100: 254 240 220;
-  --hpui-primary-200: 253 224 186;
-  --hpui-primary-300: 251 201 143;
-  --hpui-primary-400: 244 176 108;
-  --hpui-primary-500: 237 157 74;
-  --hpui-primary-600: 220 130 50;
-  --hpui-primary-700: 192 104 32;
-  --hpui-primary-800: 156 78 20;
-  --hpui-primary-900: 120 56 12;
-  --hpui-primary-950: 75 34 6;
+  --hpui-primary-50: 239 246 255;
+  --hpui-primary-100: 219 234 254;
+  --hpui-primary-200: 191 219 254;
+  --hpui-primary-300: 147 197 253;
+  --hpui-primary-400: 96 165 250;
+  --hpui-primary-500: 59 130 246;
+  --hpui-primary-600: 37 99 235;
+  --hpui-primary-700: 29 78 216;
+  --hpui-primary-800: 30 64 175;
+  --hpui-primary-900: 30 58 138;
+  --hpui-primary-950: 23 37 84;
 
   --hpui-surface-primary: 255 255 255;
   --hpui-surface-secondary: 250 250 250;
@@ -37,6 +37,7 @@
   --hpui-text-placeholder: 163 163 163;
   --hpui-text-inverse: 250 250 250;
   --hpui-text-muted: 115 115 115;
+  --hpui-text-on-primary: 255 255 255;
 
   --hpui-border-primary: 235 235 235;
   --hpui-border-secondary: 212 212 212;
@@ -50,18 +51,6 @@
 }
 
 .dark {
-  --hpui-primary-50: 254 250 245;
-  --hpui-primary-100: 254 240 220;
-  --hpui-primary-200: 253 224 186;
-  --hpui-primary-300: 251 201 143;
-  --hpui-primary-400: 244 176 108;
-  --hpui-primary-500: 237 157 74;
-  --hpui-primary-600: 220 130 50;
-  --hpui-primary-700: 192 104 32;
-  --hpui-primary-800: 156 78 20;
-  --hpui-primary-900: 120 56 12;
-  --hpui-primary-950: 75 34 6;
-
   --hpui-surface-primary: 23 23 23;
   --hpui-surface-secondary: 32 32 32;
   --hpui-surface-tertiary: 45 45 45;

@@ -43,7 +43,8 @@ const config: Config = {
           disabled: "rgb(var(--hpui-text-disabled) / <alpha-value>)",
           placeholder: "rgb(var(--hpui-text-placeholder) / <alpha-value>)",
           inverse: "rgb(var(--hpui-text-inverse) / <alpha-value>)",
-          muted: "rgb(var(--hpui-text-muted) / <alpha-value>)"
+          muted: "rgb(var(--hpui-text-muted) / <alpha-value>)",
+          ["on-primary"]: "rgb(var(--hpui-text-on-primary) / <alpha-value>)"
         },
 
         // Semantic border colors

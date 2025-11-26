@@ -33,7 +33,7 @@
 
   &--filled {
     &-primary {
-      @apply border-primary-600 bg-primary-600 text-text-inverse enabled:hover:border-primary-700 enabled:hover:bg-primary-700 disabled:border-border-disabled disabled:bg-primary-600/50;
+      @apply text-text-on-primary border-primary-600 bg-primary-600 enabled:hover:border-primary-700 enabled:hover:bg-primary-700 disabled:border-border-disabled disabled:bg-primary-600/50;
     }
   }
 

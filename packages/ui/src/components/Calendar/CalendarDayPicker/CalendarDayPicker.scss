@@ -40,7 +40,7 @@
 
       &--range-start &__text,
       &--range-end &__text {
-        @apply bg-primary-700 text-text-inverse;
+        @apply text-text-on-primary bg-primary-700;
       }
 
       &--range-start &__text {
@@ -53,6 +53,10 @@
 
       &--in-range {
         @apply relative bg-primary-700;
+      }
+
+      &--in-range &__text {
+        @apply text-text-on-primary;
       }
 
       &--range-start {
@@ -83,7 +87,7 @@
       }
 
       &__text {
-        @apply relative z-10 flex aspect-square basis-6 items-center justify-center rounded-full;
+        @apply relative z-10 flex aspect-square basis-6 items-center justify-center rounded-md;
       }
     }
   }
