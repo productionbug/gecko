@@ -15,9 +15,7 @@ import { ChevronDown, Copy, Download, Edit, Settings, Share, Trash } from "lucid
 export function BasicMenuExample() {
   return (
     <Menu>
-      <MenuButton as={Button} className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-        Options
-      </MenuButton>
+      <MenuButton as={Button}>Options</MenuButton>
       <MenuItems anchor="bottom start" className="w-48">
         <MenuItem onClick={() => console.log("Edit")}>Edit</MenuItem>
         <MenuItem onClick={() => console.log("Duplicate")}>Duplicate</MenuItem>
@@ -30,9 +28,7 @@ export function BasicMenuExample() {
 export function WithIconsExample() {
   return (
     <Menu>
-      <MenuButton
-        as={Button}
-        className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200 flex items-center gap-2">
+      <MenuButton as={Button}>
         Actions
         <ChevronDown className="size-4" />
       </MenuButton>
@@ -63,9 +59,7 @@ export function WithIconsExample() {
 export function WithSectionsExample() {
   return (
     <Menu>
-      <MenuButton as={Button} className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-        More Actions
-      </MenuButton>
+      <MenuButton as={Button}>More Actions</MenuButton>
       <MenuItems anchor="bottom start" className="w-56">
         <MenuSection>
           <MenuHeading className="text-xs font-semibold text-gray-500 uppercase">
@@ -112,9 +106,7 @@ export function WithSectionsExample() {
 export function DisabledItemsExample() {
   return (
     <Menu>
-      <MenuButton as={Button} className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-        Actions
-      </MenuButton>
+      <MenuButton as={Button}>Actions</MenuButton>
       <MenuItems anchor="bottom start" className="w-48">
         <MenuItem onClick={() => console.log("Available")}>Available Action</MenuItem>
         <MenuItem disabled>
@@ -148,9 +140,7 @@ export function AnchorPositionExample() {
   return (
     <div className="flex gap-4">
       <Menu>
-        <MenuButton as={Button} className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-          Top Start
-        </MenuButton>
+        <MenuButton as={Button}>Top Start</MenuButton>
         <MenuItems anchor="top start" className="w-40 mb-2">
           <MenuItem>Option 1</MenuItem>
           <MenuItem>Option 2</MenuItem>
@@ -159,9 +149,7 @@ export function AnchorPositionExample() {
       </Menu>
 
       <Menu>
-        <MenuButton as={Button} className="px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-          Bottom End
-        </MenuButton>
+        <MenuButton as={Button}>Bottom End</MenuButton>
         <MenuItems anchor="bottom end" className="w-40 mt-2">
           <MenuItem>Option 1</MenuItem>
           <MenuItem>Option 2</MenuItem>
