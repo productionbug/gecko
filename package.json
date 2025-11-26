@@ -4,8 +4,6 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:playground": "turbo run dev --filter=@hexpacket/ui --filter=@hexpacket/playground",
-    "dev:docs": "turbo run dev --filter=@hexpacket/ui --filter=@hexpacket/docs",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
