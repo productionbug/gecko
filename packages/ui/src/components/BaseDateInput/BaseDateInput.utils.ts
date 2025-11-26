@@ -1,4 +1,14 @@
-import type { DateFormat } from "./DateInput.types";
+import type { DateFormat } from "./BaseDateInput.types";
+
+export const getDaysInMonth = (month: number, year: number): number => {
+  return new Date(year, month, 0).getDate();
+};
+
+export const sanitizeNumericInput = (value: string, maxLength: number): string => {
+  let sanitized = value.replace(/\D/g, "").replace(/^0+/, "");
+  if (sanitized.length > maxLength) sanitized = sanitized.slice(0, maxLength);
+  return sanitized;
+};
 
 export const isValidDate = (year: number, month: number, day: number): boolean => {
   if (year < 1000 || year > 9999) return false;

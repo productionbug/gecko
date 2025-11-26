@@ -1,16 +1,19 @@
-import type { FC, MouseEvent } from "react";
-import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/purity */
+import type { FC, MouseEvent, RefObject } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 
 import { classNames } from "../../utils/classNames";
+import { DynamicComponentRenderer } from "../DynamicComponentRenderer";
+import type { BaseDateInputProps } from "./BaseDateInput.types";
 import {
   formatToISO,
   generatePlaceholder,
+  getDaysInMonth,
   getSegmentOrder,
   isValidDate,
-  parseISOToDisplay
-} from "../DateInput/DateInput.utils";
-import { DynamicComponentRenderer } from "../DynamicComponentRenderer";
-import type { BaseDateInputProps } from "./BaseDateInput.types";
+  parseISOToDisplay,
+  sanitizeNumericInput
+} from "./BaseDateInput.utils";
 
 const BaseDateInput: FC<BaseDateInputProps> = ({
   value = "",
@@ -43,278 +46,188 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   const [year, setYear] = useState("");
   const [lastUpdatedTime, setLastUpdatedTime] = useState(0);
 
-  const focusMonth = useCallback(() => {
-    monthRef.current?.focus();
-    monthRef.current?.select();
-  }, []);
+  const segmentRefs = { month: monthRef, day: dayRef, year: yearRef };
 
-  const focusDay = useCallback(() => {
-    dayRef.current?.focus();
-    dayRef.current?.select();
-  }, []);
+  const focusRef = (ref: RefObject<HTMLInputElement | null>) => {
+    ref.current?.focus();
+    ref.current?.select();
+  };
 
-  const focusYear = useCallback(() => {
-    yearRef.current?.focus();
-    yearRef.current?.select();
-  }, []);
-
-  const clearFocus = useCallback(() => {
+  const clearFocus = () => {
     monthRef.current?.blur();
     dayRef.current?.blur();
     yearRef.current?.blur();
-  }, []);
+  };
 
-  const updateValue = useCallback(
-    (m: string, d: string, y: string) => {
-      const monthNum = parseInt(m, 10);
-      const dayNum = parseInt(d, 10);
-      const yearNum = parseInt(y, 10);
+  const focusNextSegment = (currentSegment: "month" | "day" | "year") => {
+    const segmentOrder = getSegmentOrder(format);
+    const nextIndex = segmentOrder.indexOf(currentSegment) + 1;
+    if (nextIndex < segmentOrder.length) {
+      focusRef(segmentRefs[segmentOrder[nextIndex]]);
+    }
+  };
 
-      if (m && d && y && isValidDate(yearNum, monthNum, dayNum)) {
-        const isoDate = formatToISO(yearNum, monthNum, dayNum);
-        onChange?.(isoDate);
-      } else {
-        onChange?.(null);
-      }
+  const validateAndUpdateDay = (monthNum: number, yearNum: number): string => {
+    if (!day) return day;
+    const dayNum = parseInt(day, 10);
+    const maxDays = getDaysInMonth(monthNum, yearNum);
+    if (dayNum > maxDays) {
+      setDay(maxDays.toString());
+      return "";
+    }
+    return day;
+  };
 
-      onStateUpdate?.({ day: d || "", month: m || "", year: y || "" });
-    },
-    [onChange, onStateUpdate]
-  );
+  const updateValue = (m: string, d: string, y: string) => {
+    const monthNum = parseInt(m, 10);
+    const dayNum = parseInt(d, 10);
+    const yearNum = parseInt(y, 10);
 
-  const getDisplayMonth = useCallback(() => {
+    if (m && d && y && isValidDate(yearNum, monthNum, dayNum)) {
+      const isoDate = formatToISO(yearNum, monthNum, dayNum);
+      onChange?.(isoDate);
+    } else {
+      onChange?.(null);
+    }
+
+    onStateUpdate?.({ day: d || "", month: m || "", year: y || "" });
+  };
+
+  const getDisplayMonth = () => {
     if (!month) return "MM";
     return month.length === 1 ? `0${month}` : month;
-  }, [month]);
+  };
 
-  const getDisplayDay = useCallback(() => {
+  const getDisplayDay = () => {
     if (!day) return "DD";
     return day.length === 1 ? `0${day}` : day;
-  }, [day]);
+  };
 
-  const getDisplayYear = useCallback(() => {
+  const getDisplayYear = () => {
     if (!year) return "YYYY";
     return year.padStart(4, "0");
-  }, [year]);
+  };
 
   const isEmpty = !month && !day && !year;
 
-  const handleMonthChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      let value = e.target.value.replace(/\D/g, "");
-      value = value.replace(/^0+/, "");
+  const handleMonthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = sanitizeNumericInput(e.target.value, 2);
 
-      if (value.length > 2) value = value.slice(0, 2);
+    const num = parseInt(value, 10);
+    if (num > 12) value = "12";
 
-      const num = parseInt(value, 10);
-      if (num > 12) value = "12";
+    if (value.length === 1) {
+      const digit = parseInt(value, 10);
+      if (digit >= 2 && digit <= 9) {
+        value = `0${digit}`;
+      }
+    }
 
-      if (value.length === 1) {
-        const digit = parseInt(value, 10);
-        if (digit >= 2 && digit <= 9) {
+    const monthNum = parseInt(value, 10);
+    const yearNum = parseInt(year, 10) || new Date().getFullYear();
+    const newDay = value ? validateAndUpdateDay(monthNum, yearNum) : day;
+
+    setMonth(value);
+    setLastUpdatedTime(Date.now());
+    updateValue(value, newDay, year);
+
+    if (value.length === 2) {
+      focusNextSegment("month");
+    }
+  };
+
+  const handleDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = sanitizeNumericInput(e.target.value, 2);
+
+    const dayNum = parseInt(value, 10);
+    const monthNum = parseInt(month, 10);
+    const yearNum = parseInt(year, 10) || new Date().getFullYear();
+    const maxDays = monthNum ? getDaysInMonth(monthNum, yearNum) : 31;
+
+    if (dayNum > maxDays) {
+      value = maxDays.toString();
+    }
+
+    if (value.length === 1) {
+      const digit = parseInt(value, 10);
+      if (digit >= 4 && digit <= 9) {
+        value = `0${digit}`;
+      } else if (digit === 3 && monthNum && maxDays < 31) {
+        if (maxDays <= 29) {
           value = `0${digit}`;
         }
       }
+    }
 
-      let newDay = day;
-      if (value && day) {
-        const monthNum = parseInt(value, 10);
-        const dayNum = parseInt(day, 10);
-        const yearNum = parseInt(year, 10) || new Date().getFullYear();
+    setDay(value);
+    setLastUpdatedTime(Date.now());
+    updateValue(month, value, year);
 
-        const getDaysInMonth = (month: number, year: number): number => {
-          return new Date(year, month, 0).getDate();
-        };
+    if (value.length === 2) {
+      focusNextSegment("day");
+    }
+  };
 
-        const maxDaysInNewMonth = getDaysInMonth(monthNum, yearNum);
+  const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = sanitizeNumericInput(e.target.value, 4);
 
-        if (dayNum > maxDaysInNewMonth) {
-          newDay = "";
-          setDay("");
-        }
-      }
+    const monthNum = parseInt(month, 10);
+    const yearNum = parseInt(value, 10);
+    const newDay = value.length === 4 && month ? validateAndUpdateDay(monthNum, yearNum) : day;
 
-      setMonth(value);
-      setLastUpdatedTime(Date.now());
-      updateValue(value, newDay, year);
+    setYear(value);
+    setLastUpdatedTime(Date.now());
+    updateValue(month, newDay, value);
 
-      if (value.length === 2) {
-        const segmentOrder = getSegmentOrder(format);
-        const currentIndex = segmentOrder.indexOf("month");
-        const nextIndex = currentIndex + 1;
-        if (nextIndex < segmentOrder.length) {
-          const nextSegment = segmentOrder[nextIndex];
-          if (nextSegment === "day") focusDay();
-          else if (nextSegment === "year") focusYear();
-        }
-      }
-    },
-    [day, year, format, updateValue, focusDay, focusYear]
-  );
+    if (value.length === 4) {
+      focusNextSegment("year");
+    }
+  };
 
-  const handleDayChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      let value = e.target.value.replace(/\D/g, "");
-      value = value.replace(/^0+/, "");
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, segment: string) => {
+    const segmentOrder = getSegmentOrder(format);
+    const currentIndex = segmentOrder.indexOf(segment as "day" | "month" | "year");
 
-      if (value.length > 2) value = value.slice(0, 2);
+    const focusSegmentByIndex = (index: number) => {
+      if (index < 0 || index >= segmentOrder.length) return;
+      focusRef(segmentRefs[segmentOrder[index]]);
+    };
 
-      const dayNum = parseInt(value, 10);
-      const monthNum = parseInt(month, 10);
-      const yearNum = parseInt(year, 10) || new Date().getFullYear();
+    if (e.key === "Tab") {
+      e.preventDefault();
+      focusSegmentByIndex(e.shiftKey ? currentIndex - 1 : currentIndex + 1);
+      return;
+    }
 
-      const getDaysInMonth = (month: number, year: number): number => {
-        return new Date(year, month, 0).getDate();
-      };
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      focusSegmentByIndex(currentIndex - 1);
+    }
 
-      const maxDays = monthNum ? getDaysInMonth(monthNum, yearNum) : 31;
+    if (e.key === "ArrowRight" || e.key === "/") {
+      e.preventDefault();
+      focusSegmentByIndex(currentIndex + 1);
+    }
 
-      if (dayNum > maxDays) {
-        value = maxDays.toString();
-      }
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      clearFocus();
+      onSubmit?.();
+    }
+  };
 
-      if (value.length === 1) {
-        const digit = parseInt(value, 10);
+  const handleDisplayClick = (segment?: string) => {
+    if (disabled || readOnly) return;
 
-        if (digit >= 4 && digit <= 9) {
-          value = `0${digit}`;
-        } else if (digit === 3 && monthNum && maxDays < 31) {
-          if (maxDays <= 29) {
-            value = `0${digit}`;
-          }
-        }
-      }
+    onStateUpdate?.({ day: day || "", month: month || "", year: year || "" });
 
-      setDay(value);
-      setLastUpdatedTime(Date.now());
-      updateValue(month, value, year);
-
-      if (value.length === 2) {
-        const segmentOrder = getSegmentOrder(format);
-        const currentIndex = segmentOrder.indexOf("day");
-        const nextIndex = currentIndex + 1;
-        if (nextIndex < segmentOrder.length) {
-          const nextSegment = segmentOrder[nextIndex];
-          if (nextSegment === "month") focusMonth();
-          else if (nextSegment === "year") focusYear();
-        }
-      }
-    },
-    [month, year, format, updateValue, focusMonth, focusYear]
-  );
-
-  const handleYearChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      let value = e.target.value.replace(/\D/g, "");
-      value = value.replace(/^0+/, "");
-
-      if (value.length > 4) value = value.slice(0, 4);
-
-      let newDay = day;
-      if (value.length === 4 && month && day) {
-        const monthNum = parseInt(month, 10);
-        const dayNum = parseInt(day, 10);
-        const yearNum = parseInt(value, 10);
-
-        const getDaysInMonth = (month: number, year: number): number => {
-          return new Date(year, month, 0).getDate();
-        };
-
-        const maxDaysInNewYear = getDaysInMonth(monthNum, yearNum);
-
-        if (dayNum > maxDaysInNewYear) {
-          newDay = "";
-          setDay("");
-        }
-      }
-
-      setYear(value);
-      setLastUpdatedTime(Date.now());
-      updateValue(month, newDay, value);
-
-      if (value.length === 4) {
-        const segmentOrder = getSegmentOrder(format);
-        const currentIndex = segmentOrder.indexOf("year");
-        const nextIndex = currentIndex + 1;
-        if (nextIndex < segmentOrder.length) {
-          const nextSegment = segmentOrder[nextIndex];
-          if (nextSegment === "month") focusMonth();
-          else if (nextSegment === "day") focusDay();
-        }
-      }
-    },
-    [month, day, format, updateValue, focusMonth, focusDay]
-  );
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>, segment: string) => {
-      const segmentOrder = getSegmentOrder(format);
-      const currentIndex = segmentOrder.indexOf(segment as "day" | "month" | "year");
-
-      const focusSegment = (index: number) => {
-        if (index < 0 || index >= segmentOrder.length) return;
-        const targetSegment = segmentOrder[index];
-        if (targetSegment === "month") focusMonth();
-        else if (targetSegment === "day") focusDay();
-        else if (targetSegment === "year") focusYear();
-      };
-
-      if (e.key === "Tab") {
-        e.preventDefault();
-        if (e.shiftKey) {
-          focusSegment(currentIndex - 1);
-        } else {
-          focusSegment(currentIndex + 1);
-        }
-        return;
-      }
-
-      if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        focusSegment(currentIndex - 1);
-      }
-
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        focusSegment(currentIndex + 1);
-      }
-
-      if (e.key === "/") {
-        e.preventDefault();
-        focusSegment(currentIndex + 1);
-      }
-
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        clearFocus();
-        onSubmit?.();
-      }
-    },
-    [format, focusDay, focusMonth, focusYear, clearFocus, onSubmit]
-  );
-
-  const handleDisplayClick = useCallback(
-    (segment?: string) => {
-      if (disabled || readOnly) return;
-
-      onStateUpdate?.({ day: day || "", month: month || "", year: year || "" });
-
-      if (segment === "month") {
-        focusMonth();
-      } else if (segment === "day") {
-        focusDay();
-      } else if (segment === "year") {
-        focusYear();
-      } else {
-        const segmentOrder = getSegmentOrder(format);
-        const firstSegment = segmentOrder[0];
-        if (firstSegment === "month") focusMonth();
-        else if (firstSegment === "day") focusDay();
-        else if (firstSegment === "year") focusYear();
-      }
-    },
-    [disabled, readOnly, onStateUpdate, day, month, year, format, focusMonth, focusDay, focusYear]
-  );
+    if (segment === "month" || segment === "day" || segment === "year") {
+      focusRef(segmentRefs[segment]);
+    } else {
+      const firstSegment = getSegmentOrder(format)[0];
+      focusRef(segmentRefs[firstSegment]);
+    }
+  };
 
   const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -335,7 +248,6 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
 
     if (timeSinceLastUpdate > 500) {
       const { month: m, day: d, year: y } = parseISOToDisplay(value);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMonth(m);
       setDay(d);
       setYear(y);
