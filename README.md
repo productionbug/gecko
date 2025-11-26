@@ -2,6 +2,8 @@
 
 A flexible, themeable React component library built with Tailwind CSS.
 
+📚 **Documentation**: [ui.hexpacket.com](https://ui.hexpacket.com)
+
 ## Features
 
 ✨ **Fully Themeable** - Support for light, dark, and unlimited custom themes
