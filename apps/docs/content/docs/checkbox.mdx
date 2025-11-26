@@ -4,6 +4,7 @@ description: Customizable checkbox with support for indeterminate state
 ---
 
 import { Checkbox } from '@hexpacket/ui';
+import { CheckboxBasicExample, CheckboxIndeterminateExample, CheckboxDisabledExample, CheckboxMultipleExample } from '@/components/examples/checkbox-examples';
 
 # Checkbox
 
@@ -18,7 +19,7 @@ import { Checkbox } from '@hexpacket/ui';
 ## Basic Usage
 
 <Preview>
-  <Checkbox defaultChecked />
+  <CheckboxBasicExample />
 </Preview>
 
 ```tsx
@@ -52,10 +53,7 @@ function Example() {
 ### With Label
 
 <Preview>
-  <label className="flex items-center gap-2 cursor-pointer">
-    <Checkbox defaultChecked />
-    <span>I agree to the terms and conditions</span>
-  </label>
+  <CheckboxBasicExample />
 </Preview>
 
 ```tsx
@@ -79,26 +77,7 @@ function CheckboxWithLabel() {
 ### Indeterminate State
 
 <Preview>
-  <div className="flex flex-col gap-2">
-    <label className="flex items-center gap-2">
-      <Checkbox partial />
-      <span>Select All (Some selected)</span>
-    </label>
-    <div className="ml-6 flex flex-col gap-2">
-      <label className="flex items-center gap-2">
-        <Checkbox defaultChecked />
-        <span>Item 1</span>
-      </label>
-      <label className="flex items-center gap-2">
-        <Checkbox />
-        <span>Item 2</span>
-      </label>
-      <label className="flex items-center gap-2">
-        <Checkbox defaultChecked />
-        <span>Item 3</span>
-      </label>
-    </div>
-  </div>
+  <CheckboxIndeterminateExample />
 </Preview>
 
 ```tsx
@@ -122,7 +101,7 @@ function SelectAll() {
     <div>
       <label className="flex items-center gap-2">
         <Checkbox
-          checked={allChecked}
+          checked={someChecked || allChecked}
           partial={someChecked && !allChecked}
           onChange={handleSelectAll}
         />
@@ -137,10 +116,7 @@ function SelectAll() {
 ### Disabled States
 
 <Preview>
-  <div className="flex gap-4">
-    <Checkbox checked disabled />
-    <Checkbox disabled />
-  </div>
+  <CheckboxDisabledExample />
 </Preview>
 
 ```tsx
@@ -153,20 +129,7 @@ function SelectAll() {
 ### Multiple Checkboxes
 
 <Preview>
-  <div className="flex flex-col gap-3">
-    <label className="flex items-center gap-2">
-      <Checkbox defaultChecked />
-      <span>Email notifications</span>
-    </label>
-    <label className="flex items-center gap-2">
-      <Checkbox />
-      <span>SMS notifications</span>
-    </label>
-    <label className="flex items-center gap-2">
-      <Checkbox defaultChecked />
-      <span>Push notifications</span>
-    </label>
-  </div>
+  <CheckboxMultipleExample />
 </Preview>
 
 ```tsx

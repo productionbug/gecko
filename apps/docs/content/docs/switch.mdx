@@ -4,6 +4,7 @@ description: Toggle switch component with multiple sizes built on HeadlessUI
 ---
 
 import { Switch } from '@hexpacket/ui';
+import { SwitchBasicExample, SwitchSizesExample, SwitchSettingsPanelExample, SwitchDisabledExample } from '@/components/examples/switch-examples';
 
 # Switch
 
@@ -18,10 +19,7 @@ import { Switch } from '@hexpacket/ui';
 ## Basic Usage
 
 <Preview>
-  <div className="flex items-center gap-3">
-    <Switch defaultChecked />
-    <span>Enable notifications</span>
-  </div>
+  <SwitchBasicExample />
 </Preview>
 
 ```tsx
@@ -42,7 +40,7 @@ function Example() {
 |------|------|---------|-------------|
 | `checked` | `boolean` | - | Controlled checked state |
 | `onChange` | `(checked: boolean) => void` | - | Callback when state changes |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the switch |
+| `size` | `'sm' \| 'md'` | `'md'` | Size of the switch |
 | `className` | `string` | - | CSS class for the switch container |
 | `thumbClassName` | `string` | - | CSS class for the switch thumb |
 | `disabled` | `boolean` | `false` | Disable the switch |
@@ -53,56 +51,20 @@ function Example() {
 ### Sizes
 
 <Preview>
-  <div className="flex flex-col gap-4">
-    <div className="flex items-center gap-3">
-      <Switch size="sm" defaultChecked />
-      <span>Small</span>
-    </div>
-    <div className="flex items-center gap-3">
-      <Switch size="md" defaultChecked />
-      <span>Medium (default)</span>
-    </div>
-    <div className="flex items-center gap-3">
-      <Switch size="lg" defaultChecked />
-      <span>Large</span>
-    </div>
-  </div>
+  <SwitchSizesExample />
 </Preview>
 
 ```tsx
 <div className="flex flex-col gap-4">
   <Switch size="sm" checked={enabled} onChange={setEnabled} />
   <Switch size="md" checked={enabled} onChange={setEnabled} />
-  <Switch size="lg" checked={enabled} onChange={setEnabled} />
 </div>
 ```
 
 ### Settings Panel
 
 <Preview>
-  <div className="space-y-4">
-    <div className="flex items-center justify-between">
-      <div>
-        <div className="font-medium">Email Notifications</div>
-        <div className="text-sm text-gray-500">Receive email updates</div>
-      </div>
-      <Switch defaultChecked />
-    </div>
-    <div className="flex items-center justify-between">
-      <div>
-        <div className="font-medium">Dark Mode</div>
-        <div className="text-sm text-gray-500">Use dark theme</div>
-      </div>
-      <Switch />
-    </div>
-    <div className="flex items-center justify-between">
-      <div>
-        <div className="font-medium">Analytics</div>
-        <div className="text-sm text-gray-500">Share anonymous usage data</div>
-      </div>
-      <Switch defaultChecked />
-    </div>
-  </div>
+  <SwitchSettingsPanelExample />
 </Preview>
 
 ```tsx
@@ -136,10 +98,7 @@ function SettingsPanel() {
 ### Disabled State
 
 <Preview>
-  <div className="flex gap-4">
-    <Switch checked disabled />
-    <Switch disabled />
-  </div>
+  <SwitchDisabledExample />
 </Preview>
 
 ```tsx
@@ -152,7 +111,7 @@ function SettingsPanel() {
 ### Uncontrolled with Default Value
 
 <Preview>
-  <Switch defaultChecked={true} />
+  <SwitchBasicExample />
 </Preview>
 
 ```tsx
