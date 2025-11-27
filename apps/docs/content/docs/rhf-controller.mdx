@@ -5,19 +5,19 @@ description: Core wrapper component for React Hook Form integration
 
 # RHFController
 
-RHFController is a wrapper around React Hook Form's Controller component that automatically injects the `control` prop from `FormProvider`. This is the foundation for all RHF* components in HexPacket UI.
+RHFController is a wrapper around React Hook Form's Controller component that automatically injects the `control` prop from `FormProvider`. This is the foundation for all RHF* components in Gecko UI.
 
 ## Installation
 
 ```tsx
-import { RHFController } from '@hexpacket/ui';
+import { RHFController } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFController } from '@hexpacket/ui';
+import { RHFController } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -79,10 +79,10 @@ function CustomInput() {
 }
 ```
 
-### With RHFController (HexPacket UI)
+### With RHFController (Gecko UI)
 
 ```tsx
-import { RHFController } from '@hexpacket/ui';
+import { RHFController } from '@productionbug/gecko';
 
 function CustomInput() {
   return (
@@ -166,7 +166,7 @@ function NestedFormsExample() {
 - Need fine-grained control over field behavior
 
 ### Use Pre-built RHF Components When:
-- Working with HexPacket UI components
+- Working with Gecko UI components
 - Want automatic error styling
 - Need less boilerplate
 

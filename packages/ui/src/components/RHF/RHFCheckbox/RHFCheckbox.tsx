@@ -95,7 +95,7 @@ const RHFCheckbox: FC<RHFCheckboxProps> = ({
         };
 
         return (
-          <label className="HPuiRHFCheckbox group" htmlFor={id || _id}>
+          <label className="GeckoUIRHFCheckbox group" htmlFor={id || _id}>
             <Checkbox
               {...field}
               {...rest}
@@ -128,7 +128,7 @@ const RHFCheckbox: FC<RHFCheckboxProps> = ({
               partial={typeof partial === "function" ? partial(renderProps) : partial}
               value={undefined}
             />
-            <span className={classNames("HPuiRHFCheckbox__label", labelClassName)}>
+            <span className={classNames("GeckoUIRHFCheckbox__label", labelClassName)}>
               <DynamicComponentRenderer component={label} />
             </span>
           </label>

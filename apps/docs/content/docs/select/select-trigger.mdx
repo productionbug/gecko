@@ -3,7 +3,7 @@ title: SelectTrigger
 description: Build custom select triggers with full control over input and display
 ---
 
-import { Select, SelectOption, SelectTrigger, Input, Button } from '@hexpacket/ui';
+import { Select, SelectOption, SelectTrigger, Input, Button } from '@productionbug/gecko';
 import { BasicTriggerExample, ChipsWithRemoveExample, SingleSelectTriggerExample, CustomStyledChipsExample, TriggerWithClearAllExample } from '@/components/examples/select/select-trigger-examples';
 
 # SelectTrigger
@@ -22,7 +22,7 @@ Replace the default select button with a custom input and chip display:
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption, SelectTrigger, Input } from '@hexpacket/ui';
+import { Select, SelectOption, SelectTrigger, Input } from '@productionbug/gecko';
 
 function Example() {
   const [values, setValues] = useState<number[]>([]);
@@ -192,7 +192,7 @@ Use Button components for chips:
 </Preview>
 
 ```tsx
-import { Button } from '@hexpacket/ui';
+import { Button } from '@productionbug/gecko';
 
 <Select multiple value={values} onChange={setValues}>
   <SelectTrigger<number> multiple>

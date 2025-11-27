@@ -27,7 +27,7 @@ const show = (options: DialogOptions) => {
 
   if (!el) {
     throw new Error(
-      "Confirm Dialog container not found. Ensure `<HexpacketUIContainer />` is mounted."
+      "Confirm Dialog container not found. Ensure `<GeckoUIPortal />` is mounted."
     );
   }
 
@@ -86,9 +86,9 @@ function DialogContent({
   useClickOutside(dismissOnOutsideClick ? dismiss : undefined, [ref]);
 
   return (
-    <div className="HPuiDialog" data-state={animationState} {...dataAttributes}>
-      <div className="HPuiDialog__backdrop">
-        <div ref={ref} className={classNames("HPuiDialog__dialog", className)}>
+    <div className="GeckoUIDialog" data-state={animationState} {...dataAttributes}>
+      <div className="GeckoUIDialog__backdrop">
+        <div ref={ref} className={classNames("GeckoUIDialog__dialog", className)}>
           <DynamicComponentRenderer component={content} dismiss={dismiss} />
         </div>
       </div>

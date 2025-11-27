@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFTextarea, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFTextarea, RHFInputGroup, Button } from '@productionbug/gecko';
 
 export function BasicRHFTextareaExample() {
   const methods = useForm({

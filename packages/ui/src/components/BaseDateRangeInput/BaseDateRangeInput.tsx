@@ -442,14 +442,14 @@ const BaseDateRangeInput: FC<BaseDateRangeInputProps> = ({
     (!isEmpty && ((!startEmpty && !startValid) || (!endEmpty && !endValid))) || hasError;
 
   const containerClasses = classNames(
-    "HPuiDateInput",
-    "HPuiDateRangeInput",
-    disabled && "HPuiDateInput--disabled",
-    readOnly && "HPuiDateInput--readOnly",
-    !disabled && !readOnly && "HPuiDateInput--enabled",
-    isError && "HPuiDateInput--error",
-    isEmpty && "HPuiDateInput--empty",
-    hasFocus && "HPuiDateInput--focus",
+    "GeckoUIDateInput",
+    "GeckoUIDateRangeInput",
+    disabled && "GeckoUIDateInput--disabled",
+    readOnly && "GeckoUIDateInput--readOnly",
+    !disabled && !readOnly && "GeckoUIDateInput--enabled",
+    isError && "GeckoUIDateInput--error",
+    isEmpty && "GeckoUIDateInput--empty",
+    hasFocus && "GeckoUIDateInput--focus",
     className
   );
 
@@ -468,8 +468,8 @@ const BaseDateRangeInput: FC<BaseDateRangeInputProps> = ({
         <Fragment key={segment}>
           <label
             className={classNames(
-              "HPuiDateInput__segment",
-              !value && "HPuiDateInput__segment--empty"
+              "GeckoUIDateInput__segment",
+              !value && "GeckoUIDateInput__segment--empty"
             )}
             tabIndex={-1}
             onClick={(e) => {
@@ -482,7 +482,7 @@ const BaseDateRangeInput: FC<BaseDateRangeInputProps> = ({
               value={value}
               readOnly={readOnly}
               disabled={disabled}
-              className="HPuiDateInput__hidden-input"
+              className="GeckoUIDateInput__hidden-input"
               onChange={onChange}
               onKeyDown={(e) => handleKeyDown(e, segment)}
               maxLength={maxLength}
@@ -491,7 +491,7 @@ const BaseDateRangeInput: FC<BaseDateRangeInputProps> = ({
             {display}
           </label>
           {index < segments.length - 1 && (
-            <span className="HPuiDateInput__separator">{separator}</span>
+            <span className="GeckoUIDateInput__separator">{separator}</span>
           )}
         </Fragment>
       ))}
@@ -510,43 +510,43 @@ const BaseDateRangeInput: FC<BaseDateRangeInputProps> = ({
       {...rest}
       onClick={() => handleDisplayClick()}>
       {Boolean(prefix) && (
-        <div className="HPuiDateInput__prefix">
+        <div className="GeckoUIDateInput__prefix">
           <DynamicComponentRenderer component={prefix} />
         </div>
       )}
 
       {!!isEmpty && (
-        <span className={classNames("HPuiDateInput__placeholder", placeholderClassName)}>
+        <span className={classNames("GeckoUIDateInput__placeholder", placeholderClassName)}>
           {generatePlaceholder()}
         </span>
       )}
 
-      <div className={classNames("HPuiDateInput__display-container")}>
+      <div className={classNames("GeckoUIDateInput__display-container")}>
         {renderSegments(startSegments)}
-        <span className="HPuiDateRangeInput__range-separator">{rangeSeparator}</span>
+        <span className="GeckoUIDateRangeInput__range-separator">{rangeSeparator}</span>
         {renderSegments(endSegments)}
       </div>
 
       {Boolean(suffix) && (
-        <div className="HPuiDateInput__suffix">
+        <div className="GeckoUIDateInput__suffix">
           <DynamicComponentRenderer component={suffix} />
         </div>
       )}
 
-      <div className="HPuiDateInput__icons">
+      <div className="GeckoUIDateInput__icons">
         {!hideClearIcon && !isEmpty && !disabled && !readOnly && (
           <button
             type="button"
             disabled={disabled || readOnly}
-            className="HPuiDateInput__clear-button"
+            className="GeckoUIDateInput__clear-button"
             onClick={handleClear}>
-            <div className="HPicon__clear" />
+            <div className="GeckoUI-icon__clear" />
           </button>
         )}
 
         {renderCalendarIcon}
         {!renderCalendarIcon && !hideCalendarIcon && (
-          <div className="HPuiDateInput__calendar-icon" />
+          <div className="GeckoUIDateInput__calendar-icon" />
         )}
       </div>
     </div>

@@ -110,8 +110,8 @@ const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
     return (
       <div
         className={classNames(
-          "HPuiOTPInput",
-          disabled ? "HPuiOTPInput--disabled" : "HPuiOTPInput--enabled",
+          "GeckoUIOTPInput",
+          disabled ? "GeckoUIOTPInput--disabled" : "GeckoUIOTPInput--enabled",
           className
         )}
         ref={divRef}
@@ -131,7 +131,7 @@ const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
                 <input
                   // Set tabIndex to 0 for the input that is not filled yet
                   // So when we press tab, it will focus on the input that is not filled yet
-                  className={classNames("HPuiOTPInput__input", inputClassName)}
+                  className={classNames("GeckoUIOTPInput__input", inputClassName)}
                   disabled={disabled}
                   inputMode={numberOnly ? "numeric" : "text"}
                   onBlur={onBlur}
@@ -172,7 +172,7 @@ const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
                 />
 
                 <button
-                  className="HPuiOTPInput__overlay-button"
+                  className="GeckoUIOTPInput__overlay-button"
                   onClick={(e) => {
                     handleClick(e);
                   }}

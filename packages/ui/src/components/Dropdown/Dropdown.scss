@@ -1,6 +1,6 @@
 @import "../../mixins.scss";
 
-.HPuiDropdown {
+.GeckoUIDropdown {
   &__button {
     @apply flex flex-row items-center justify-center gap-2 rounded-md border border-border-secondary px-3 py-1.5 text-xs text-text-secondary enabled:hover:bg-surface-hover disabled:cursor-not-allowed disabled:bg-surface-hover disabled:text-text-disabled;
 

@@ -59,10 +59,10 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
   return (
     <div
       className={classNames(
-        "HPuiSelectButton",
-        disabled ? "HPuiSelectButton--disabled" : "HPuiSelectButton--enabled",
-        multiple && hasValue && "HPuiSelectButton--multi-select-default",
-        !filterable && "HPuiSelectButton--readonly",
+        "GeckoUISelectButton",
+        disabled ? "GeckoUISelectButton--disabled" : "GeckoUISelectButton--enabled",
+        multiple && hasValue && "GeckoUISelectButton--multi-select-default",
+        !filterable && "GeckoUISelectButton--readonly",
         className
       )}
       onClick={() => {
@@ -77,15 +77,15 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
       aria-disabled={disabled}>
       <DynamicComponentRenderer component={prefix} />
 
-      <div className="HPuiSelectButton__content">
+      <div className="GeckoUISelectButton__content">
         {hasValue ? (
           <SelectButtonContent />
         ) : (
           <span
             className={classNames(
-              "HPuiSelectButton__value HPuiSelectButton__value--placeholder",
+              "GeckoUISelectButton__value GeckoUISelectButton__value--placeholder",
               placeholderClassName,
-              keyword && filterable && "HPuiSelectButton__value--hidden"
+              keyword && filterable && "GeckoUISelectButton__value--hidden"
             )}>
             {placeholder ?? "Select Item"}
           </span>
@@ -93,13 +93,13 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
 
         <div
           className={classNames(
-            "HPuiSelectButton__search",
-            !open && hasValue && "HPuiSelectButton__search--focusonly",
-            !filterable && "HPuiSelectButton__search--focusonly",
+            "GeckoUISelectButton__search",
+            !open && hasValue && "GeckoUISelectButton__search--focusonly",
+            !filterable && "GeckoUISelectButton__search--focusonly",
             multiple &&
             Array.isArray(value) &&
             !!value?.length &&
-            "HPuiSelectButton__search--multi-selected"
+            "GeckoUISelectButton__search--multi-selected"
           )}
           data-keyword={filterable ? keyword : ""}>
           <input
@@ -110,10 +110,10 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
             value={filterable ? keyword : ""}
             disabled={disabled}
             className={classNames(
-              "HPuiSelectButton__search__input",
-              open && !hasValue && "HPuiSelectButton__search__input--initial",
-              !multiple && hasValue && "HPuiSelectButton__search__input--initial",
-              !filterable && "HPuiSelectButton__search__input--readonly"
+              "GeckoUISelectButton__search__input",
+              open && !hasValue && "GeckoUISelectButton__search__input--initial",
+              !multiple && hasValue && "GeckoUISelectButton__search__input--initial",
+              !filterable && "GeckoUISelectButton__search__input--readonly"
             )}
             onKeyDown={handleKeyboardInteraction}
             onFocusCapture={openMenu}
@@ -131,16 +131,16 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
         </div>
       </div>
 
-      <div className="HPuiSelectButton__icons">
+      <div className="GeckoUISelectButton__icons">
         {!multiple && hasValue && !disabled && (
-          <button className="HPuiSelectButton__clear-button" type="button" onClick={handleClear}>
-            <div className="HPicon__clear" />
+          <button className="GeckoUISelectButton__clear-button" type="button" onClick={handleClear}>
+            <div className="GeckoUI-icon__clear" />
           </button>
         )}
 
         <DynamicComponentRenderer
           component={
-            suffix ?? <span className="HPicon__arrow-right HPuiSelectTrigger__arrow-right-icon" />
+            suffix ?? <span className="GeckoUI-icon__arrow-right GeckoUISelectTrigger__arrow-right-icon" />
           }
         />
       </div>
@@ -195,8 +195,8 @@ function SelectButtonContent() {
         <div
           key={JSON.stringify({ value, label })}
           className={classNames(
-            "HPuiSelectButton__multiselected-chip",
-            disabled && "HPuiSelectButton__multiselected-chip--disabled"
+            "GeckoUISelectButton__multiselected-chip",
+            disabled && "GeckoUISelectButton__multiselected-chip--disabled"
           )}>
           <span>{option.label}</span>
 
@@ -209,11 +209,11 @@ function SelectButtonContent() {
               }}
               disabled={disabled}
               className={classNames(
-                "HPuiSelectButton__multiselected-chip__clear-button",
-                disabled && "HPuiSelectButton__multiselected-chip__clear-button--disabled"
+                "GeckoUISelectButton__multiselected-chip__clear-button",
+                disabled && "GeckoUISelectButton__multiselected-chip__clear-button--disabled"
               )}>
               <span
-                className={classNames("HPuiSelectButton__multiselected-chip__clear-button__icon")}
+                className={classNames("GeckoUISelectButton__multiselected-chip__clear-button__icon")}
               />
             </button>
           )}
@@ -234,14 +234,14 @@ function SelectButtonContent() {
   // To display like ghost text when filterable is true
   if (open && selectedOptionLabel && filterable) {
     return (
-      <span className="HPuiSelectButton__value HPuiSelectButton__value--placeholder">
+      <span className="GeckoUISelectButton__value GeckoUISelectButton__value--placeholder">
         {selectedOptionLabel}
       </span>
     );
   }
 
   return (
-    <span className="HPuiSelectButton__value HPuiSelectButton__value--selected">
+    <span className="GeckoUISelectButton__value GeckoUISelectButton__value--selected">
       {selectedOptionLabel}
     </span>
   );

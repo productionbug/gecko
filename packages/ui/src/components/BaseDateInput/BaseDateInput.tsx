@@ -281,37 +281,37 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
   const isError = (!isEmpty && !isValidDate(year, month, day)) || hasError;
 
   const containerClasses = classNames(
-    "HPuiDateInput",
-    disabled && "HPuiDateInput--disabled",
-    readOnly && "HPuiDateInput--readOnly",
-    !disabled && !readOnly && "HPuiDateInput--enabled",
-    isError && "HPuiDateInput--error",
-    isEmpty && "HPuiDateInput--empty",
-    hasFocus && "HPuiDateInput--focus",
+    "GeckoUIDateInput",
+    disabled && "GeckoUIDateInput--disabled",
+    readOnly && "GeckoUIDateInput--readOnly",
+    !disabled && !readOnly && "GeckoUIDateInput--enabled",
+    isError && "GeckoUIDateInput--error",
+    isEmpty && "GeckoUIDateInput--empty",
+    hasFocus && "GeckoUIDateInput--focus",
     className
   );
 
   return (
     <div ref={containerRef} className={containerClasses} onClick={() => handleDisplayClick()}>
       {Boolean(prefix) && (
-        <div className="HPuiDateInput__prefix">
+        <div className="GeckoUIDateInput__prefix">
           <DynamicComponentRenderer component={prefix} />
         </div>
       )}
 
       {!!isEmpty && !hasFocus && (
-        <span className={classNames("HPuiDateInput__placeholder", placeholderClassName)}>
+        <span className={classNames("GeckoUIDateInput__placeholder", placeholderClassName)}>
           {placeholder ?? generatePlaceholder(format, separator)}
         </span>
       )}
 
-      <div className={classNames("HPuiDateInput__display-container")}>
+      <div className={classNames("GeckoUIDateInput__display-container")}>
         {inputs.map(({ ref, value, onChange, maxLength, segment, display }, index) => (
           <Fragment key={segment}>
             <label
               className={classNames(
-                "HPuiDateInput__segment",
-                !value && "HPuiDateInput__segment--empty"
+                "GeckoUIDateInput__segment",
+                !value && "GeckoUIDateInput__segment--empty"
               )}
               tabIndex={-1}
               onClick={(e) => {
@@ -324,7 +324,7 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
                 value={value}
                 readOnly={readOnly}
                 disabled={disabled}
-                className="HPuiDateInput__hidden-input"
+                className="GeckoUIDateInput__hidden-input"
                 onChange={onChange}
                 onKeyDown={(e) => handleKeyDown(e, segment)}
                 maxLength={maxLength}
@@ -334,32 +334,32 @@ const BaseDateInput: FC<BaseDateInputProps> = ({
             </label>
 
             {index < inputs.length - 1 && (
-              <span className="HPuiDateInput__separator">{separator}</span>
+              <span className="GeckoUIDateInput__separator">{separator}</span>
             )}
           </Fragment>
         ))}
       </div>
 
-      <div className="HPuiDateInput__icons">
+      <div className="GeckoUIDateInput__icons">
         {!hideClearIcon && !isEmpty && !disabled && !readOnly && (
           <button
             type="button"
             disabled={disabled || readOnly}
-            className="HPuiDateInput__clear-button"
+            className="GeckoUIDateInput__clear-button"
             onClick={handleClear}>
-            <div className="HPicon__clear" />
+            <div className="GeckoUI-icon__clear" />
           </button>
         )}
 
         {Boolean(suffix) && (
-          <div className="HPuiDateInput__suffix">
+          <div className="GeckoUIDateInput__suffix">
             <DynamicComponentRenderer component={suffix} />
           </div>
         )}
 
         {renderCalendarIcon}
         {!renderCalendarIcon && !hideCalendarIcon && (
-          <div className="HPuiDateInput__calendar-icon" />
+          <div className="GeckoUIDateInput__calendar-icon" />
         )}
       </div>
     </div>

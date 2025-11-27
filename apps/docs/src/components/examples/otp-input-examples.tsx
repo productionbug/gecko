@@ -1,6 +1,6 @@
 "use client";
 
-import { OTPInput } from "@hexpacket/ui";
+import { OTPInput } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function BasicOTPInputExample() {

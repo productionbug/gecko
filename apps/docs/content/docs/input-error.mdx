@@ -3,7 +3,7 @@ title: InputError
 description: Display validation error messages below form fields
 ---
 
-import { InputError, Input } from '@hexpacket/ui';
+import { InputError, Input } from '@productionbug/gecko';
 
 # InputError
 
@@ -12,7 +12,7 @@ A component for displaying error messages below input fields. This is a simple s
 ## Installation
 
 ```tsx
-import { InputError } from '@hexpacket/ui';
+import { InputError } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -48,7 +48,7 @@ import { InputError } from '@hexpacket/ui';
 </Preview>
 
 ```tsx
-import { Input, InputError } from '@hexpacket/ui';
+import { Input, InputError } from '@productionbug/gecko';
 
 function EmailField() {
   const [error, setError] = useState('');
@@ -204,7 +204,7 @@ function PasswordField({ errors }) {
 </Preview>
 
 ```tsx
-import { Label, Input, InputError } from '@hexpacket/ui';
+import { Label, Input, InputError } from '@productionbug/gecko';
 
 <div className="space-y-1">
   <Label htmlFor="email" required>Email Address</Label>
@@ -222,10 +222,10 @@ import { Label, Input, InputError } from '@hexpacket/ui';
 
 ## Styling
 
-The component uses the class name `HPuiInputError`. Override styles using the `className` prop:
+The component uses the class name `GeckoUIInputError`. Override styles using the `className` prop:
 
 ```css
-.HPuiInputError {
+.GeckoUIInputError {
   /* Default error styling */
 }
 ```

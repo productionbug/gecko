@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Switch } from '@hexpacket/ui';
+import { Switch } from '@productionbug/gecko';
 
 export function SwitchBasicExample() {
   const [enabled, setEnabled] = useState(true);

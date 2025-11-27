@@ -33,15 +33,15 @@ const SelectMenu = ({ children, className, ...rest }: SelectMenuProps) => {
       ref={(r) => refs.setFloating(r)}
       style={floatingStyles}
       className={classNames(
-        "HPuiSelectMenu",
-        hasDropdownSearch && "HPuiSelectMenu--with-dropdown-search",
+        "GeckoUISelectMenu",
+        hasDropdownSearch && "GeckoUISelectMenu--with-dropdown-search",
         className
       )}
       {...rest}>
       {hasDropdownSearch && (
-        <SelectDropdownSearch className="HPuiSelectMenu__search-container" autoFocus />
+        <SelectDropdownSearch className="GeckoUISelectMenu__search-container" autoFocus />
       )}
-      <div ref={menuScrollContainerRef} className="HPuiSelectMenu__items">
+      <div ref={menuScrollContainerRef} className="GeckoUISelectMenu__items">
         {menuItems}
         <Empty>{menuItems}</Empty>
       </div>

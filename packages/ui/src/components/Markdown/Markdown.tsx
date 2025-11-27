@@ -76,7 +76,7 @@ function Markdown<T extends keyof JSX.IntrinsicElements = "div">({
   return createElement(as, {
     ...props,
     dangerouslySetInnerHTML: { __html: content },
-    className: classNames("HPuiMarkdown", className)
+    className: classNames("GeckoUIMarkdown", className)
   });
 }
 

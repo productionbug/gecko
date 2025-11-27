@@ -43,7 +43,7 @@ import type { InputErrorProps } from "./InputError.types";
  */
 const InputError: FC<InputErrorProps> = ({ children, className, ...rest }) => {
   return (
-    <div className={classNames("HPuiInputError", className)} {...rest}>
+    <div className={classNames("GeckoUIInputError", className)} {...rest}>
       {children}
     </div>
   );

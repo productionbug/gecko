@@ -3,7 +3,7 @@ title: RHFInput
 description: Text input component integrated with React Hook Form
 ---
 
-import { RHFInput } from '@hexpacket/ui';
+import { RHFInput } from '@productionbug/gecko';
 import {
   BasicRHFInputExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ A text input component integrated with React Hook Form that automatically displa
 ## Installation
 
 ```tsx
-import { RHFInput } from '@hexpacket/ui';
+import { RHFInput } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFInput } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFInput } from '@hexpacket/ui';
+import { RHFInput } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -76,7 +76,7 @@ Extends all props from [Input](/docs/input) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   email: z.string().email('Invalid email address').min(1, 'Email is required')
@@ -181,7 +181,7 @@ const sanitizePhone = (value: string) => {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   username: z.string().min(3, 'Username must be at least 3 characters'),
@@ -225,7 +225,7 @@ function RegistrationForm() {
 ## Error States
 
 RHFInput automatically displays error states with:
-- Red border via `HPuiRHFInput--error` CSS class when `fieldState.error` exists
+- Red border via `GeckoUIRHFInput--error` CSS class when `fieldState.error` exists
 - No automatic error icon (you must add via suffix prop if desired)
 
 Use [RHFInputGroup](/docs/rhf-input-group) component for label + input + error layout:

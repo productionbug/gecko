@@ -84,7 +84,7 @@ const RHFInputGroup: FC<RHFInputGroupProps> = ({
   };
 
   return (
-    <div className={classNames("HPuiRHFInputGroup", className)}>
+    <div className={classNames("GeckoUIRHFInputGroup", className)}>
       {label ? (
         <Label htmlFor={id} className={labelClassName} {...restLabelProps}>
           {label}

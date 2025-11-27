@@ -43,10 +43,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={classNames(
-          "HPuiButton",
-          `HPuiButton--${variant}`,
-          `HPuiButton--${variant}-${color}`,
-          `HPuiButton--size-${size}`,
+          "GeckoUIButton",
+          `GeckoUIButton--${variant}`,
+          `GeckoUIButton--${variant}-${color}`,
+          `GeckoUIButton--size-${size}`,
           className
         )}
         ref={ref}

@@ -3,7 +3,7 @@ title: RHFCheckbox
 description: Checkbox component integrated with React Hook Form that preserves value types
 ---
 
-import { RHFCheckbox } from '@hexpacket/ui';
+import { RHFCheckbox } from '@productionbug/gecko';
 import {
   SingleCheckboxExample,
   SingleWithUncheckedValueExample,
@@ -22,7 +22,7 @@ A controlled checkbox component for React Hook Form that preserves value types. 
 ## Installation
 
 ```tsx
-import { RHFCheckbox } from '@hexpacket/ui';
+import { RHFCheckbox } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -35,7 +35,7 @@ import { RHFCheckbox } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFCheckbox } from '@hexpacket/ui';
+import { RHFCheckbox } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -65,7 +65,7 @@ function Example() {
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFCheckbox } from '@hexpacket/ui';
+import { RHFCheckbox } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -131,7 +131,7 @@ Extends all props from [Checkbox](/docs/checkbox) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFCheckbox, RHFInputGroup } from '@hexpacket/ui';
+import { RHFCheckbox, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   terms: z.literal('agreed', { message: 'You must agree to the terms' })
@@ -226,7 +226,7 @@ function Example() {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFCheckbox, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFCheckbox, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   terms: z.literal('agreed', { message: 'You must agree to the terms' }),

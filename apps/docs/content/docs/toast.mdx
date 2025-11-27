@@ -3,7 +3,7 @@ title: Toast
 description: Display brief notification messages with support for variants, actions, and promises
 ---
 
-import { toast } from '@hexpacket/ui';
+import { toast } from '@productionbug/gecko';
 import { BasicToastExample, ToastVariantsExample, ToastWithDescriptionExample, ToastWithActionExample, PromiseToastExample, CustomDurationExample, LoadingToastExample, DismissToastExample, CustomStyledToastExample, RichContentToastExample, PositionExample } from '@/components/examples/toast-examples';
 
 # Toast
@@ -13,23 +13,23 @@ Display brief, non-intrusive notification messages to provide feedback on user a
 ## Installation
 
 ```tsx
-import { toast, HexpacketUIContainer } from '@hexpacket/ui';
+import { toast, GeckoUIPortal } from '@productionbug/gecko';
 ```
 
 ## Setup
 
-Add `HexpacketUIContainer` to your app root to enable toast notifications:
+Add `GeckoUIPortal` to your app root to enable toast notifications:
 
 ```tsx
 // app/layout.tsx or _app.tsx
-import { HexpacketUIContainer } from '@hexpacket/ui';
+import { GeckoUIPortal } from '@productionbug/gecko';
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body>
         {children}
-        <HexpacketUIContainer />
+        <GeckoUIPortal />
       </body>
     </html>
   );
@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
 ```tsx
 'use client';
 
-import { toast, Button } from '@hexpacket/ui';
+import { toast, Button } from '@productionbug/gecko';
 
 function Example() {
   return (
@@ -170,7 +170,7 @@ Automatically handles loading, success, and error states:
 ```tsx
 'use client';
 
-import { toast, Button } from '@hexpacket/ui';
+import { toast, Button } from '@productionbug/gecko';
 
 function Example() {
   const downloadReport = async () => {
@@ -262,7 +262,7 @@ setTimeout(() => toast.dismiss(toastId), 3000);
 toast('Custom styled toast', {
   className: 'border-2 border-blue-500',
   style: {
-    background: 'rgb(var(--hpui-surface-secondary))'
+    background: 'rgb(var(--gecko-ui-surface-secondary))'
   }
 });
 ```
@@ -302,10 +302,10 @@ toast('Bottom Right', { position: 'bottom-right' });
 
 ## Global Configuration
 
-Configure toast defaults in `HexpacketUIContainer`:
+Configure toast defaults in `GeckoUIPortal`:
 
 ```tsx
-<HexpacketUIContainer
+<GeckoUIPortal
   toastOptions={{
     position: 'top-right',
     duration: 3000,

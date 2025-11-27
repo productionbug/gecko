@@ -20,7 +20,7 @@ export * from "./OTPInput";
 export * from "./Pagination";
 export * from "./ConfirmDialog";
 export * from "./Toast";
-export * from "./HexpacketUIContainer";
+export * from "./GeckoUIPortal";
 export * from "./Drawer";
 export * from "./Dropdown";
 export * from "./Menu";

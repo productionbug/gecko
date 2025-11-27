@@ -1,11 +1,11 @@
 ---
 title: Getting Started
-description: Build beautiful, accessible React applications with HexPacket UI
+description: Build beautiful, accessible React applications with Gecko UI
 ---
 
-# Welcome to HexPacket UI
+# Welcome to Gecko UI
 
-HexPacket UI is a comprehensive, production-ready React component library built with TypeScript, Tailwind CSS, and modern web standards. It provides carefully crafted components designed for building complex, accessible user interfaces.
+Gecko UI is a comprehensive, production-ready React component library built with TypeScript, Tailwind CSS, and modern web standards. It provides carefully crafted components designed for building complex, accessible user interfaces.
 
 ## Features
 
@@ -23,11 +23,11 @@ HexPacket UI is a comprehensive, production-ready React component library built 
 ### 1. Install the package
 
 ```bash
-npm install @hexpacket/ui
+npm install @productionbug/gecko
 # or
-pnpm add @hexpacket/ui
+pnpm add @productionbug/gecko
 # or
-yarn add @hexpacket/ui
+yarn add @productionbug/gecko
 ```
 
 ### 2. Import styles
@@ -35,28 +35,28 @@ yarn add @hexpacket/ui
 Add the CSS imports to your root layout or main entry file:
 
 ```tsx
-import '@hexpacket/ui/styles.css';
+import '@productionbug/gecko/styles.css';
 ```
 
 For markdown component styling, also import:
 
 ```tsx
-import '@hexpacket/ui/markdown.css';
+import '@productionbug/gecko/markdown.css';
 ```
 
-### 3. Add HexpacketUIContainer
+### 3. Add GeckoUIPortal
 
-Add `HexpacketUIContainer` to your layout (required for Dialog, Drawer, ConfirmDialog, and Toast components):
+Add `GeckoUIPortal` to your layout (required for Dialog, Drawer, ConfirmDialog, and Toast components):
 
 ```tsx
-import { HexpacketUIContainer } from '@hexpacket/ui';
+import { GeckoUIPortal } from '@productionbug/gecko';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         {children}
-        <HexpacketUIContainer />
+        <GeckoUIPortal />
       </body>
     </html>
   );
@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
 ### 4. Start using components
 
 ```tsx
-import { Button, Input, Label } from '@hexpacket/ui';
+import { Button, Input, Label } from '@productionbug/gecko';
 
 function LoginForm() {
   return (
@@ -97,7 +97,7 @@ Explore the documentation to learn more:
 
 ## Browser Support
 
-HexPacket UI supports all modern browsers:
+Gecko UI supports all modern browsers:
 
 - Chrome (latest)
 - Firefox (latest)
@@ -106,5 +106,5 @@ HexPacket UI supports all modern browsers:
 
 ## Community & Support
 
-- [GitHub Repository](https://github.com/hexpacket/ui)
-- [Report Issues](https://github.com/hexpacket/ui/issues)
+- [GitHub Repository](https://github.com/productionbug/gecko)
+- [Report Issues](https://github.com/productionbug/gecko/issues)

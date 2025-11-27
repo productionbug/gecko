@@ -43,7 +43,7 @@ const RHFOTPInput: FC<RHFOTPInputProps> = ({ control, name, className, ...rest }
       name={name}
       render={({ field }) => {
         return (
-          <OTPInput className={classNames("HPuiRHFOTPInput", className)} {...rest} {...field} />
+          <OTPInput className={classNames("GeckoUIRHFOTPInput", className)} {...rest} {...field} />
         );
       }}
     />

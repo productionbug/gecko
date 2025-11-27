@@ -1,6 +1,6 @@
 "use client";
 
-import { Radio } from "@hexpacket/ui";
+import { Radio } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function RadioBasicExample() {

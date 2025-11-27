@@ -1,16 +1,16 @@
 @import "../../mixins.scss";
 
-.HPuiTooltip__trigger {
+.GeckoUITooltip__trigger {
   @include button-reset;
 
   @apply h-fit w-fit;
 }
 
-.HPuiTooltip span:nth-child(2) {
+.GeckoUITooltip span:nth-child(2) {
   bottom: 0.5px !important;
 }
 
-.HPuiTooltip {
+.GeckoUITooltip {
   @apply z-50 min-w-[0px] max-w-[320px] rounded-lg bg-surface-overlay p-2 text-xs font-normal text-surface-primary;
 
   box-shadow:
@@ -22,19 +22,19 @@
   will-change: transform, opacity;
 }
 
-.HPuiTooltip[data-state="delayed-open"][data-side="top"] {
+.GeckoUITooltip[data-state="delayed-open"][data-side="top"] {
   animation-name: slideDownAndFade;
 }
 
-.HPuiTooltip[data-state="delayed-open"][data-side="right"] {
+.GeckoUITooltip[data-state="delayed-open"][data-side="right"] {
   animation-name: slideLeftAndFade;
 }
 
-.HPuiTooltip[data-state="delayed-open"][data-side="bottom"] {
+.GeckoUITooltip[data-state="delayed-open"][data-side="bottom"] {
   animation-name: slideUpAndFade;
 }
 
-.HPuiTooltip[data-state="delayed-open"][data-side="left"] {
+.GeckoUITooltip[data-state="delayed-open"][data-side="left"] {
   animation-name: slideRightAndFade;
 }
 

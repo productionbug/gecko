@@ -3,7 +3,7 @@ title: Drawer
 description: Slide-out panel component that displays content from any edge of the viewport
 ---
 
-import { Drawer, Button } from '@hexpacket/ui';
+import { Drawer, Button } from '@productionbug/gecko';
 import { BasicDrawerExample, MobileMenuExample, FilterPanelExample, NotificationDrawerExample, BottomSheetExample, NoBackdropDrawerExample } from '@/components/examples/drawer-examples';
 
 # Drawer
@@ -13,7 +13,7 @@ A slide-out panel component that displays auxiliary content from any edge of the
 ## Installation
 
 ```tsx
-import { Drawer } from '@hexpacket/ui';
+import { Drawer } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -24,7 +24,7 @@ import { Drawer } from '@hexpacket/ui';
 
 ```tsx
 import { useState } from 'react';
-import { Drawer, Button } from '@hexpacket/ui';
+import { Drawer, Button } from '@productionbug/gecko';
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -105,7 +105,7 @@ const [menuOpen, setMenuOpen] = useState(false);
 </Preview>
 
 ```tsx
-import { Input, Label, Select, SelectOption } from '@hexpacket/ui';
+import { Input, Label, Select, SelectOption } from '@productionbug/gecko';
 
 const [filtersOpen, setFiltersOpen] = useState(false);
 const [category, setCategory] = useState('');
@@ -207,7 +207,7 @@ const [category, setCategory] = useState('');
 </Preview>
 
 ```tsx
-import { Input, Label } from '@hexpacket/ui';
+import { Input, Label } from '@productionbug/gecko';
 
 <Drawer
   open={settingsVisible}
@@ -304,18 +304,18 @@ The backdrop overlay can be:
 
 ## Portal Rendering
 
-Drawer requires `<HexpacketUIContainer />` to be mounted when using the imperative API:
+Drawer requires `<GeckoUIPortal />` to be mounted when using the imperative API:
 
 ```tsx
 // app/layout.tsx
-import { HexpacketUIContainer } from '@hexpacket/ui';
+import { GeckoUIPortal } from '@productionbug/gecko';
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body>
         {children}
-        <HexpacketUIContainer />
+        <GeckoUIPortal />
       </body>
     </html>
   );
@@ -326,15 +326,15 @@ export default function RootLayout({ children }) {
 
 The component uses BEM-style class names:
 
-- `HPuiDrawer` - Main container
-- `HPuiDrawer__backdrop` - Background overlay
-- `HPuiDrawer__backdrop--visible` - Visible backdrop state
-- `HPuiDrawer__backdrop--hidden` - Hidden backdrop state
-- `HPuiDrawer__backdrop--clickthrough` - Clickable backdrop
-- `HPuiDrawer__drawer` - Drawer panel
-- `HPuiDrawer__drawer--{placement}` - Placement modifier
-- `HPuiDrawer__drawer--open` - Open state
-- `HPuiDrawer__drawer--closed` - Closed state
+- `GeckoUIDrawer` - Main container
+- `GeckoUIDrawer__backdrop` - Background overlay
+- `GeckoUIDrawer__backdrop--visible` - Visible backdrop state
+- `GeckoUIDrawer__backdrop--hidden` - Hidden backdrop state
+- `GeckoUIDrawer__backdrop--clickthrough` - Clickable backdrop
+- `GeckoUIDrawer__drawer` - Drawer panel
+- `GeckoUIDrawer__drawer--{placement}` - Placement modifier
+- `GeckoUIDrawer__drawer--open` - Open state
+- `GeckoUIDrawer__drawer--closed` - Closed state
 
 ## Accessibility
 

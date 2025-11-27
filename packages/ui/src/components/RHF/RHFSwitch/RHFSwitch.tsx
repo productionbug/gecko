@@ -69,7 +69,7 @@ const RHFSwitch: FC<RHFSwitchProps> = ({
             {...rest}
             disabled={disabled}
             checked={isChecked}
-            className={classNames(`HPuiRHFSwitch HPuiRHFSwitch--size-${size}`, className)}
+            className={classNames(`GeckoUIRHFSwitch GeckoUIRHFSwitch--size-${size}`, className)}
             onBlur={(e) => {
               field.onBlur();
               onBlur?.(e);
@@ -82,7 +82,7 @@ const RHFSwitch: FC<RHFSwitchProps> = ({
             onChange={handleUpdate}
             size={size}
             thumbClassName={classNames(
-              `HPuiRHFSwitch__thumb HPuiRHFSwitch__thumb--size-${size}`,
+              `GeckoUIRHFSwitch__thumb GeckoUIRHFSwitch__thumb--size-${size}`,
               thumbClassName
             )}
             value={undefined}

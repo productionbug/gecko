@@ -3,7 +3,7 @@ title: RHFInputGroup
 description: Layout component that combines label, input field, and error message for React Hook Form
 ---
 
-import { RHFInputGroup } from '@hexpacket/ui';
+import { RHFInputGroup } from '@productionbug/gecko';
 import {
   BasicRHFInputGroupExample,
   WithRequiredExample,
@@ -21,7 +21,7 @@ A layout convenience component that combines a form field label, input component
 ## Installation
 
 ```tsx
-import { RHFInputGroup } from '@hexpacket/ui';
+import { RHFInputGroup } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFInputGroup } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFInput, RHFInputGroup } from '@hexpacket/ui';
+import { RHFInput, RHFInputGroup } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -78,7 +78,7 @@ Extends all props from [Label](/docs/label) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFInput, RHFInputGroup } from '@hexpacket/ui';
+import { RHFInput, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   groupEmail: z.string().email('Invalid email address').min(1, 'Email is required')
@@ -124,7 +124,7 @@ function Example() {
 </Preview>
 
 ```tsx
-import { RHFTextarea } from '@hexpacket/ui';
+import { RHFTextarea } from '@productionbug/gecko';
 
 const schema = z.object({
   groupBio: z.string().min(10, 'Bio must be at least 10 characters').max(200, 'Bio must be less than 200 characters')
@@ -198,7 +198,7 @@ const schema = z.object({
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFInput, RHFTextarea, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFInput, RHFTextarea, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   formUsername: z.string().min(3, 'Username must be at least 3 characters'),

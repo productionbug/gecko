@@ -11,6 +11,6 @@ body {
 }
 
 @layer components {
-  @import "@hexpacket/ui/styles.css";
-  @import "@hexpacket/ui/markdown.css";
+  @import "@productionbug/gecko/styles.css";
+  @import "@productionbug/gecko/markdown.css";
 }

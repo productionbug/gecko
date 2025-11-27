@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption, SelectTrigger, Input, Button } from '@hexpacket/ui';
+import { Select, SelectOption, SelectTrigger, Input, Button } from '@productionbug/gecko';
 import { X } from 'lucide-react';
 
 export function BasicTriggerExample() {

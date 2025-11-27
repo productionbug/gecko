@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, RHFInput, RHFInputGroup } from "@hexpacket/ui";
+import { Button, RHFInput, RHFInputGroup } from "@productionbug/gecko";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";

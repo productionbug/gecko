@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, RHFDateInput, RHFInput, RHFInputGroup } from "@hexpacket/ui";
+import { Button, RHFDateInput, RHFInput, RHFInputGroup } from "@productionbug/gecko";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";

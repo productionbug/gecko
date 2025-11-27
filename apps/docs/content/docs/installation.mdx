@@ -1,15 +1,15 @@
 ---
 title: Installation
-description: Step-by-step guide to installing and configuring HexPacket UI
+description: Step-by-step guide to installing and configuring Gecko UI
 ---
 
 # Installation
 
-This guide will help you install and configure HexPacket UI in your project.
+This guide will help you install and configure Gecko UI in your project.
 
 ## Prerequisites
 
-Before installing HexPacket UI, ensure you have:
+Before installing Gecko UI, ensure you have:
 
 - **Node.js** 18.0.0 or higher
 - **React** 19.2.0 or higher
@@ -17,18 +17,18 @@ Before installing HexPacket UI, ensure you have:
 
 ## Package Installation
 
-Install HexPacket UI using your preferred package manager:
+Install Gecko UI using your preferred package manager:
 
 ```bash
-npm install @hexpacket/ui
+npm install @productionbug/gecko
 ```
 
 ```bash
-pnpm add @hexpacket/ui
+pnpm add @productionbug/gecko
 ```
 
 ```bash
-yarn add @hexpacket/ui
+yarn add @productionbug/gecko
 ```
 
 ## Style Setup
@@ -38,7 +38,7 @@ yarn add @hexpacket/ui
 Import the main stylesheet in your root layout or main entry file:
 
 ```tsx title="app/layout.tsx"
-import '@hexpacket/ui/styles.css';
+import '@productionbug/gecko/styles.css';
 
 export default function RootLayout({ children }) {
   return (
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
 ```
 
 ```tsx title="src/main.tsx"
-import '@hexpacket/ui/styles.css';
+import '@productionbug/gecko/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -70,10 +70,10 @@ If you use `tailwindcss`, make sure to import the css inside `layer` directive t
 @import "tailwindcss";
 
 @layer components {
-  @import "@hexpacket/ui/styles.css";
+  @import "@productionbug/gecko/styles.css";
 
   /* Optional if you use Markdown component */
-  @import "@hexpacket/ui/markdown.css"; 
+  @import "@productionbug/gecko/markdown.css"; 
 }
 ```
 
@@ -82,12 +82,12 @@ If you use `tailwindcss`, make sure to import the css inside `layer` directive t
 If you're using the Markdown component, also import its stylesheet:
 
 ```tsx
-import '@hexpacket/ui/markdown.css';
+import '@productionbug/gecko/markdown.css';
 ```
 
 ## Container Setup
 
-Add `HexpacketUIContainer` to your layout. This is **required** for the following components:
+Add `GeckoUIPortal` to your layout. This is **required** for the following components:
 
 - Dialog
 - Drawer
@@ -95,15 +95,15 @@ Add `HexpacketUIContainer` to your layout. This is **required** for the followin
 - Toast
 
 ```tsx title="app/layout.tsx"
-import { HexpacketUIContainer } from '@hexpacket/ui';
-import '@hexpacket/ui/styles.css';
+import { GeckoUIPortal } from '@productionbug/gecko';
+import '@productionbug/gecko/styles.css';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         {children}
-        <HexpacketUIContainer />
+        <GeckoUIPortal />
       </body>
     </html>
   );
@@ -111,13 +111,13 @@ export default function RootLayout({ children }) {
 ```
 
 ```tsx title="src/App.tsx"
-import { HexpacketUIContainer } from '@hexpacket/ui';
+import { GeckoUIPortal } from '@productionbug/gecko';
 
 function App() {
   return (
     <div>
       {/* Your app content */}
-      <HexpacketUIContainer />
+      <GeckoUIPortal />
     </div>
   );
 }

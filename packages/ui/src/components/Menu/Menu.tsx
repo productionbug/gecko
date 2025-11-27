@@ -34,7 +34,7 @@ export const MenuButton = <T extends ReactTag>({ as, ...rest }: MenuButtonProps<
           | ((args: unknown) => string);
 
         return classNames(
-          "HPuiMenu__button",
+          "GeckoUIMenu__button",
           typeof className === "function" ? className(args) : className
         );
       }}
@@ -58,7 +58,7 @@ export const MenuItems = <T extends ReactTag>({ as, ...rest }: MenuItemsProps<T>
           | ((args: unknown) => string);
 
         return classNames(
-          "HPuiMenu__items",
+          "GeckoUIMenu__items",
           typeof className === "function" ? className(args) : className
         );
       }}
@@ -81,7 +81,7 @@ export const MenuItem = <T extends ReactTag>({ children, as, ...rest }: MenuItem
           | ((args: unknown) => string);
 
         return classNames(
-          "HPuiMenu__item",
+          "GeckoUIMenu__item",
           typeof className === "function" ? className(args) : className
         );
       }}

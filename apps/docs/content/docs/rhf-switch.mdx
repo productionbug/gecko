@@ -3,7 +3,7 @@ title: RHFSwitch
 description: Toggle switch component integrated with React Hook Form with custom value support
 ---
 
-import { RHFSwitch } from '@hexpacket/ui';
+import { RHFSwitch } from '@productionbug/gecko';
 import {
   BasicRHFSwitchExample,
   WithCustomValuesExample,
@@ -22,7 +22,7 @@ A controlled toggle switch component for React Hook Form. By default stores bool
 ## Installation
 
 ```tsx
-import { RHFSwitch } from '@hexpacket/ui';
+import { RHFSwitch } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -33,7 +33,7 @@ import { RHFSwitch } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFSwitch } from '@hexpacket/ui';
+import { RHFSwitch } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -135,7 +135,7 @@ Extends all props from [Switch](/docs/switch) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSwitch, RHFInputGroup } from '@hexpacket/ui';
+import { RHFSwitch, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   terms: z.literal(true, { message: 'You must accept the terms' })
@@ -171,7 +171,7 @@ function Example() {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSwitch, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFSwitch, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   notifications: z.boolean(),

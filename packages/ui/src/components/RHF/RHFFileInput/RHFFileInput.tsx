@@ -68,13 +68,13 @@ const RHFFileInput: FC<RHFFileInputProps> = ({
         const { field } = renderProps;
 
         return (
-          <label className={classNames("HPuiRHFFileInput--wrapper", className)} id={id}>
+          <label className={classNames("GeckoUIRHFFileInput--wrapper", className)} id={id}>
             <input
               {...field}
               {...rest}
               className={classNames(
-                "HPuiRHFFileInput",
-                Boolean(render) && "HPuiRHFFileInput--custom",
+                "GeckoUIRHFFileInput",
+                Boolean(render) && "GeckoUIRHFFileInput--custom",
                 inputClassName
               )}
               disabled={disabled}

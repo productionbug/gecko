@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Markdown, Spinner } from "@hexpacket/ui";
+import { Alert, Button, Markdown, Spinner } from "@productionbug/gecko";
 import { useEffect, useState } from "react";
 
 export function BasicMarkdownExample() {
@@ -134,16 +134,8 @@ This is **properly formatted** markdown.
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <button
-          onClick={() => setShowError(false)}
-          className="px-3 py-1 text-sm border rounded-md bg-gray-50 hover:bg-gray-100">
-          Valid Content
-        </button>
-        <button
-          onClick={() => setShowError(true)}
-          className="px-3 py-1 text-sm border rounded-md bg-gray-50 hover:bg-gray-100">
-          Invalid Content
-        </button>
+        <Button onClick={() => setShowError(false)}>Valid Content</Button>
+        <Button onClick={() => setShowError(true)}>Invalid Content</Button>
       </div>
       <div className="border rounded-md p-4">
         <Markdown
@@ -259,7 +251,7 @@ function getUser(id: number): User {
 
 ### Links
 
-Visit [HexPacket](https://hexpacket.com) for more information.
+Visit [Gecko UI](https://gecko.productionbug.com) for more information.
 
 ### Horizontal Rule
 

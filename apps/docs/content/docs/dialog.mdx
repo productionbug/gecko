@@ -3,7 +3,7 @@ title: Dialog
 description: Lightweight imperative modal component for centered overlay content
 ---
 
-import { Dialog, Button } from '@hexpacket/ui';
+import { Dialog, Button } from '@productionbug/gecko';
 import { BasicDialogExample, ImageLightboxExample, FormDialogExample, NoEscapeDialogExample } from '@/components/examples/dialog-examples';
 
 # Dialog
@@ -13,7 +13,7 @@ A lightweight, imperative modal component that renders content in a centered ove
 ## Installation
 
 ```tsx
-import { Dialog } from '@hexpacket/ui';
+import { Dialog } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -23,7 +23,7 @@ import { Dialog } from '@hexpacket/ui';
 </Preview>
 
 ```tsx
-import { Dialog, Button } from '@hexpacket/ui';
+import { Dialog, Button } from '@productionbug/gecko';
 
 function Example() {
   const openDialog = () => {
@@ -107,7 +107,7 @@ const openImageViewer = () => {
 </Preview>
 
 ```tsx
-import { Input, Label } from '@hexpacket/ui';
+import { Input, Label } from '@productionbug/gecko';
 
 const showUserForm = () => {
   Dialog.show({
@@ -218,18 +218,18 @@ Dialog.show({
 
 ### Portal Rendering
 
-Dialog requires `<HexpacketUIContainer />` to be mounted in your app:
+Dialog requires `<GeckoUIPortal />` to be mounted in your app:
 
 ```tsx
 // app/layout.tsx
-import { HexpacketUIContainer } from '@hexpacket/ui';
+import { GeckoUIPortal } from '@productionbug/gecko';
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body>
         {children}
-        <HexpacketUIContainer />
+        <GeckoUIPortal />
       </body>
     </html>
   );
@@ -240,9 +240,9 @@ export default function RootLayout({ children }) {
 
 The component uses BEM-style class names:
 
-- `HPuiDialog` - Main container
-- `HPuiDialog__backdrop` - Background overlay
-- `HPuiDialog__dialog` - Dialog content wrapper
+- `GeckoUIDialog` - Main container
+- `GeckoUIDialog__backdrop` - Background overlay
+- `GeckoUIDialog__dialog` - Dialog content wrapper
 
 ## Accessibility
 

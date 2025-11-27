@@ -10,18 +10,18 @@ function CalendarHeader({
   onClickHeader
 }: CalendarHeaderProps): ReactNode {
   return (
-    <div className={classNames("HPuiCalendar__header")}>
+    <div className={classNames("GeckoUICalendar__header")}>
       <button
-        className="HPuiCalendar__header__arrow-button HPuiCalendar__header__arrow-button--left"
+        className="GeckoUICalendar__header__arrow-button GeckoUICalendar__header__arrow-button--left"
         onClick={onClickLeftArrow}
         type="button">
-        <div className="HPuiCalendar__header__arrow-left-icon" />
+        <div className="GeckoUICalendar__header__arrow-left-icon" />
       </button>
 
       <button
         className={classNames(
-          "HPuiCalendar__header__title",
-          onClickHeader && "HPuiCalendar__header__title--clickable"
+          "GeckoUICalendar__header__title",
+          onClickHeader && "GeckoUICalendar__header__title--clickable"
         )}
         onClick={onClickHeader}
         type="button">
@@ -29,10 +29,10 @@ function CalendarHeader({
       </button>
 
       <button
-        className="HPuiCalendar__header__arrow-button HPuiCalendar__header__arrow-button--right"
+        className="GeckoUICalendar__header__arrow-button GeckoUICalendar__header__arrow-button--right"
         onClick={onClickRightArrow}
         type="button">
-        <div className="HPuiCalendar__header__arrow-right-icon" />
+        <div className="GeckoUICalendar__header__arrow-right-icon" />
       </button>
     </div>
   );

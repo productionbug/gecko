@@ -55,28 +55,28 @@ const Alert: FC<AlertProps> = (props) => {
   return (
     <div
       className={classNames(
-        "HPuiAlert",
-        `HPuiAlert--${variant}`,
-        condensed && "HPuiAlert--condensed",
+        "GeckoUIAlert",
+        `GeckoUIAlert--${variant}`,
+        condensed && "GeckoUIAlert--condensed",
         className
       )}>
-      <div className="HPuiAlert__body">
+      <div className="GeckoUIAlert__body">
         {icon ? (
           <DynamicComponentRenderer component={icon} />
         ) : (
           <div
-            className={classNames("HPuiAlert__icon", `HPuiAlert__icon--${variant}`, iconClassName)}
+            className={classNames("GeckoUIAlert__icon", `GeckoUIAlert__icon--${variant}`, iconClassName)}
           />
         )}
-        <DynamicComponentRenderer component={title} className="HPuiAlert__title" />
+        <DynamicComponentRenderer component={title} className="GeckoUIAlert__title" />
         {Boolean(onRemove) && (
-          <button className="HPuiAlert__remove-button" onClick={onRemove} type="button">
-            <span className="HPuiAlert__remove-button__icon" />
+          <button className="GeckoUIAlert__remove-button" onClick={onRemove} type="button">
+            <span className="GeckoUIAlert__remove-button__icon" />
           </button>
         )}
       </div>
       {description ? (
-        <div className="HPuiAlert__description">
+        <div className="GeckoUIAlert__description">
           <DynamicComponentRenderer component={description} />
         </div>
       ) : null}

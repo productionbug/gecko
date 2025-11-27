@@ -48,7 +48,7 @@ import type { RadioProps } from "./Radio.types";
 const Radio = forwardRef<HTMLInputElement, RadioProps>(({ className, ...rest }, ref) => {
   return (
     <input
-      className={classNames("HPuiRadio", className)}
+      className={classNames("GeckoUIRadio", className)}
       ref={ref}
       {...rest}
       type="radio"

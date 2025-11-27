@@ -3,7 +3,7 @@ title: Multiple Selection
 description: Multi-select mode for selecting multiple options at once
 ---
 
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 import { BasicMultipleExample, MultipleWithPlaceholderExample, MultipleWithDefaultValuesExample, MultipleCloseMenuOnSelectExample, MultipleWithClearExample, MultipleCustomContentExample } from '@/components/examples/select/multiple-examples';
 
 # Multiple Selection
@@ -20,7 +20,7 @@ Enable multiple selection mode by setting the `multiple` prop. The component wil
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 
 function Example() {
   const [values, setValues] = useState<string[]>([]);
@@ -110,7 +110,7 @@ const [values, setValues] = useState<string[]>([]);
 </Preview>
 
 ```tsx
-import { Button } from '@hexpacket/ui';
+import { Button } from '@productionbug/gecko';
 
 const [values, setValues] = useState<string[]>(['react', 'vue']);
 

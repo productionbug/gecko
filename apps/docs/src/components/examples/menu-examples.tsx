@@ -9,7 +9,7 @@ import {
   MenuItems,
   MenuSection,
   MenuSeparator
-} from "@hexpacket/ui";
+} from "@productionbug/gecko";
 import { ChevronDown, Copy, Download, Edit, Settings, Share, Trash } from "lucide-react";
 
 export function BasicMenuExample() {

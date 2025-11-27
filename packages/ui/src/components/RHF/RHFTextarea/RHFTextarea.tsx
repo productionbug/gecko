@@ -64,8 +64,8 @@ const RHFTextarea: FC<RHFTextareaProps> = ({
         return (
           <Textarea
             className={classNames(
-              "HPuiRHFTextarea",
-              !disabled && fieldState.error && "HPuiRHFTextarea--error",
+              "GeckoUIRHFTextarea",
+              !disabled && fieldState.error && "GeckoUIRHFTextarea--error",
               className
             )}
             {...field}

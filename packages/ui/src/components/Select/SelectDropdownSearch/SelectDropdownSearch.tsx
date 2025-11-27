@@ -134,8 +134,8 @@ const SelectDropdownSearch = ({
   return (
     <Input
       placeholder={placeholder}
-      prefix={<div className="HPuiSelectDropdownSearch__icon" />}
-      className={classNames("HPuiSelectDropdownSearch", className)}
+      prefix={<div className="GeckoUISelectDropdownSearch__icon" />}
+      className={classNames("GeckoUISelectDropdownSearch", className)}
       {...rest}
       autoComplete="off"
       autoCapitalize="off"

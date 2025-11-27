@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption, SelectConsumer, Button } from '@hexpacket/ui';
+import { Button, Select, SelectConsumer, SelectOption } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function SelectConsumerExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -11,12 +11,12 @@ export function SelectConsumerExample() {
       <Select value={value} filterable onChange={setValue} placeholder="Select a framework...">
         <SelectConsumer
           render={({ open, keyword, options }) => (
-            <div className="p-3 border rounded-md bg-gray-50 text-sm mb-2">
+            <div className="p-3 border rounded-md bg-gray-50 dark:bg-neutral-800 text-sm mb-2">
               <p>
-                <strong>Status:</strong> {open ? 'Open' : 'Closed'}
+                <strong>Status:</strong> {open ? "Open" : "Closed"}
               </p>
               <p>
-                <strong>Filter:</strong> {keyword || '(none)'}
+                <strong>Filter:</strong> {keyword || "(none)"}
               </p>
               <p>
                 <strong>Total Options:</strong> {options.length}
@@ -52,10 +52,9 @@ export function ProgrammaticControlExample() {
                 size="sm"
                 variant="outlined"
                 onClick={() => {
-                  setValue('python');
+                  setValue("python");
                   closeMenu();
-                }}
-              >
+                }}>
                 Select Python
               </Button>
             </div>
@@ -117,20 +116,18 @@ export function CustomActionsExample() {
                 size="sm"
                 variant="ghost"
                 onClick={() => {
-                  handleChange('active' as never);
+                  handleChange("active" as never);
                   closeMenu();
-                }}
-              >
+                }}>
                 Quick: Active
               </Button>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={() => {
-                  handleChange('inactive' as never);
+                  handleChange("inactive" as never);
                   closeMenu();
-                }}
-              >
+                }}>
                 Quick: Inactive
               </Button>
               {currentValue && (
@@ -140,8 +137,7 @@ export function CustomActionsExample() {
                   onClick={() => {
                     setValue(null);
                     closeMenu();
-                  }}
-                >
+                  }}>
                   Clear
                 </Button>
               )}
@@ -158,7 +154,7 @@ export function CustomActionsExample() {
 }
 
 export function DebugViewExample() {
-  const [values, setValues] = useState<string[]>(['opt1']);
+  const [values, setValues] = useState<string[]>(["opt1"]);
 
   return (
     <div className="space-y-4">
@@ -168,7 +164,7 @@ export function DebugViewExample() {
         <SelectOption value="opt3" label="Option 3" />
       </Select>
 
-      <div className="p-4 border rounded-md bg-gray-50">
+      <div className="p-4 border rounded-md bg-gray-50 dark:bg-neutral-800">
         <h4 className="font-semibold mb-2 text-sm">Debug Info:</h4>
         <Select multiple value={values} onChange={setValues}>
           <SelectConsumer

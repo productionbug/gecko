@@ -75,15 +75,15 @@ function ConfirmDialogContent({
 
   return (
     <>
-      <div className={classNames("HPuiConfirmDialog__title", titleClassName)}>
+      <div className={classNames("GeckoUIConfirmDialog__title", titleClassName)}>
         <DynamicComponentRenderer component={title} />
       </div>
-      <div className={classNames("HPuiConfirmDialog__content", contentClassName)}>
+      <div className={classNames("GeckoUIConfirmDialog__content", contentClassName)}>
         <DynamicComponentRenderer component={content} dismiss={dismiss} />
       </div>
-      <div className="HPuiConfirmDialog__actions">
+      <div className="GeckoUIConfirmDialog__actions">
         <LoadingButton
-          className={classNames("HPuiConfirmDialog__cancel-button")}
+          className={classNames("GeckoUIConfirmDialog__cancel-button")}
           onClick={handleCancel}
           size="md"
           variant="outlined"
@@ -92,7 +92,7 @@ function ConfirmDialogContent({
           {cancelButtonLabel}
         </LoadingButton>
         <LoadingButton
-          className={classNames("HPuiConfirmDialog__confirm-button")}
+          className={classNames("GeckoUIConfirmDialog__confirm-button")}
           onClick={handleConfirm}
           size="md"
           loading={confirmLoading}
@@ -109,7 +109,7 @@ export const show = (options: ConfirmDialogOptions) => {
     dismissOnEsc: false,
     dismissOnOutsideClick: false,
     ...options,
-    className: classNames("HPuiConfirmDialog__dialog", options.className),
+    className: classNames("GeckoUIConfirmDialog__dialog", options.className),
     content: ({ dismiss }) => <ConfirmDialogContent {...options} dismiss={dismiss} />
   });
 };

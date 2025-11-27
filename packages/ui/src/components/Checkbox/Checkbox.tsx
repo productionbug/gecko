@@ -47,10 +47,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const Icon = partial ? IndeterminateIcon : CheckIcon;
 
     return (
-      <div className="HPuiCheckbox group">
+      <div className="GeckoUICheckbox group">
         <button
           aria-checked={checked}
-          className="HPuiCheckbox__button"
+          className="GeckoUICheckbox__button"
           disabled={disabled}
           role="checkbox"
           type="button"
@@ -64,10 +64,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             }
           }}>
           <label style={{ display: "contents" }} aria-label="checkbox-label" htmlFor={id ?? _id}>
-            <div className={classNames("HPuiCheckbox__box", className)} style={{ margin: 0 }}>
+            <div className={classNames("GeckoUICheckbox__box", className)} style={{ margin: 0 }}>
               <input
                 checked={checked}
-                className="HPuiCheckbox__input"
+                className="GeckoUICheckbox__input"
                 disabled={disabled}
                 id={id ?? _id}
                 ref={ref}
@@ -77,7 +77,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               />
             </div>
           </label>
-          <Icon className="HPuiCheckbox__icon" />
+          <Icon className="GeckoUICheckbox__icon" />
         </button>
       </div>
     );

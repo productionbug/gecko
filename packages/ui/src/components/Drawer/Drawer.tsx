@@ -16,7 +16,7 @@ function getDrawerClasses(
   open: boolean,
   className?: string
 ): string {
-  const baseClass = "HPuiDrawer__drawer";
+  const baseClass = "GeckoUIDrawer__drawer";
   const placementClass = `${baseClass}--${placement}`;
   const stateClass = open ? `${baseClass}--open` : `${baseClass}--closed`;
 
@@ -174,13 +174,13 @@ function Drawer({
   useEscListener(dismissOnEscape ? handleDismiss : undefined);
 
   return (
-    <div className="HPuiDrawer" ref={drawerRootRef} role="dialog">
+    <div className="GeckoUIDrawer" ref={drawerRootRef} role="dialog">
       <div
         className={classNames(
-          "HPuiDrawer__backdrop",
-          open ? "HPuiDrawer__backdrop--visible" : "HPuiDrawer__backdrop--hidden",
-          hideBackdrop && "HPuiDrawer__backdrop--hidden",
-          allowClickOutside && "HPuiDrawer__backdrop--clickthrough",
+          "GeckoUIDrawer__backdrop",
+          open ? "GeckoUIDrawer__backdrop--visible" : "GeckoUIDrawer__backdrop--hidden",
+          hideBackdrop && "GeckoUIDrawer__backdrop--hidden",
+          allowClickOutside && "GeckoUIDrawer__backdrop--clickthrough",
           backdropClassName
         )}
         onClick={handleDismiss}

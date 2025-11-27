@@ -90,7 +90,7 @@ const RHFNumberInput: FC<RHFNumberInputProps> = ({
       inputMode="decimal"
       type="text"
       {...rest}
-      className={classNames("HPuiRHFNumberInput", className)}
+      className={classNames("GeckoUIRHFNumberInput", className)}
       transform={{
         input: transform?.input,
         output: transform?.output ?? transformOutput

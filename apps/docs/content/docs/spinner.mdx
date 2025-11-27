@@ -3,7 +3,7 @@ title: Spinner
 description: Animated loading indicator for async operations
 ---
 
-import { Spinner } from '@hexpacket/ui';
+import { Spinner } from '@productionbug/gecko';
 
 # Spinner
 
@@ -12,7 +12,7 @@ A loading spinner icon component that displays an animated circular indicator. T
 ## Installation
 
 ```tsx
-import { Spinner } from '@hexpacket/ui';
+import { Spinner } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -185,7 +185,7 @@ function FullPageLoading() {
 </Preview>
 
 ```tsx
-import { LoadingButton } from '@hexpacket/ui';
+import { LoadingButton } from '@productionbug/gecko';
 
 <LoadingButton loading={isLoading}>
   Save Changes
@@ -271,10 +271,10 @@ function AsyncButton() {
 
 ## Styling
 
-The component uses the class name `HPuiSpinnerIcon`. The spinner animation is applied via CSS:
+The component uses the class name `GeckoUISpinnerIcon`. The spinner animation is applied via CSS:
 
 ```css
-.HPuiSpinnerIcon {
+.GeckoUISpinnerIcon {
   animation: spin 1s linear infinite;
 }
 

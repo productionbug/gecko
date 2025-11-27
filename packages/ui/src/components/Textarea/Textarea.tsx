@@ -43,7 +43,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <>
         <ReactTextareaAutosize
-          className={classNames("HPuiTextarea", className)}
+          className={classNames("GeckoUITextarea", className)}
           maxRows={autoResize ? maxRows : rows}
           minRows={rows}
           ref={ref}

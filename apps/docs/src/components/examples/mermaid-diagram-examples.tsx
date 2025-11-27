@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Button, MermaidDiagram, Spinner } from "@hexpacket/ui";
+import { Alert, Button, MermaidDiagram, Spinner } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function FlowchartExample() {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Calendar, Button } from '@hexpacket/ui';
-import type { CalendarRef } from '@hexpacket/ui';
+import { Calendar, Button } from '@productionbug/gecko';
+import type { CalendarRef } from '@productionbug/gecko';
 
 export function BasicCalendarExample() {
   const [selectedDate, setSelectedDate] = useState<string | undefined>();

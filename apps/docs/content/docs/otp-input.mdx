@@ -3,7 +3,7 @@ title: OTP Input
 description: Segmented input field for one-time passwords and verification codes
 ---
 
-import { OTPInput } from '@hexpacket/ui';
+import { OTPInput } from '@productionbug/gecko';
 import { BasicOTPInputExample, TwoFactorAuthExample, SMSVerificationExample, AlphanumericCodeExample, CustomLengthExample, DisabledOTPExample } from '@/components/examples/otp-input-examples';
 
 # OTP Input
@@ -13,7 +13,7 @@ A segmented input component for entering one-time passwords or verification code
 ## Installation
 
 ```tsx
-import { OTPInput } from '@hexpacket/ui';
+import { OTPInput } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -227,11 +227,11 @@ The `onOTPComplete` callback fires when all boxes are filled:
 
 The component uses BEM-style class names:
 
-- `HPuiOTPInput` - Main container
-- `HPuiOTPInput--enabled` - Applied when not disabled
-- `HPuiOTPInput--disabled` - Applied when disabled
-- `HPuiOTPInput__input` - Individual input box
-- `HPuiOTPInput__overlay-button` - Invisible button for click handling
+- `GeckoUIOTPInput` - Main container
+- `GeckoUIOTPInput--enabled` - Applied when not disabled
+- `GeckoUIOTPInput--disabled` - Applied when disabled
+- `GeckoUIOTPInput__input` - Individual input box
+- `GeckoUIOTPInput__overlay-button` - Invisible button for click handling
 
 ## Custom Styling
 

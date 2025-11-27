@@ -1,6 +1,6 @@
 "use client";
 
-import { Select, SelectEmpty, SelectOption } from "@hexpacket/ui";
+import { Select, SelectEmpty, SelectOption } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function BasicEmptyExample() {
@@ -78,7 +78,7 @@ export function EmptyWithActionExample() {
       </Select>
 
       {showForm && (
-        <div className="p-4 border rounded-md bg-gray-50">
+        <div className="p-4 border rounded-md bg-gray-50 dark:bg-neutral-800">
           <p className="text-sm text-gray-600">Tag creation form would appear here...</p>
           <button
             type="button"
@@ -129,7 +129,7 @@ export function EmptyWithImageExample() {
       <SelectOption value="user2" label="Jane Smith" />
       <SelectEmpty>
         <div className="flex flex-col items-center justify-center py-8 px-4">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+          <div className="w-16 h-16 bg-gray-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-3">
             <svg
               className="w-8 h-8 text-gray-400"
               fill="none"

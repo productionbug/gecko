@@ -163,17 +163,17 @@ function RHFFilePickerRenderer<T extends HTMLElement = HTMLDivElement>({
   return (
     <div
       className={classNames(
-        "HPuiRHFFilePicker",
-        loading && "HPuiRHFFilePicker--loading",
-        dragging && "HPuiRHFFilePicker--dragging",
-        error && "HPuiRHFFilePicker--error"
+        "GeckoUIRHFFilePicker",
+        loading && "GeckoUIRHFFilePicker--loading",
+        dragging && "GeckoUIRHFFilePicker--dragging",
+        error && "GeckoUIRHFFilePicker--error"
       )}
       ref={dropzoneRef as unknown as React.RefObject<HTMLDivElement>}>
       {Boolean(value?.length) && (
-        <ul className="HPuiRHFFilePicker__file-list" style={{ scrollbarWidth: "none" }}>
+        <ul className="GeckoUIRHFFilePicker__file-list" style={{ scrollbarWidth: "none" }}>
           {value.map((file) => {
             return (
-              <li className="HPuiRHFFilePicker__file-item" key={file.preview}>
+              <li className="GeckoUIRHFFilePicker__file-item" key={file.preview}>
                 {file.name}{" "}
               </li>
             );
@@ -181,30 +181,30 @@ function RHFFilePickerRenderer<T extends HTMLElement = HTMLDivElement>({
         </ul>
       )}
 
-      <div className="HPuiRHFFilePicker__button-container">
+      <div className="GeckoUIRHFFilePicker__button-container">
         <button
-          className="HPuiRHFFilePicker__button"
+          className="GeckoUIRHFFilePicker__button"
           onClick={() => openFilePicker()}
           type="button">
-          <FilePlus className="HPuiRHFFilePicker__button-icon" />
+          <FilePlus className="GeckoUIRHFFilePicker__button-icon" />
         </button>
 
         <button
-          className="HPuiRHFFilePicker__button"
+          className="GeckoUIRHFFilePicker__button"
           onClick={() => openFilePicker({ directory: true })}
           type="button">
-          <FolderPlus className="HPuiRHFFilePicker__button-icon" />
+          <FolderPlus className="GeckoUIRHFFilePicker__button-icon" />
         </button>
       </div>
 
       {!loading && !value?.length && (
-        <div className="HPuiRHFFilePicker__empty-state">
+        <div className="GeckoUIRHFFilePicker__empty-state">
           <span>Drop files here to upload</span>
         </div>
       )}
 
       {loading ? (
-        <div className="HPuiRHFFilePicker__loading-overlay">
+        <div className="GeckoUIRHFFilePicker__loading-overlay">
           <Spinner />
         </div>
       ) : null}

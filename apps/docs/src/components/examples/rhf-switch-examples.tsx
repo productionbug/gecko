@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSwitch, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFSwitch, RHFInputGroup, Button } from '@productionbug/gecko';
 
 export function BasicRHFSwitchExample() {
   const methods = useForm({

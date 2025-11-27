@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Checkbox } from '@hexpacket/ui';
+import { Checkbox } from '@productionbug/gecko';
 
 export function CheckboxBasicExample() {
   return (

@@ -45,7 +45,7 @@
 
 @mixin scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgb(var(--hpui-scrollbar-thumb)) transparent;
+  scrollbar-color: rgb(var(--gecko-ui-scrollbar-thumb)) transparent;
   scrollbar-gutter: auto;
 
   -webkit-scrollbar {
@@ -57,10 +57,10 @@
   }
 
   -webkit-scrollbar-thumb {
-    background: rgb(var(--hpui-scrollbar-thumb));
+    background: rgb(var(--gecko-ui-scrollbar-thumb));
   }
 
   -webkit-scrollbar-thumb:hover {
-    background: rgb(var(--hpui-scrollbar-thumb-hover));
+    background: rgb(var(--gecko-ui-scrollbar-thumb-hover));
   }
 }

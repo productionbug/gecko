@@ -77,30 +77,30 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onChange, cl
   const pages = getPages();
 
   return (
-    <div className={classNames("HPuiPagination", className)}>
+    <div className={classNames("GeckoUIPagination", className)}>
       <button
-        className="HPuiPagination__arrow"
+        className="GeckoUIPagination__arrow"
         disabled={currentPage === 1}
         onClick={() => {
           onChange(currentPage - 1);
         }}
         type="button">
-        <span className="HPuiPagination__arrow__icon HPuiPagination__arrow__icon--previous" />
+        <span className="GeckoUIPagination__arrow__icon GeckoUIPagination__arrow__icon--previous" />
       </button>
 
-      <div className="HPuiPagination__page-count">
+      <div className="GeckoUIPagination__page-count">
         <span>{currentPage}</span>
         <span>/</span>
         <span>{totalPages}</span>
       </div>
 
-      <div className="HPuiPagination__page-buttons">
+      <div className="GeckoUIPagination__page-buttons">
         {pages.map((page, index) => (
           <button
             className={classNames(
-              "HPuiPagination__page-button",
-              page === currentPage && "HPuiPagination__page-button--active",
-              page === "..." && "HPuiPagination__page-button--ellipsis"
+              "GeckoUIPagination__page-button",
+              page === currentPage && "GeckoUIPagination__page-button--active",
+              page === "..." && "GeckoUIPagination__page-button--ellipsis"
             )}
             disabled={page === "..."}
             key={index}
@@ -112,13 +112,13 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onChange, cl
       </div>
 
       <button
-        className="HPuiPagination__arrow"
+        className="GeckoUIPagination__arrow"
         disabled={currentPage === totalPages}
         onClick={() => {
           onChange(currentPage + 1);
         }}
         type="button">
-        <span className="HPuiPagination__arrow__icon HPuiPagination__arrow__icon--next" />
+        <span className="GeckoUIPagination__arrow__icon GeckoUIPagination__arrow__icon--next" />
       </button>
     </div>
   );

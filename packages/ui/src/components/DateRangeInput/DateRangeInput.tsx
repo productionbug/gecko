@@ -106,12 +106,12 @@ const DateRangeInput: FC<DateRangeInputProps> = ({
   };
 
   const renderCalendarIcon = !hideCalendarIcon ? (
-    <div className="HPuiDateInput__calendar-icon" />
+    <div className="GeckoUIDateInput__calendar-icon" />
   ) : undefined;
 
   return (
     <div
-      className={classNames("HPuiDateRangeInputWrapper", wrapperClassName)}
+      className={classNames("GeckoUIDateRangeInputWrapper", wrapperClassName)}
       ref={(r) => refs.setReference(r)}>
       <BaseDateRangeInput
         value={value}
@@ -121,7 +121,7 @@ const DateRangeInput: FC<DateRangeInputProps> = ({
         prefix={prefix}
         suffix={suffix}
         hasError={hasError}
-        className={classNames(className, openCalendar && "HPuiDateInput--calendar-open")}
+        className={classNames(className, openCalendar && "GeckoUIDateInput--calendar-open")}
         format={format}
         separator={separator}
         rangeSeparator={rangeSeparator}
@@ -141,7 +141,7 @@ const DateRangeInput: FC<DateRangeInputProps> = ({
           <Calendar
             mode="range"
             calendarRef={calendarRef}
-            className={classNames("HPuiDateRangeInput__calendar", calendarClassName)}
+            className={classNames("GeckoUIDateRangeInput__calendar", calendarClassName)}
             onSelectRange={handleRangeSelect}
             selectedRange={value}
             numberOfMonths={numberOfMonths}

@@ -1,12 +1,12 @@
 @import "../../mixins.scss";
 
-.HPuiInput {
+.GeckoUIInput {
   @include base-reset;
 
   @apply border-border-secondary relative flex min-h-10 w-full items-center gap-2 rounded-md border px-3;
 
   &:has(input:-webkit-autofill) {
-    background: rgb(var(--hpui-surface-autofill)) !important;
+    background: rgb(var(--gecko-ui-surface-autofill)) !important;
   }
 
   &--disabled {

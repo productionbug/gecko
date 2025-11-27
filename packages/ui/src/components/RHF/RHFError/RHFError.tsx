@@ -59,7 +59,7 @@ const RHFError: FC<RHFErrorProps> = ({ name, control, className, render }) => {
         }
 
         return (
-          <InputError className={classNames("HPuiRHFError", className)}>{error.message}</InputError>
+          <InputError className={classNames("GeckoUIRHFError", className)}>{error.message}</InputError>
         );
       }}
     />

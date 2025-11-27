@@ -15,15 +15,15 @@ function CalendarMonthPicker({
     <>
       <CalendarHeader header={`${activeYear}`} {...headerProps} />
 
-      <div className="HPuiCalendar__month-picker">
+      <div className="GeckoUICalendar__month-picker">
         {shortMonths.map((monthName, index) => {
           const selected = index === activeMonth;
 
           return (
             <button
               className={classNames(
-                "HPuiCalendar__month-picker__button",
-                selected && "HPuiCalendar__month-picker__button--selected"
+                "GeckoUICalendar__month-picker__button",
+                selected && "GeckoUICalendar__month-picker__button--selected"
               )}
               key={monthName}
               onClick={() => onSelectMonth?.(index)}

@@ -178,12 +178,12 @@ const DateInput: FC<DateInputProps> = ({
   );
 
   const renderCalendarIcon = !hideCalendarIcon ? (
-    <div className="HPuiDateInput__calendar-icon" />
+    <div className="GeckoUIDateInput__calendar-icon" />
   ) : undefined;
 
   return (
     <div
-      className={classNames("HPuiDateInputWrapper", wrapperClassName)}
+      className={classNames("GeckoUIDateInputWrapper", wrapperClassName)}
       ref={(r) => refs.setReference(r)}>
       <BaseDateInput
         value={value}
@@ -193,7 +193,7 @@ const DateInput: FC<DateInputProps> = ({
         prefix={prefix}
         suffix={suffix}
         hasError={hasError}
-        className={classNames(className, openCalendar && "HPuiDateInput--calendar-open")}
+        className={classNames(className, openCalendar && "GeckoUIDateInput--calendar-open")}
         format={format}
         separator={separator}
         placeholder={placeholder}
@@ -211,7 +211,7 @@ const DateInput: FC<DateInputProps> = ({
         <div ref={(r) => refs.setFloating(r)} style={{ ...floatingStyles, zIndex: 9999 }}>
           <Calendar
             calendarRef={calendarRef}
-            className={classNames("HPuiDateInput__calendar", calendarClassName)}
+            className={classNames("GeckoUIDateInput__calendar", calendarClassName)}
             onSelectDate={(date) => {
               onChange?.(date);
               setOpenCalendar(false);

@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFOTPInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFOTPInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 export function BasicRHFOTPInputExample() {
   const methods = useForm({

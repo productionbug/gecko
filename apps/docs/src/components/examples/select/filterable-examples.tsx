@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectOption, SelectEmpty } from '@productionbug/gecko';
 
 export function InlineFilterExample() {
   const [value, setValue] = useState<string | null>(null);

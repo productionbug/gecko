@@ -3,8 +3,14 @@ title: Advanced Usage
 description: Programmatic control with useSelect hook and SelectConsumer
 ---
 
-import { Select, SelectOption, SelectConsumer, Button } from '@hexpacket/ui';
-import { SelectConsumerExample, ProgrammaticControlExample, ConditionalRenderingExample, CustomActionsExample, DebugViewExample } from '@/components/examples/select/advanced-examples';
+import {
+  ConditionalRenderingExample,
+  CustomActionsExample,
+  DebugViewExample,
+  ProgrammaticControlExample,
+  SelectConsumerExample
+} from "@/components/examples/select/advanced-examples";
+import { Button, Select, SelectConsumer, SelectOption } from "@productionbug/gecko";
 
 # Advanced Usage
 
@@ -19,10 +25,10 @@ SelectConsumer provides access to Select's context via a render prop. Use it to 
 </Preview>
 
 ```tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption, SelectConsumer } from '@hexpacket/ui';
+import { Select, SelectConsumer, SelectOption } from "@productionbug/gecko";
+import { useState } from "react";
 
 function Example() {
   const [value, setValue] = useState<string | null>(null);
@@ -31,10 +37,16 @@ function Example() {
     <Select value={value} onChange={setValue} filterable placeholder="Select a framework...">
       <SelectConsumer
         render={({ open, keyword, options }) => (
-          <div className="p-3 border rounded-md bg-gray-50 text-sm mb-2">
-            <p><strong>Status:</strong> {open ? 'Open' : 'Closed'}</p>
-            <p><strong>Filter:</strong> {keyword || '(none)'}</p>
-            <p><strong>Total Options:</strong> {options.length}</p>
+          <div className="p-3 border rounded-md bg-gray-50 dark:bg-neutral-800 text-sm mb-2">
+            <p>
+              <strong>Status:</strong> {open ? "Open" : "Closed"}
+            </p>
+            <p>
+              <strong>Filter:</strong> {keyword || "(none)"}
+            </p>
+            <p>
+              <strong>Total Options:</strong> {options.length}
+            </p>
           </div>
         )}
       />
@@ -67,10 +79,9 @@ Control the menu and selection programmatically:
         </Button>
         <Button
           onClick={() => {
-            setValue('python');
+            setValue("python");
             closeMenu();
-          }}
-        >
+          }}>
           Select Python
         </Button>
       </div>
@@ -96,9 +107,7 @@ Show/hide UI based on Select state:
     render={({ keyword, options, isSelected }) => {
       const selectedCount = options.filter((opt) => isSelected(opt.value)).length;
       const filteredCount = keyword
-        ? options.filter((opt) =>
-            opt.label.toLowerCase().includes(keyword.toLowerCase())
-          ).length
+        ? options.filter((opt) => opt.label.toLowerCase().includes(keyword.toLowerCase())).length
         : options.length;
 
       return (
@@ -134,20 +143,18 @@ Add quick action buttons inside the dropdown:
           size="sm"
           variant="ghost"
           onClick={() => {
-            handleChange('active');
+            handleChange("active");
             closeMenu();
-          }}
-        >
+          }}>
           Quick: Active
         </Button>
         <Button
           size="sm"
           variant="ghost"
           onClick={() => {
-            handleChange('inactive');
+            handleChange("inactive");
             closeMenu();
-          }}
-        >
+          }}>
           Quick: Inactive
         </Button>
         {currentValue && (
@@ -157,8 +164,7 @@ Add quick action buttons inside the dropdown:
             onClick={() => {
               setValue(null);
               closeMenu();
-            }}
-          >
+            }}>
             Clear
           </Button>
         )}
@@ -183,7 +189,7 @@ Inspect Select's internal state during development:
 <Select multiple value={values} onChange={setValues}>
   <SelectConsumer
     render={({ open, keyword, value, multiple, options, focusedOption }) => (
-      <pre className="text-xs bg-gray-50 p-3 rounded border">
+      <pre className="text-xs bg-gray-50 dark:bg-neutral-800 p-3 rounded border">
         {JSON.stringify(
           {
             open,
@@ -209,7 +215,7 @@ Inspect Select's internal state during development:
 For building completely custom Select components, use the `useSelect` hook directly:
 
 ```tsx
-import { useSelect } from '@hexpacket/ui';
+import { useSelect } from "@productionbug/gecko";
 
 function CustomSelectComponent() {
   const {
@@ -232,17 +238,13 @@ function CustomSelectComponent() {
   } = useSelect<string>();
 
   // Build your custom UI here
-  return (
-    <div>
-      {/* Custom implementation */}
-    </div>
-  );
+  return <div>{/* Custom implementation */}</div>;
 }
 
 // Must be used inside a Select component
 <Select value={value} onChange={setValue}>
   <CustomSelectComponent />
-</Select>
+</Select>;
 ```
 
 **Important**: `useSelect` must be called inside a Select component (it uses React Context).
@@ -251,50 +253,51 @@ function CustomSelectComponent() {
 
 ### State
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `open` | `boolean` | Whether dropdown is open |
-| `keyword` | `string` | Current filter keyword |
-| `value` | `T \| T[]` | Current selected value(s) |
-| `multiple` | `boolean` | Whether in multiple selection mode |
-| `isEmpty` | `boolean` | Whether no options match filter |
-| `disabled` | `boolean` | Whether Select is disabled |
-| `placeholder` | `string` | Placeholder text |
-| `closeMenuOnSelect` | `boolean` | Auto-close behavior |
+| Property            | Type       | Description                        |
+| ------------------- | ---------- | ---------------------------------- |
+| `open`              | `boolean`  | Whether dropdown is open           |
+| `keyword`           | `string`   | Current filter keyword             |
+| `value`             | `T \| T[]` | Current selected value(s)          |
+| `multiple`          | `boolean`  | Whether in multiple selection mode |
+| `isEmpty`           | `boolean`  | Whether no options match filter    |
+| `disabled`          | `boolean`  | Whether Select is disabled         |
+| `placeholder`       | `string`   | Placeholder text                   |
+| `closeMenuOnSelect` | `boolean`  | Auto-close behavior                |
 
 ### Data
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `options` | `SelectOptionConfig<T>[]` | All available options |
+| Property        | Type                       | Description              |
+| --------------- | -------------------------- | ------------------------ |
+| `options`       | `SelectOptionConfig<T>[]`  | All available options    |
 | `focusedOption` | `FocusedOption<T> \| null` | Currently focused option |
 
 ### Methods
 
-| Method | Type | Description |
-|--------|------|-------------|
-| `openMenu` | `() => void` | Open the dropdown |
-| `closeMenu` | `() => void` | Close the dropdown |
-| `toggleMenu` | `() => void` | Toggle dropdown state |
-| `handleChange` | `(value: T) => void` | Select/deselect an option |
-| `isSelected` | `(value: T) => boolean` | Check if option is selected |
-| `setKeyword` | `(keyword: string) => void` | Update filter keyword |
-| `setOpen` | `(open: boolean) => void` | Set open state directly |
-| `setFocusedOption` | `(option: FocusedOption<T>) => void` | Set focused option |
+| Method             | Type                                 | Description                 |
+| ------------------ | ------------------------------------ | --------------------------- |
+| `openMenu`         | `() => void`                         | Open the dropdown           |
+| `closeMenu`        | `() => void`                         | Close the dropdown          |
+| `toggleMenu`       | `() => void`                         | Toggle dropdown state       |
+| `handleChange`     | `(value: T) => void`                 | Select/deselect an option   |
+| `isSelected`       | `(value: T) => boolean`              | Check if option is selected |
+| `setKeyword`       | `(keyword: string) => void`          | Update filter keyword       |
+| `setOpen`          | `(open: boolean) => void`            | Set open state directly     |
+| `setFocusedOption` | `(option: FocusedOption<T>) => void` | Set focused option          |
 
 ### Advanced
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `floating` | `UseFloatingReturn` | Floating UI positioning data |
-| `inputRef` | `RefObject<HTMLInputElement>` | Ref for filter input |
-| `setInputRef` | `(ref: any) => RefCallback` | Set input ref callback |
-| `prefix` | `ReactNode` | Prefix content |
-| `suffix` | `ReactNode` | Suffix content |
+| Property      | Type                          | Description                  |
+| ------------- | ----------------------------- | ---------------------------- |
+| `floating`    | `UseFloatingReturn`           | Floating UI positioning data |
+| `inputRef`    | `RefObject<HTMLInputElement>` | Ref for filter input         |
+| `setInputRef` | `(ref: any) => RefCallback`   | Set input ref callback       |
+| `prefix`      | `ReactNode`                   | Prefix content               |
+| `suffix`      | `ReactNode`                   | Suffix content               |
 
 ## When to Use
 
 Use SelectConsumer/useSelect when you need to:
+
 - Build completely custom Select UI
 - Access internal state for debugging
 - Sync Select state with external systems
@@ -303,6 +306,7 @@ Use SelectConsumer/useSelect when you need to:
 ## When NOT to Use
 
 Don't use SelectConsumer when:
+
 - SelectTrigger can solve your custom trigger needs
 - SelectOption custom content is sufficient
 - You just need custom empty states (use SelectEmpty)

@@ -67,11 +67,11 @@ const RHFSelect: RHFSelectOverload = <T,>({
         return (
           <Select<T>
             inputRef={ref}
-            wrapperClassName={classNames("HPuiRHFSelect", wrapperClassName)}
+            wrapperClassName={classNames("GeckoUIRHFSelect", wrapperClassName)}
             {...rest}
             className={classNames(
-              "HPuiRHFSelectButton",
-              !!error && "HPuiRHFSelectButton--error",
+              "GeckoUIRHFSelectButton",
+              !!error && "GeckoUIRHFSelectButton--error",
               className
             )}
             value={value}

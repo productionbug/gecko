@@ -58,16 +58,16 @@ const Switch = forwardRef<null, SwitchProps>(
           }
         }}
         className={classNames(
-          "group HPuiSwitch",
-          `HPuiSwitch--size-${size}`,
+          "group GeckoUISwitch",
+          `GeckoUISwitch--size-${size}`,
           className
         )}
         {...rest}
         ref={ref}>
         <span
           className={classNames(
-            "HPuiSwitch__thumb",
-            `HPuiSwitch__thumb--size-${size}`,
+            "GeckoUISwitch__thumb",
+            `GeckoUISwitch__thumb--size-${size}`,
             thumbClassName
           )}
         />

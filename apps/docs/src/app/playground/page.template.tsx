@@ -40,9 +40,9 @@ import {
   Textarea,
   Tooltip,
   toast
-} from "@hexpacket/ui";
-import "@hexpacket/ui/markdown.css";
-import "@hexpacket/ui/styles.css";
+} from "@productionbug/gecko";
+import "@productionbug/gecko/markdown.css";
+import "@productionbug/gecko/styles.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Fragment, useLayoutEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -144,7 +144,7 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold">@hexpacket/ui Component Playground</h1>
+            <h1 className="text-4xl font-bold">@productionbug/gecko Component Playground</h1>
             <p className="">Comprehensive showcase of all UI components</p>
           </div>
 
@@ -824,7 +824,7 @@ console.log(greeting);
 
           {/* Footer */}
           <div className="text-center pb-8">
-            <p>All components from @hexpacket/ui showcased above</p>
+            <p>All components from @productionbug/gecko showcased above</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { Dropdown, Button } from '@hexpacket/ui';
+import { Dropdown, Button } from '@productionbug/gecko';
 
 export function BasicDropdownExample() {
   const items = [

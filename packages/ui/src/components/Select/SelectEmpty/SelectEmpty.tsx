@@ -44,7 +44,7 @@ const SelectEmpty = ({ children, className, ...rest }: SelectEmptyProps) => {
   if (!isEmpty) return null;
 
   return (
-    <div className={classNames("HPuiSelectEmpty", className)} {...rest}>
+    <div className={classNames("GeckoUISelectEmpty", className)} {...rest}>
       {children || "No options"}
     </div>
   );

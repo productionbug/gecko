@@ -3,7 +3,7 @@ title: SelectEmpty
 description: Display custom messages when no options match the search filter
 ---
 
-import { Select, SelectOption, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectOption, SelectEmpty } from '@productionbug/gecko';
 import { BasicEmptyExample, CustomMessageExample, StyledEmptyExample, EmptyWithActionExample, MultipleEmptyStatesExample, EmptyWithImageExample } from '@/components/examples/select/select-empty-examples';
 
 # SelectEmpty
@@ -20,7 +20,7 @@ SelectEmpty displays a placeholder message when no options match the search filt
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectOption, SelectEmpty } from '@productionbug/gecko';
 
 function Example() {
   const [value, setValue] = useState<string | null>(null);
@@ -190,7 +190,7 @@ Use `hideDefaultEmptyUI` on Select to completely remove empty state UI:
 
 ## Styling
 
-Base CSS class: `HPuiSelectEmpty`
+Base CSS class: `GeckoUISelectEmpty`
 
 You can customize with the `className` prop or target the base class in your stylesheet.
 

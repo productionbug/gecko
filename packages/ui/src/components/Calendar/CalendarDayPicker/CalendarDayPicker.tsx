@@ -44,7 +44,7 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
   return (
     <>
       <CalendarHeader header={`${months[activeMonth]} ${activeYear}`} {...headerProps} />
-      <div className="HPuiCalendar__day-picker-weekdays">
+      <div className="GeckoUICalendar__day-picker-weekdays">
         <span>S</span>
         <span>M</span>
         <span>T</span>
@@ -54,7 +54,7 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
         <span>S</span>
       </div>
 
-      <div className="HPuiCalendar__day-picker">
+      <div className="GeckoUICalendar__day-picker">
         {dates.map((date) => {
           const isActiveMonth = activeMonth === date.month;
 
@@ -103,24 +103,24 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
           return (
             <button
               className={classNames(
-                "HPuiCalendar__day-picker__button",
-                isToday && "HPuiCalendar__day-picker__button--today",
-                isSelected && "HPuiCalendar__day-picker__button--selected",
-                isRangeStart && "HPuiCalendar__day-picker__button--range-start",
-                isRangeEnd && "HPuiCalendar__day-picker__button--range-end",
-                isInRange && "HPuiCalendar__day-picker__button--in-range",
-                isHoverPreview && "HPuiCalendar__day-picker__button--hover-preview",
-                `HPuiCalendar__day-picker__button--active-month-${isActiveMonth}`,
+                "GeckoUICalendar__day-picker__button",
+                isToday && "GeckoUICalendar__day-picker__button--today",
+                isSelected && "GeckoUICalendar__day-picker__button--selected",
+                isRangeStart && "GeckoUICalendar__day-picker__button--range-start",
+                isRangeEnd && "GeckoUICalendar__day-picker__button--range-end",
+                isInRange && "GeckoUICalendar__day-picker__button--in-range",
+                isHoverPreview && "GeckoUICalendar__day-picker__button--hover-preview",
+                `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`,
                 activeDate === formattedDate &&
                   !isSelected &&
-                  "HPuiCalendar__day-picker__button--focused"
+                  "GeckoUICalendar__day-picker__button--focused"
               )}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}
               onMouseEnter={() => handleDateHover(formattedDate)}
               onMouseLeave={() => handleDateHover(null)}
               type="button">
-              <span className="HPuiCalendar__day-picker__button__text">{date.day}</span>
+              <span className="GeckoUICalendar__day-picker__button__text">{date.day}</span>
             </button>
           );
         })}

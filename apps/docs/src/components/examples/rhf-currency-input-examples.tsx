@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFCurrencyInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFCurrencyInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 export function BasicRHFCurrencyInputExample() {
   const methods = useForm({

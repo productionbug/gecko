@@ -3,7 +3,7 @@ title: Calendar
 description: Interactive calendar component for date selection with month/year navigation
 ---
 
-import { Calendar } from '@hexpacket/ui';
+import { Calendar } from '@productionbug/gecko';
 import { BasicCalendarExample, WithDefaultDateExample, ActiveDateExample, ProgrammaticControlExample, WithFormIntegrationExample } from '@/components/examples/calendar-examples';
 
 # Calendar
@@ -13,7 +13,7 @@ An interactive calendar component for selecting dates. Features month/year navig
 ## Installation
 
 ```tsx
-import { Calendar } from '@hexpacket/ui';
+import { Calendar } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -26,7 +26,7 @@ import { Calendar } from '@hexpacket/ui';
 'use client';
 
 import { useState } from 'react';
-import { Calendar } from '@hexpacket/ui';
+import { Calendar } from '@productionbug/gecko';
 
 function Example() {
   const [selectedDate, setSelectedDate] = useState<string | undefined>();
@@ -119,8 +119,8 @@ Navigate to specific months/years using `calendarRef`:
 'use client';
 
 import { useState, useRef } from 'react';
-import { Calendar, Button } from '@hexpacket/ui';
-import type { CalendarRef } from '@hexpacket/ui';
+import { Calendar, Button } from '@productionbug/gecko';
+import type { CalendarRef } from '@productionbug/gecko';
 
 function Example() {
   const [selectedDate, setSelectedDate] = useState<string | undefined>();
@@ -206,15 +206,15 @@ const handleSubmit = (e: React.FormEvent) => {
 
 The component uses BEM-style class names:
 
-- `HPuiCalendar` - Main container
-- `HPuiCalendar__header` - Month/year header
-- `HPuiCalendar__nav` - Navigation arrows
-- `HPuiCalendar__body` - Calendar grid
-- `HPuiCalendar__day` - Individual day cell
-- `HPuiCalendar__day--selected` - Selected day
-- `HPuiCalendar__day--active` - Active highlighted day
-- `HPuiCalendar__day--today` - Today's date
-- `HPuiCalendar__day--disabled` - Disabled day (different month)
+- `GeckoUICalendar` - Main container
+- `GeckoUICalendar__header` - Month/year header
+- `GeckoUICalendar__nav` - Navigation arrows
+- `GeckoUICalendar__body` - Calendar grid
+- `GeckoUICalendar__day` - Individual day cell
+- `GeckoUICalendar__day--selected` - Selected day
+- `GeckoUICalendar__day--active` - Active highlighted day
+- `GeckoUICalendar__day--today` - Today's date
+- `GeckoUICalendar__day--disabled` - Disabled day (different month)
 
 ## Accessibility
 

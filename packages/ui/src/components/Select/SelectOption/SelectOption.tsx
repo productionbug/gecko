@@ -274,10 +274,10 @@ const SelectOption = <T,>({ children, ...props }: SelectOptionProps<T>) => {
       tabIndex={-1}
       ref={ref}
       className={classNames(
-        "HPuiSelectOption",
-        `HPuiSelectOption--${selected ? "selected" : "unselected"}`,
-        focused && "HPuiSelectOption--focused",
-        disabled && "HPuiSelectOption--disabled",
+        "GeckoUISelectOption",
+        `GeckoUISelectOption--${selected ? "selected" : "unselected"}`,
+        focused && "GeckoUISelectOption--focused",
+        disabled && "GeckoUISelectOption--disabled",
         typeof className === "function" ? className({ value, selected, focused }) : className
       )}
       {...rest}
@@ -290,7 +290,7 @@ const SelectOption = <T,>({ children, ...props }: SelectOptionProps<T>) => {
       {/* eslint-disable-next-line react-hooks/static-components */}
       <Content />
       {!!selected && !hideCheckIcon && (
-        <div className="HPicon__check HPuiSelectOption__check-icon" />
+        <div className="GeckoUI-icon__check GeckoUISelectOption__check-icon" />
       )}
     </div>
   );

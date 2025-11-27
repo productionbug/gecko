@@ -1,6 +1,6 @@
 "use client";
 
-import { DateInput } from "@hexpacket/ui";
+import { DateInput } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function BasicDateInputExample() {

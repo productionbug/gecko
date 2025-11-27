@@ -3,7 +3,7 @@ title: Filterable Select
 description: Add search and filtering capabilities to Select with inline or dropdown modes
 ---
 
-import { Select, SelectOption, SelectDropdownSearch, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectOption, SelectDropdownSearch, SelectEmpty } from '@productionbug/gecko';
 import { InlineFilterExample, DropdownFilterExample, FilterableMultipleExample, FilterWithEmptyStateExample, DropdownFilterLargeListExample, CustomFilterContentExample } from '@/components/examples/select/filterable-examples';
 
 # Filterable Select
@@ -22,7 +22,7 @@ Type directly in the select button to filter options. Best for moderate lists wh
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 
 function Example() {
   const [value, setValue] = useState<string | null>(null);
@@ -54,7 +54,7 @@ Adds a default search input inside the dropdown menu. Best for large lists where
 </Preview>
 
 ```tsx
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 
 const [value, setValue] = useState<string | null>(null);
 
@@ -108,7 +108,7 @@ Use `SelectEmpty` to show a message when no options match the filter:
 </Preview>
 
 ```tsx
-import { Select, SelectOption, SelectEmpty } from '@hexpacket/ui';
+import { Select, SelectOption, SelectEmpty } from '@productionbug/gecko';
 
 const [value, setValue] = useState<string | null>(null);
 
@@ -219,7 +219,7 @@ const users = [
 If you want to customize the search input appearance in dropdown mode, you can use the `SelectDropdownSearch` component:
 
 ```tsx
-import { Select, SelectOption, SelectDropdownSearch } from '@hexpacket/ui';
+import { Select, SelectOption, SelectDropdownSearch } from '@productionbug/gecko';
 
 <Select filterable="dropdown" value={value} onChange={setValue}>
   <SelectDropdownSearch placeholder="Custom search..." className="border-2" />

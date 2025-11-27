@@ -1,5 +1,5 @@
 {
-  "name": "@hexpacket",
+  "name": "gecko-ui",
   "private": false,
   "scripts": {
     "build": "turbo run build",

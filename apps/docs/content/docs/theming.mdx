@@ -1,11 +1,11 @@
 ---
 title: Theming
-description: Customize HexPacket UI colors and design tokens using CSS variables
+description: Customize Gecko UI colors and design tokens using CSS variables
 ---
 
 # Theming
 
-HexPacket UI uses CSS custom properties (variables) for theming. All color values use RGB format without the `rgb()` wrapper, allowing for easy opacity adjustments.
+Gecko UI uses CSS custom properties (variables) for theming. All color values use RGB format without the `rgb()` wrapper, allowing for easy opacity adjustments.
 
 ## CSS Variables
 
@@ -17,17 +17,17 @@ Primary color scale from 50 (lightest) to 950 (darkest):
 
 ```css
 :root {
-  --hpui-primary-50: 255 248 235;
-  --hpui-primary-100: 255 235 204;
-  --hpui-primary-200: 255 214 153;
-  --hpui-primary-300: 255 184 96;
-  --hpui-primary-400: 255 149 51;
-  --hpui-primary-500: 255 115 21;   /* Base primary */
-  --hpui-primary-600: 236 93 14;
-  --hpui-primary-700: 200 70 8;
-  --hpui-primary-800: 150 48 5;
-  --hpui-primary-900: 110 35 3;
-  --hpui-primary-950: 72 24 1;
+  --gecko-ui-primary-50: 255 248 235;
+  --gecko-ui-primary-100: 255 235 204;
+  --gecko-ui-primary-200: 255 214 153;
+  --gecko-ui-primary-300: 255 184 96;
+  --gecko-ui-primary-400: 255 149 51;
+  --gecko-ui-primary-500: 255 115 21;   /* Base primary */
+  --gecko-ui-primary-600: 236 93 14;
+  --gecko-ui-primary-700: 200 70 8;
+  --gecko-ui-primary-800: 150 48 5;
+  --gecko-ui-primary-900: 110 35 3;
+  --gecko-ui-primary-950: 72 24 1;
 }
 ```
 
@@ -37,15 +37,15 @@ Background colors for various UI surfaces:
 
 ```css
 :root {
-  --hpui-surface-primary: 255 255 255;        /* Main background */
-  --hpui-surface-secondary: 250 250 250;      /* Secondary background */
-  --hpui-surface-tertiary: 245 245 245;       /* Tertiary background */
-  --hpui-surface-hover: 245 245 245;          /* Hover state */
-  --hpui-surface-hover-strong: 235 235 235;   /* Strong hover state */
-  --hpui-surface-active: 212 212 212;         /* Active/pressed state */
-  --hpui-surface-disabled: 235 235 235;       /* Disabled state */
-  --hpui-surface-overlay: 0 0 0;              /* Backdrop overlay */
-  --hpui-surface-autofill: 245 245 245;       /* Browser autofill */
+  --gecko-ui-surface-primary: 255 255 255;        /* Main background */
+  --gecko-ui-surface-secondary: 250 250 250;      /* Secondary background */
+  --gecko-ui-surface-tertiary: 245 245 245;       /* Tertiary background */
+  --gecko-ui-surface-hover: 245 245 245;          /* Hover state */
+  --gecko-ui-surface-hover-strong: 235 235 235;   /* Strong hover state */
+  --gecko-ui-surface-active: 212 212 212;         /* Active/pressed state */
+  --gecko-ui-surface-disabled: 235 235 235;       /* Disabled state */
+  --gecko-ui-surface-overlay: 0 0 0;              /* Backdrop overlay */
+  --gecko-ui-surface-autofill: 245 245 245;       /* Browser autofill */
 }
 ```
 
@@ -55,13 +55,13 @@ Text colors for different hierarchy levels:
 
 ```css
 :root {
-  --hpui-text-primary: 23 23 23;         /* Primary text */
-  --hpui-text-secondary: 64 64 64;       /* Secondary text */
-  --hpui-text-tertiary: 115 115 115;     /* Tertiary text */
-  --hpui-text-disabled: 163 163 163;     /* Disabled text */
-  --hpui-text-placeholder: 163 163 163;  /* Placeholder text */
-  --hpui-text-inverse: 250 250 250;      /* Inverse text (on dark) */
-  --hpui-text-muted: 115 115 115;        /* Muted text */
+  --gecko-ui-text-primary: 23 23 23;         /* Primary text */
+  --gecko-ui-text-secondary: 64 64 64;       /* Secondary text */
+  --gecko-ui-text-tertiary: 115 115 115;     /* Tertiary text */
+  --gecko-ui-text-disabled: 163 163 163;     /* Disabled text */
+  --gecko-ui-text-placeholder: 163 163 163;  /* Placeholder text */
+  --gecko-ui-text-inverse: 250 250 250;      /* Inverse text (on dark) */
+  --gecko-ui-text-muted: 115 115 115;        /* Muted text */
 }
 ```
 
@@ -71,11 +71,11 @@ Border colors for various states:
 
 ```css
 :root {
-  --hpui-border-primary: 235 235 235;    /* Default border */
-  --hpui-border-secondary: 212 212 212;  /* Secondary border */
-  --hpui-border-focus: 163 163 163;      /* Focus state */
-  --hpui-border-hover: 212 212 212;      /* Hover state */
-  --hpui-border-disabled: 235 235 235;   /* Disabled state */
+  --gecko-ui-border-primary: 235 235 235;    /* Default border */
+  --gecko-ui-border-secondary: 212 212 212;  /* Secondary border */
+  --gecko-ui-border-focus: 163 163 163;      /* Focus state */
+  --gecko-ui-border-hover: 212 212 212;      /* Hover state */
+  --gecko-ui-border-disabled: 235 235 235;   /* Disabled state */
 }
 ```
 
@@ -85,52 +85,52 @@ Custom scrollbar styling:
 
 ```css
 :root {
-  --hpui-scrollbar-track: 0 0 0 / 0;          /* Scrollbar track (transparent) */
-  --hpui-scrollbar-thumb: 209 213 219;        /* Scrollbar thumb */
-  --hpui-scrollbar-thumb-hover: 156 163 175;  /* Scrollbar thumb on hover */
+  --gecko-ui-scrollbar-track: 0 0 0 / 0;          /* Scrollbar track (transparent) */
+  --gecko-ui-scrollbar-thumb: 209 213 219;        /* Scrollbar thumb */
+  --gecko-ui-scrollbar-thumb-hover: 156 163 175;  /* Scrollbar thumb on hover */
 }
 ```
 
 ## Dark Mode
 
-HexPacket UI includes built-in dark mode support. Apply the `.dark` class to enable dark theme:
+Gecko UI includes built-in dark mode support. Apply the `.dark` class to enable dark theme:
 
 ```css
 .dark {
   /* Primary colors remain the same */
-  --hpui-primary-500: 255 115 21;
+  --gecko-ui-primary-500: 255 115 21;
 
   /* Surface colors inverted */
-  --hpui-surface-primary: 23 23 23;
-  --hpui-surface-secondary: 32 32 32;
-  --hpui-surface-tertiary: 45 45 45;
-  --hpui-surface-hover: 45 45 45;
-  --hpui-surface-hover-strong: 64 64 64;
-  --hpui-surface-active: 115 115 115;
-  --hpui-surface-disabled: 45 45 45;
-  --hpui-surface-overlay: 0 0 0;
-  --hpui-surface-autofill: 32 32 32;
+  --gecko-ui-surface-primary: 23 23 23;
+  --gecko-ui-surface-secondary: 32 32 32;
+  --gecko-ui-surface-tertiary: 45 45 45;
+  --gecko-ui-surface-hover: 45 45 45;
+  --gecko-ui-surface-hover-strong: 64 64 64;
+  --gecko-ui-surface-active: 115 115 115;
+  --gecko-ui-surface-disabled: 45 45 45;
+  --gecko-ui-surface-overlay: 0 0 0;
+  --gecko-ui-surface-autofill: 32 32 32;
 
   /* Text colors inverted */
-  --hpui-text-primary: 250 250 250;
-  --hpui-text-secondary: 212 212 212;
-  --hpui-text-tertiary: 163 163 163;
-  --hpui-text-disabled: 115 115 115;
-  --hpui-text-placeholder: 115 115 115;
-  --hpui-text-inverse: 23 23 23;
-  --hpui-text-muted: 163 163 163;
+  --gecko-ui-text-primary: 250 250 250;
+  --gecko-ui-text-secondary: 212 212 212;
+  --gecko-ui-text-tertiary: 163 163 163;
+  --gecko-ui-text-disabled: 115 115 115;
+  --gecko-ui-text-placeholder: 115 115 115;
+  --gecko-ui-text-inverse: 23 23 23;
+  --gecko-ui-text-muted: 163 163 163;
 
   /* Borders with opacity for dark mode */
-  --hpui-border-primary: 255 255 255 / 0.1;
-  --hpui-border-secondary: 255 255 255 / 0.15;
-  --hpui-border-focus: 115 115 115;
-  --hpui-border-hover: 163 163 163;
-  --hpui-border-disabled: 255 255 255 / 0.1;
+  --gecko-ui-border-primary: 255 255 255 / 0.1;
+  --gecko-ui-border-secondary: 255 255 255 / 0.15;
+  --gecko-ui-border-focus: 115 115 115;
+  --gecko-ui-border-hover: 163 163 163;
+  --gecko-ui-border-disabled: 255 255 255 / 0.1;
 
   /* Scrollbar colors for dark mode */
-  --hpui-scrollbar-track: 0 0 0 / 0;
-  --hpui-scrollbar-thumb: 75 85 99;
-  --hpui-scrollbar-thumb-hover: 107 114 128;
+  --gecko-ui-scrollbar-track: 0 0 0 / 0;
+  --gecko-ui-scrollbar-thumb: 75 85 99;
+  --gecko-ui-scrollbar-thumb-hover: 107 114 128;
 }
 ```
 
@@ -183,17 +183,17 @@ Override the primary color scale to match your brand:
 ```css
 :root {
   /* Blue primary color */
-  --hpui-primary-50: 239 246 255;
-  --hpui-primary-100: 219 234 254;
-  --hpui-primary-200: 191 219 254;
-  --hpui-primary-300: 147 197 253;
-  --hpui-primary-400: 96 165 250;
-  --hpui-primary-500: 59 130 246;   /* Base primary */
-  --hpui-primary-600: 37 99 235;
-  --hpui-primary-700: 29 78 216;
-  --hpui-primary-800: 30 64 175;
-  --hpui-primary-900: 30 58 138;
-  --hpui-primary-950: 23 37 84;
+  --gecko-ui-primary-50: 239 246 255;
+  --gecko-ui-primary-100: 219 234 254;
+  --gecko-ui-primary-200: 191 219 254;
+  --gecko-ui-primary-300: 147 197 253;
+  --gecko-ui-primary-400: 96 165 250;
+  --gecko-ui-primary-500: 59 130 246;   /* Base primary */
+  --gecko-ui-primary-600: 37 99 235;
+  --gecko-ui-primary-700: 29 78 216;
+  --gecko-ui-primary-800: 30 64 175;
+  --gecko-ui-primary-900: 30 58 138;
+  --gecko-ui-primary-950: 23 37 84;
 }
 ```
 
@@ -204,13 +204,13 @@ Override individual tokens:
 ```css
 :root {
   /* Make borders more prominent */
-  --hpui-border-primary: 200 200 200;
+  --gecko-ui-border-primary: 200 200 200;
 
   /* Adjust text hierarchy */
-  --hpui-text-secondary: 80 80 80;
+  --gecko-ui-text-secondary: 80 80 80;
 
   /* Custom hover states */
-  --hpui-surface-hover: 240 240 240;
+  --gecko-ui-surface-hover: 240 240 240;
 }
 ```
 
@@ -220,15 +220,15 @@ All colors use RGB format (space-separated values) to enable easy opacity adjust
 
 ```css
 /* Use with rgb() */
-color: rgb(var(--hpui-text-primary));
+color: rgb(var(--gecko-ui-text-primary));
 
 /* Use with opacity */
-color: rgb(var(--hpui-text-primary) / 0.5);
-background: rgb(var(--hpui-surface-primary) / 0.8);
+color: rgb(var(--gecko-ui-text-primary) / 0.5);
+background: rgb(var(--gecko-ui-surface-primary) / 0.8);
 
 /* Use in Tailwind arbitrary values */
-className="text-[rgb(var(--hpui-text-primary))]"
-className="bg-[rgb(var(--hpui-surface-hover)/0.5)]"
+className="text-[rgb(var(--gecko-ui-text-primary))]"
+className="bg-[rgb(var(--gecko-ui-surface-hover)/0.5)]"
 ```
 
 ## Component-Specific Styling
@@ -237,17 +237,17 @@ Components use their own class names for targeted styling:
 
 ```css
 /* Style all inputs */
-.HPuiInput {
-  --hpui-border-primary: 180 180 180;
+.GeckoUIInput {
+  --gecko-ui-border-primary: 180 180 180;
 }
 
 /* Style all buttons */
-.HPuiButton {
+.GeckoUIButton {
   border-radius: 0.5rem;
 }
 
 /* Style specific button variant */
-.HPuiButton--filled {
+.GeckoUIButton--filled {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 ```
@@ -258,7 +258,7 @@ Components use their own class names for targeted styling:
 2. **Maintain Consistency**: Keep color scales consistent with 50-950 range
 3. **Test Contrast**: Ensure text colors meet WCAG contrast requirements
 4. **Dark Mode Parity**: When customizing light mode, also update dark mode tokens
-5. **Component Overrides**: Use component-specific classes (`.HPuiButton`) rather than global tokens when possible
+5. **Component Overrides**: Use component-specific classes (`.GeckoUIButton`) rather than global tokens when possible
 
 ## Example: Complete Custom Theme
 
@@ -266,34 +266,34 @@ Components use their own class names for targeted styling:
 /* custom-theme.css */
 :root {
   /* Brand primary color (Purple) */
-  --hpui-primary-50: 250 245 255;
-  --hpui-primary-100: 243 232 255;
-  --hpui-primary-200: 233 213 255;
-  --hpui-primary-300: 216 180 254;
-  --hpui-primary-400: 192 132 252;
-  --hpui-primary-500: 168 85 247;   /* Base */
-  --hpui-primary-600: 147 51 234;
-  --hpui-primary-700: 126 34 206;
-  --hpui-primary-800: 107 33 168;
-  --hpui-primary-900: 88 28 135;
-  --hpui-primary-950: 59 7 100;
+  --gecko-ui-primary-50: 250 245 255;
+  --gecko-ui-primary-100: 243 232 255;
+  --gecko-ui-primary-200: 233 213 255;
+  --gecko-ui-primary-300: 216 180 254;
+  --gecko-ui-primary-400: 192 132 252;
+  --gecko-ui-primary-500: 168 85 247;   /* Base */
+  --gecko-ui-primary-600: 147 51 234;
+  --gecko-ui-primary-700: 126 34 206;
+  --gecko-ui-primary-800: 107 33 168;
+  --gecko-ui-primary-900: 88 28 135;
+  --gecko-ui-primary-950: 59 7 100;
 
   /* Custom border radius */
-  --hpui-border-radius: 0.75rem;
+  --gecko-ui-border-radius: 0.75rem;
 }
 
 /* Apply to components */
-.HPuiInput,
-.HPuiTextarea,
-.HPuiButton {
-  border-radius: var(--hpui-border-radius);
+.GeckoUIInput,
+.GeckoUITextarea,
+.GeckoUIButton {
+  border-radius: var(--gecko-ui-border-radius);
 }
 ```
 
 Import after the base styles:
 
 ```tsx
-import '@hexpacket/ui/styles.css';
+import '@productionbug/gecko/styles.css';
 import './custom-theme.css';
 ```
 

@@ -1,4 +1,4 @@
-.HPuiMarkdown {
+.GeckoUIMarkdown {
   h1 {
     font-size: 36px;
     font-weight: 700;
@@ -139,10 +139,10 @@
   }
 }
 
-.HPuiMarkdown p:first-child {
+.GeckoUIMarkdown p:first-child {
   margin-top: 0;
 }
 
-.HPuiMarkdown li>p:first-of-type {
+.GeckoUIMarkdown li>p:first-of-type {
   display: inline;
 }

@@ -182,7 +182,7 @@ const Calendar = (props: CalendarProps) => {
         const secondYear = activeMonth === 11 ? activeYear + 1 : activeYear;
 
         return (
-          <div className="HPuiCalendar__dual">
+          <div className="GeckoUICalendar__dual">
             <div>
               <CalendarDayPicker
                 mode="range"
@@ -269,10 +269,10 @@ const Calendar = (props: CalendarProps) => {
   return (
     <div
       className={classNames(
-        `HPuiCalendar`,
-        `HPuiCalendar--mode-${view}`,
-        `HPuiCalendar--selection-${mode}`,
-        `HPuiCalendar--calendars-${numberOfMonths}`,
+        `GeckoUICalendar`,
+        `GeckoUICalendar--mode-${view}`,
+        `GeckoUICalendar--selection-${mode}`,
+        `GeckoUICalendar--calendars-${numberOfMonths}`,
         className
       )}
       style={style}>

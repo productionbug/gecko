@@ -43,15 +43,15 @@ import type { RHFCurrencyInputProps } from "./RHFCurrencyInput.types";
 const RHFCurrencyInput: FC<RHFCurrencyInputProps> = ({ className, currency, ...rest }) => {
   return (
     <RHFNumberInput
-      className={classNames("HPuiRHFCurrencyInput", className)}
+      className={classNames("GeckoUIRHFCurrencyInput", className)}
       prefix={
         currency?.symbol ? (
-          <span className="HPuiRHFCurrencyInput__currency-symbol">{currency.symbol}</span>
+          <span className="GeckoUIRHFCurrencyInput__currency-symbol">{currency.symbol}</span>
         ) : null
       }
       suffix={
         currency?.code ? (
-          <span className="HPuiRHFCurrencyInput__currency-code">{currency.code}</span>
+          <span className="GeckoUIRHFCurrencyInput__currency-code">{currency.code}</span>
         ) : null
       }
       transform={{ input: toThousandsSeparatorFormat }}

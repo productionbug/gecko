@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function GroupedOptionsExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -29,8 +29,12 @@ export function GroupedWithFilterableExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="inline" value={value} onChange={setValue} placeholder="Search frameworks...">
-      <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase bg-gray-50">
+    <Select
+      filterable="inline"
+      value={value}
+      onChange={setValue}
+      placeholder="Search frameworks...">
+      <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase bg-gray-50 dark:bg-neutral-800">
         Frontend Frameworks
       </div>
       <SelectOption value="react" label="React" />
@@ -39,7 +43,7 @@ export function GroupedWithFilterableExample() {
 
       <hr className="my-1 border-gray-200" />
 
-      <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase bg-gray-50">
+      <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase bg-gray-50 dark:bg-neutral-800">
         Backend Frameworks
       </div>
       <SelectOption value="express" label="Express" />
@@ -54,7 +58,7 @@ export function WithHeaderAndFooterExample() {
 
   return (
     <Select value={value} onChange={setValue} placeholder="Select a color...">
-      <div className="px-3 py-2 border-b bg-gray-50">
+      <div className="px-3 py-2 border-b bg-gray-50 dark:bg-neutral-800">
         <p className="text-sm font-medium">Choose your favorite color</p>
         <p className="text-xs text-gray-500">This will be used as your theme</p>
       </div>
@@ -64,7 +68,7 @@ export function WithHeaderAndFooterExample() {
       <SelectOption value="purple" label="Purple" />
       <SelectOption value="red" label="Red" />
 
-      <div className="px-3 py-2 border-t bg-gray-50">
+      <div className="px-3 py-2 border-t bg-gray-50 dark:bg-neutral-800">
         <a href="#" className="text-xs text-blue-600 hover:underline">
           Customize colors →
         </a>

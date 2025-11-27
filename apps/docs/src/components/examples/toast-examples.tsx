@@ -1,6 +1,6 @@
 'use client';
 
-import { toast, Button } from '@hexpacket/ui';
+import { toast, Button } from '@productionbug/gecko';
 
 export function BasicToastExample() {
   return (
@@ -146,7 +146,7 @@ export function CustomStyledToastExample() {
           toast('Custom styled toast', {
             className: 'border-2 border-blue-500',
             style: {
-              background: 'rgb(var(--hpui-surface-secondary))'
+              background: 'rgb(var(--gecko-ui-surface-secondary))'
             }
           })
         }

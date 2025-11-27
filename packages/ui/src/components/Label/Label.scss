@@ -1,6 +1,6 @@
 @import "../../mixins.scss";
 
-.HPuiLabel {
+.GeckoUILabel {
   @include base-reset;
 
   @apply text-text-muted flex min-h-[24px] w-auto items-center gap-1 text-sm font-medium;

@@ -4,21 +4,21 @@ import { Toaster } from "sonner";
 
 import { DialogContainer } from "../Dialog/DialogContainer";
 import { DrawerContainer } from "../Drawer/DrawerContainer";
-import type { HexpacketUIContainerProps } from "./HexpacketUIContainer.types";
+import type { GeckoUIPortalProps } from "./GeckoUIPortal.types";
 
 /**
- * HexpacketUIContainer is a container component that wraps the Toast, ConfirmDialog, and other components that need to mount at the top level of the application.
+ * GeckoUIPortal is a container component that wraps the Toast, ConfirmDialog, and other components that need to mount at the top level of the application.
  *
  * Please refer to [MermaidOptions](https://mermaid.js.org/config/schema-docs/config.html#mermaid-config-schema) to see the available options for the `mermaidOptions` prop.
  * @example
  *
  * ```js
- * import { HexpacketUIContainer } from '@hexpacket/ui';
+ * import { GeckoUIPortal } from '@productionbug/gecko';
  *
  * renderApp(
  *  <>
  *   <App />
- *   <HexpacketUIContainer
+ *   <GeckoUIPortal
  *      toastOptions={{
  *        position: 'bottom-right',
  *        ... other options
@@ -31,7 +31,7 @@ import type { HexpacketUIContainerProps } from "./HexpacketUIContainer.types";
  * )
  * ```
  * */
-const HexpacketUIContainer: FC<HexpacketUIContainerProps> = ({
+const GeckoUIPortal: FC<GeckoUIPortalProps> = ({
   toastOptions = {},
   mermaidConfig = {}
 }) => {
@@ -51,9 +51,9 @@ const HexpacketUIContainer: FC<HexpacketUIContainerProps> = ({
         position="bottom-right"
         style={
           {
-            "--normal-bg": "rgb(var(--hpui-surface-primary))",
-            "--normal-text": "rgb(var(--hpui-text-primary))",
-            "--normal-border": "rgb(var(--hpui-border-primary))",
+            "--normal-bg": "rgb(var(--gecko-ui-surface-primary))",
+            "--normal-text": "rgb(var(--gecko-ui-text-primary))",
+            "--normal-border": "rgb(var(--gecko-ui-border-primary))",
             ...style
           } as React.CSSProperties
         }
@@ -65,4 +65,4 @@ const HexpacketUIContainer: FC<HexpacketUIContainerProps> = ({
   );
 };
 
-export default HexpacketUIContainer;
+export default GeckoUIPortal;

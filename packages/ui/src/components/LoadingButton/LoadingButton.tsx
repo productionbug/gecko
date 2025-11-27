@@ -81,11 +81,11 @@ const LoadingButton: FC<LoadingButtonProps> = ({
   return (
     <Button
       className={classNames(
-        "HPuiLoadingButton",
-        `HPuiLoadingButton--${variant}`,
-        `HPuiLoadingButton--${variant}-${color}`,
-        `HPuiLoadingButton--size-${size}`,
-        loading && `HPuiLoadingButton--loading HPuiLoadingButton--${variant}-loading`,
+        "GeckoUILoadingButton",
+        `GeckoUILoadingButton--${variant}`,
+        `GeckoUILoadingButton--${variant}-${color}`,
+        `GeckoUILoadingButton--size-${size}`,
+        loading && `GeckoUILoadingButton--loading GeckoUILoadingButton--${variant}-loading`,
         className
       )}
       disabled={loading || disabled}

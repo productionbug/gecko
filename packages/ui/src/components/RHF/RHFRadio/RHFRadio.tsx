@@ -70,7 +70,7 @@ const RHFRadio: FC<RHFRadioProps> = ({
       name={name}
       render={({ field }) => {
         return (
-          <label className="HPuiRHFRadio group" htmlFor={uniqueId}>
+          <label className="GeckoUIRHFRadio group" htmlFor={uniqueId}>
             <Radio
               {...field}
               {...rest}
@@ -88,7 +88,7 @@ const RHFRadio: FC<RHFRadioProps> = ({
               value={undefined}
             />
 
-            <span className={classNames("HPuiRHFRadio__label", labelClassName)}>
+            <span className={classNames("GeckoUIRHFRadio__label", labelClassName)}>
               <DynamicComponentRenderer component={label} />
             </span>
           </label>

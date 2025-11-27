@@ -1,6 +1,6 @@
 @import "../../../mixins.scss";
 
-.HPuiRHFFilePicker {
+.GeckoUIRHFFilePicker {
   @apply relative flex h-[220px] w-full flex-col rounded border-2 border-dashed border-border-secondary;
 
   &--loading {

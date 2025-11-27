@@ -3,7 +3,7 @@ title: Menu
 description: Styled wrapper around HeadlessUI Menu for accessible dropdown menus
 ---
 
-import { Menu, MenuButton, MenuItem, MenuItems, MenuSeparator, MenuSection, MenuHeading, Button } from '@hexpacket/ui';
+import { Menu, MenuButton, MenuItem, MenuItems, MenuSeparator, MenuSection, MenuHeading, Button } from '@productionbug/gecko';
 import { BasicMenuExample, WithIconsExample, WithSectionsExample, DisabledItemsExample, CustomButtonExample, AnchorPositionExample } from '@/components/examples/menu-examples';
 
 # Menu
@@ -21,7 +21,7 @@ import {
   MenuSeparator,
   MenuSection,
   MenuHeading
-} from '@hexpacket/ui';
+} from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -31,7 +31,7 @@ import {
 </Preview>
 
 ```tsx
-import { Menu, MenuButton, MenuItem, MenuItems } from '@hexpacket/ui';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@productionbug/gecko';
 
 function Example() {
   return (
@@ -234,7 +234,7 @@ import { Edit, Copy, Trash } from 'lucide-react';
 </Preview>
 
 ```tsx
-import { Button } from '@hexpacket/ui';
+import { Button } from '@productionbug/gecko';
 
 <Menu>
   <MenuButton as={Button} variant="filled">
@@ -333,9 +333,9 @@ Available anchor positions:
 
 The component uses BEM-style class names:
 
-- `HPuiMenu__button` - Menu button
-- `HPuiMenu__items` - Menu items container
-- `HPuiMenu__item` - Individual menu item
+- `GeckoUIMenu__button` - Menu button
+- `GeckoUIMenu__items` - Menu items container
+- `GeckoUIMenu__item` - Individual menu item
 
 Additional styling should be applied via the `className` prop.
 

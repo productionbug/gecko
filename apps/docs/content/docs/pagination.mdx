@@ -3,7 +3,7 @@ title: Pagination
 description: Navigate through multiple pages of content with intelligent ellipsis display
 ---
 
-import { Pagination } from '@hexpacket/ui';
+import { Pagination } from '@productionbug/gecko';
 import { BasicPaginationExample, LargePaginationExample, CenteredPaginationExample, RightAlignedPaginationExample, WithDataFetchingExample, APIIntegrationExample } from '@/components/examples/pagination-examples';
 
 # Pagination
@@ -13,7 +13,7 @@ A pagination component for navigating through multiple pages of content. Feature
 ## Installation
 
 ```tsx
-import { Pagination } from '@hexpacket/ui';
+import { Pagination } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -26,7 +26,7 @@ import { Pagination } from '@hexpacket/ui';
 'use client';
 
 import { useState } from 'react';
-import { Pagination } from '@hexpacket/ui';
+import { Pagination } from '@productionbug/gecko';
 
 function Example() {
   const [page, setPage] = useState(1);
@@ -232,15 +232,15 @@ Displays current page / total pages (e.g., "5 / 10") for quick reference.
 
 The component uses BEM-style class names:
 
-- `HPuiPagination` - Main container
-- `HPuiPagination__arrow` - Previous/Next buttons
-- `HPuiPagination__arrow--previous` - Previous arrow icon
-- `HPuiPagination__arrow--next` - Next arrow icon
-- `HPuiPagination__page-count` - Page counter display
-- `HPuiPagination__page-buttons` - Page number buttons container
-- `HPuiPagination__page-button` - Individual page button
-- `HPuiPagination__page-button--active` - Active page
-- `HPuiPagination__page-button--ellipsis` - Ellipsis button
+- `GeckoUIPagination` - Main container
+- `GeckoUIPagination__arrow` - Previous/Next buttons
+- `GeckoUIPagination__arrow--previous` - Previous arrow icon
+- `GeckoUIPagination__arrow--next` - Next arrow icon
+- `GeckoUIPagination__page-count` - Page counter display
+- `GeckoUIPagination__page-buttons` - Page number buttons container
+- `GeckoUIPagination__page-button` - Individual page button
+- `GeckoUIPagination__page-button--active` - Active page
+- `GeckoUIPagination__page-button--ellipsis` - Ellipsis button
 
 ## Accessibility
 

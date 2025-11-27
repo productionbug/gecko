@@ -3,7 +3,7 @@ title: RHFTextarea
 description: Multi-line text input component integrated with React Hook Form
 ---
 
-import { RHFTextarea } from '@hexpacket/ui';
+import { RHFTextarea } from '@productionbug/gecko';
 import {
   BasicRHFTextareaExample,
   WithValidationExample,
@@ -20,7 +20,7 @@ A multi-line textarea component integrated with React Hook Form that automatical
 ## Installation
 
 ```tsx
-import { RHFTextarea } from '@hexpacket/ui';
+import { RHFTextarea } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -31,7 +31,7 @@ import { RHFTextarea } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFTextarea } from '@hexpacket/ui';
+import { RHFTextarea } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -75,7 +75,7 @@ Extends all props from [Textarea](/docs/textarea) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFTextarea, RHFInputGroup } from '@hexpacket/ui';
+import { RHFTextarea, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   bio: z.string().min(10, 'Bio must be at least 10 characters').max(500, 'Bio must not exceed 500 characters')
@@ -148,7 +148,7 @@ function Example() {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFTextarea, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFTextarea, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -198,7 +198,7 @@ function FormExample() {
 ## Error States
 
 RHFTextarea automatically displays error states with:
-- Red border via `HPuiRHFTextarea--error` CSS class when `fieldState.error` exists
+- Red border via `GeckoUIRHFTextarea--error` CSS class when `fieldState.error` exists
 
 Use [RHFInputGroup](/docs/rhf-input-group) component for label + textarea + error layout:
 

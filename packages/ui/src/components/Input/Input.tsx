@@ -56,16 +56,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <label
         aria-disabled={disabled}
         className={classNames(
-          "HPuiInput group",
-          disabled ? "HPuiInput--disabled" : "HPuiInput--enabled",
-          readOnly && "HPuiInput--readonly",
+          "GeckoUIInput group",
+          disabled ? "GeckoUIInput--disabled" : "GeckoUIInput--enabled",
+          readOnly && "GeckoUIInput--readonly",
           className
         )}
         htmlFor={id ?? _id}>
         <DynamicComponentRenderer component={prefix} inputRef={ref} />
 
         <input
-          className={classNames("HPuiInput__input", inputClassName)}
+          className={classNames("GeckoUIInput__input", inputClassName)}
           disabled={disabled}
           id={id ?? _id}
           name={name}

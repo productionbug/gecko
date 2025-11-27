@@ -3,7 +3,7 @@ title: RHFSelect
 description: Select dropdown component integrated with React Hook Form
 ---
 
-import { RHFSelect, SelectOption } from '@hexpacket/ui';
+import { RHFSelect, SelectOption } from '@productionbug/gecko';
 import {
   BasicRHFSelectExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ A select dropdown component integrated with React Hook Form that automatically d
 ## Installation
 
 ```tsx
-import { RHFSelect, SelectOption } from '@hexpacket/ui';
+import { RHFSelect, SelectOption } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFSelect, SelectOption } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFSelect, SelectOption } from '@hexpacket/ui';
+import { RHFSelect, SelectOption } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -84,7 +84,7 @@ Extends all props from [Select](/docs/select) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSelect, SelectOption, RHFInputGroup } from '@hexpacket/ui';
+import { RHFSelect, SelectOption, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   validationSkills: z.string().min(1, 'Please select at least one skill')
@@ -125,7 +125,7 @@ Enable multiple selection mode to allow users to select multiple options:
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFSelect, SelectOption } from '@hexpacket/ui';
+import { RHFSelect, SelectOption } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -215,7 +215,7 @@ Execute custom logic when the selection changes:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSelect, SelectOption, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFSelect, SelectOption, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   formCountry: z.string().min(1, 'Country is required'),
@@ -347,7 +347,7 @@ const methods = useForm({
 ## Error States
 
 RHFSelect automatically displays error states with:
-- Red border via `HPuiRHFSelectButton--error` CSS class when `fieldState.error` exists
+- Red border via `GeckoUIRHFSelectButton--error` CSS class when `fieldState.error` exists
 - No automatic error message display (use RHFInputGroup or RHFError component)
 
 Use [RHFInputGroup](/docs/rhf-input-group) component for label + select + error layout:

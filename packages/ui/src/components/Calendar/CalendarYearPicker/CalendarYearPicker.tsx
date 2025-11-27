@@ -31,7 +31,7 @@ function CalendarYearPicker({ activeYear, onSelectYear, ...headerProps }: Calend
         {...headerProps}
       />
 
-      <div className="HPuiCalendar__year-picker">
+      <div className="GeckoUICalendar__year-picker">
         {years.map((year, i) => {
           const selected = activeYear === year;
           const isPrevNext = i === 0 || i === 11;
@@ -39,9 +39,9 @@ function CalendarYearPicker({ activeYear, onSelectYear, ...headerProps }: Calend
           return (
             <button
               className={classNames(
-                "HPuiCalendar__year-picker__button",
-                selected && "HPuiCalendar__year-picker__button--selected",
-                isPrevNext && "HPuiCalendar__year-picker__button--prev-next"
+                "GeckoUICalendar__year-picker__button",
+                selected && "GeckoUICalendar__year-picker__button--selected",
+                isPrevNext && "GeckoUICalendar__year-picker__button--prev-next"
               )}
               key={year}
               onClick={() => onSelectYear?.(year)}

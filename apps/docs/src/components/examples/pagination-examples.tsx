@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Pagination } from '@hexpacket/ui';
+import { Pagination } from '@productionbug/gecko';
 
 export function BasicPaginationExample() {
   const [page, setPage] = useState(1);
@@ -78,7 +78,7 @@ export function WithDataFetchingExample() {
         ) : (
           <ul className="space-y-2">
             {currentItems.map((item, index) => (
-              <li key={index} className="p-2 bg-gray-50 rounded">
+              <li key={index} className="p-2 bg-gray-50 dark:bg-neutral-800 rounded">
                 {item}
               </li>
             ))}

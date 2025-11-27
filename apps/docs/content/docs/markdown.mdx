@@ -3,7 +3,7 @@ title: Markdown
 description: Render formatted markdown text as HTML with support for GFM, syntax highlighting, and sanitization
 ---
 
-import { Markdown } from '@hexpacket/ui';
+import { Markdown } from '@productionbug/gecko';
 import { BasicMarkdownExample, WithTableExample, WithTaskListExample, AsyncRenderingExample, WithErrorHandlingExample, SanitizedContentExample, CustomElementExample, RichContentExample } from '@/components/examples/markdown-examples';
 
 # Markdown
@@ -13,7 +13,7 @@ Renders formatted markdown text as HTML with support for both synchronous and as
 ## Installation
 
 ```tsx
-import { Markdown } from '@hexpacket/ui';
+import { Markdown } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -25,7 +25,7 @@ import { Markdown } from '@hexpacket/ui';
 ```tsx
 'use client';
 
-import { Markdown } from '@hexpacket/ui';
+import { Markdown } from '@productionbug/gecko';
 
 function Example() {
   const content = `
@@ -146,7 +146,7 @@ Customize error display:
 </Preview>
 
 ```tsx
-import { Markdown, Alert } from '@hexpacket/ui';
+import { Markdown, Alert } from '@productionbug/gecko';
 
 <Markdown
   renderError={({ message }) => <Alert variant="error">Error: {message}</Alert>}
@@ -260,7 +260,7 @@ Use semantic HTML elements:
 ### Basic Usage
 
 ```tsx
-import { Markdown } from '@hexpacket/ui';
+import { Markdown } from '@productionbug/gecko';
 
 const content: string = '## Hello';
 
@@ -270,7 +270,7 @@ const content: string = '## Hello';
 ### With Custom Element
 
 ```tsx
-import type { MarkdownProps } from '@hexpacket/ui';
+import type { MarkdownProps } from '@productionbug/gecko';
 
 const MyMarkdown: React.FC<MarkdownProps<'article'>> = (props) => {
   return <Markdown as="article" {...props} />;
@@ -289,10 +289,10 @@ const errorHandler: React.FC<{ message: string }> = ({ message }) => (
 
 ## Styling
 
-The component uses the class name `HPuiMarkdown`. You can target it in your CSS to apply custom styles:
+The component uses the class name `GeckoUIMarkdown`. You can target it in your CSS to apply custom styles:
 
 ```css
-.HPuiMarkdown {
+.GeckoUIMarkdown {
   /* Your custom styles */
 }
 ```

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Select, SelectOption } from "@hexpacket/ui";
+import { Button, Select, SelectOption } from "@productionbug/gecko";
 import { useState } from "react";
 
 export function BasicMultipleExample() {

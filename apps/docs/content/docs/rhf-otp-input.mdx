@@ -3,7 +3,7 @@ title: RHFOTPInput
 description: OTP (One-Time Password) input component integrated with React Hook Form
 ---
 
-import { RHFOTPInput } from '@hexpacket/ui';
+import { RHFOTPInput } from '@productionbug/gecko';
 import {
   BasicRHFOTPInputExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ An OTP (One-Time Password) input component integrated with React Hook Form that 
 ## Installation
 
 ```tsx
-import { RHFOTPInput } from '@hexpacket/ui';
+import { RHFOTPInput } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFOTPInput } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFOTPInput } from '@hexpacket/ui';
+import { RHFOTPInput } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -77,7 +77,7 @@ Extends all props from base OTPInput component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFOTPInput, RHFInputGroup } from '@hexpacket/ui';
+import { RHFOTPInput, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   validationCode: z.string().length(6, 'OTP must be exactly 6 digits').regex(/^\d+$/, 'OTP must contain only numbers')
@@ -156,7 +156,7 @@ const schema = z.object({
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFOTPInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFOTPInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   twoFactorCode: z.string().length(6, 'Code must be exactly 6 digits').regex(/^\d+$/, 'Code must contain only numbers')
@@ -232,7 +232,7 @@ This callback is triggered automatically when the user completes entering all di
 ## Error States
 
 RHFOTPInput automatically displays error states with:
-- Red border via `HPuiRHFOTPInput--error` CSS class when `fieldState.error` exists
+- Red border via `GeckoUIRHFOTPInput--error` CSS class when `fieldState.error` exists
 - Individual input fields inherit error styling
 
 Use [RHFInputGroup](/docs/rhf-input-group) component for label + input + error layout:

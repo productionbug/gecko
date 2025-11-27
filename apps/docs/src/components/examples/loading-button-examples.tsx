@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { LoadingButton } from '@hexpacket/ui';
+import { LoadingButton } from '@productionbug/gecko';
 
 export function AsyncOperationExample() {
   const [isDownloading, setIsDownloading] = useState(false);

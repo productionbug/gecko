@@ -1,6 +1,6 @@
 @import "../../../mixins.scss";
 
-.HPuiCalendar {
+.GeckoUICalendar {
   @include base-reset;
 
   @apply mt-px min-w-[320px] max-w-[320px] rounded-md border border-border-primary px-3 py-4 text-sm;

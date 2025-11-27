@@ -3,7 +3,7 @@ title: SelectOption
 description: Advanced option patterns including custom content, click handlers, and visibility control
 ---
 
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 import { BasicOptionExample, CustomContentExample, HideCheckIconExample, DisabledOptionExample, CustomClickExample, PreventDefaultExample, VisibilityControlExample, ComplexContentExample } from '@/components/examples/select/select-option-examples';
 
 # SelectOption
@@ -20,7 +20,7 @@ The SelectOption component represents an individual selectable item within a Sel
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 
 function Example() {
   const [value, setValue] = useState<string | null>(null);
@@ -301,10 +301,10 @@ onClick={({ selectCurrentOption, closeMenu, value, preventDefault }) => void}
 
 The component uses BEM-style class names:
 
-- `HPuiSelectOption` - Base option element
-- `HPuiSelectOption--selected` - Applied when selected
-- `HPuiSelectOption--focused` - Applied when focused
-- `HPuiSelectOption--disabled` - Applied when disabled
+- `GeckoUISelectOption` - Base option element
+- `GeckoUISelectOption--selected` - Applied when selected
+- `GeckoUISelectOption--focused` - Applied when focused
+- `GeckoUISelectOption--disabled` - Applied when disabled
 
 ## Best Practices
 

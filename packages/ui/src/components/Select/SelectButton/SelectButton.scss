@@ -1,6 +1,6 @@
 @import "../../../mixins.scss";
 
-.HPuiSelectButton {
+.GeckoUISelectButton {
   @include button-reset;
 
   @apply relative flex min-h-10 w-full items-center gap-2 rounded-md border border-border-secondary py-1 pl-3 pr-3 text-text-primary;

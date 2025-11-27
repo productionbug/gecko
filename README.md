@@ -1,8 +1,8 @@
-# HexPacket UI
+# Gecko UI
 
 A flexible, themeable React component library built with Tailwind CSS.
 
-📚 **Documentation**: [ui.hexpacket.com](https://ui.hexpacket.com)
+📚 **Documentation**: [Gecko](https://gecko.productionbug.com)
 
 ## Features
 
@@ -16,11 +16,11 @@ A flexible, themeable React component library built with Tailwind CSS.
 ## Installation
 
 ```bash
-npm install @hexpacket/ui
+npm install @productionbug/gecko
 # or
-pnpm add @hexpacket/ui
+pnpm add @productionbug/gecko
 # or
-yarn add @hexpacket/ui
+yarn add @productionbug/gecko
 ```
 
 ## Quick Start
@@ -30,7 +30,7 @@ yarn add @hexpacket/ui
 Import the component styles in your app:
 
 ```tsx
-import "@hexpacket/ui/styles.css";
+import "@productionbug/gecko/styles.css";
 ```
 
 > If you use `tailwindcss`, make sure to import the css inside `layer` directive to correctly override the styles:
@@ -39,14 +39,14 @@ import "@hexpacket/ui/styles.css";
 @import "tailwindcss";
 
 @layer components {
-  @import "@hexpacket/ui/styles.css";
+  @import "@productionbug/gecko/styles.css";
 }
 ```
 
 ### 2. Use Components
 
 ```tsx
-import { Alert, Button, Input } from "@hexpacket/ui";
+import { Alert, Button, Input } from "@productionbug/gecko";
 
 function App() {
   return (
@@ -65,7 +65,7 @@ function App() {
 
 ## Theming
 
-HPui uses a powerful CSS variable-based theming system that automatically adapts all components when you change the theme class.
+GeckoUI uses a powerful CSS variable-based theming system that automatically adapts all components when you change the theme class.
 
 ### Applying Themes
 
@@ -122,11 +122,11 @@ All components use BEM (Block Element Modifier) naming for easy customization:
 
 ```css
 /* Target specific component parts */
-.HPuiButton--contained-primary {
+.GeckoUIButton--contained-primary {
   /* Your custom styles */
 }
 
-.HPuiInput__input {
+.GeckoUIInput__input {
   /* Style the inner input element */
 }
 ```
@@ -136,7 +136,7 @@ All components use BEM (Block Element Modifier) naming for easy customization:
 All components are fully typed. Import types as needed:
 
 ```tsx
-import type { ButtonProps, InputProps } from "@hexpacket/ui";
+import type { ButtonProps, InputProps } from "@productionbug/gecko";
 ```
 
 ## License
@@ -145,4 +145,4 @@ This project is licensed under the MIT License.
 
 ## Support
 
-For issues and feature requests, please visit our [@hexpacket/ui](https://github.com/hexpacket/ui).
+For issues and feature requests, please visit our [@productionbug/gecko](https://github.com/productionbug/gecko).

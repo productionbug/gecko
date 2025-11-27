@@ -3,7 +3,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFSelect, SelectOption, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFSelect, SelectOption, RHFInputGroup, Button } from '@productionbug/gecko';
 
 export function BasicRHFSelectExample() {
   const methods = useForm({

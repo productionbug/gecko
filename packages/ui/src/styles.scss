@@ -8,74 +8,74 @@
 }
 
 :root {
-  --hpui-primary-50: 239 246 255;
-  --hpui-primary-100: 219 234 254;
-  --hpui-primary-200: 191 219 254;
-  --hpui-primary-300: 147 197 253;
-  --hpui-primary-400: 96 165 250;
-  --hpui-primary-500: 59 130 246;
-  --hpui-primary-600: 37 99 235;
-  --hpui-primary-700: 29 78 216;
-  --hpui-primary-800: 30 64 175;
-  --hpui-primary-900: 30 58 138;
-  --hpui-primary-950: 23 37 84;
+  --gecko-ui-primary-50: 239 246 255;
+  --gecko-ui-primary-100: 219 234 254;
+  --gecko-ui-primary-200: 191 219 254;
+  --gecko-ui-primary-300: 147 197 253;
+  --gecko-ui-primary-400: 96 165 250;
+  --gecko-ui-primary-500: 59 130 246;
+  --gecko-ui-primary-600: 37 99 235;
+  --gecko-ui-primary-700: 29 78 216;
+  --gecko-ui-primary-800: 30 64 175;
+  --gecko-ui-primary-900: 30 58 138;
+  --gecko-ui-primary-950: 23 37 84;
 
-  --hpui-surface-primary: 255 255 255;
-  --hpui-surface-secondary: 250 250 250;
-  --hpui-surface-tertiary: 245 245 245;
-  --hpui-surface-hover: 245 245 245;
-  --hpui-surface-hover-strong: 235 235 235;
-  --hpui-surface-active: 212 212 212;
-  --hpui-surface-disabled: 235 235 235;
-  --hpui-surface-overlay: 0 0 0;
-  --hpui-surface-autofill: 245 245 245;
+  --gecko-ui-surface-primary: 255 255 255;
+  --gecko-ui-surface-secondary: 250 250 250;
+  --gecko-ui-surface-tertiary: 245 245 245;
+  --gecko-ui-surface-hover: 245 245 245;
+  --gecko-ui-surface-hover-strong: 235 235 235;
+  --gecko-ui-surface-active: 212 212 212;
+  --gecko-ui-surface-disabled: 235 235 235;
+  --gecko-ui-surface-overlay: 0 0 0;
+  --gecko-ui-surface-autofill: 245 245 245;
 
-  --hpui-text-primary: 23 23 23;
-  --hpui-text-secondary: 64 64 64;
-  --hpui-text-tertiary: 115 115 115;
-  --hpui-text-disabled: 163 163 163;
-  --hpui-text-placeholder: 163 163 163;
-  --hpui-text-inverse: 250 250 250;
-  --hpui-text-muted: 115 115 115;
-  --hpui-text-on-primary: 255 255 255;
+  --gecko-ui-text-primary: 23 23 23;
+  --gecko-ui-text-secondary: 64 64 64;
+  --gecko-ui-text-tertiary: 115 115 115;
+  --gecko-ui-text-disabled: 163 163 163;
+  --gecko-ui-text-placeholder: 163 163 163;
+  --gecko-ui-text-inverse: 250 250 250;
+  --gecko-ui-text-muted: 115 115 115;
+  --gecko-ui-text-on-primary: 255 255 255;
 
-  --hpui-border-primary: 235 235 235;
-  --hpui-border-secondary: 212 212 212;
-  --hpui-border-focus: 163 163 163;
-  --hpui-border-hover: 212 212 212;
-  --hpui-border-disabled: 235 235 235;
+  --gecko-ui-border-primary: 235 235 235;
+  --gecko-ui-border-secondary: 212 212 212;
+  --gecko-ui-border-focus: 163 163 163;
+  --gecko-ui-border-hover: 212 212 212;
+  --gecko-ui-border-disabled: 235 235 235;
 
-  --hpui-scrollbar-track: 0 0 0 / 0;
-  --hpui-scrollbar-thumb: 209 213 219;
-  --hpui-scrollbar-thumb-hover: 156 163 175;
+  --gecko-ui-scrollbar-track: 0 0 0 / 0;
+  --gecko-ui-scrollbar-thumb: 209 213 219;
+  --gecko-ui-scrollbar-thumb-hover: 156 163 175;
 }
 
 .dark {
-  --hpui-surface-primary: 23 23 23;
-  --hpui-surface-secondary: 32 32 32;
-  --hpui-surface-tertiary: 45 45 45;
-  --hpui-surface-hover: 45 45 45;
-  --hpui-surface-hover-strong: 64 64 64;
-  --hpui-surface-active: 115 115 115;
-  --hpui-surface-disabled: 45 45 45;
-  --hpui-surface-overlay: 0 0 0;
-  --hpui-surface-autofill: 32 32 32;
+  --gecko-ui-surface-primary: 23 23 23;
+  --gecko-ui-surface-secondary: 32 32 32;
+  --gecko-ui-surface-tertiary: 45 45 45;
+  --gecko-ui-surface-hover: 45 45 45;
+  --gecko-ui-surface-hover-strong: 64 64 64;
+  --gecko-ui-surface-active: 115 115 115;
+  --gecko-ui-surface-disabled: 45 45 45;
+  --gecko-ui-surface-overlay: 0 0 0;
+  --gecko-ui-surface-autofill: 32 32 32;
 
-  --hpui-text-primary: 250 250 250;
-  --hpui-text-secondary: 212 212 212;
-  --hpui-text-tertiary: 163 163 163;
-  --hpui-text-disabled: 115 115 115;
-  --hpui-text-placeholder: 115 115 115;
-  --hpui-text-inverse: 23 23 23;
-  --hpui-text-muted: 163 163 163;
+  --gecko-ui-text-primary: 250 250 250;
+  --gecko-ui-text-secondary: 212 212 212;
+  --gecko-ui-text-tertiary: 163 163 163;
+  --gecko-ui-text-disabled: 115 115 115;
+  --gecko-ui-text-placeholder: 115 115 115;
+  --gecko-ui-text-inverse: 23 23 23;
+  --gecko-ui-text-muted: 163 163 163;
 
-  --hpui-border-primary: 255 255 255 / 0.1;
-  --hpui-border-secondary: 255 255 255 / 0.15;
-  --hpui-border-focus: 115 115 115;
-  --hpui-border-hover: 163 163 163;
-  --hpui-border-disabled: 255 255 255 / 0.1;
+  --gecko-ui-border-primary: 255 255 255 / 0.1;
+  --gecko-ui-border-secondary: 255 255 255 / 0.15;
+  --gecko-ui-border-focus: 115 115 115;
+  --gecko-ui-border-hover: 163 163 163;
+  --gecko-ui-border-disabled: 255 255 255 / 0.1;
 
-  --hpui-scrollbar-track: 0 0 0 / 0;
-  --hpui-scrollbar-thumb: 75 85 99;
-  --hpui-scrollbar-thumb-hover: 107 114 128;
+  --gecko-ui-scrollbar-track: 0 0 0 / 0;
+  --gecko-ui-scrollbar-thumb: 75 85 99;
+  --gecko-ui-scrollbar-thumb-hover: 107 114 128;
 }

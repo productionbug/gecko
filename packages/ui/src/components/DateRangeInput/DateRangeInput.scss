@@ -1,13 +1,13 @@
-.HPuiDateRangeInputWrapper {
+.GeckoUIDateRangeInputWrapper {
   @apply w-full;
 }
 
-.HPuiDateRangeInput {
+.GeckoUIDateRangeInput {
   &__range-separator {
     @apply pb-[1px] mx-1 select-none whitespace-nowrap text-text-secondary;
   }
 }
 
-.HPuiDateRangeInput__calendar {
+.GeckoUIDateRangeInput__calendar {
   @apply bg-surface-primary;
 }

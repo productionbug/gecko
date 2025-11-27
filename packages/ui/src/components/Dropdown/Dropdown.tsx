@@ -14,7 +14,7 @@ import type { DropdownProps } from "./Dropdown.types";
  * @example
  *
  * ```js
- * import { Dropdown } from "@hexpacket/ui";
+ * import { Dropdown } from "@productionbug/gecko";
  *
  * const items = [
  *  { label: "Item 1", onClick: () => console.log("Item 1 clicked") },
@@ -60,12 +60,12 @@ function Dropdown({
             setTimeout(() => (document.activeElement as HTMLElement)?.blur(), 0);
           }
         }}
-        className={classNames(`HPuiDropdown__button`, className)}>
+        className={classNames(`GeckoUIDropdown__button`, className)}>
         {children}
-        {!hideArrowIcon && <span className={classNames("HPuiDropdown__icon", iconClassName)} />}
+        {!hideArrowIcon && <span className={classNames("GeckoUIDropdown__icon", iconClassName)} />}
       </MenuButton>
       <MenuItems
-        className={classNames("HPuiDropdown__menu", menuClassName)}
+        className={classNames("GeckoUIDropdown__menu", menuClassName)}
         anchor={anchor || "bottom start"}>
         {() => {
           return (
@@ -77,7 +77,7 @@ function Dropdown({
                   <MenuItem
                     key={index as Key}
                     {...dataAttributes}
-                    className={classNames("HPuiDropdown__menu-item", item.className)}
+                    className={classNames("GeckoUIDropdown__menu-item", item.className)}
                     onClick={item.onClick}>
                     <DynamicComponentRenderer component={label} />
                   </MenuItem>

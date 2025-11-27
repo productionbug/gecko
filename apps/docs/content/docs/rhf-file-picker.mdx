@@ -3,7 +3,7 @@ title: RHFFilePicker
 description: Advanced file picker with drag-and-drop support integrated with React Hook Form
 ---
 
-import { RHFFilePicker } from '@hexpacket/ui';
+import { RHFFilePicker } from '@productionbug/gecko';
 import {
   BasicRHFFilePickerExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ An advanced file picker component with drag-and-drop support, directory selectio
 ## Installation
 
 ```tsx
-import { RHFFilePicker } from '@hexpacket/ui';
+import { RHFFilePicker } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFFilePicker } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFFilePicker } from '@hexpacket/ui';
+import { RHFFilePicker } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -75,7 +75,7 @@ function Example() {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFFilePicker, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFFilePicker, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   validationImages: z
@@ -143,7 +143,7 @@ Accumulate files across multiple selections:
 </Preview>
 
 ```tsx
-import { classNames } from '@hexpacket/ui/utils';
+import { classNames } from '@productionbug/gecko/utils';
 
 <RHFFilePicker
   name="customImages"
@@ -243,7 +243,7 @@ const handleError = (error: Error) => {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFFilePicker, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFFilePicker, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   projectFiles: z
@@ -403,7 +403,7 @@ z.array(z.custom<File>())
 ## Error States
 
 RHFFilePicker automatically displays error states:
-- Red border via `HPuiRHFFilePicker--error` CSS class when validation fails
+- Red border via `GeckoUIRHFFilePicker--error` CSS class when validation fails
 - Use with [RHFInputGroup](/docs/rhf-input-group) for complete error display
 
 ```tsx

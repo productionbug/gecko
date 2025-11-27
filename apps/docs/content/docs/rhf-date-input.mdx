@@ -3,7 +3,7 @@ title: RHFDateInput
 description: Date input component integrated with React Hook Form
 ---
 
-import { RHFDateInput } from '@hexpacket/ui';
+import { RHFDateInput } from '@productionbug/gecko';
 import {
   BasicRHFDateInputExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ A date input component integrated with React Hook Form that automatically displa
 ## Installation
 
 ```tsx
-import { RHFDateInput } from '@hexpacket/ui';
+import { RHFDateInput } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFDateInput } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFDateInput } from '@hexpacket/ui';
+import { RHFDateInput } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -76,7 +76,7 @@ Extends all props from [DateInput](/docs/date-input) component plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFDateInput, RHFInputGroup } from '@hexpacket/ui';
+import { RHFDateInput, RHFInputGroup } from '@productionbug/gecko';
 
 const schema = z.object({
   validationStartDate: z.string()
@@ -190,7 +190,7 @@ const handleDateChange = (value: string) => {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFInput, RHFDateInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFInput, RHFDateInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   formCheckInDate: z.string()

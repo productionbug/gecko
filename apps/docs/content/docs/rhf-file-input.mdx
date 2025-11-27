@@ -3,7 +3,7 @@ title: RHFFileInput
 description: File input component integrated with React Hook Form
 ---
 
-import { RHFFileInput } from '@hexpacket/ui';
+import { RHFFileInput } from '@productionbug/gecko';
 import {
   BasicRHFFileInputExample,
   WithValidationExample,
@@ -21,7 +21,7 @@ A file input component integrated with React Hook Form that automatically create
 ## Installation
 
 ```tsx
-import { RHFFileInput } from '@hexpacket/ui';
+import { RHFFileInput } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -32,7 +32,7 @@ import { RHFFileInput } from '@hexpacket/ui';
 
 ```tsx
 import { useForm, FormProvider } from 'react-hook-form';
-import { RHFFileInput } from '@hexpacket/ui';
+import { RHFFileInput } from '@productionbug/gecko';
 
 function Example() {
   const methods = useForm({
@@ -79,7 +79,7 @@ Extends all props from standard HTML `<input type="file">` element plus:
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFFileInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFFileInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   validationAvatar: z
@@ -188,7 +188,7 @@ const handleFileChange = (data: FileWithPreview | FileWithPreview[]) => {
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { RHFFileInput, RHFInputGroup, Button } from '@hexpacket/ui';
+import { RHFFileInput, RHFInputGroup, Button } from '@productionbug/gecko';
 
 const schema = z.object({
   resume: z
@@ -303,7 +303,7 @@ z.array(z.instanceof(File))
 ## Error States
 
 RHFFileInput automatically displays error states with:
-- Red border via `HPuiRHFFileInput--error` CSS class when validation fails
+- Red border via `GeckoUIRHFFileInput--error` CSS class when validation fails
 - Use with [RHFInputGroup](/docs/rhf-input-group) for label + error message display
 
 ```tsx

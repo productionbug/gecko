@@ -70,7 +70,7 @@ const Tooltip: FC<TooltipProps> = ({
       <RTooltip.Root>
         <RTooltip.Trigger
           asChild={triggerAsChild}
-          className={classNames(!triggerAsChild && "HPuiTooltip__trigger", triggerClassName)}
+          className={classNames(!triggerAsChild && "GeckoUITooltip__trigger", triggerClassName)}
           role="tooltip"
           type="button">
           {children}
@@ -78,13 +78,13 @@ const Tooltip: FC<TooltipProps> = ({
         <RTooltip.Portal>
           <RTooltip.Content
             side={side}
-            className={classNames("HPuiTooltip", className)}
+            className={classNames("GeckoUITooltip", className)}
             sideOffset={sideOffset}
             role="tooltip"
             style={{ backgroundColor }}>
             <DynamicComponentRenderer component={content} />
             {(side === "top" || side === "bottom") && (
-              <RTooltip.Arrow fill={backgroundColor} className="HPuiTooltip__arrow" />
+              <RTooltip.Arrow fill={backgroundColor} className="GeckoUITooltip__arrow" />
             )}
           </RTooltip.Content>
         </RTooltip.Portal>

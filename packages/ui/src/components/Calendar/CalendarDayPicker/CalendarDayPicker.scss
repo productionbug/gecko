@@ -1,6 +1,6 @@
 @import "../../../mixins.scss";
 
-.HPuiCalendar {
+.GeckoUICalendar {
   &__day-picker-weekdays {
     @apply mb-2 grid grid-cols-7 place-items-center font-medium opacity-40;
   }
@@ -93,7 +93,7 @@
   }
 }
 
-.dark .HPuiCalendar {
+.dark .GeckoUICalendar {
   &__day-picker {
     &__button {
       &--hover-preview {

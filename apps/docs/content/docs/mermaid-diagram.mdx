@@ -3,7 +3,7 @@ title: Mermaid Diagram
 description: Render interactive diagrams from Mermaid syntax with automatic loading and error states
 ---
 
-import { MermaidDiagram } from '@hexpacket/ui';
+import { MermaidDiagram } from '@productionbug/gecko';
 import { FlowchartExample } from '@/components/examples/mermaid-diagram-examples';
 
 # Mermaid Diagram
@@ -13,7 +13,7 @@ Renders diagrams from Mermaid syntax with automatic loading and error state mana
 ## Installation
 
 ```tsx
-import { MermaidDiagram } from '@hexpacket/ui';
+import { MermaidDiagram } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -25,7 +25,7 @@ import { MermaidDiagram } from '@hexpacket/ui';
 ```tsx
 'use client';
 
-import { MermaidDiagram, Spinner } from '@hexpacket/ui';
+import { MermaidDiagram, Spinner } from '@productionbug/gecko';
 
 function Example() {
   const diagram = `
@@ -103,7 +103,7 @@ The SVG inherits the original Mermaid classes. Use `className` to add custom sty
 ## TypeScript
 
 ```tsx
-import type { MermaidDiagramProps } from '@hexpacket/ui';
+import type { MermaidDiagramProps } from '@productionbug/gecko';
 
 const MyDiagram: React.FC<{ syntax: string }> = ({ syntax }) => {
   return <MermaidDiagram placeholder={<Spinner />}>{syntax}</MermaidDiagram>;

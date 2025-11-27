@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, ConfirmDialog } from '@hexpacket/ui';
+import { Button, ConfirmDialog } from '@productionbug/gecko';
 
 export function BasicConfirmDialogExample() {
   const handleClick = () => {

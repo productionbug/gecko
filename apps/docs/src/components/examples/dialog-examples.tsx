@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Dialog, Input, Label } from '@hexpacket/ui';
+import { Button, Dialog, Input, Label } from '@productionbug/gecko';
 
 export function BasicDialogExample() {
   const openDialog = () => {

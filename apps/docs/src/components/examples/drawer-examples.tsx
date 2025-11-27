@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Drawer, Input, Label, Select, SelectOption } from "@hexpacket/ui";
+import { Button, Drawer, Input, Label, Select, SelectOption } from "@productionbug/gecko";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 

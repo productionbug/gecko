@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Select, SelectOption } from '@hexpacket/ui';
+import { Select, SelectOption } from '@productionbug/gecko';
 
 export function BasicSelectExample() {
   const [value, setValue] = useState<string | null>(null);

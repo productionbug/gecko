@@ -62,19 +62,19 @@ const Label: FC<LabelProps> = ({
   ...rest
 }) => {
   return (
-    <label className={classNames("HPuiLabel", className)} {...rest}>
+    <label className={classNames("GeckoUILabel", className)} {...rest}>
       {children}
-      {required ? <span className="HPuiLabel__required-indicator">*</span> : null}
+      {required ? <span className="GeckoUILabel__required-indicator">*</span> : null}
       {tooltip ? (
         <Tooltip
           backgroundColor={tooltipBackgroundColor}
-          className={classNames("HPuiLabel__tooltip", tooltipClassName)}
+          className={classNames("GeckoUILabel__tooltip", tooltipClassName)}
           content={tooltip}
           delayDuration={0}>
           {tooltipIcon ? (
             <DynamicComponentRenderer component={tooltipIcon} />
           ) : (
-            <div className="HPuiLabel__tooltip-icon" />
+            <div className="GeckoUILabel__tooltip-icon" />
           )}
         </Tooltip>
       ) : null}

@@ -3,7 +3,7 @@ title: LoadingButton
 description: Button component with built-in loading state and spinner
 ---
 
-import { LoadingButton } from '@hexpacket/ui';
+import { LoadingButton } from '@productionbug/gecko';
 import { AsyncOperationExample } from '@/components/examples/loading-button-examples';
 
 # LoadingButton
@@ -13,7 +13,7 @@ LoadingButton extends the Button component with built-in loading state visualiza
 ## Installation
 
 ```tsx
-import { LoadingButton } from '@hexpacket/ui';
+import { LoadingButton } from '@productionbug/gecko';
 ```
 
 ## Basic Usage
@@ -259,7 +259,7 @@ When `loadingText` is not provided, the button keeps its original label:
 'use client';
 
 import { useState } from 'react';
-import { LoadingButton } from '@hexpacket/ui';
+import { LoadingButton } from '@productionbug/gecko';
 
 function DownloadReport() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -318,12 +318,12 @@ The button content follows this priority:
 
 The component uses BEM-style class names:
 
-- `HPuiLoadingButton` - Main container class
-- `HPuiLoadingButton--{variant}` - Variant modifier
-- `HPuiLoadingButton--{variant}-{color}` - Combined variant and color
-- `HPuiLoadingButton--size-{size}` - Size modifier
-- `HPuiLoadingButton--loading` - Applied during loading state
-- `HPuiLoadingButton--{variant}-loading` - Variant-specific loading state
+- `GeckoUILoadingButton` - Main container class
+- `GeckoUILoadingButton--{variant}` - Variant modifier
+- `GeckoUILoadingButton--{variant}-{color}` - Combined variant and color
+- `GeckoUILoadingButton--size-{size}` - Size modifier
+- `GeckoUILoadingButton--loading` - Applied during loading state
+- `GeckoUILoadingButton--{variant}-loading` - Variant-specific loading state
 
 ## Dependencies
 
