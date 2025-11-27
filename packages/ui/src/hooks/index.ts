@@ -4,5 +4,3 @@ export { default as usePreventDefault } from "./usePreventDefault";
 export { default as useEscListener } from "./useEscListener";
 export { default as useMermaidDiagram } from "./useMermaidDiagram";
 export { default as useMarkdown } from "./useMarkdown";
-
-export * from "./useFileUploadQueue";
