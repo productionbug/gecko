@@ -11,7 +11,7 @@
     &__button {
       @include button-reset;
 
-      @apply relative flex aspect-square size-full cursor-pointer items-center justify-center place-self-center hover:bg-surface-hover-strong disabled:cursor-not-allowed;
+      @apply relative flex aspect-square size-full cursor-pointer items-center justify-center place-self-center rounded-md hover:bg-surface-hover-strong disabled:cursor-not-allowed;
 
       &__text {
         @apply size-full;
@@ -27,7 +27,7 @@
       }
 
       &--selected &__text {
-        @apply bg-primary-700 text-text-inverse;
+        @apply text-text-on-primary bg-primary-700 hover:bg-primary-600;
       }
 
       &--focused &__text {
@@ -38,52 +38,39 @@
         @apply opacity-40;
       }
 
-      &--range-start &__text,
-      &--range-end &__text {
-        @apply text-text-on-primary bg-primary-700;
-      }
-
-      &--range-start &__text {
-        @apply rounded-r-none;
-      }
-
-      &--range-end &__text {
-        @apply rounded-l-none;
+      &--hover-preview {
+        @apply rounded-none bg-primary-100;
       }
 
       &--in-range {
-        @apply relative bg-primary-700;
+        @apply relative rounded-none bg-primary-700 hover:bg-primary-600;
       }
 
-      &--in-range &__text {
-        @apply text-text-on-primary;
+      &--range-start,
+      &--range-end {
+        @apply bg-primary-700 hover:bg-primary-600;
       }
 
       &--range-start {
-        @apply relative bg-transparent;
-
-        &::before {
-          content: "";
-          @apply absolute inset-y-0 right-0 z-[-1] w-1/2 bg-primary-100;
-        }
+        @apply rounded-l-md;
       }
 
       &--range-end {
-        @apply relative bg-transparent;
-
-        &::before {
-          content: "";
-          @apply absolute inset-y-0 left-0 z-[-1] w-1/2 bg-primary-100;
-        }
+        @apply rounded-r-md;
       }
 
-      &--hover-preview {
-        @apply relative bg-primary-100;
+      &--hover-preview-start {
+        @apply rounded-l-md rounded-r-none;
+      }
 
-        &::before {
-          content: "";
-          @apply absolute inset-y-0 -left-px right-0 z-[-1] bg-primary-50;
-        }
+      &--hover-preview-end {
+        @apply rounded-l-none rounded-r-md;
+      }
+
+      &--range-start &__text,
+      &--range-end &__text,
+      &--in-range &__text {
+        @apply text-text-on-primary;
       }
 
       &__text {
@@ -97,11 +84,7 @@
   &__day-picker {
     &__button {
       &--hover-preview {
-        @apply relative bg-primary-500;
-
-        &::before {
-          @apply bg-primary-500;
-        }
+        @apply bg-primary-500;
       }
     }
   }

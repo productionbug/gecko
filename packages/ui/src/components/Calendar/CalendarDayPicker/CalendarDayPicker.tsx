@@ -75,6 +75,8 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
           let isRangeEnd = false;
           let isInRange = false;
           let isHoverPreview = false;
+          let isHoverPreviewStart = false;
+          let isHoverPreviewEnd = false;
 
           if (isRangeMode && selectedRange && isActiveMonth) {
             const needsSwap = shouldSwapDates(selectedRange.from, selectedRange.to);
@@ -88,7 +90,6 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
               isInRange = isDateInRange(formattedDate, { from: normalizedFrom, to: normalizedTo });
             }
 
-            // Check if date is in hover preview range (only when start is selected but not end)
             if (selectedRange.from && !selectedRange.to && hoveredDate) {
               const [previewStart, previewEnd] = shouldSwapDates(selectedRange.from, hoveredDate)
                 ? [hoveredDate, selectedRange.from]
@@ -97,6 +98,9 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
               if (isDateBetween(formattedDate, previewStart, previewEnd)) {
                 isHoverPreview = true;
               }
+
+              isHoverPreviewStart = formattedDate === previewStart;
+              isHoverPreviewEnd = formattedDate === previewEnd;
             }
           }
 
@@ -110,10 +114,12 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                 isRangeEnd && "GeckoUICalendar__day-picker__button--range-end",
                 isInRange && "GeckoUICalendar__day-picker__button--in-range",
                 isHoverPreview && "GeckoUICalendar__day-picker__button--hover-preview",
+                isHoverPreviewStart && "GeckoUICalendar__day-picker__button--hover-preview-start",
+                isHoverPreviewEnd && "GeckoUICalendar__day-picker__button--hover-preview-end",
                 `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`,
                 activeDate === formattedDate &&
-                  !isSelected &&
-                  "GeckoUICalendar__day-picker__button--focused"
+                !isSelected &&
+                "GeckoUICalendar__day-picker__button--focused"
               )}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}

@@ -183,7 +183,7 @@ const Calendar = (props: CalendarProps) => {
 
         return (
           <div className="GeckoUICalendar__dual">
-            <div>
+            <div className="GeckoUICalendar__dual--first">
               <CalendarDayPicker
                 mode="range"
                 activeDate={activeDate}
@@ -198,7 +198,7 @@ const Calendar = (props: CalendarProps) => {
                 onHoverDate={handleHoverDate}
               />
             </div>
-            <div>
+            <div className="GeckoUICalendar__dual--second">
               <CalendarDayPicker
                 mode="range"
                 activeDate={activeDate}
@@ -272,6 +272,8 @@ const Calendar = (props: CalendarProps) => {
         `GeckoUICalendar`,
         `GeckoUICalendar--mode-${view}`,
         `GeckoUICalendar--selection-${mode}`,
+        mode === "range" &&
+        view === CalendarType.Day &&
         `GeckoUICalendar--calendars-${numberOfMonths}`,
         className
       )}
