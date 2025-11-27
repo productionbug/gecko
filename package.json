@@ -1,5 +1,5 @@
 {
-  "name": "gecko-ui",
+  "name": "@productionbug",
   "private": false,
   "scripts": {
     "build": "turbo run build",

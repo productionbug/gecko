@@ -49,7 +49,7 @@ export default defineConfig((options) => {
       "src/index.ts",
       ...(options.watch
         ? watchFiles.filter((f) => f !== "src/imports.scss")
-        : ["src/styles.scss", "src/mixins.scss", "src/components/Markdown/Markdown.scss"])
+        : ["src/styles.scss", "src/components/Markdown/Markdown.scss"])
     ],
     outDir: "dist",
     external,

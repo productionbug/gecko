@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="GeckoUI.png" alt="Gecko UI" width="120" />
+  <img src="https://github.com/productionbug/gecko/raw/develop/GeckoUI.png" alt="Gecko UI" width="120" />
 </p>
 
 <h1 align="center">Gecko UI</h1>
 
 <p align="center">
-  Because your app deserves to be cute AND powerful. 🦎
+  The only thing our Gecko 🦎 eats is bugs! 🐛<br />
 </p>
 
 📚 **Documentation**: [Gecko](https://gecko.productionbug.com)

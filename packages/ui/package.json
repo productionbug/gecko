@@ -11,23 +11,29 @@
     "dist"
   ],
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
     "./styles.css": "./dist/styles.css",
-    "./markdown.css": "./dist/components/Markdown/Markdown.css",
-    ".": "./src/index.ts"
+    "./markdown.css": "./dist/components/Markdown/Markdown.css"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "tag": "beta"
   },
   "scripts": {
     "import:css": "node scripts/import-css.js",
-    "postinstall": "pnpm run import:css",
     "build": "pnpm run import:css && tsup",
     "dev": "pnpm run import:css && tsup --watch",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\"",
+    "prepublishOnly": "pnpm run build && cp ../../README.md ./README.md",
+    "postpublish": "rm ./README.md"
   },
   "peerDependencies": {
     "react": "^19.2.0",
