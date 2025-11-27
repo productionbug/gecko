@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Alert, Button } from '@productionbug/gecko';
+import { Alert, Button } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function DismissibleAlertExample() {
   const [show, setShow] = useState(true);

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Button, Dialog, Input, Label } from '@productionbug/gecko';
+import { Button, Dialog, Input, Label } from "@productionbug/gecko";
 
 export function BasicDialogExample() {
   const openDialog = () => {
@@ -8,20 +8,14 @@ export function BasicDialogExample() {
       content: ({ dismiss }) => (
         <div>
           <h2 className="text-xl font-semibold mb-4">Welcome!</h2>
-          <p className="text-gray-600 mb-6">
-            This is a simple dialog with custom content.
-          </p>
+          <p className="text-gray-600 mb-6">This is a simple dialog with custom content.</p>
           <Button onClick={dismiss}>Close</Button>
         </div>
       )
     });
   };
 
-  return (
-    <Button onClick={openDialog}>
-      Open Dialog
-    </Button>
-  );
+  return <Button onClick={openDialog}>Open Dialog</Button>;
 }
 
 export function ImageLightboxExample() {
@@ -36,8 +30,7 @@ export function ImageLightboxExample() {
           />
           <button
             onClick={dismiss}
-            className="absolute top-2 right-2 size-8 flex items-center justify-center bg-black/50 text-white rounded-full hover:bg-black/70"
-          >
+            className="absolute top-2 right-2 size-8 flex items-center justify-center bg-black/50 text-white rounded-full hover:bg-black/70">
             ✕
           </button>
         </div>
@@ -48,11 +41,7 @@ export function ImageLightboxExample() {
     });
   };
 
-  return (
-    <Button onClick={openImageViewer}>
-      View Image
-    </Button>
-  );
+  return <Button onClick={openImageViewer}>View Image</Button>;
 }
 
 export function FormDialogExample() {
@@ -64,27 +53,17 @@ export function FormDialogExample() {
           <div className="space-y-4">
             <div className="space-y-1">
               <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                type="text"
-                defaultValue="John Doe"
-              />
+              <Input id="name" type="text" defaultValue="John Doe" />
             </div>
             <div className="space-y-1">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                defaultValue="john@example.com"
-              />
+              <Input id="email" type="email" defaultValue="john@example.com" />
             </div>
             <div className="flex gap-2 justify-end">
               <Button variant="ghost" onClick={dismiss}>
                 Cancel
               </Button>
-              <Button onClick={dismiss}>
-                Save Changes
-              </Button>
+              <Button onClick={dismiss}>Save Changes</Button>
             </div>
           </div>
         </div>
@@ -95,11 +74,7 @@ export function FormDialogExample() {
     });
   };
 
-  return (
-    <Button onClick={showUserForm}>
-      Edit Profile
-    </Button>
-  );
+  return <Button onClick={showUserForm}>Edit Profile</Button>;
 }
 
 export function NoEscapeDialogExample() {
@@ -119,9 +94,5 @@ export function NoEscapeDialogExample() {
     });
   };
 
-  return (
-    <Button onClick={openDialog}>
-      Open Non-Dismissible Dialog
-    </Button>
-  );
+  return <Button onClick={openDialog}>Open Non-Dismissible Dialog</Button>;
 }

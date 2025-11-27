@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFInput, RHFTextarea, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInput, RHFInputGroup, RHFTextarea } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFInputGroupExample() {
   const methods = useForm({
     defaultValues: {
-      basicUsername: ''
+      basicUsername: ""
     }
   });
 
@@ -23,21 +23,25 @@ export function BasicRHFInputGroupExample() {
 
 export function WithRequiredExample() {
   const schema = z.object({
-    groupEmail: z.string().email('Invalid email address').min(1, 'Email is required')
+    groupEmail: z.string().email("Invalid email address").min(1, "Email is required")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      groupEmail: ''
+      groupEmail: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
       <RHFInputGroup label="Email Address" required>
-        <RHFInput name="groupEmail" type="email" placeholder="Enter email and blur to see validation" />
+        <RHFInput
+          name="groupEmail"
+          type="email"
+          placeholder="Enter email and blur to see validation"
+        />
       </RHFInputGroup>
     </FormProvider>
   );
@@ -46,7 +50,7 @@ export function WithRequiredExample() {
 export function WithHelpTextExample() {
   const methods = useForm({
     defaultValues: {
-      tooltipPassword: ''
+      tooltipPassword: ""
     }
   });
 
@@ -55,8 +59,7 @@ export function WithHelpTextExample() {
       <RHFInputGroup
         label="Password"
         required
-        tooltip="Must be at least 8 characters with numbers and special characters"
-      >
+        tooltip="Must be at least 8 characters with numbers and special characters">
         <RHFInput name="tooltipPassword" type="password" placeholder="Enter password" />
       </RHFInputGroup>
     </FormProvider>
@@ -65,25 +68,24 @@ export function WithHelpTextExample() {
 
 export function WithTextareaExample() {
   const schema = z.object({
-    groupBio: z.string().min(10, 'Bio must be at least 10 characters').max(200, 'Bio must be less than 200 characters')
+    groupBio: z
+      .string()
+      .min(10, "Bio must be at least 10 characters")
+      .max(200, "Bio must be less than 200 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      groupBio: ''
+      groupBio: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
       <RHFInputGroup label="Bio" required tooltip="Tell us about yourself">
-        <RHFTextarea
-          name="groupBio"
-          placeholder="Write your bio here..."
-          rows={4}
-        />
+        <RHFTextarea name="groupBio" placeholder="Write your bio here..." rows={4} />
       </RHFInputGroup>
     </FormProvider>
   );
@@ -91,27 +93,24 @@ export function WithTextareaExample() {
 
 export function WithNestedStructureExample() {
   const schema = z.object({
-    nestedPassword: z.string()
-      .min(8, 'Password must be at least 8 characters')
-      .regex(/[0-9]/, 'Password must contain at least one number')
-      .regex(/[!@#$%^&*]/, 'Password must contain at least one special character')
+    nestedPassword: z
+      .string()
+      .min(8, "Password must be at least 8 characters")
+      .regex(/[0-9]/, "Password must contain at least one number")
+      .regex(/[!@#$%^&*]/, "Password must contain at least one special character")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      nestedPassword: ''
+      nestedPassword: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
-      <RHFInputGroup
-        label="Password"
-        required
-        tooltip="Must meet all requirements below"
-      >
+      <RHFInputGroup label="Password" required tooltip="Must meet all requirements below">
         <div className="space-y-2">
           <RHFInput name="nestedPassword" type="password" placeholder="Enter password" />
           <ul className="text-sm text-gray-600 space-y-1">
@@ -128,7 +127,7 @@ export function WithNestedStructureExample() {
 export function WithCustomStylingExample() {
   const methods = useForm({
     defaultValues: {
-      styledInput: ''
+      styledInput: ""
     }
   });
 
@@ -138,8 +137,7 @@ export function WithCustomStylingExample() {
         label="Custom Styled Input"
         labelClassName="text-blue-600 font-semibold"
         className="bg-blue-50 p-4 rounded-lg"
-        errorClassName="text-blue-800 font-bold"
-      >
+        errorClassName="text-blue-800 font-bold">
         <RHFInput name="styledInput" placeholder="This has custom styling" />
       </RHFInputGroup>
     </FormProvider>
@@ -148,26 +146,26 @@ export function WithCustomStylingExample() {
 
 export function CompleteFormGroupExample() {
   const schema = z.object({
-    formUsername: z.string().min(3, 'Username must be at least 3 characters'),
-    formEmail: z.string().email('Invalid email address'),
-    formBio: z.string().min(10, 'Bio must be at least 10 characters'),
-    formPassword: z.string().min(8, 'Password must be at least 8 characters')
+    formUsername: z.string().min(3, "Username must be at least 3 characters"),
+    formEmail: z.string().email("Invalid email address"),
+    formBio: z.string().min(10, "Bio must be at least 10 characters"),
+    formPassword: z.string().min(8, "Password must be at least 8 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      formUsername: '',
-      formEmail: '',
-      formBio: '',
-      formPassword: ''
+      formUsername: "",
+      formEmail: "",
+      formBio: "",
+      formPassword: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -189,9 +187,7 @@ export function CompleteFormGroupExample() {
           <RHFInput name="formPassword" type="password" placeholder="Enter password" />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

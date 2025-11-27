@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFSelect, SelectOption, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInputGroup, RHFSelect, SelectOption } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFSelectExample() {
   const methods = useForm({
     defaultValues: {
-      basicCountry: ''
+      basicCountry: ""
     }
   });
 
@@ -27,21 +27,23 @@ export function BasicRHFSelectExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    validationSkills: z.string().min(1, 'Please select at least one skill')
+    validationSkills: z.string().min(1, "Please select at least one skill")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      validationSkills: ''
+      validationSkills: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
       <RHFInputGroup label="Primary Skill" required>
-        <RHFSelect name="validationSkills" placeholder="Select your skill and blur to see validation">
+        <RHFSelect
+          name="validationSkills"
+          placeholder="Select your skill and blur to see validation">
           <SelectOption value="js" label="JavaScript" />
           <SelectOption value="ts" label="TypeScript" />
           <SelectOption value="react" label="React" />
@@ -77,7 +79,7 @@ export function MultipleSelectExample() {
 export function WithGroupsExample() {
   const methods = useForm({
     defaultValues: {
-      groupedCategory: ''
+      groupedCategory: ""
     }
   });
 
@@ -98,7 +100,7 @@ export function WithGroupsExample() {
 export function DisabledExample() {
   const methods = useForm({
     defaultValues: {
-      disabledStatus: 'active'
+      disabledStatus: "active"
     }
   });
 
@@ -116,7 +118,7 @@ export function DisabledExample() {
 export function WithOnChangeExample() {
   const methods = useForm({
     defaultValues: {
-      callbackPriority: ''
+      callbackPriority: ""
     }
   });
 
@@ -126,9 +128,8 @@ export function WithOnChangeExample() {
         name="callbackPriority"
         placeholder="Select priority"
         onChange={(value) => {
-          console.log('Selected priority:', value);
-        }}
-      >
+          console.log("Selected priority:", value);
+        }}>
         <SelectOption value="low" label="Low" />
         <SelectOption value="medium" label="Medium" />
         <SelectOption value="high" label="High" />
@@ -140,24 +141,24 @@ export function WithOnChangeExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    formCountry: z.string().min(1, 'Country is required'),
-    formLanguages: z.array(z.string()).min(1, 'Select at least one language'),
-    formPriority: z.string().min(1, 'Priority is required')
+    formCountry: z.string().min(1, "Country is required"),
+    formLanguages: z.array(z.string()).min(1, "Select at least one language"),
+    formPriority: z.string().min(1, "Priority is required")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      formCountry: '',
+      formCountry: "",
       formLanguages: [],
-      formPriority: ''
+      formPriority: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -192,9 +193,7 @@ export function CompleteFormExample() {
           </RHFSelect>
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

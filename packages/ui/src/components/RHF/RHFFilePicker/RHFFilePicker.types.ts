@@ -5,7 +5,7 @@ import type { RHFBaseProps, RHFRenderArgs } from "../RHF.types";
 
 export interface RHFFilePickerRenderProps<T extends HTMLElement = HTMLDivElement>
   extends UseFilePickerReturn<T>,
-  RHFRenderArgs<Record<string, FilePickerFile[]>> { }
+    RHFRenderArgs<Record<string, FilePickerFile[]>> {}
 
 export type FilePickerOptions = Omit<UseFilePickerOptions, "onStart">;
 
@@ -19,8 +19,8 @@ export interface RHFFilePickerBaseProps<T extends HTMLElement = HTMLDivElement>
 
 export interface RHFFilePickerProps<T extends HTMLElement = HTMLDivElement>
   extends RHFBaseProps,
-  RHFFilePickerBaseProps<T> { }
+    RHFFilePickerBaseProps<T> {}
 
 export interface RHFFilePickerRendererProps<T extends HTMLElement = HTMLDivElement>
   extends RHFRenderArgs<Record<string, FilePickerFile[]>>,
-  RHFFilePickerBaseProps<T> { }
+    RHFFilePickerBaseProps<T> {}

@@ -117,10 +117,10 @@ export interface FocusedOption<T = unknown> extends SelectOptionConfig<T> {
 
 export interface SelectContextProps<T>
   extends Pick<
-    BaseSelectProps,
-    "disabled" | "prefix" | "suffix" | "placeholder" | "closeMenuOnSelect"
-  >,
-  Omit<MultiSelectProps<T>, "value" | "onChange" | "multiple" | "renderDisplay"> {
+      BaseSelectProps,
+      "disabled" | "prefix" | "suffix" | "placeholder" | "closeMenuOnSelect"
+    >,
+    Omit<MultiSelectProps<T>, "value" | "onChange" | "multiple" | "renderDisplay"> {
   /**
    * The value of the select
    * */

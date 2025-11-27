@@ -11,17 +11,17 @@ import type { SelectOptionConfig } from "./SelectOption/SelectOption.types";
  * */
 export const optionIncludes =
   <T>(keyword: string) =>
-    (e: SelectOptionElement<T>) => {
-      if ((e.type as unknown as { displayName: string })?.displayName !== "SelectOption") {
-        return false;
-      }
+  (e: SelectOptionElement<T>) => {
+    if ((e.type as unknown as { displayName: string })?.displayName !== "SelectOption") {
+      return false;
+    }
 
-      if (isNil(e.props.label)) {
-        throw new Error("SelectOption element must have a label prop");
-      }
+    if (isNil(e.props.label)) {
+      throw new Error("SelectOption element must have a label prop");
+    }
 
-      return isTextIncludes(e.props.label, keyword);
-    };
+    return isTextIncludes(e.props.label, keyword);
+  };
 
 export const isSelect = hasDisplayName("Select");
 export const isSelectMenu = hasDisplayName("SelectMenu");

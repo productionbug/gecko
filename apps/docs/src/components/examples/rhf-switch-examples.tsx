@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFSwitch, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInputGroup, RHFSwitch } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFSwitchExample() {
   const methods = useForm({
@@ -25,7 +25,7 @@ export function BasicRHFSwitchExample() {
 export function WithCustomValuesExample() {
   const methods = useForm({
     defaultValues: {
-      status: 'no'
+      status: "no"
     }
   });
 
@@ -59,7 +59,7 @@ export function WithNumberValuesExample() {
 export function WithObjectValuesExample() {
   const methods = useForm({
     defaultValues: {
-      settings: { theme: 'light', notifications: false }
+      settings: { theme: "light", notifications: false }
     }
   });
 
@@ -68,8 +68,8 @@ export function WithObjectValuesExample() {
       <div className="flex items-center gap-2">
         <RHFSwitch
           name="settings"
-          value={{ theme: 'dark', notifications: true }}
-          uncheckedValue={{ theme: 'light', notifications: false }}
+          value={{ theme: "dark", notifications: true }}
+          uncheckedValue={{ theme: "light", notifications: false }}
         />
         <span>Advanced mode</span>
       </div>
@@ -128,12 +128,12 @@ export function DisabledExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    terms: z.literal(true, { message: 'You must accept the terms' })
+    terms: z.literal(true, { message: "You must accept the terms" })
   });
 
   const methods = useForm({
     resolver: zodResolver(schema) as never,
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
       terms: false
     }
@@ -156,12 +156,12 @@ export function CompleteFormExample() {
     notifications: z.boolean(),
     marketing: z.boolean(),
     darkMode: z.boolean(),
-    twoFactor: z.literal(true, { message: 'Two-factor authentication is required' })
+    twoFactor: z.literal(true, { message: "Two-factor authentication is required" })
   });
 
   const methods = useForm({
     resolver: zodResolver(schema) as never,
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
       notifications: true,
       marketing: false,
@@ -171,8 +171,8 @@ export function CompleteFormExample() {
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -200,9 +200,7 @@ export function CompleteFormExample() {
           </div>
         </RHFInputGroup>
 
-        <Button type="submit">
-          Save Settings
-        </Button>
+        <Button type="submit">Save Settings</Button>
       </form>
     </FormProvider>
   );

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { Calendar, Button } from '@productionbug/gecko';
-import type { CalendarRef } from '@productionbug/gecko';
+import { Button, Calendar } from "@productionbug/gecko";
+import type { CalendarRef } from "@productionbug/gecko";
+import { useRef, useState } from "react";
 
 export function BasicCalendarExample() {
   const [selectedDate, setSelectedDate] = useState<string | undefined>();
@@ -16,19 +16,19 @@ export function BasicCalendarExample() {
 }
 
 export function WithDefaultDateExample() {
-  const [selectedDate, setSelectedDate] = useState<string | undefined>('2024-06-15');
+  const [selectedDate, setSelectedDate] = useState<string | undefined>("2024-06-15");
 
   return (
     <div className="space-y-4">
       <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
-      <p className="text-sm text-gray-600">Selected: {selectedDate || 'None'}</p>
+      <p className="text-sm text-gray-600">Selected: {selectedDate || "None"}</p>
     </div>
   );
 }
 
 export function ActiveDateExample() {
   const [selectedDate, setSelectedDate] = useState<string | undefined>();
-  const activeDate = '2024-12-25'; // Highlight Christmas
+  const activeDate = "2024-12-25"; // Highlight Christmas
 
   return (
     <div className="space-y-4">
@@ -38,7 +38,7 @@ export function ActiveDateExample() {
         onSelectDate={setSelectedDate}
       />
       <div className="text-sm text-gray-600">
-        <p>Selected: {selectedDate || 'None'}</p>
+        <p>Selected: {selectedDate || "None"}</p>
         <p>Active (highlighted): {activeDate}</p>
       </div>
     </div>

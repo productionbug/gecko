@@ -1,33 +1,28 @@
-'use client';
+"use client";
 
-import { Dropdown, Button } from '@productionbug/gecko';
+import { Button, Dropdown } from "@productionbug/gecko";
 
 export function BasicDropdownExample() {
   const items = [
-    { label: 'Edit', onClick: () => console.log('Edit clicked') },
-    { label: 'Duplicate', onClick: () => console.log('Duplicate clicked') },
-    { label: 'Delete', onClick: () => console.log('Delete clicked') }
+    { label: "Edit", onClick: () => console.log("Edit clicked") },
+    { label: "Duplicate", onClick: () => console.log("Duplicate clicked") },
+    { label: "Delete", onClick: () => console.log("Delete clicked") }
   ];
 
-  return (
-    <Dropdown items={items}>
-      Actions
-    </Dropdown>
-  );
+  return <Dropdown items={items}>Actions</Dropdown>;
 }
 
 export function CustomButtonExample() {
   const items = [
-    { label: 'Profile', onClick: () => console.log('Profile') },
-    { label: 'Settings', onClick: () => console.log('Settings') },
-    { label: 'Logout', onClick: () => console.log('Logout') }
+    { label: "Profile", onClick: () => console.log("Profile") },
+    { label: "Settings", onClick: () => console.log("Settings") },
+    { label: "Logout", onClick: () => console.log("Logout") }
   ];
 
   return (
     <Dropdown
       items={items}
-      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-    >
+      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
       My Account
     </Dropdown>
   );
@@ -35,9 +30,9 @@ export function CustomButtonExample() {
 
 export function NoArrowIconExample() {
   const items = [
-    { label: 'Dashboard', onClick: () => console.log('Dashboard') },
-    { label: 'Analytics', onClick: () => console.log('Analytics') },
-    { label: 'Reports', onClick: () => console.log('Reports') }
+    { label: "Dashboard", onClick: () => console.log("Dashboard") },
+    { label: "Analytics", onClick: () => console.log("Analytics") },
+    { label: "Reports", onClick: () => console.log("Reports") }
   ];
 
   return (
@@ -49,16 +44,13 @@ export function NoArrowIconExample() {
 
 export function CustomMenuStyleExample() {
   const items = [
-    { label: 'New File', onClick: () => console.log('New File') },
-    { label: 'New Folder', onClick: () => console.log('New Folder') },
-    { label: 'New Project', onClick: () => console.log('New Project') }
+    { label: "New File", onClick: () => console.log("New File") },
+    { label: "New Folder", onClick: () => console.log("New Folder") },
+    { label: "New Project", onClick: () => console.log("New Project") }
   ];
 
   return (
-    <Dropdown
-      items={items}
-      menuClassName="min-w-[200px] shadow-lg border"
-    >
+    <Dropdown items={items} menuClassName="min-w-[200px] shadow-lg border">
       Create New
     </Dropdown>
   );
@@ -67,34 +59,30 @@ export function CustomMenuStyleExample() {
 export function CustomItemStyleExample() {
   const items = [
     {
-      label: 'Save',
-      onClick: () => console.log('Save'),
-      className: 'text-green-600 font-medium'
+      label: "Save",
+      onClick: () => console.log("Save"),
+      className: "text-green-600 font-medium"
     },
     {
-      label: 'Cancel',
-      onClick: () => console.log('Cancel'),
-      className: 'text-gray-600'
+      label: "Cancel",
+      onClick: () => console.log("Cancel"),
+      className: "text-gray-600"
     },
     {
-      label: 'Delete',
-      onClick: () => console.log('Delete'),
-      className: 'text-red-600 font-medium'
+      label: "Delete",
+      onClick: () => console.log("Delete"),
+      className: "text-red-600 font-medium"
     }
   ];
 
-  return (
-    <Dropdown items={items}>
-      Options
-    </Dropdown>
-  );
+  return <Dropdown items={items}>Options</Dropdown>;
 }
 
 export function AnchorPositionExample() {
   const items = [
-    { label: 'Top Start', onClick: () => {} },
-    { label: 'Top', onClick: () => {} },
-    { label: 'Top End', onClick: () => {} }
+    { label: "Top Start", onClick: () => {} },
+    { label: "Top", onClick: () => {} },
+    { label: "Top End", onClick: () => {} }
   ];
 
   return (

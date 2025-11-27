@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFTextarea, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInputGroup, RHFTextarea } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFTextareaExample() {
   const methods = useForm({
     defaultValues: {
-      description: ''
+      description: ""
     }
   });
 
@@ -21,14 +21,17 @@ export function BasicRHFTextareaExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    bio: z.string().min(10, 'Bio must be at least 10 characters').max(500, 'Bio must not exceed 500 characters')
+    bio: z
+      .string()
+      .min(10, "Bio must be at least 10 characters")
+      .max(500, "Bio must not exceed 500 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      bio: ''
+      bio: ""
     }
   });
 
@@ -44,7 +47,7 @@ export function WithValidationExample() {
 export function AutoResizeExample() {
   const methods = useForm({
     defaultValues: {
-      comments: ''
+      comments: ""
     }
   });
 
@@ -64,17 +67,13 @@ export function AutoResizeExample() {
 export function WithRowConstraintsExample() {
   const methods = useForm({
     defaultValues: {
-      notes: ''
+      notes: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
-      <RHFTextarea
-        name="notes"
-        rows={5}
-        placeholder="Fixed at 5 rows"
-      />
+      <RHFTextarea name="notes" rows={5} placeholder="Fixed at 5 rows" />
     </FormProvider>
   );
 }
@@ -82,7 +81,7 @@ export function WithRowConstraintsExample() {
 export function DisabledExample() {
   const methods = useForm({
     defaultValues: {
-      readonly: 'This content cannot be edited'
+      readonly: "This content cannot be edited"
     }
   });
 
@@ -95,24 +94,24 @@ export function DisabledExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    title: z.string().min(1, 'Title is required'),
-    description: z.string().min(20, 'Description must be at least 20 characters'),
+    title: z.string().min(1, "Title is required"),
+    description: z.string().min(20, "Description must be at least 20 characters"),
     notes: z.string().optional()
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      title: '',
-      description: '',
-      notes: ''
+      title: "",
+      description: "",
+      notes: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -136,9 +135,7 @@ export function CompleteFormExample() {
           <RHFTextarea name="notes" rows={2} placeholder="Optional notes" />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

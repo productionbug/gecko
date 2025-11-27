@@ -65,7 +65,11 @@ const Alert: FC<AlertProps> = (props) => {
           <DynamicComponentRenderer component={icon} />
         ) : (
           <div
-            className={classNames("GeckoUIAlert__icon", `GeckoUIAlert__icon--${variant}`, iconClassName)}
+            className={classNames(
+              "GeckoUIAlert__icon",
+              `GeckoUIAlert__icon--${variant}`,
+              iconClassName
+            )}
           />
         )}
         <DynamicComponentRenderer component={title} className="GeckoUIAlert__title" />

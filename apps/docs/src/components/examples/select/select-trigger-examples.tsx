@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption, SelectTrigger, Input, Button } from '@productionbug/gecko';
-import { X } from 'lucide-react';
+import { Button, Input, Select, SelectOption, SelectTrigger } from "@productionbug/gecko";
+import { X } from "lucide-react";
+import { useState } from "react";
 
 export function BasicTriggerExample() {
   const [values, setValues] = useState<number[]>([]);
@@ -28,8 +28,7 @@ export function BasicTriggerExample() {
                 {selectedOptions.map((option) => (
                   <span
                     key={option.value}
-                    className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm"
-                  >
+                    className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
                     {option.label}
                   </span>
                 ))}
@@ -42,7 +41,7 @@ export function BasicTriggerExample() {
         <SelectOption
           key={i}
           value={i}
-          label={new Date(0, i).toLocaleString('default', { month: 'long' })}
+          label={new Date(0, i).toLocaleString("default", { month: "long" })}
         />
       ))}
     </Select>
@@ -50,12 +49,19 @@ export function BasicTriggerExample() {
 }
 
 export function ChipsWithRemoveExample() {
-  const [values, setValues] = useState<string[]>(['react', 'vue']);
+  const [values, setValues] = useState<string[]>(["react", "vue"]);
 
   return (
     <Select multiple value={values} onChange={setValues}>
       <SelectTrigger<number> multiple>
-        {({ keyword, selectedOptions, handleChange, handleInputChange, handleKeyboardInteraction, openMenu }) => (
+        {({
+          keyword,
+          selectedOptions,
+          handleChange,
+          handleInputChange,
+          handleKeyboardInteraction,
+          openMenu
+        }) => (
           <div>
             <Input
               placeholder="Type to search..."
@@ -70,8 +76,7 @@ export function ChipsWithRemoveExample() {
                 {selectedOptions.map((option) => (
                   <span
                     key={option.value}
-                    className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 px-2 py-1 rounded"
-                  >
+                    className="inline-flex items-center gap-1 bg-purple-100 text-purple-800 px-2 py-1 rounded">
                     {option.label}
                     <button
                       type="button"
@@ -79,8 +84,7 @@ export function ChipsWithRemoveExample() {
                         e.stopPropagation();
                         handleChange(option.value);
                       }}
-                      className="hover:bg-purple-200 rounded-full p-0.5"
-                    >
+                      className="hover:bg-purple-200 rounded-full p-0.5">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
@@ -139,7 +143,14 @@ export function CustomStyledChipsExample() {
   return (
     <Select multiple value={values} onChange={setValues}>
       <SelectTrigger<number> multiple>
-        {({ keyword, selectedOptions, handleChange, handleInputChange, handleKeyboardInteraction, openMenu }) => (
+        {({
+          keyword,
+          selectedOptions,
+          handleChange,
+          handleInputChange,
+          handleKeyboardInteraction,
+          openMenu
+        }) => (
           <div className="space-y-3">
             <Input
               placeholder="Select programming languages..."
@@ -151,9 +162,7 @@ export function CustomStyledChipsExample() {
             />
             {selectedOptions.length > 0 && (
               <div>
-                <div className="text-xs text-gray-500 mb-2">
-                  {selectedOptions.length} selected
-                </div>
+                <div className="text-xs text-gray-500 mb-2">{selectedOptions.length} selected</div>
                 <div className="flex flex-wrap gap-2">
                   {selectedOptions.map((option) => (
                     <Button
@@ -165,8 +174,7 @@ export function CustomStyledChipsExample() {
                         e.stopPropagation();
                         handleChange(option.value);
                       }}
-                      className="gap-2"
-                    >
+                      className="gap-2">
                       <span>{option.label}</span>
                       <X className="w-3 h-3" />
                     </Button>

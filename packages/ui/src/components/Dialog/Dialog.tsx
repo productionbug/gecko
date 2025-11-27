@@ -26,9 +26,7 @@ const show = (options: DialogOptions) => {
   const el = document.getElementById(DIALOG_CONTAINER_ID);
 
   if (!el) {
-    throw new Error(
-      "Confirm Dialog container not found. Ensure `<GeckoUIPortal />` is mounted."
-    );
+    throw new Error("Confirm Dialog container not found. Ensure `<GeckoUIPortal />` is mounted.");
   }
 
   root = createRoot(el);

@@ -181,7 +181,9 @@ const Select: SelectOverload = <T,>(props: SelectProps<T>) => {
         menuScrollContainerRef,
         ...rest
       }}>
-      <div className={classNames("GeckoUISelect", wrapperClassName)} ref={(r) => refs.setReference(r)}>
+      <div
+        className={classNames("GeckoUISelect", wrapperClassName)}
+        ref={(r) => refs.setReference(r)}>
         <SelectButton {...props} />
         <SelectMenu className={menuClassName}>{children}</SelectMenu>
       </div>

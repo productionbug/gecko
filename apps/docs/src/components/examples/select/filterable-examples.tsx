@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption, SelectEmpty } from '@productionbug/gecko';
+import { Select, SelectEmpty, SelectOption } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function InlineFilterExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -38,7 +38,11 @@ export function DropdownFilterExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="dropdown" value={value} onChange={setValue} placeholder="Select a framework...">
+    <Select
+      filterable="dropdown"
+      value={value}
+      onChange={setValue}
+      placeholder="Select a framework...">
       <SelectOption value="react" label="React" />
       <SelectOption value="vue" label="Vue" />
       <SelectOption value="angular" label="Angular" />
@@ -63,8 +67,7 @@ export function FilterableMultipleExample() {
       value={values}
       onChange={setValues}
       placeholder="Select skills..."
-      closeMenuOnSelect={false}
-    >
+      closeMenuOnSelect={false}>
       <SelectOption value="typescript" label="TypeScript" />
       <SelectOption value="javascript" label="JavaScript" />
       <SelectOption value="python" label="Python" />
@@ -84,7 +87,11 @@ export function FilterWithEmptyStateExample() {
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <Select filterable="dropdown" value={value} onChange={setValue} placeholder="Search products...">
+    <Select
+      filterable="dropdown"
+      value={value}
+      onChange={setValue}
+      placeholder="Search products...">
       <SelectOption value="laptop" label="Laptop" />
       <SelectOption value="phone" label="Phone" />
       <SelectOption value="tablet" label="Tablet" />
@@ -104,10 +111,36 @@ export function DropdownFilterLargeListExample() {
   const [value, setValue] = useState<string | null>(null);
 
   const colors = [
-    'Red', 'Blue', 'Green', 'Yellow', 'Orange', 'Purple', 'Pink', 'Brown',
-    'Black', 'White', 'Gray', 'Cyan', 'Magenta', 'Lime', 'Indigo', 'Violet',
-    'Turquoise', 'Gold', 'Silver', 'Coral', 'Salmon', 'Peach', 'Lavender',
-    'Maroon', 'Navy', 'Teal', 'Olive', 'Aqua', 'Fuchsia', 'Crimson'
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Orange",
+    "Purple",
+    "Pink",
+    "Brown",
+    "Black",
+    "White",
+    "Gray",
+    "Cyan",
+    "Magenta",
+    "Lime",
+    "Indigo",
+    "Violet",
+    "Turquoise",
+    "Gold",
+    "Silver",
+    "Coral",
+    "Salmon",
+    "Peach",
+    "Lavender",
+    "Maroon",
+    "Navy",
+    "Teal",
+    "Olive",
+    "Aqua",
+    "Fuchsia",
+    "Crimson"
   ];
 
   return (
@@ -124,11 +157,11 @@ export function CustomFilterContentExample() {
   const [value, setValue] = useState<string | null>(null);
 
   const users = [
-    { id: 'user1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-    { id: 'user2', name: 'Jane Smith', email: 'jane@example.com', role: 'Developer' },
-    { id: 'user3', name: 'Bob Johnson', email: 'bob@example.com', role: 'Designer' },
-    { id: 'user4', name: 'Alice Williams', email: 'alice@example.com', role: 'Manager' },
-    { id: 'user5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'Developer' }
+    { id: "user1", name: "John Doe", email: "john@example.com", role: "Admin" },
+    { id: "user2", name: "Jane Smith", email: "jane@example.com", role: "Developer" },
+    { id: "user3", name: "Bob Johnson", email: "bob@example.com", role: "Designer" },
+    { id: "user4", name: "Alice Williams", email: "alice@example.com", role: "Manager" },
+    { id: "user5", name: "Charlie Brown", email: "charlie@example.com", role: "Developer" }
   ];
 
   return (
@@ -136,7 +169,7 @@ export function CustomFilterContentExample() {
       {users.map((user) => (
         <SelectOption key={user.id} value={user.id} label={`${user.name} ${user.email}`}>
           {({ selected, focused }) => (
-            <div className={`flex items-center justify-between ${focused ? 'font-semibold' : ''}`}>
+            <div className={`flex items-center justify-between ${focused ? "font-semibold" : ""}`}>
               <div>
                 <div>{user.name}</div>
                 <div className="text-xs text-gray-500">{user.email}</div>

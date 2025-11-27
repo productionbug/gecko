@@ -5,7 +5,10 @@ import type { DateRange } from "../Calendar/Calendar/Calendar.types";
 export type DateFormat = "DD/MM/YYYY" | "MM/DD/YYYY" | "YYYY/MM/DD";
 
 export interface BaseDateRangeInputProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "onBlur" | "prefix" | "onSubmit"> {
+  extends Omit<
+    React.HTMLAttributes<HTMLDivElement>,
+    "onChange" | "onBlur" | "prefix" | "onSubmit"
+  > {
   value?: DateRange;
   onChange?: (value: DateRange | null) => void;
   onSubmit?: () => void;

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { LoadingButton } from '@productionbug/gecko';
+import { LoadingButton } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function AsyncOperationExample() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -23,8 +23,7 @@ export function AsyncOperationExample() {
       loadingText="Downloading..."
       onClick={handleDownload}
       variant="outlined"
-      size="lg"
-    >
+      size="lg">
       Download Report
     </LoadingButton>
   );

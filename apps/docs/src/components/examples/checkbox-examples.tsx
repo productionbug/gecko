@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Checkbox } from '@productionbug/gecko';
+import { Checkbox } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function CheckboxBasicExample() {
   return (
@@ -14,9 +14,9 @@ export function CheckboxBasicExample() {
 
 export function CheckboxIndeterminateExample() {
   const [items, setItems] = useState([
-    { id: 1, label: 'Item 1', checked: true },
-    { id: 2, label: 'Item 2', checked: false },
-    { id: 3, label: 'Item 3', checked: true }
+    { id: 1, label: "Item 1", checked: true },
+    { id: 2, label: "Item 2", checked: false },
+    { id: 3, label: "Item 3", checked: true }
   ]);
 
   const allChecked = items.every((item) => item.checked);

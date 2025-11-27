@@ -57,11 +57,7 @@ const Switch = forwardRef<null, SwitchProps>(
             return true;
           }
         }}
-        className={classNames(
-          "group GeckoUISwitch",
-          `GeckoUISwitch--size-${size}`,
-          className
-        )}
+        className={classNames("group GeckoUISwitch", `GeckoUISwitch--size-${size}`, className)}
         {...rest}
         ref={ref}>
         <span

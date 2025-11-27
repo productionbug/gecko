@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Select, SelectOption } from '@productionbug/gecko';
+import { Select, SelectOption } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function BasicSelectExample() {
   const [value, setValue] = useState<string | null>(null);
@@ -51,7 +51,7 @@ export function CustomOptionContentExample() {
             <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm">
               JD
             </div>
-            <div className={focused ? 'font-semibold' : ''}>
+            <div className={focused ? "font-semibold" : ""}>
               <div>John Doe</div>
               <div className="text-xs text-gray-500">john@example.com</div>
             </div>
@@ -64,7 +64,7 @@ export function CustomOptionContentExample() {
             <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-sm">
               JS
             </div>
-            <div className={focused ? 'font-semibold' : ''}>
+            <div className={focused ? "font-semibold" : ""}>
               <div>Jane Smith</div>
               <div className="text-xs text-gray-500">jane@example.com</div>
             </div>
@@ -118,7 +118,7 @@ export function CustomClickBehaviorExample() {
         value="custom"
         label="Custom Action"
         onClick={({ selectCurrentOption, closeMenu }) => {
-          console.log('Custom action triggered');
+          console.log("Custom action triggered");
           selectCurrentOption();
           closeMenu();
         }}

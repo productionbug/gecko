@@ -97,9 +97,9 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
             !open && hasValue && "GeckoUISelectButton__search--focusonly",
             !filterable && "GeckoUISelectButton__search--focusonly",
             multiple &&
-            Array.isArray(value) &&
-            !!value?.length &&
-            "GeckoUISelectButton__search--multi-selected"
+              Array.isArray(value) &&
+              !!value?.length &&
+              "GeckoUISelectButton__search--multi-selected"
           )}
           data-keyword={filterable ? keyword : ""}>
           <input
@@ -121,7 +121,7 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
               filterable
                 ? handleInputChange
                 : // To prevent the react warning about uncontrolled input
-                () => null
+                  () => null
             }
             autoComplete="off"
             autoCapitalize="off"
@@ -140,7 +140,9 @@ function SelectButton({ prefix, suffix, className }: SelectButtonProps) {
 
         <DynamicComponentRenderer
           component={
-            suffix ?? <span className="GeckoUI-icon__arrow-right GeckoUISelectTrigger__arrow-right-icon" />
+            suffix ?? (
+              <span className="GeckoUI-icon__arrow-right GeckoUISelectTrigger__arrow-right-icon" />
+            )
           }
         />
       </div>
@@ -213,7 +215,9 @@ function SelectButtonContent() {
                 disabled && "GeckoUISelectButton__multiselected-chip__clear-button--disabled"
               )}>
               <span
-                className={classNames("GeckoUISelectButton__multiselected-chip__clear-button__icon")}
+                className={classNames(
+                  "GeckoUISelectButton__multiselected-chip__clear-button__icon"
+                )}
               />
             </button>
           )}

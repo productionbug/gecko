@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Pagination } from '@productionbug/gecko';
+import { Pagination } from "@productionbug/gecko";
+import { useState } from "react";
 
 export function BasicPaginationExample() {
   const [page, setPage] = useState(1);
@@ -46,16 +46,16 @@ export function WithDataFetchingExample() {
   const [loading, setLoading] = useState(false);
 
   const items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10'
+    "Item 1",
+    "Item 2",
+    "Item 3",
+    "Item 4",
+    "Item 5",
+    "Item 6",
+    "Item 7",
+    "Item 8",
+    "Item 9",
+    "Item 10"
   ];
 
   const itemsPerPage = 3;
@@ -108,7 +108,7 @@ export function APIIntegrationExample() {
     <div className="space-y-4">
       <div className="border rounded-md p-4">
         <p className="text-sm text-gray-600">
-          Showing {(page - 1) * itemsPerPage + 1}-{Math.min(page * itemsPerPage, totalItems)} of{' '}
+          Showing {(page - 1) * itemsPerPage + 1}-{Math.min(page * itemsPerPage, totalItems)} of{" "}
           {totalItems} items
         </p>
       </div>

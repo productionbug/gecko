@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFOTPInput, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInputGroup, RHFOTPInput } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFOTPInputExample() {
   const methods = useForm({
     defaultValues: {
-      basicOtp: ''
+      basicOtp: ""
     }
   });
 
@@ -21,14 +21,17 @@ export function BasicRHFOTPInputExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    validationCode: z.string().length(6, 'OTP must be exactly 6 digits').regex(/^\d+$/, 'OTP must contain only numbers')
+    validationCode: z
+      .string()
+      .length(6, "OTP must be exactly 6 digits")
+      .regex(/^\d+$/, "OTP must contain only numbers")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      validationCode: ''
+      validationCode: ""
     }
   });
 
@@ -44,7 +47,7 @@ export function WithValidationExample() {
 export function SixDigitExample() {
   const methods = useForm({
     defaultValues: {
-      sixDigitPin: ''
+      sixDigitPin: ""
     }
   });
 
@@ -58,7 +61,7 @@ export function SixDigitExample() {
 export function FourDigitExample() {
   const methods = useForm({
     defaultValues: {
-      fourDigitPin: ''
+      fourDigitPin: ""
     }
   });
 
@@ -71,14 +74,14 @@ export function FourDigitExample() {
 
 export function AlphanumericExample() {
   const schema = z.object({
-    activationCode: z.string().length(8, 'Activation code must be exactly 8 characters')
+    activationCode: z.string().length(8, "Activation code must be exactly 8 characters")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      activationCode: ''
+      activationCode: ""
     }
   });
 
@@ -94,7 +97,7 @@ export function AlphanumericExample() {
 export function DisabledExample() {
   const methods = useForm({
     defaultValues: {
-      disabledOtp: '123456'
+      disabledOtp: "123456"
     }
   });
 
@@ -107,20 +110,23 @@ export function DisabledExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    twoFactorCode: z.string().length(6, 'Code must be exactly 6 digits').regex(/^\d+$/, 'Code must contain only numbers')
+    twoFactorCode: z
+      .string()
+      .length(6, "Code must be exactly 6 digits")
+      .regex(/^\d+$/, "Code must contain only numbers")
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      twoFactorCode: ''
+      twoFactorCode: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Two-factor code submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Two-factor code submitted! Check console for data.");
   };
 
   return (
@@ -130,14 +136,12 @@ export function CompleteFormExample() {
           <RHFOTPInput
             name="twoFactorCode"
             onOTPComplete={(value) => {
-              console.log('OTP completed:', value);
+              console.log("OTP completed:", value);
             }}
           />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Verify Code
-        </Button>
+        <Button type="submit">Verify Code</Button>
       </form>
     </FormProvider>
   );

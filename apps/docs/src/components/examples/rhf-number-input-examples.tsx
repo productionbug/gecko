@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFNumberInput, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFInputGroup, RHFNumberInput } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFNumberInputExample() {
   const methods = useForm({
     defaultValues: {
-      basicBalance: ''
+      basicBalance: ""
     }
   });
 
@@ -22,7 +22,7 @@ export function BasicRHFNumberInputExample() {
 export function IntegerOnlyExample() {
   const methods = useForm({
     defaultValues: {
-      integerQuantity: ''
+      integerQuantity: ""
     }
   });
 
@@ -40,7 +40,7 @@ export function IntegerOnlyExample() {
 export function WithDecimalsExample() {
   const methods = useForm({
     defaultValues: {
-      decimalPrice: ''
+      decimalPrice: ""
     }
   });
 
@@ -58,7 +58,7 @@ export function WithDecimalsExample() {
 export function PositiveOnlyExample() {
   const methods = useForm({
     defaultValues: {
-      positiveAge: ''
+      positiveAge: ""
     }
   });
 
@@ -77,7 +77,7 @@ export function PositiveOnlyExample() {
 export function NonStrictExample() {
   const methods = useForm({
     defaultValues: {
-      nonStrictRoom: ''
+      nonStrictRoom: ""
     }
   });
 
@@ -96,29 +96,26 @@ export function NonStrictExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    validationAmount: z.string()
-      .min(1, 'Amount is required')
+    validationAmount: z
+      .string()
+      .min(1, "Amount is required")
       .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-        message: 'Amount must be greater than 0'
+        message: "Amount must be greater than 0"
       })
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      validationAmount: ''
+      validationAmount: ""
     }
   });
 
   return (
     <FormProvider {...methods}>
       <RHFInputGroup label="Amount" required>
-        <RHFNumberInput
-          name="validationAmount"
-          maxFractionDigits={2}
-          placeholder="Enter amount"
-        />
+        <RHFNumberInput name="validationAmount" maxFractionDigits={2} placeholder="Enter amount" />
       </RHFInputGroup>
     </FormProvider>
   );
@@ -126,32 +123,34 @@ export function WithValidationExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    formQuantity: z.string()
-      .min(1, 'Quantity is required')
+    formQuantity: z
+      .string()
+      .min(1, "Quantity is required")
       .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-        message: 'Quantity must be at least 1'
+        message: "Quantity must be at least 1"
       }),
-    formPrice: z.string()
-      .min(1, 'Price is required')
+    formPrice: z
+      .string()
+      .min(1, "Price is required")
       .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-        message: 'Price must be greater than 0'
+        message: "Price must be greater than 0"
       }),
     formDiscount: z.string().optional()
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      formQuantity: '',
-      formPrice: '',
-      formDiscount: ''
+      formQuantity: "",
+      formPrice: "",
+      formDiscount: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -185,9 +184,7 @@ export function CompleteFormExample() {
           />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );

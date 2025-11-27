@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFCurrencyInput, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFCurrencyInput, RHFInputGroup } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFCurrencyInputExample() {
   const methods = useForm({
     defaultValues: {
-      basicPrice: ''
+      basicPrice: ""
     }
   });
 
@@ -16,7 +16,7 @@ export function BasicRHFCurrencyInputExample() {
     <FormProvider {...methods}>
       <RHFCurrencyInput
         name="basicPrice"
-        currency={{ symbol: '$', code: 'USD' }}
+        currency={{ symbol: "$", code: "USD" }}
         placeholder="0.00"
       />
     </FormProvider>
@@ -26,7 +26,7 @@ export function BasicRHFCurrencyInputExample() {
 export function WithSymbolOnlyExample() {
   const methods = useForm({
     defaultValues: {
-      symbolAmount: ''
+      symbolAmount: ""
     }
   });
 
@@ -34,7 +34,7 @@ export function WithSymbolOnlyExample() {
     <FormProvider {...methods}>
       <RHFCurrencyInput
         name="symbolAmount"
-        currency={{ symbol: '€', code: '' }}
+        currency={{ symbol: "€", code: "" }}
         placeholder="0.00"
       />
     </FormProvider>
@@ -44,7 +44,7 @@ export function WithSymbolOnlyExample() {
 export function WithCodeOnlyExample() {
   const methods = useForm({
     defaultValues: {
-      codeAmount: ''
+      codeAmount: ""
     }
   });
 
@@ -52,7 +52,7 @@ export function WithCodeOnlyExample() {
     <FormProvider {...methods}>
       <RHFCurrencyInput
         name="codeAmount"
-        currency={{ symbol: '', code: 'JPY' }}
+        currency={{ symbol: "", code: "JPY" }}
         maxFractionDigits={0}
         placeholder="0"
       />
@@ -63,9 +63,9 @@ export function WithCodeOnlyExample() {
 export function DifferentCurrenciesExample() {
   const methods = useForm({
     defaultValues: {
-      usdAmount: '',
-      eurAmount: '',
-      gbpAmount: ''
+      usdAmount: "",
+      eurAmount: "",
+      gbpAmount: ""
     }
   });
 
@@ -76,7 +76,7 @@ export function DifferentCurrenciesExample() {
           <label className="block text-sm mb-1">USD</label>
           <RHFCurrencyInput
             name="usdAmount"
-            currency={{ symbol: '$', code: 'USD' }}
+            currency={{ symbol: "$", code: "USD" }}
             placeholder="0.00"
           />
         </div>
@@ -84,7 +84,7 @@ export function DifferentCurrenciesExample() {
           <label className="block text-sm mb-1">EUR</label>
           <RHFCurrencyInput
             name="eurAmount"
-            currency={{ symbol: '€', code: 'EUR' }}
+            currency={{ symbol: "€", code: "EUR" }}
             placeholder="0.00"
           />
         </div>
@@ -92,7 +92,7 @@ export function DifferentCurrenciesExample() {
           <label className="block text-sm mb-1">GBP</label>
           <RHFCurrencyInput
             name="gbpAmount"
-            currency={{ symbol: '£', code: 'GBP' }}
+            currency={{ symbol: "£", code: "GBP" }}
             placeholder="0.00"
           />
         </div>
@@ -103,18 +103,19 @@ export function DifferentCurrenciesExample() {
 
 export function WithValidationExample() {
   const schema = z.object({
-    validationCost: z.string()
-      .min(1, 'Cost is required')
-      .refine((val) => !isNaN(Number(val.replace(/,/g, ''))) && Number(val.replace(/,/g, '')) > 0, {
-        message: 'Cost must be greater than 0'
+    validationCost: z
+      .string()
+      .min(1, "Cost is required")
+      .refine((val) => !isNaN(Number(val.replace(/,/g, ""))) && Number(val.replace(/,/g, "")) > 0, {
+        message: "Cost must be greater than 0"
       })
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      validationCost: ''
+      validationCost: ""
     }
   });
 
@@ -123,7 +124,7 @@ export function WithValidationExample() {
       <RHFInputGroup label="Product Cost" required>
         <RHFCurrencyInput
           name="validationCost"
-          currency={{ symbol: '$', code: 'USD' }}
+          currency={{ symbol: "$", code: "USD" }}
           placeholder="0.00"
         />
       </RHFInputGroup>
@@ -133,32 +134,37 @@ export function WithValidationExample() {
 
 export function CompleteFormExample() {
   const schema = z.object({
-    formBasePrice: z.string()
-      .min(1, 'Base price is required')
-      .refine((val) => !isNaN(Number(val.replace(/,/g, ''))) && Number(val.replace(/,/g, '')) > 0, {
-        message: 'Price must be greater than 0'
+    formBasePrice: z
+      .string()
+      .min(1, "Base price is required")
+      .refine((val) => !isNaN(Number(val.replace(/,/g, ""))) && Number(val.replace(/,/g, "")) > 0, {
+        message: "Price must be greater than 0"
       }),
-    formTax: z.string()
-      .min(1, 'Tax is required')
-      .refine((val) => !isNaN(Number(val.replace(/,/g, ''))) && Number(val.replace(/,/g, '')) >= 0, {
-        message: 'Tax must be 0 or greater'
-      }),
+    formTax: z
+      .string()
+      .min(1, "Tax is required")
+      .refine(
+        (val) => !isNaN(Number(val.replace(/,/g, ""))) && Number(val.replace(/,/g, "")) >= 0,
+        {
+          message: "Tax must be 0 or greater"
+        }
+      ),
     formShipping: z.string().optional()
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      formBasePrice: '',
-      formTax: '',
-      formShipping: ''
+      formBasePrice: "",
+      formTax: "",
+      formShipping: ""
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Form submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Form submitted! Check console for data.");
   };
 
   return (
@@ -167,7 +173,7 @@ export function CompleteFormExample() {
         <RHFInputGroup label="Base Price" required>
           <RHFCurrencyInput
             name="formBasePrice"
-            currency={{ symbol: '$', code: 'USD' }}
+            currency={{ symbol: "$", code: "USD" }}
             placeholder="0.00"
           />
         </RHFInputGroup>
@@ -175,7 +181,7 @@ export function CompleteFormExample() {
         <RHFInputGroup label="Tax" required>
           <RHFCurrencyInput
             name="formTax"
-            currency={{ symbol: '$', code: 'USD' }}
+            currency={{ symbol: "$", code: "USD" }}
             placeholder="0.00"
           />
         </RHFInputGroup>
@@ -183,14 +189,12 @@ export function CompleteFormExample() {
         <RHFInputGroup label="Shipping">
           <RHFCurrencyInput
             name="formShipping"
-            currency={{ symbol: '$', code: 'USD' }}
+            currency={{ symbol: "$", code: "USD" }}
             placeholder="0.00"
           />
         </RHFInputGroup>
 
-        <Button type="submit">
-          Calculate Total
-        </Button>
+        <Button type="submit">Calculate Total</Button>
       </form>
     </FormProvider>
   );

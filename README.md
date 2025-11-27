@@ -1,17 +1,14 @@
-# Gecko UI
+<p align="center">
+  <img src="GeckoUI.png" alt="Gecko UI" width="120" />
+</p>
 
-A flexible, themeable React component library built with Tailwind CSS.
+<h1 align="center">Gecko UI</h1>
+
+<p align="center">
+  Because your app deserves to be cute AND powerful. 🦎
+</p>
 
 📚 **Documentation**: [Gecko](https://gecko.productionbug.com)
-
-## Features
-
-✨ **Fully Themeable** - Support for light, dark, and unlimited custom themes
-🎨 **Pure CSS Theming** - No JavaScript overhead, works with SSR
-🔧 **Tailwind-Powered** - Built on Tailwind CSS utilities
-♿ **Accessible** - WCAG compliant components
-📦 **Tree-Shakeable** - Only bundle what you use
-🎯 **TypeScript** - Full type safety
 
 ## Installation
 

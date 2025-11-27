@@ -31,10 +31,7 @@ import type { GeckoUIPortalProps } from "./GeckoUIPortal.types";
  * )
  * ```
  * */
-const GeckoUIPortal: FC<GeckoUIPortalProps> = ({
-  toastOptions = {},
-  mermaidConfig = {}
-}) => {
+const GeckoUIPortal: FC<GeckoUIPortalProps> = ({ toastOptions = {}, mermaidConfig = {} }) => {
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,

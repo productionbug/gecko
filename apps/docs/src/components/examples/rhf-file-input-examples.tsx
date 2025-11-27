@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { RHFFileInput, RHFInputGroup, Button } from '@productionbug/gecko';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, RHFFileInput, RHFInputGroup } from "@productionbug/gecko";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function BasicRHFFileInputExample() {
   const methods = useForm({
@@ -22,25 +22,25 @@ export function BasicRHFFileInputExample() {
 export function WithValidationExample() {
   const schema = z.object({
     validationAvatar: z
-      .instanceof(File, { message: 'Please select a file' })
-      .refine((file) => file.size <= 5000000, 'File size must be less than 5MB')
+      .instanceof(File, { message: "Please select a file" })
+      .refine((file) => file.size <= 5000000, "File size must be less than 5MB")
       .refine(
-        (file) => ['image/jpeg', 'image/png', 'image/webp'].includes(file.type),
-        'Only JPEG, PNG, and WebP images are allowed'
+        (file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type),
+        "Only JPEG, PNG, and WebP images are allowed"
       )
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
       validationAvatar: undefined
     }
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('File uploaded successfully! Check console for data.');
+    console.log("Form data:", data);
+    alert("File uploaded successfully! Check console for data.");
   };
 
   return (
@@ -123,7 +123,7 @@ export function WithCallbackExample() {
   });
 
   const handleFileChange = (data: any) => {
-    console.log('File selected:', data);
+    console.log("File selected:", data);
     if (data) {
       alert(`File selected: ${data.name} (${(data.size / 1024).toFixed(2)} KB)`);
     }
@@ -139,29 +139,35 @@ export function WithCallbackExample() {
 export function CompleteFormExample() {
   const schema = z.object({
     resume: z
-      .instanceof(File, { message: 'Resume is required' })
-      .refine((file) => file.size <= 10000000, 'File size must be less than 10MB')
+      .instanceof(File, { message: "Resume is required" })
+      .refine((file) => file.size <= 10000000, "File size must be less than 10MB")
       .refine(
-        (file) => ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(file.type),
-        'Only PDF and Word documents are allowed'
+        (file) =>
+          [
+            "application/pdf",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          ].includes(file.type),
+        "Only PDF and Word documents are allowed"
       ),
     portfolio: z
       .array(z.instanceof(File))
-      .min(1, 'At least one portfolio item is required')
-      .max(5, 'Maximum 5 files allowed')
+      .min(1, "At least one portfolio item is required")
+      .max(5, "Maximum 5 files allowed")
       .refine(
         (files) => files.every((file) => file.size <= 5000000),
-        'Each file must be less than 5MB'
+        "Each file must be less than 5MB"
       )
       .refine(
-        (files) => files.every((file) => ['image/jpeg', 'image/png', 'image/webp'].includes(file.type)),
-        'Only JPEG, PNG, and WebP images are allowed'
+        (files) =>
+          files.every((file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type)),
+        "Only JPEG, PNG, and WebP images are allowed"
       )
   });
 
   const methods = useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
       resume: undefined,
       portfolio: undefined
@@ -169,8 +175,8 @@ export function CompleteFormExample() {
   });
 
   const onSubmit = (data: any) => {
-    console.log('Form data:', data);
-    alert('Application submitted! Check console for data.');
+    console.log("Form data:", data);
+    alert("Application submitted! Check console for data.");
   };
 
   return (

@@ -67,7 +67,7 @@ export function CustomLengthExample() {
 export function DisabledOTPExample() {
   return (
     <div className="max-w-sm">
-      <OTPInput value="123456" onChange={() => { }} disabled />
+      <OTPInput value="123456" onChange={() => {}} disabled />
     </div>
   );
 }
