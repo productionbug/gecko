@@ -1,9 +1,21 @@
 {
   "name": "@productionbug/gecko",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "sideEffects": [
     "**/*.css"
   ],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "library"
+  ],
+  "description": "The only thing our Gecko 🦎 eats is bugs! 🐛",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productionbug/gecko.git",
+    "directory": "packages/gecko"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
