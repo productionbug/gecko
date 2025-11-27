@@ -9,67 +9,60 @@ import type {
 } from "../types";
 
 /**
- * Reuseable file picker handler hook that supports drag and drop, file selection and directory selection.
- * Unlike native file input, selected files will have `preview` and `duplicatedWith` properties.
- * You can use preview url to display the image or file content.
- * For the sake of handling duplicates, `duplicatedWith` property will be set if the file is already selected.
- * You can also pass `removeDuplicates` prop to remove duplicates automatically.
- * If you want to support drag and drop, you need to pass `ref` to the element.
+ * A hook for handling file selection with drag-and-drop, file picker, and directory selection support.
  *
- * When file picker is successfully completed, `onChange` callback will be called with selected files and result.
- * result is an object with file size as key and array of files that have the same size as value.(possible duplicates)
- * You will rarely need to use `result` but it's there if you need it.
+ * Selected files are enhanced with:
+ * - `preview`: Object URL for displaying file content
+ * - `path`: File system path (from directory picker)
+ * - `editableName`: Mutable name property
  *
- * Usage:
- * ```ts
- * const Component = () => {
- *   const { files, dropzoneRef, dragging, openFilePicker, loading } = useFilePicker({
- *    accept: "image/*",
- *    removeDuplicates: false,
- *    keepOldFiles: false,
- *    onChange: (files, newFiles) => {
- *      setFiles(files);
- *      console.log(files, newFiles);
- *    },
- *    onStart: () => console.log("File picker started"),
- *    onError: (error) => console.error(error),
+ * @example
+ * ```tsx
+ * const ImageUploader = () => {
+ *   const [files, setFiles] = useState<FilePickerFile[]>([]);
+ *   const { dropzoneRef, dragging, loading, openFilePicker } = useFilePicker({
+ *     accept: "image/*",
+ *     files,
+ *     setFiles,
+ *     keepOldFiles: true,
+ *     onChange: (allFiles, newFiles) => console.log('Added:', newFiles.length),
  *   });
- *  
+ *
+ *   const handleRemove = (preview: string) => {
+ *     setFiles(files.filter((f) => f.preview !== preview));
+ *   };
+ *
  *   return (
- *     <div
- *       ref={dropzoneRef}
- *       onClick={() => openFilePicker()}
- *       style={{
- *         scrollbarWidth: "thin",
- *       }}
- *       className={classNames(
- *         "p-2 flex h-[150px] w-[400px] overflow-y-auto bg-gray-100 rounded cursor-pointer",
- *         dragging
- *           ? "border-2 border-dashed border-blue-400"
- *           : "border-2 border-dashed border-gray-300"
- *       )}
+ *     <div className="flex flex-col gap-3">
+ *       <div
+ *         ref={dropzoneRef}
+ *         onClick={() => openFilePicker()}
+ *         className={`flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed p-4 ${
+ *           dragging ? 'border-primary-400 bg-primary-50' : 'border-gray-300'
+ *         }`}
  *       >
- *       {loading && <div className="absolute inset-1">Loading...</div>}
+ *         <span>{dragging ? 'Drop images here' : 'Click to upload or drag and drop'}</span>
+ *         {loading && <Spinner />}
+ *       </div>
+ *
  *       {!!files.length && (
- *         <ul className="list-dist flex gap-2 flex-col w-full text-start">
- *           {files
- *             .filter((f) => !f.duplicatedWith)
- *             .map((file, i) => {
- *               const len = files.filter(
- *                 (f) => f.duplicatedWith?.preview === file.preview
- *               ).length;
-
- *               return (
- *                 <li key={file.name + i.toString()}>
- *                   {file.name}, has {len} duplicated files
- *                 </li>
- *               );
- *             })}
- *         </ul>
+ *         <div className="grid grid-cols-4 gap-2">
+ *           {files.map((file) => (
+ *             <div key={file.preview} className="group relative aspect-square">
+ *               <img src={file.preview} className="h-full w-full rounded-lg object-cover" />
+ *               <button
+ *                 onClick={() => handleRemove(file.preview)}
+ *                 className="absolute -right-1 -top-1 rounded-full bg-red-500 p-1 text-white opacity-0 group-hover:opacity-100"
+ *               >
+ *                 ✕
+ *               </button>
+ *             </div>
+ *           ))}
+ *         </div>
  *       )}
- *    </div>
- *   )
- * }
+ *     </div>
+ *   );
+ * };
  * ```
  * */
 function useFilePicker<T extends HTMLElement>(
@@ -77,7 +70,7 @@ function useFilePicker<T extends HTMLElement>(
 ): UseFilePickerReturn<T> {
   const {
     accept = "*",
-    removeDuplicates = false,
+    removeDuplicates: _removeDuplicated = false,
     onChange,
     keepOldFiles,
     onStart,
@@ -86,6 +79,8 @@ function useFilePicker<T extends HTMLElement>(
     files = [],
     setFiles
   } = options || {};
+
+  const removeDuplicates = _removeDuplicated && keepOldFiles;
 
   const dropzoneRef = useRef<T>(null);
   const [loading, setLoading] = useState(false);

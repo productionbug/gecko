@@ -1,9 +1,18 @@
 import { useFilePicker } from "../../../hooks";
-import { FilePlus, FolderPlus } from "../../../icons";
+import { Upload, X } from "../../../icons";
+import type { FilePickerFile } from "../../../types";
 import { classNames } from "../../../utils/classNames";
 import { Spinner } from "../../Spinner";
 import { RHFController } from "../RHFController";
 import type { RHFFilePickerProps, RHFFilePickerRendererProps } from "./RHFFilePicker.types";
+
+function formatFileSize(bytes: number): string {
+  if (bytes === 0) return "0 B";
+  const k = 1024;
+  const sizes = ["B", "KB", "MB", "GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
+}
 
 /**
  * A file picker component with drag-and-drop support for React Hook Form.
@@ -35,77 +44,65 @@ import type { RHFFilePickerProps, RHFFilePickerRendererProps } from "./RHFFilePi
  * />
  * ```
  *
- * Custom UI example:
+ * Custom UI example (compact image grid):
  * ```tsx
  * <RHFFilePicker
- *   name="dropped_files"
- *   removeDuplicates={false}
- *   onChange={(files, newFiles) => console.log(files, newFiles)}
- *   onError={(e) => console.log(e)}
+ *   name="customImages"
  *   accept="image/*"
  *   render={({
  *     dropzoneRef,
  *     dragging,
  *     loading,
- *     field: { value: files },
+ *     field: { value: files, onChange },
  *     openFilePicker,
- *   }) => (
- *     <div
- *       ref={dropzoneRef}
- *       className={classNames(
- *         "relative flex h-[500px] w-full flex-col rounded border-2 border-dashed",
- *         loading && "cursor-wait",
- *         dragging ? "border-primary-400" : "border-gray-300"
- *       )}
- *     >
- *       {!!files?.length && (
+ *   }) => {
+ *     const handleRemove = (preview: string) => {
+ *       onChange(files.filter((f) => f.preview !== preview));
+ *     };
+ *
+ *     return (
+ *       <div className="flex flex-col gap-3">
  *         <div
- *           style={{ scrollbarWidth: "none" }}
- *           className="w-full flex-1 flex-col overflow-y-auto text-start grid grid-cols-3 gap-x-3 gap-y-3 p-2 pb-16 place-content-start"
- *         >
- *           {files.map((file) => {
- *             return (
- *               <img
- *                 key={file.preview}
- *                 src={file.preview}
- *                 alt={file.name}
- *                 className="inline-block aspect-square w-full h-20 object-contain rounded border border-gray-300"
- *               />
- *             );
- *           })}
- *         </div>
- *       )}
-
- *       <div className="absolute left-0 right-0 border bg-white p-1.5 bottom-0 flex flex-row gap-2">
- *         <Button
- *           variant="outlined"
- *           className="flex-1"
+ *           ref={dropzoneRef}
  *           onClick={() => openFilePicker()}
+ *           className={`relative flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors ${
+ *             dragging ? 'border-primary-400 bg-primary-50' : 'border-gray-300 hover:border-primary-300'
+ *           }`}
  *         >
- *           Select Images
- *         </Button>
-
- *         <Button
- *           className="flex-1"
- *           onClick={() => openFilePicker({ directory: true })}
- *         >
- *           Select Directory
- *         </Button>
+ *           <div className="flex items-center gap-3 text-sm text-gray-500">
+ *             <UploadIcon className="h-5 w-5" />
+ *             <span>{dragging ? 'Drop images here' : 'Click to upload or drag and drop'}</span>
+ *           </div>
+ *           {loading && (
+ *             <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-white/50">
+ *               <Spinner className="h-5 w-5" />
+ *             </div>
+ *           )}
+ *         </div>
+ *
+ *         {!!files?.length && (
+ *           <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6">
+ *             {files.map((file) => (
+ *               <div key={file.preview} className="group relative aspect-square">
+ *                 <img
+ *                   src={file.preview}
+ *                   alt={file.name}
+ *                   className="h-full w-full rounded-lg border object-cover"
+ *                 />
+ *                 <button
+ *                   type="button"
+ *                   onClick={() => handleRemove(file.preview)}
+ *                   className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm hover:bg-red-600 group-hover:opacity-100"
+ *                 >
+ *                   <XIcon className="h-3 w-3" />
+ *                 </button>
+ *               </div>
+ *             ))}
+ *           </div>
+ *         )}
  *       </div>
-
- *       {!loading && !files?.length && (
- *         <div className="flex flex-1 items-center justify-center">
- *           <span>Drop images here</span>
- *         </div>
- *       )}
-
- *       {loading && (
- *         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
- *           Loading...
- *         </div>
- *       )}
- *     </div>
- *   )}
+ *     );
+ *   }}
  * />
  * ```
  *
@@ -160,6 +157,11 @@ function RHFFilePickerRenderer<T extends HTMLElement = HTMLDivElement>({
   const { value } = field;
   const { error } = fieldState;
 
+  const handleRemoveFile = (fileToRemove: FilePickerFile) => {
+    const updatedFiles = value.filter((file) => file.preview !== fileToRemove.preview);
+    field.onChange(updatedFiles);
+  };
+
   return (
     <div
       className={classNames(
@@ -167,47 +169,53 @@ function RHFFilePickerRenderer<T extends HTMLElement = HTMLDivElement>({
         loading && "GeckoUIRHFFilePicker--loading",
         dragging && "GeckoUIRHFFilePicker--dragging",
         error && "GeckoUIRHFFilePicker--error"
-      )}
-      ref={dropzoneRef as unknown as React.RefObject<HTMLDivElement>}>
-      {Boolean(value?.length) && (
-        <ul className="GeckoUIRHFFilePicker__file-list" style={{ scrollbarWidth: "none" }}>
-          {value.map((file) => {
-            return (
-              <li className="GeckoUIRHFFilePicker__file-item" key={file.preview}>
-                {file.name}{" "}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      )}>
+      <div
+        className="GeckoUIRHFFilePicker__upload-area"
+        ref={dropzoneRef as unknown as React.RefObject<HTMLDivElement>}>
+        <Upload className="GeckoUIRHFFilePicker__upload-icon" />
 
-      <div className="GeckoUIRHFFilePicker__button-container">
-        <button
-          className="GeckoUIRHFFilePicker__button"
-          onClick={() => openFilePicker()}
-          type="button">
-          <FilePlus className="GeckoUIRHFFilePicker__button-icon" />
-        </button>
+        <p className="GeckoUIRHFFilePicker__upload-text">Drag and drop files here, or browse</p>
 
-        <button
-          className="GeckoUIRHFFilePicker__button"
-          onClick={() => openFilePicker({ directory: true })}
-          type="button">
-          <FolderPlus className="GeckoUIRHFFilePicker__button-icon" />
-        </button>
+        <div className="GeckoUIRHFFilePicker__upload-buttons">
+          <button
+            className="GeckoUIRHFFilePicker__browse-button"
+            onClick={() => openFilePicker()}
+            type="button">
+            Browse Files
+          </button>
+
+          <button
+            className="GeckoUIRHFFilePicker__browse-button"
+            onClick={() => openFilePicker({ directory: true })}
+            type="button">
+            Browse Folder
+          </button>
+        </div>
+
+        {loading ? (
+          <div className="GeckoUIRHFFilePicker__loading-overlay">
+            <Spinner />
+          </div>
+        ) : null}
       </div>
 
-      {!loading && !value?.length && (
-        <div className="GeckoUIRHFFilePicker__empty-state">
-          <span>Drop files here to upload</span>
+      {Boolean(value?.length) && (
+        <div className="GeckoUIRHFFilePicker__file-list">
+          {value.map((file) => (
+            <div className="GeckoUIRHFFilePicker__file-row" key={file.preview}>
+              <span className="GeckoUIRHFFilePicker__file-name">{file.name}</span>
+              <span className="GeckoUIRHFFilePicker__file-size">{formatFileSize(file.size)}</span>
+              <button
+                className="GeckoUIRHFFilePicker__file-remove"
+                onClick={() => handleRemoveFile(file)}
+                type="button">
+                <X className="GeckoUIRHFFilePicker__file-remove-icon" />
+              </button>
+            </div>
+          ))}
         </div>
       )}
-
-      {loading ? (
-        <div className="GeckoUIRHFFilePicker__loading-overlay">
-          <Spinner />
-        </div>
-      ) : null}
     </div>
   );
 }

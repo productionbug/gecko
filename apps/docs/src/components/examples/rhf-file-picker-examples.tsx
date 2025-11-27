@@ -70,7 +70,7 @@ export function RemoveDuplicatesExample() {
 
   return (
     <FormProvider {...methods}>
-      <RHFFilePicker name="uniqueDocuments" removeDuplicates accept=".pdf,.doc,.docx" />
+      <RHFFilePicker name="uniqueDocuments" removeDuplicates keepOldFiles />
     </FormProvider>
   );
 }
@@ -102,50 +102,61 @@ export function CustomRenderExample() {
         name="customImages"
         removeDuplicates={false}
         accept="image/*"
-        render={({ dropzoneRef, dragging, loading, field: { value: files }, openFilePicker }) => (
-          <div
-            ref={dropzoneRef}
-            className={`relative flex h-[500px] w-full flex-col rounded border-2 border-dashed ${loading ? "cursor-wait" : ""} ${dragging ? "border-blue-400" : "border-gray-300"}`}>
-            {!!files?.length && (
+        render={({
+          dropzoneRef,
+          dragging,
+          loading,
+          field: { value: files, onChange },
+          openFilePicker
+        }) => {
+          const handleRemove = (preview: string) => {
+            onChange(files.filter((f) => f.preview !== preview));
+          };
+
+          return (
+            <div className="flex flex-col gap-3">
               <div
-                style={{ scrollbarWidth: "none" }}
-                className="w-full flex-1 flex-col overflow-y-auto text-start grid grid-cols-3 gap-x-3 gap-y-3 p-2 pb-16 place-content-start">
-                {files.map((file) => {
-                  return (
-                    <img
-                      key={file.preview}
-                      src={file.preview}
-                      alt={file.name}
-                      className="inline-block aspect-square w-full h-20 object-contain rounded border border-gray-300"
-                    />
-                  );
-                })}
+                ref={dropzoneRef}
+                onClick={() => openFilePicker()}
+                className={`relative flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors ${loading ? "cursor-wait" : ""} ${dragging ? "border-primary-400 bg-primary-50 dark:bg-primary-950" : "border-border-secondary hover:border-primary-300 hover:bg-surface-secondary"}`}>
+                <div className="flex items-center gap-3 text-sm text-text-muted">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z" />
+                  </svg>
+                  <span>{dragging ? "Drop images here" : "Click to upload or drag and drop"}</span>
+                </div>
+                {loading && (
+                  <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-surface-primary/50">
+                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-400 border-t-transparent" />
+                  </div>
+                )}
               </div>
-            )}
 
-            <div className="absolute left-0 right-0 border bg-white dark:bg-black p-1.5 bottom-0 flex flex-row gap-2">
-              <Button variant="outlined" className="flex-1" onClick={() => openFilePicker()}>
-                Select Images
-              </Button>
-
-              <Button className="flex-1" onClick={() => openFilePicker({ directory: true })}>
-                Select Directory
-              </Button>
+              {!!files?.length && (
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6">
+                  {files.map((file) => (
+                    <div key={file.preview} className="group relative aspect-square">
+                      <img
+                        src={file.preview}
+                        alt={file.name}
+                        className="h-full w-full rounded-lg border border-border-secondary object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemove(file.preview)}
+                        className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm transition-opacity hover:bg-red-600 group-hover:opacity-100">
+                        <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-
-            {!loading && !files?.length && (
-              <div className="flex flex-1 items-center justify-center">
-                <span>Drop images here or click buttons below</span>
-              </div>
-            )}
-
-            {loading && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
-                Loading...
-              </div>
-            )}
-          </div>
-        )}
+          );
+        }}
       />
     </FormProvider>
   );

@@ -56,8 +56,8 @@ function Example() {
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
 | `accept` | `string` | `*` | File types to accept (e.g., "image/*", ".pdf") |
-| `removeDuplicates` | `boolean` | `false` | Automatically remove duplicate files |
 | `keepOldFiles` | `boolean` | `false` | Keep previously selected files when adding new ones |
+| `removeDuplicates` | `boolean` | `false` | Automatically remove duplicate files(Only works if `keepOldFiles` is true) |
 | `transform` | `(files) => files` | - | Transform files before setting them |
 | `onChange` | `(files, newFiles) => void` | - | Callback when files change |
 | `onError` | `(error) => void` | - | Callback when an error occurs |
@@ -114,16 +114,6 @@ function Example() {
 }
 ```
 
-### Remove Duplicates
-
-<Preview>
-  <RemoveDuplicatesExample />
-</Preview>
-
-```tsx
-<RHFFilePicker name="uniqueDocuments" removeDuplicates accept=".pdf,.doc,.docx" />
-```
-
 ### Keep Old Files
 
 Accumulate files across multiple selections:
@@ -136,6 +126,19 @@ Accumulate files across multiple selections:
 <RHFFilePicker name="accumulatedFiles" keepOldFiles />
 ```
 
+### Remove Duplicates
+
+If you set `keepOldFiles`, you can also enable `removeDuplicates` to avoid duplicate files:
+So, if a user selects the same file multiple times, only one instance will be kept.
+
+<Preview>
+  <RemoveDuplicatesExample />
+</Preview>
+
+```tsx
+<RHFFilePicker name="uniqueDocuments" keepOldFiles removeDuplicates />
+```
+
 ### Custom Render with Image Grid
 
 <Preview>
@@ -143,8 +146,6 @@ Accumulate files across multiple selections:
 </Preview>
 
 ```tsx
-import { classNames } from '@productionbug/gecko/utils';
-
 <RHFFilePicker
   name="customImages"
   accept="image/*"
@@ -152,60 +153,58 @@ import { classNames } from '@productionbug/gecko/utils';
     dropzoneRef,
     dragging,
     loading,
-    field: { value: files },
+    field: { value: files, onChange },
     openFilePicker,
-  }) => (
-    <div
-      ref={dropzoneRef}
-      className={classNames(
-        'relative flex h-[500px] w-full flex-col rounded border-2 border-dashed',
-        loading && 'cursor-wait',
-        dragging ? 'border-blue-400' : 'border-gray-300'
-      )}
-    >
-      {!!files?.length && (
-        <div className="w-full flex-1 overflow-y-auto grid grid-cols-3 gap-3 p-2 pb-16">
-          {files.map((file) => (
-            <img
-              key={file.preview}
-              src={file.preview}
-              alt={file.name}
-              className="aspect-square w-full h-20 object-contain rounded border"
-            />
-          ))}
-        </div>
-      )}
+  }) => {
+    const handleRemove = (preview: string) => {
+      onChange(files.filter((f) => f.preview !== preview));
+    };
 
-      <div className="absolute bottom-0 left-0 right-0 border bg-white p-1.5 flex gap-2">
-        <Button
-          variant="outlined"
-          className="flex-1"
+    return (
+      <div className="flex flex-col gap-3">
+        {/* Compact upload area */}
+        <div
+          ref={dropzoneRef}
           onClick={() => openFilePicker()}
+          className={`relative flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors ${
+            dragging ? 'border-primary-400 bg-primary-50' : 'border-gray-300 hover:border-primary-300'
+          }`}
         >
-          Select Images
-        </Button>
+          <div className="flex items-center gap-3 text-sm text-gray-500">
+            <UploadIcon className="h-5 w-5" />
+            <span>{dragging ? 'Drop images here' : 'Click to upload or drag and drop'}</span>
+          </div>
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-white/50">
+              <Spinner className="h-5 w-5" />
+            </div>
+          )}
+        </div>
 
-        <Button
-          className="flex-1"
-          onClick={() => openFilePicker({ directory: true })}
-        >
-          Select Directory
-        </Button>
+        {/* Image grid */}
+        {!!files?.length && (
+          <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6">
+            {files.map((file) => (
+              <div key={file.preview} className="group relative aspect-square">
+                <img
+                  src={file.preview}
+                  alt={file.name}
+                  className="h-full w-full rounded-lg border object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => handleRemove(file.preview)}
+                  className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm hover:bg-red-600 group-hover:opacity-100"
+                >
+                  <XIcon className="h-3 w-3" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-
-      {!loading && !files?.length && (
-        <div className="flex flex-1 items-center justify-center">
-          <span>Drop images here or click buttons below</span>
-        </div>
-      )}
-
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
-          Loading...
-        </div>
-      )}
-    </div>
-  )}
+    );
+  }}
 />
 ```
 
@@ -277,11 +276,11 @@ function ProjectForm() {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(console.log)}>
         <RHFInputGroup label="Project Files" required>
-          <RHFFilePicker name="projectFiles" removeDuplicates />
+          <RHFFilePicker name="projectFiles" />
         </RHFInputGroup>
 
         <RHFInputGroup label="Screenshots" required>
-          <RHFFilePicker name="screenshots" accept="image/*" removeDuplicates />
+          <RHFFilePicker name="screenshots" accept="image/*" />
         </RHFInputGroup>
 
         <Button type="submit">Submit Project</Button>

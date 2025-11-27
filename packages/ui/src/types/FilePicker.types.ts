@@ -49,14 +49,6 @@ export interface UseFilePickerOptions {
   accept?: string;
 
   /**
-   * Whether to remove duplicated files
-   * If true, the file picker will remove duplicated files
-   *
-   * Default: false
-   * */
-  removeDuplicates?: boolean;
-
-  /**
    * Function to transform files before returning them
    * */
   transform?: (files: FilePickerFile[]) => Promise<FilePickerFile[]> | FilePickerFile[];
@@ -69,6 +61,14 @@ export interface UseFilePickerOptions {
    * Default: false
    * */
   keepOldFiles?: boolean;
+
+  /**
+   * Whether to remove duplicated files if `keepOldFiles` is true
+   * If true, the file picker will remove duplicated files
+   *
+   * Default: false
+   * */
+  removeDuplicates?: boolean;
 
   /**
    * Callback function that is called when the file picker changes
