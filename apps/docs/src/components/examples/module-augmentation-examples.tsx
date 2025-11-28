@@ -8,10 +8,18 @@ export function ButtonCustomColorsExample() {
     <div className="flex flex-wrap gap-3">
       <Button color="secondary">Secondary</Button>
       <Button color="danger">Danger</Button>
-      <Button color="secondary" variant="outlined">Secondary Outlined</Button>
-      <Button color="danger" variant="outlined">Danger Outlined</Button>
-      <Button color="secondary" variant="ghost">Secondary Ghost</Button>
-      <Button color="danger" variant="ghost">Danger Ghost</Button>
+      <Button color="secondary" variant="outlined">
+        Secondary Outlined
+      </Button>
+      <Button color="danger" variant="outlined">
+        Danger Outlined
+      </Button>
+      <Button color="secondary" variant="ghost">
+        Secondary Ghost
+      </Button>
+      <Button color="danger" variant="ghost">
+        Danger Ghost
+      </Button>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export function BasicDateRangeInputExample() {
 export function WithDefaultValueExample() {
   const [value, setValue] = useState<DateRange | undefined>({
     from: "2024-06-01",
-    to: "2024-06-15",
+    to: "2024-06-15"
   });
 
   return (
@@ -99,7 +99,7 @@ export function NumberOfMonthsExample() {
 export function DisabledReadOnlyExample() {
   const defaultValue: DateRange = {
     from: "2024-06-01",
-    to: "2024-06-15",
+    to: "2024-06-15"
   };
 
   return (
@@ -121,11 +121,7 @@ export function ErrorStateExample() {
 
   return (
     <div className="space-y-4">
-      <DateRangeInput
-        value={value}
-        onChange={(v) => setValue(v ?? undefined)}
-        hasError
-      />
+      <DateRangeInput value={value} onChange={(v) => setValue(v ?? undefined)} hasError />
       <p className="text-sm text-red-600">Please select a valid date range</p>
     </div>
   );

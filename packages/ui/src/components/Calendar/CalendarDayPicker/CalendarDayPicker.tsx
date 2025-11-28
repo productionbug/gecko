@@ -116,7 +116,7 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                 isHoverPreview && "GeckoUICalendar__day-picker__button--hover-preview",
                 isHoverPreviewStart && "GeckoUICalendar__day-picker__button--hover-preview-start",
                 isHoverPreviewEnd && "GeckoUICalendar__day-picker__button--hover-preview-end",
-                `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`,
+                `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`
               )}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}
