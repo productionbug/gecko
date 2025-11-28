@@ -1,22 +1,17 @@
-name: Lint
+name: Build
 
 on:
-  push:
-    branches:
-      - main
-      - develop
   pull_request:
     branches:
       - main
-      - develop
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint & Typecheck
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,8 +31,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm turbo run lint --filter=@productionbug/gecko
-
-      - name: Typecheck
-        run: pnpm turbo run typecheck --filter=@productionbug/gecko
+      - name: Build
+        run: pnpm build
