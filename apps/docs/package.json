@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build --filter=@productionbug/gecko && next build",
+    "build": "next build",
     "dev": "next dev --port 3001",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
