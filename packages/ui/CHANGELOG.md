@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+- Added `disableDate` prop to Calendar component to disable specific dates.
+- Added `renderDayCell` prop to Calendar component for custom day cell rendering.
+
 ## [1.0.3] - 2025-11-28
 
 - Allow `rules` prop to be added in all RHF components for simpler validation integration.

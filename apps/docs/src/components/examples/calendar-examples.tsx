@@ -121,3 +121,50 @@ export function RangeWithNumberOfMonthsExample() {
     </div>
   );
 }
+
+export function DisableDateExample() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+
+  const disableDate = (date: string) => {
+    const dayOfWeek = new Date(date).getDay();
+    return dayOfWeek === 0 || dayOfWeek === 6;
+  };
+
+  return (
+    <div className="space-y-4">
+      <Calendar
+        selectedDate={selectedDate}
+        onSelectDate={setSelectedDate}
+        disableDate={disableDate}
+      />
+      {selectedDate && <p className="text-sm text-gray-600">Selected: {selectedDate}</p>}
+    </div>
+  );
+}
+
+export function CustomDayCellExample() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+
+  const hasEvent = (date: string) => {
+    const today = new Date();
+    return today.getDate() === new Date(date).getDate();
+  };
+
+  return (
+    <div className="space-y-4">
+      <Calendar
+        selectedDate={selectedDate}
+        onSelectDate={setSelectedDate}
+        renderDayCell={({ day, date }) => (
+          <>
+            <span>{day}</span>
+            {hasEvent(date) && (
+              <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-red-500 rounded-full" />
+            )}
+          </>
+        )}
+      />
+      {selectedDate && <p className="text-sm text-gray-600">Selected: {selectedDate}</p>}
+    </div>
+  );
+}
