@@ -36,14 +36,24 @@ import type { RHFOTPInputProps } from "./RHFOTPInput.types";
  * />
  * ```
  */
-const RHFOTPInput: FC<RHFOTPInputProps> = ({ control, name, className, ...rest }) => {
+const RHFOTPInput: FC<RHFOTPInputProps> = ({ control, name, disabled, className, ...rest }) => {
   return (
     <RHFController
       control={control}
       name={name}
-      render={({ field }) => {
+      disabled={disabled}
+      render={({ field, fieldState }) => {
         return (
-          <OTPInput className={classNames("GeckoUIRHFOTPInput", className)} {...rest} {...field} />
+          <OTPInput
+            className={classNames(
+              "GeckoUIRHFOTPInput",
+              !disabled && fieldState.error && "GeckoUIRHFOTPInput--error",
+              className
+            )}
+            disabled={disabled}
+            {...rest}
+            {...field}
+          />
         );
       }}
     />

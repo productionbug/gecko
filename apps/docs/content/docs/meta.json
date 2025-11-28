@@ -41,6 +41,7 @@
     "rhf-switch",
     "rhf-select",
     "rhf-date-input",
+    "rhf-date-range-input",
     "rhf-number-input",
     "rhf-currency-input",
     "rhf-otp-input",

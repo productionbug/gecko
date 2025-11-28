@@ -1,10 +1,10 @@
 .GeckoUIRHFTextarea {
   &--error {
-    @apply border-red-300;
+    @apply border-red-500;
   }
 
   &--error:enabled:hover {
-    @apply border-red-500;
+    @apply border-red-600;
   }
 
   &--error:enabled:focus {

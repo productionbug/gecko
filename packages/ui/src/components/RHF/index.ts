@@ -8,6 +8,7 @@ export * from "./RHFTextarea";
 export * from "./RHFSwitch";
 export * from "./RHFRadio";
 export * from "./RHFDateInput";
+export * from "./RHFDateRangeInput";
 export * from "./RHFFileInput";
 export * from "./RHFOTPInput";
 export * from "./RHFFilePicker";

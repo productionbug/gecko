@@ -42,7 +42,7 @@
   }
 
   &--error {
-    @apply border-red-500;
+    @apply border-red-500 hover:border-red-600;
   }
 
   &--empty &__display-container {
