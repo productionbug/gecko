@@ -4,7 +4,7 @@ description: Interactive calendar component for date selection with month/year n
 ---
 
 import { Calendar } from '@productionbug/gecko';
-import { BasicCalendarExample, WithDefaultDateExample, ActiveDateExample, ProgrammaticControlExample, WithFormIntegrationExample } from '@/components/examples/calendar-examples';
+import { BasicCalendarExample, WithDefaultDateExample, ProgrammaticControlExample, WithFormIntegrationExample, RangeModeExample, RangeWithNumberOfMonthsExample } from '@/components/examples/calendar-examples';
 
 # Calendar
 
@@ -42,14 +42,39 @@ function Example() {
 
 ## Props API
 
+### Single Mode Props
+
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `mode` | `'single'` | `'single'` | Selection mode for single date |
 | `selectedDate` | `string \| null \| undefined` | - | Currently selected date in YYYY-MM-DD format |
-| `activeDate` | `string` | - | Date to highlight (doesn't select it) |
 | `onSelectDate` | `(date: string) => void` | - | Callback when date is selected |
+
+### Range Mode Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `mode` | `'range'` | - | Selection mode for date range |
+| `selectedRange` | `DateRange` | - | Selected date range with `from` and `to` |
+| `onSelectRange` | `(range: DateRange \| null) => void` | - | Callback when range is selected |
+| `numberOfMonths` | `1 \| 2` | `2` | Number of months to display side by side |
+
+### Common Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
 | `calendarRef` | `React.Ref<CalendarRef>` | - | Ref for programmatic control |
 | `className` | `string` | - | Additional CSS classes |
 | `style` | `React.CSSProperties` | - | Inline styles |
+
+### DateRange Type
+
+```tsx
+interface DateRange {
+  from: string | null;  // ISO format: 'YYYY-MM-DD'
+  to?: string | null;   // ISO format: 'YYYY-MM-DD'
+}
+```
 
 ## Date Format
 
@@ -81,25 +106,6 @@ Pre-select a date when the calendar loads:
 const [selectedDate, setSelectedDate] = useState<string | undefined>('2024-06-15');
 
 <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
-```
-
-### Active Date Highlighting
-
-Use `activeDate` to highlight a date without selecting it:
-
-<Preview>
-  <ActiveDateExample />
-</Preview>
-
-```tsx
-const [selectedDate, setSelectedDate] = useState<string | undefined>();
-const activeDate = '2024-12-25'; // Highlight Christmas
-
-<Calendar
-  selectedDate={selectedDate}
-  activeDate={activeDate}
-  onSelectDate={setSelectedDate}
-/>
 ```
 
 **Use Cases**:
@@ -170,36 +176,49 @@ interface CalendarRef {
 - Displays the specified month/year
 - Does NOT select a date (only navigates)
 
-### With Form Integration
+## Range Mode
 
-Integrate Calendar with form submission:
+Use `mode="range"` to enable date range selection with a dual-month calendar display.
 
 <Preview>
-  <WithFormIntegrationExample />
+  <RangeModeExample />
 </Preview>
 
 ```tsx
-const [selectedDate, setSelectedDate] = useState<string | undefined>();
-const [submitted, setSubmitted] = useState(false);
+'use client';
 
-const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  setSubmitted(true);
-  // In real app: submit form with selectedDate
-};
+import { useState } from 'react';
+import { Calendar } from '@productionbug/gecko';
+import type { DateRange } from '@productionbug/gecko';
 
-<form onSubmit={handleSubmit} className="space-y-4">
-  <div>
-    <label className="block text-sm font-medium mb-2">Select Date</label>
-    <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
-  </div>
-  <Button type="submit" disabled={!selectedDate}>
-    Submit
-  </Button>
-  {submitted && (
-    <p className="text-sm text-green-600">Form submitted with date: {selectedDate}</p>
-  )}
-</form>
+function Example() {
+  const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
+
+  return (
+    <Calendar
+      mode="range"
+      selectedRange={selectedRange}
+      onSelectRange={(range) => setSelectedRange(range ?? undefined)}
+    />
+  );
+}
+```
+
+### Single Month Display
+
+Use `numberOfMonths={1}` for a compact single-month range picker:
+
+<Preview>
+  <RangeWithNumberOfMonthsExample />
+</Preview>
+
+```tsx
+<Calendar
+  mode="range"
+  selectedRange={selectedRange}
+  onSelectRange={(range) => setSelectedRange(range ?? undefined)}
+  numberOfMonths={1}
+/>
 ```
 
 ## Styling
@@ -230,13 +249,12 @@ The component uses BEM-style class names:
 1. **Always use ISO format**: Use YYYY-MM-DD for all date values
 2. **Validate dates**: Check date ranges and constraints in onSelectDate
 3. **Clear selection**: Provide a way to clear the selected date
-4. **Visual feedback**: Use activeDate to highlight important dates
-5. **Form integration**: Disable submit until date is selected
-6. **Error handling**: Show validation errors near the calendar
-7. **Responsive design**: Calendar adapts to container width
-8. **Initial state**: Consider pre-selecting today's date or using activeDate to highlight it
+4. **Form integration**: Disable submit until date is selected
+5. **Error handling**: Show validation errors near the calendar
+6. **Responsive design**: Calendar adapts to container width
 
 ## Related Components
 
 - [DateInput](/docs/date-input) - Input field with calendar popup
+- [DateRangeInput](/docs/date-range-input) - Input for selecting date ranges
 - [RHFDateInput](/docs/rhf-date-input) - React Hook Form integrated date input

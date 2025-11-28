@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Calendar } from "@productionbug/gecko";
-import type { CalendarRef } from "@productionbug/gecko";
+import type { CalendarRef, DateRange } from "@productionbug/gecko";
 import { useRef, useState } from "react";
 
 export function BasicCalendarExample() {
@@ -22,25 +22,6 @@ export function WithDefaultDateExample() {
     <div className="space-y-4">
       <Calendar selectedDate={selectedDate} onSelectDate={setSelectedDate} />
       <p className="text-sm text-gray-600">Selected: {selectedDate || "None"}</p>
-    </div>
-  );
-}
-
-export function ActiveDateExample() {
-  const [selectedDate, setSelectedDate] = useState<string | undefined>();
-  const activeDate = "2024-12-25"; // Highlight Christmas
-
-  return (
-    <div className="space-y-4">
-      <Calendar
-        selectedDate={selectedDate}
-        activeDate={activeDate}
-        onSelectDate={setSelectedDate}
-      />
-      <div className="text-sm text-gray-600">
-        <p>Selected: {selectedDate || "None"}</p>
-        <p>Active (highlighted): {activeDate}</p>
-      </div>
     </div>
   );
 }
@@ -99,5 +80,44 @@ export function WithFormIntegrationExample() {
         <p className="text-sm text-green-600">Form submitted with date: {selectedDate}</p>
       )}
     </form>
+  );
+}
+
+export function RangeModeExample() {
+  const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
+
+  return (
+    <div className="space-y-4">
+      <Calendar
+        mode="range"
+        selectedRange={selectedRange}
+        onSelectRange={(range) => setSelectedRange(range ?? undefined)}
+      />
+      {selectedRange?.from && (
+        <p className="text-sm text-gray-600">
+          Selected: {selectedRange.from} - {selectedRange.to || "..."}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export function RangeWithNumberOfMonthsExample() {
+  const [selectedRange, setSelectedRange] = useState<DateRange | undefined>();
+
+  return (
+    <div className="space-y-4">
+      <Calendar
+        mode="range"
+        selectedRange={selectedRange}
+        onSelectRange={(range) => setSelectedRange(range ?? undefined)}
+        numberOfMonths={1}
+      />
+      {selectedRange?.from && (
+        <p className="text-sm text-gray-600">
+          Selected: {selectedRange.from} - {selectedRange.to || "..."}
+        </p>
+      )}
+    </div>
   );
 }

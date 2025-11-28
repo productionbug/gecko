@@ -12,6 +12,7 @@
     "checkbox",
     "confirm-dialog",
     "date-input",
+    "date-range-input",
     "dialog",
     "drawer",
     "dropdown",

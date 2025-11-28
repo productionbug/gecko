@@ -15,7 +15,7 @@ import type {
 } from "./CalendarDayPicker.types";
 
 function CalendarDayPicker(props: CalendarDayPickerProps) {
-  const { activeMonth, activeYear, activeDate, mode = "single", ...headerProps } = props;
+  const { activeMonth, activeYear, mode = "single", ...headerProps } = props;
 
   const today = getTodayDate();
   const { months } = generateMonthNames();
@@ -117,9 +117,6 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                 isHoverPreviewStart && "GeckoUICalendar__day-picker__button--hover-preview-start",
                 isHoverPreviewEnd && "GeckoUICalendar__day-picker__button--hover-preview-end",
                 `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`,
-                activeDate === formattedDate &&
-                !isSelected &&
-                "GeckoUICalendar__day-picker__button--focused"
               )}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}

@@ -17,19 +17,9 @@ export interface CalendarActiveProps {
    * Month value index that is selected in the date picker
    * */
   activeMonth: number;
-
-  /**
-   * Date string in the format 'YYYY-MM-DD'
-   * That is active in the date picker
-   * Used for displaying the active date in the date picker
-   * This is not used for selecting the date. It is only for displaying the focused date.
-   * You can use this to highlight the focused date in the date picker.
-   * So that users know if they are navigating the date picker.
-   * */
-  activeDate?: string;
 }
 
-interface BaseCalendarProps extends Pick<CalendarActiveProps, "activeDate"> {
+interface BaseCalendarProps {
   /**
    * Ref object that is used to call the `moveTo` function
    * */

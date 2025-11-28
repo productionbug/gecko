@@ -39,7 +39,7 @@ import { CalendarType } from "./Calendar.types";
  * ```
  * */
 const Calendar = (props: CalendarProps) => {
-  const { className, activeDate, style, calendarRef, mode = "single" } = props;
+  const { className, style, calendarRef, mode = "single" } = props;
 
   const [view, setView] = useState<CalendarType>(CalendarType.Day);
   const [rangeSelectionStart, setRangeSelectionStart] = useState<string | null>(null);
@@ -130,24 +130,20 @@ const Calendar = (props: CalendarProps) => {
   }, [mode, selectedDate, selectedRange]);
 
   const handleSingleDateClick = (date: string) => {
-    if (mode === "single") {
-      onSelectDate?.(date);
-    }
+    onSelectDate?.(date);
   };
 
   const handleRangeDateClick = (date: string) => {
-    if (mode === "range") {
-      if (!rangeSelectionStart) {
-        setRangeSelectionStart(date);
-        onSelectRange?.({ from: date, to: undefined });
-      } else {
-        const [from, to] = shouldSwapDates(rangeSelectionStart, date)
-          ? [date, rangeSelectionStart]
-          : [rangeSelectionStart, date];
-        onSelectRange?.({ from, to });
-        setRangeSelectionStart(null);
-        setHoveredDate(null);
-      }
+    if (!rangeSelectionStart) {
+      setRangeSelectionStart(date);
+      onSelectRange?.({ from: date, to: undefined });
+    } else {
+      const [from, to] = shouldSwapDates(rangeSelectionStart, date)
+        ? [date, rangeSelectionStart]
+        : [rangeSelectionStart, date];
+      onSelectRange?.({ from, to });
+      setRangeSelectionStart(null);
+      setHoveredDate(null);
     }
   };
 
@@ -177,7 +173,7 @@ const Calendar = (props: CalendarProps) => {
     };
 
     if (view === CalendarType.Day) {
-      if (mode === "range" && numberOfMonths === 2) {
+      if (mode === "range") {
         const secondMonth = activeMonth === 11 ? 0 : activeMonth + 1;
         const secondYear = activeMonth === 11 ? activeYear + 1 : activeYear;
 
@@ -186,7 +182,6 @@ const Calendar = (props: CalendarProps) => {
             <div className="GeckoUICalendar__dual--first">
               <CalendarDayPicker
                 mode="range"
-                activeDate={activeDate}
                 activeMonth={activeMonth}
                 activeYear={activeYear}
                 onClickHeader={() => setView(CalendarType.Month)}
@@ -198,47 +193,30 @@ const Calendar = (props: CalendarProps) => {
                 onHoverDate={handleHoverDate}
               />
             </div>
-            <div className="GeckoUICalendar__dual--second">
-              <CalendarDayPicker
-                mode="range"
-                activeDate={activeDate}
-                activeMonth={secondMonth}
-                activeYear={secondYear}
-                onClickHeader={() => setView(CalendarType.Month)}
-                onClickLeftArrow={decreaseMonth}
-                onClickRightArrow={increaseMonth}
-                selectedRange={selectedRange}
-                onSelectRange={handleRangeDateClick}
-                hoveredDate={hoveredDate}
-                onHoverDate={handleHoverDate}
-              />
-            </div>
-          </div>
-        );
-      }
 
-      if (mode === "range") {
-        return (
-          <CalendarDayPicker
-            mode="range"
-            activeDate={activeDate}
-            activeMonth={activeMonth}
-            activeYear={activeYear}
-            onClickHeader={() => setView(CalendarType.Month)}
-            onClickLeftArrow={decreaseMonth}
-            onClickRightArrow={increaseMonth}
-            selectedRange={selectedRange}
-            onSelectRange={handleRangeDateClick}
-            hoveredDate={hoveredDate}
-            onHoverDate={handleHoverDate}
-          />
+            {numberOfMonths === 2 && (
+              <div className="GeckoUICalendar__dual--second">
+                <CalendarDayPicker
+                  mode="range"
+                  activeMonth={secondMonth}
+                  activeYear={secondYear}
+                  onClickHeader={() => setView(CalendarType.Month)}
+                  onClickLeftArrow={decreaseMonth}
+                  onClickRightArrow={increaseMonth}
+                  selectedRange={selectedRange}
+                  onSelectRange={handleRangeDateClick}
+                  hoveredDate={hoveredDate}
+                  onHoverDate={handleHoverDate}
+                />
+              </div>
+            )}
+          </div>
         );
       }
 
       return (
         <CalendarDayPicker
           mode="single"
-          activeDate={activeDate}
           activeMonth={activeMonth}
           activeYear={activeYear}
           onClickHeader={() => setView(CalendarType.Month)}
@@ -273,8 +251,8 @@ const Calendar = (props: CalendarProps) => {
         `GeckoUICalendar--mode-${view}`,
         `GeckoUICalendar--selection-${mode}`,
         mode === "range" &&
-        view === CalendarType.Day &&
-        `GeckoUICalendar--calendars-${numberOfMonths}`,
+          view === CalendarType.Day &&
+          `GeckoUICalendar--calendars-${numberOfMonths}`,
         className
       )}
       style={style}>

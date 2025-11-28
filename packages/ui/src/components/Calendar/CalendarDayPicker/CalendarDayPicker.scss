@@ -21,17 +21,12 @@
         @apply text-primary-600;
       }
 
-      &--selected,
-      &--focused {
+      &--selected {
         @apply text-surface-tertiary;
       }
 
       &--selected &__text {
-        @apply text-text-on-primary bg-primary-700 hover:bg-primary-600;
-      }
-
-      &--focused &__text {
-        @apply bg-primary-600/25;
+        @apply bg-primary-700 text-text-on-primary hover:bg-primary-600;
       }
 
       &--active-month-false &__text {
