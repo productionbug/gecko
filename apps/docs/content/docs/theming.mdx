@@ -252,6 +252,62 @@ Components use their own class names for targeted styling:
 }
 ```
 
+## Customizing Icons
+
+Gecko UI uses CSS `mask-image` with inline SVGs for icons. This approach allows icons to inherit color from parent elements and be styled with CSS.
+
+To find an icon's class name, use your browser's DevTools to inspect the element. All icon classes follow the BEM naming convention (e.g., `.GeckoUI-icon__check`, `.GeckoUIAlert__icon--error`).
+
+### Overriding an Icon
+
+To replace an icon, override the `mask-image` property with your custom SVG:
+
+```css
+.GeckoUI-icon__check {
+  mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');
+}
+```
+
+### Overriding Alert Icons
+
+Alert icons are variant-specific. Override them by targeting the variant modifier:
+
+```css
+.GeckoUIAlert__icon--error {
+  @apply bg-red-600;
+  mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm0-4V7h2v6h-2z"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm0-4V7h2v6h-2z"/></svg>');
+}
+```
+
+### Icon Styling Properties
+
+Icons use these CSS properties which you can also customize:
+
+```css
+.GeckoUI-icon__check {
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+```
+
+### Using External Icon Libraries
+
+You can also use icons from external libraries by converting them to data URLs:
+
+```css
+/* Using a Lucide icon */
+.GeckoUI-icon__arrow-down {
+  mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+  -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+}
+```
+
 ## Best Practices
 
 1. **Use RGB Format**: All custom colors should use RGB values (e.g., `255 255 255`) for opacity support
