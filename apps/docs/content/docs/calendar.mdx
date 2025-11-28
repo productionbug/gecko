@@ -4,7 +4,7 @@ description: Interactive calendar component for date selection with month/year n
 ---
 
 import { Calendar } from '@productionbug/gecko';
-import { BasicCalendarExample, WithDefaultDateExample, ProgrammaticControlExample, WithFormIntegrationExample, RangeModeExample, RangeWithNumberOfMonthsExample } from '@/components/examples/calendar-examples';
+import { BasicCalendarExample, WithDefaultDateExample, ProgrammaticControlExample, WithFormIntegrationExample, RangeModeExample, RangeWithNumberOfMonthsExample, DisableDateExample, CustomDayCellExample } from '@/components/examples/calendar-examples';
 
 # Calendar
 
@@ -66,6 +66,8 @@ function Example() {
 | `calendarRef` | `React.Ref<CalendarRef>` | - | Ref for programmatic control |
 | `className` | `string` | - | Additional CSS classes |
 | `style` | `React.CSSProperties` | - | Inline styles |
+| `disableDate` | `(date: string) => boolean` | - | Callback to determine if a date should be disabled |
+| `renderDayCell` | `(props: DayCellRenderProps) => ReactNode` | - | Custom renderer for day cells |
 
 ### DateRange Type
 
@@ -73,6 +75,20 @@ function Example() {
 interface DateRange {
   from: string | null;  // ISO format: 'YYYY-MM-DD'
   to?: string | null;   // ISO format: 'YYYY-MM-DD'
+}
+```
+
+### DayCellRenderProps Type
+
+```tsx
+interface DayCellRenderProps {
+  day: number;
+  month: number;
+  year: number;
+  date: string;        // 'YYYY-MM-DD' format
+  isDisabled: boolean;
+  isSelected: boolean;
+  isFocusedMonth: boolean; // true if the day is in the current month being viewed
 }
 ```
 
@@ -221,19 +237,134 @@ Use `numberOfMonths={1}` for a compact single-month range picker:
 />
 ```
 
+### Disable Dates
+
+Use `disableDate` to prevent selection of specific dates. The callback receives a date string in `YYYY-MM-DD` format and returns `true` to disable the date.
+
+<Preview>
+  <DisableDateExample />
+</Preview>
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { Calendar } from '@productionbug/gecko';
+
+function Example() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+
+  const disableDate = (date: string) => {
+    const dayOfWeek = new Date(date).getDay();
+    return dayOfWeek === 0 || dayOfWeek === 6; // Disable weekends
+  };
+
+  return (
+    <Calendar
+      selectedDate={selectedDate}
+      onSelectDate={setSelectedDate}
+      disableDate={disableDate}
+    />
+  );
+}
+```
+
+**Common Use Cases**:
+- Disable weekends
+- Disable past dates
+- Disable holidays or specific dates
+- Disable dates outside a valid range
+
+### Custom Day Rendering
+
+Use `renderDayCell` to customize how each day cell is displayed. This allows adding custom styling, indicators, or content to specific dates.
+
+<Preview>
+  <CustomDayCellExample />
+</Preview>
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { Calendar } from '@productionbug/gecko';
+import type { DayCellRenderProps } from '@productionbug/gecko';
+
+function Example() {
+  const [selectedDate, setSelectedDate] = useState<string | undefined>();
+
+  const hasEvent = (date: string) => {
+    const today = new Date();
+    return today.getDate() === new Date(date).getDate();
+  };
+
+  return (
+    <div className="space-y-4">
+      <Calendar
+        selectedDate={selectedDate}
+        onSelectDate={setSelectedDate}
+        renderDayCell={({ day, date }) => (
+          <>
+            <span>{day}</span>
+            {hasEvent(date) && (
+              <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-red-500 rounded-full" />
+            )}
+          </>
+        )}
+      />
+      {selectedDate && <p className="text-sm text-gray-600">Selected: {selectedDate}</p>}
+    </div>
+  );
+}
+```
+
+**Common Use Cases**:
+- Add event indicators or dots
+- Show custom styling for holidays
+- Display additional information on hover
+- Highlight specific date ranges
+
 ## Styling
 
 The component uses BEM-style class names:
 
+**Main Container:**
 - `GeckoUICalendar` - Main container
-- `GeckoUICalendar__header` - Month/year header
-- `GeckoUICalendar__nav` - Navigation arrows
-- `GeckoUICalendar__body` - Calendar grid
-- `GeckoUICalendar__day` - Individual day cell
-- `GeckoUICalendar__day--selected` - Selected day
-- `GeckoUICalendar__day--active` - Active highlighted day
-- `GeckoUICalendar__day--today` - Today's date
-- `GeckoUICalendar__day--disabled` - Disabled day (different month)
+- `GeckoUICalendar--calendars-2` - Dual calendar mode modifier
+- `GeckoUICalendar__dual` - Dual calendar wrapper
+- `GeckoUICalendar__dual--first` / `GeckoUICalendar__dual--second` - First/second calendar
+
+**Header:**
+- `GeckoUICalendar__header` - Header container
+- `GeckoUICalendar__header__title` - Month/year title
+- `GeckoUICalendar__header__title--clickable` - Clickable title state
+- `GeckoUICalendar__header__arrow-button` - Navigation arrow buttons
+- `GeckoUICalendar__header__arrow-left-icon` / `GeckoUICalendar__header__arrow-right-icon` - Arrow icons
+
+**Year Picker:**
+- `GeckoUICalendar__year-picker` - Year picker grid
+- `GeckoUICalendar__year-picker__button` - Year button
+- `GeckoUICalendar__year-picker__button--selected` - Selected year
+- `GeckoUICalendar__year-picker__button--prev-next` - Previous/next year buttons
+
+**Month Picker:**
+- `GeckoUICalendar__month-picker` - Month picker grid
+- `GeckoUICalendar__month-picker__button` - Month button
+- `GeckoUICalendar__month-picker__button--selected` - Selected month
+
+**Day Picker:**
+- `GeckoUICalendar__day-picker-weekdays` - Weekday header row
+- `GeckoUICalendar__day-picker` - Day picker grid
+- `GeckoUICalendar__day-picker__button` - Day button
+- `GeckoUICalendar__day-picker__button--today` - Today's date
+- `GeckoUICalendar__day-picker__button--selected` - Selected date
+- `GeckoUICalendar__day-picker__button--disabled` - Disabled date
+- `GeckoUICalendar__day-picker__button--active-month-false` - Dates outside current month
+- `GeckoUICalendar__day-picker__button--in-range` - Date within selected range
+- `GeckoUICalendar__day-picker__button--range-start` - Range start date
+- `GeckoUICalendar__day-picker__button--range-end` - Range end date
+- `GeckoUICalendar__day-picker__button--hover-preview` - Hover preview for range selection
+- `GeckoUICalendar__day-picker__button--hover-preview-start` / `GeckoUICalendar__day-picker__button--hover-preview-end` - Hover preview boundaries
 
 ## Accessibility
 

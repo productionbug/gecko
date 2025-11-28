@@ -139,7 +139,8 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                   ...date,
                   date: formattedDate,
                   isDisabled: !!isDisable,
-                  isSelected: isSelected || isRangeStart || isRangeEnd || isInRange
+                  isSelected: isSelected || isRangeStart || isRangeEnd || isInRange,
+                  isFocusedMonth: isActiveMonth
                 })
                 : date.day}
             </button>

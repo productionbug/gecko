@@ -18,6 +18,9 @@ export interface DayCellRenderProps {
   isDisabled: boolean;
 
   isSelected: boolean;
+
+  /** Indicates if the date belongs to the currently focused month */
+  isFocusedMonth: boolean;
 }
 
 export interface CalendarActiveProps {
