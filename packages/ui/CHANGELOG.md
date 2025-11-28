@@ -1,12 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [1.0.3] - 2025-11-28
+
+- Allow `rules` prop to be added in all RHF components for simpler validation integration.
 
 ## [1.0.2] - 2025-11-28
 
 ### Added
 
 #### Core Components
+
 - Alert - Display important messages with different severity levels
 - Button - Flexible button with multiple variants, sizes, and colors
 - Calendar - Date picker calendar component
@@ -35,6 +38,7 @@ All notable changes to this project will be documented in this file.
 - Tooltip - Tooltip component
 
 #### React Hook Form Components
+
 - RHFCheckbox - Checkbox with React Hook Form integration
 - RHFController - Generic RHF controller wrapper
 - RHFCurrencyInput - Currency input with RHF integration
@@ -53,10 +57,12 @@ All notable changes to this project will be documented in this file.
 - RHFTextarea - Textarea with RHF integration
 
 #### Utilities
+
 - GeckoUIPortal - Portal container for modals and overlays
 - DynamicComponentRenderer - Render components dynamically from config
 
 #### Features
+
 - Full TypeScript support with module augmentation for custom variants
 - CSS variables for theming (light/dark mode)
 - Accessible components following WAI-ARIA guidelines
