@@ -33,6 +33,11 @@ interface BaseCalendarProps {
    * Style class name for the date picker container
    * */
   className?: string;
+
+  /**
+   * Callback function that determines whether a date is disabled or not
+   * */
+  disableDate?: (date: string) => boolean;
 }
 
 export interface CalendarSingleModeProps extends BaseCalendarProps {

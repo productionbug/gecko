@@ -1,7 +1,10 @@
-import type { CalendarActiveProps, DateRange } from "../Calendar";
+import type { CalendarActiveProps, CalendarProps, DateRange } from "../Calendar";
 import type { CalendarHeaderProps } from "../CalendarHeader";
 
-interface CalendarDayPickerBaseProps extends CalendarHeaderProps, CalendarActiveProps {}
+interface CalendarDayPickerBaseProps
+  extends CalendarHeaderProps,
+  CalendarActiveProps,
+  Pick<CalendarProps, "disableDate"> { }
 
 export interface CalendarDayPickerSingleProps extends CalendarDayPickerBaseProps {
   /**

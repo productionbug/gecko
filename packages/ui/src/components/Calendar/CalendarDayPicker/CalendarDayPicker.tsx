@@ -15,7 +15,7 @@ import type {
 } from "./CalendarDayPicker.types";
 
 function CalendarDayPicker(props: CalendarDayPickerProps) {
-  const { activeMonth, activeYear, mode = "single", ...headerProps } = props;
+  const { activeMonth, activeYear, mode = "single", disableDate, ...headerProps } = props;
 
   const today = getTodayDate();
   const { months } = generateMonthNames();
@@ -104,6 +104,8 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
             }
           }
 
+          const isDisable = disableDate?.(formattedDate);
+
           return (
             <button
               className={classNames(
@@ -116,14 +118,16 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
                 isHoverPreview && "GeckoUICalendar__day-picker__button--hover-preview",
                 isHoverPreviewStart && "GeckoUICalendar__day-picker__button--hover-preview-start",
                 isHoverPreviewEnd && "GeckoUICalendar__day-picker__button--hover-preview-end",
+                isDisable && "GeckoUICalendar__day-picker__button--disabled",
                 `GeckoUICalendar__day-picker__button--active-month-${isActiveMonth}`
               )}
+              disabled={isDisable}
               key={`${date.year}-${date.month}-${date.day}`}
               onClick={() => handleDateClick(formattedDate)}
               onMouseEnter={() => handleDateHover(formattedDate)}
               onMouseLeave={() => handleDateHover(null)}
               type="button">
-              <span className="GeckoUICalendar__day-picker__button__text">{date.day}</span>
+              {date.day}
             </button>
           );
         })}

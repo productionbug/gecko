@@ -39,7 +39,7 @@ import { CalendarType } from "./Calendar.types";
  * ```
  * */
 const Calendar = (props: CalendarProps) => {
-  const { className, style, calendarRef, mode = "single" } = props;
+  const { className, style, calendarRef, disableDate, mode = "single" } = props;
 
   const [view, setView] = useState<CalendarType>(CalendarType.Day);
   const [rangeSelectionStart, setRangeSelectionStart] = useState<string | null>(null);
@@ -182,6 +182,7 @@ const Calendar = (props: CalendarProps) => {
             <div className="GeckoUICalendar__dual--first">
               <CalendarDayPicker
                 mode="range"
+                disableDate={disableDate}
                 activeMonth={activeMonth}
                 activeYear={activeYear}
                 onClickHeader={() => setView(CalendarType.Month)}
@@ -198,6 +199,7 @@ const Calendar = (props: CalendarProps) => {
               <div className="GeckoUICalendar__dual--second">
                 <CalendarDayPicker
                   mode="range"
+                  disableDate={disableDate}
                   activeMonth={secondMonth}
                   activeYear={secondYear}
                   onClickHeader={() => setView(CalendarType.Month)}
@@ -217,6 +219,7 @@ const Calendar = (props: CalendarProps) => {
       return (
         <CalendarDayPicker
           mode="single"
+          disableDate={disableDate}
           activeMonth={activeMonth}
           activeYear={activeYear}
           onClickHeader={() => setView(CalendarType.Month)}
@@ -251,8 +254,8 @@ const Calendar = (props: CalendarProps) => {
         `GeckoUICalendar--mode-${view}`,
         `GeckoUICalendar--selection-${mode}`,
         mode === "range" &&
-          view === CalendarType.Day &&
-          `GeckoUICalendar--calendars-${numberOfMonths}`,
+        view === CalendarType.Day &&
+        `GeckoUICalendar--calendars-${numberOfMonths}`,
         className
       )}
       style={style}>
