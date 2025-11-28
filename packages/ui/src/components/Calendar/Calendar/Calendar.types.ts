@@ -1,10 +1,23 @@
-import type { JSX } from "react";
+import type { JSX, ReactNode } from "react";
 
 export type SelectionMode = "single" | "range";
 
 export interface DateRange {
   from: string | null;
   to?: string | null;
+}
+
+export interface DayCellRenderProps {
+  day: number;
+  month: number;
+  year: number;
+
+  /** Date string in the format 'YYYY-MM-DD' */
+  date: string;
+
+  isDisabled: boolean;
+
+  isSelected: boolean;
 }
 
 export interface CalendarActiveProps {
@@ -38,6 +51,12 @@ interface BaseCalendarProps {
    * Callback function that determines whether a date is disabled or not
    * */
   disableDate?: (date: string) => boolean;
+
+  /**
+   * Custom day cell renderer function
+   * Use this to customize the appearance of individual day cells
+   * */
+  renderDayCell?: (props: DayCellRenderProps) => ReactNode;
 }
 
 export interface CalendarSingleModeProps extends BaseCalendarProps {

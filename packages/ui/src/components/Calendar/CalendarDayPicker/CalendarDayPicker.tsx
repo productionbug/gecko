@@ -15,7 +15,14 @@ import type {
 } from "./CalendarDayPicker.types";
 
 function CalendarDayPicker(props: CalendarDayPickerProps) {
-  const { activeMonth, activeYear, mode = "single", disableDate, ...headerProps } = props;
+  const {
+    activeMonth,
+    activeYear,
+    mode = "single",
+    disableDate,
+    renderDayCell,
+    ...headerProps
+  } = props;
 
   const today = getTodayDate();
   const { months } = generateMonthNames();
@@ -127,7 +134,14 @@ function CalendarDayPicker(props: CalendarDayPickerProps) {
               onMouseEnter={() => handleDateHover(formattedDate)}
               onMouseLeave={() => handleDateHover(null)}
               type="button">
-              {date.day}
+              {renderDayCell
+                ? renderDayCell({
+                  ...date,
+                  date: formattedDate,
+                  isDisabled: !!isDisable,
+                  isSelected: isSelected || isRangeStart || isRangeEnd || isInRange
+                })
+                : date.day}
             </button>
           );
         })}
