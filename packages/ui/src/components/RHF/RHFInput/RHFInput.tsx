@@ -46,6 +46,7 @@ const RHFInput: FC<RHFInputProps> = ({
   control,
   name,
   className,
+  rules,
   disabled,
   prefix,
   suffix,
@@ -59,6 +60,7 @@ const RHFInput: FC<RHFInputProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         const { field, fieldState } = renderProps;
         const hasError = Boolean(fieldState.error);
@@ -93,7 +95,7 @@ const RHFInput: FC<RHFInputProps> = ({
               field.onChange(outputValue);
               onChange?.(outputValue);
             }}
-            value={value}
+            value={value ?? ""}
           />
         );
       }}

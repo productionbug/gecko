@@ -62,6 +62,7 @@ Extends all props from [Radio](/docs/radio) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `label` | `ReactNode \| Function` | - | Label displayed next to radio |
 | `labelClassName` | `string` | - | CSS class for the label |
 | `value` | `unknown` | - | Value to set when selected (required, cannot be `null` or `undefined`) |
@@ -244,6 +245,21 @@ function FormExample() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFRadio
+  name="plan"
+  value="free"
+  label="Free Plan"
+  rules={{ required: 'Please select a plan' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Value Type Preservation
 

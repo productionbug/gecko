@@ -34,11 +34,12 @@ import type { RHFDateInputProps } from "./RHFDateInput.types";
  * />
  * ```
  */
-const RHFDateInput: FC<RHFDateInputProps> = ({ name, control, onChange, ...rest }) => {
+const RHFDateInput: FC<RHFDateInputProps> = ({ name, control, rules, onChange, ...rest }) => {
   return (
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         const { field, fieldState } = renderProps;
         const hasError = Boolean(fieldState.error);

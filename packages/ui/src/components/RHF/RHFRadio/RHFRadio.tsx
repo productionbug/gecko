@@ -48,6 +48,7 @@ import type { RHFRadioProps } from "./RHFRadio.types";
 const RHFRadio: FC<RHFRadioProps> = ({
   name,
   control,
+  rules,
   disabled,
   id,
   label,
@@ -68,6 +69,7 @@ const RHFRadio: FC<RHFRadioProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={({ field }) => {
         return (
           <label className="GeckoUIRHFRadio group" htmlFor={uniqueId}>

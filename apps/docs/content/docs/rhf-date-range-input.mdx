@@ -50,6 +50,7 @@ Extends all props from [DateRangeInput](/docs/date-range-input) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `onChange` | `(value: DateRange \| null) => void` | - | Change callback (in addition to form update) |
 | `disabled` | `boolean` | `false` | Disable the input |
 | `format` | `'DD/MM/YYYY' \| 'MM/DD/YYYY' \| 'YYYY/MM/DD'` | `'DD/MM/YYYY'` | Date display format |
@@ -166,6 +167,19 @@ const methods = useForm({
   <Button type="submit">Create Event</Button>
 </form>
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFDateRangeInput
+  name="dateRange"
+  rules={{ required: 'Please select a date range' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Error States
 

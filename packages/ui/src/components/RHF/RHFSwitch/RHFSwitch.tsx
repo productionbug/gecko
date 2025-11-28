@@ -32,6 +32,7 @@ import type { RHFSwitchProps } from "./RHFSwitch.types";
 const RHFSwitch: FC<RHFSwitchProps> = ({
   name,
   control,
+  rules,
   disabled,
   value,
   uncheckedValue,
@@ -46,6 +47,7 @@ const RHFSwitch: FC<RHFSwitchProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={({ field }) => {
         const isChecked =
           value === undefined ? (field.value as boolean) : isEqual(field.value, value);

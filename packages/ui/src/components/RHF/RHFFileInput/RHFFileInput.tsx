@@ -51,6 +51,7 @@ const RHFFileInput: FC<RHFFileInputProps> = ({
   id,
   control,
   name,
+  rules,
   disabled,
   onBlur,
   multiple,
@@ -64,6 +65,7 @@ const RHFFileInput: FC<RHFFileInputProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         const { field } = renderProps;
 

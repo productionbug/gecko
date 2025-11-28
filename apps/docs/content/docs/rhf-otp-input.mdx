@@ -57,6 +57,7 @@ Extends all props from base OTPInput component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `length` | `number` | 6 | Number of OTP input fields to display |
 | `numberOnly` | `boolean` | true | If true, only numeric input is allowed |
 | `onOTPComplete` | `(value: string) => void` | - | Callback when all OTP fields are filled |
@@ -189,6 +190,22 @@ function TwoFactorForm() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFOTPInput
+  name="otp"
+  rules={{
+    required: 'OTP is required',
+    minLength: { value: 6, message: 'OTP must be 6 digits' }
+  }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Length Configuration
 

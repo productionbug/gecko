@@ -108,12 +108,13 @@ function formatFileSize(bytes: number): string {
  *
  * */
 function RHFFilePicker<T extends HTMLElement = HTMLDivElement>(props: RHFFilePickerProps<T>) {
-  const { name, control, ...rest } = props;
+  const { name, control, rules, ...rest } = props;
 
   return (
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         return <RHFFilePickerRenderer<T> {...rest} {...renderProps} />;
       }}

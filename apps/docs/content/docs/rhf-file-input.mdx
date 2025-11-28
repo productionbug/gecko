@@ -57,6 +57,7 @@ Extends all props from standard HTML `<input type="file">` element plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `multiple` | `boolean` | `false` | Allow multiple file selection |
 | `accept` | `string` | - | File types to accept (e.g., "image/*", ".pdf") |
 | `onChange` | `(data) => void` | - | Change callback (receives file data, not event) |
@@ -239,6 +240,19 @@ function ApplicationForm() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFFileInput
+  name="avatar"
+  rules={{ required: 'Please upload a file' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## File Preview
 

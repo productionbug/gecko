@@ -57,6 +57,7 @@ Extends all props from [Input](/docs/input) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules (see [Inline Rules Validation](#inline-rules-validation)) |
 | `transform` | `{ input, output }` | - | Value transformation functions |
 | `prefix` | `ReactNode \\| Function` | - | Element before input (can access field state) |
 | `suffix` | `ReactNode \\| Function` | - | Element after input (can access field state) |
@@ -98,6 +99,34 @@ function Example() {
   );
 }
 ```
+
+### Inline Rules Validation
+
+For simple forms, you can use the `rules` prop for inline validation instead of a schema resolver:
+
+```tsx
+<RHFInput
+  name="email"
+  rules={{
+    required: 'Email is required',
+    pattern: {
+      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      message: 'Invalid email address'
+    }
+  }}
+/>
+
+<RHFInput
+  name="username"
+  rules={{
+    required: 'Username is required',
+    minLength: { value: 3, message: 'Must be at least 3 characters' },
+    maxLength: { value: 20, message: 'Must be 20 characters or less' }
+  }}
+/>
+```
+
+**Note:** For complex forms with many fields, we recommend using a schema resolver (Zod, Yup) instead of inline rules for better maintainability and type safety.
 
 ### With Prefix and Suffix
 

@@ -56,6 +56,7 @@ Extends all props from [Textarea](/docs/textarea) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `autoResize` | `boolean` | `false` | Enable automatic height adjustment |
 | `rows` | `number` | `2` | Minimum number of rows |
 | `maxRows` | `number` | - | Maximum number of rows (only with `autoResize`) |
@@ -194,6 +195,22 @@ function FormExample() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFTextarea
+  name="description"
+  rules={{
+    required: 'Description is required',
+    minLength: { value: 10, message: 'Must be at least 10 characters' }
+  }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Error States
 

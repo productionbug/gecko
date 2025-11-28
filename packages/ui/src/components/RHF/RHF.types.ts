@@ -2,6 +2,7 @@
 import type {
   Control,
   ControllerFieldState,
+  ControllerProps,
   ControllerRenderProps,
   FieldValues,
   UseFormStateReturn
@@ -13,6 +14,8 @@ export interface RHFBaseProps {
    * This will injected into the RHF Controller.
    * */
   name: string;
+
+  rules?: ControllerProps["rules"];
 
   /**
    * React Hook Form control object.

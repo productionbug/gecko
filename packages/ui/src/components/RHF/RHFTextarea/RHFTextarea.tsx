@@ -48,6 +48,7 @@ import type { RHFTextareaProps } from "./RHFTextarea.types";
 const RHFTextarea: FC<RHFTextareaProps> = ({
   name,
   control,
+  rules,
   disabled,
   className,
   onChange,
@@ -58,6 +59,7 @@ const RHFTextarea: FC<RHFTextareaProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         const { field, fieldState } = renderProps;
 

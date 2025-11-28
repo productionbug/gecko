@@ -63,6 +63,7 @@ Extends all props from [Select](/docs/select) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `multiple` | `boolean` | `false` | Enable multiple selection mode |
 | `children` | `SelectOption[]` | - | SelectOption components to render as dropdown options |
 | `onChange` | `(value: T \| T[]) => void` | - | Change callback (receives value based on single/multiple mode) |
@@ -267,6 +268,23 @@ function RegistrationForm() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFSelect
+  name="country"
+  placeholder="Select a country"
+  rules={{ required: 'Please select a country' }}
+>
+  <SelectOption value="us" label="United States" />
+  <SelectOption value="uk" label="United Kingdom" />
+</RHFSelect>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Single vs Multiple Mode
 

@@ -65,6 +65,7 @@ const RHFCheckbox: FC<RHFCheckboxProps> = ({
   name,
   id,
   control,
+  rules,
   label,
   labelClassName,
   disabled,
@@ -82,6 +83,7 @@ const RHFCheckbox: FC<RHFCheckboxProps> = ({
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       render={(renderProps) => {
         const { field } = renderProps;
         const isChecked = () => {

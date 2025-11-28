@@ -57,6 +57,7 @@ Extends all props from [DateInput](/docs/date-input) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `className` | `string` | - | Additional CSS class name for the input container |
 | `disabled` | `boolean` | - | Whether the input is disabled |
 | `prefix` | `ReactNode \| Function` | - | Element before input |
@@ -242,6 +243,19 @@ function BookingForm() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFDateInput
+  name="birthDate"
+  rules={{ required: 'Birth date is required' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Date Format
 

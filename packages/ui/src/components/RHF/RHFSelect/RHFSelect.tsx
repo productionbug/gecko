@@ -55,6 +55,7 @@ import type { RHFSelectOverload, RHFSelectProps } from "./RHFSelect.types";
 const RHFSelect: RHFSelectOverload = <T,>({
   name,
   control,
+  rules,
   className,
   wrapperClassName,
   ...rest
@@ -63,6 +64,7 @@ const RHFSelect: RHFSelectOverload = <T,>({
     <RHFController
       name={name}
       control={control}
+      rules={rules}
       render={({ field: { ref, value, onChange }, fieldState: { error } }) => {
         return (
           <Select<T>

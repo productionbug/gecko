@@ -36,11 +36,12 @@ import type { RHFOTPInputProps } from "./RHFOTPInput.types";
  * />
  * ```
  */
-const RHFOTPInput: FC<RHFOTPInputProps> = ({ control, name, disabled, className, ...rest }) => {
+const RHFOTPInput: FC<RHFOTPInputProps> = ({ control, name, rules, disabled, className, ...rest }) => {
   return (
     <RHFController
       control={control}
       name={name}
+      rules={rules}
       disabled={disabled}
       render={({ field, fieldState }) => {
         return (

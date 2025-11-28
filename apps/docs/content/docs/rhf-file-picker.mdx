@@ -55,6 +55,7 @@ function Example() {
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `accept` | `string` | `*` | File types to accept (e.g., "image/*", ".pdf") |
 | `keepOldFiles` | `boolean` | `false` | Keep previously selected files when adding new ones |
 | `removeDuplicates` | `boolean` | `false` | Automatically remove duplicate files(Only works if `keepOldFiles` is true) |
@@ -289,6 +290,19 @@ function ProjectForm() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFFilePicker
+  name="files"
+  rules={{ required: 'Please upload at least one file' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## File Properties
 

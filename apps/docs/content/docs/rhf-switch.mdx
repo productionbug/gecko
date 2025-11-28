@@ -61,6 +61,7 @@ Extends all props from [Switch](/docs/switch) component plus:
 |------|------|---------|-------------|
 | `name` | `string` | - | Field name (required) |
 | `control` | `Control` | Auto-injected | Optional: Pass explicitly for nested forms or custom form context |
+| `rules` | `RegisterOptions` | - | Inline validation rules |
 | `value` | `unknown` | - | Value when checked (if not provided, uses boolean) |
 | `uncheckedValue` | `unknown` | - | Value when unchecked (only with `value` prop) |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Switch size |
@@ -223,6 +224,19 @@ function FormExample() {
   );
 }
 ```
+
+## Inline Rules Validation
+
+For simple validation, use the `rules` prop:
+
+```tsx
+<RHFSwitch
+  name="terms"
+  rules={{ required: 'You must accept the terms' }}
+/>
+```
+
+For complex forms, we recommend using a schema resolver (Zod, Yup) instead.
 
 ## Value Behavior
 
