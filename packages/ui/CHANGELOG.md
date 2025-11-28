@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.0.4] - 2025-11-28
 
 - Added `disableDate` prop to Calendar component to disable specific dates.
 - Added `renderDayCell` prop to Calendar component for custom day cell rendering.
