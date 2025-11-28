@@ -5,6 +5,7 @@ description: Toggle switch component with multiple sizes built on HeadlessUI
 
 import { Switch } from '@productionbug/gecko';
 import { SwitchBasicExample, SwitchSizesExample, SwitchSettingsPanelExample, SwitchDisabledExample } from '@/components/examples/switch-examples';
+import { SwitchCustomSizeExample } from '@/components/examples/module-augmentation-examples';
 
 # Switch
 
@@ -128,6 +129,56 @@ The switch supports keyboard interaction:
 
 Note: The Enter key is prevented from default form submission behavior.
 
+## Module Augmentation
+
+The Switch component supports TypeScript module augmentation, allowing you to add custom sizes with full type safety.
+
+### Live Example
+
+This documentation site demonstrates module augmentation with a custom `lg` size:
+
+<Preview>
+  <SwitchCustomSizeExample />
+</Preview>
+
+### Step 1: TypeScript Declaration
+
+Create a declaration file (e.g., `gecko.d.ts`) in your project:
+
+```typescript
+import "@productionbug/gecko";
+
+declare module "@productionbug/gecko" {
+  interface SwitchSizeMap {
+    lg: unknown;
+  }
+}
+```
+
+### Step 2: Add CSS Styles
+
+Add the corresponding styles to your global CSS/SCSS file. You need to define both the container size and the thumb element:
+
+```scss
+.GeckoUISwitch {
+  &--size-lg {
+    @apply h-8 w-14;
+  }
+
+  &__thumb {
+    &--size-lg {
+      @apply w-6 translate-x-0.5 group-data-[checked]:translate-x-3.5;
+    }
+  }
+}
+```
+
+### Step 3: Use Your Custom Size
+
+```tsx
+<Switch size="lg" checked={enabled} onChange={setEnabled} />
+```
+
 ## Accessibility
 
 - Built on HeadlessUI for WCAG compliance
@@ -142,9 +193,9 @@ Note: The Enter key is prevented from default form submission behavior.
 The component uses BEM-style class names:
 
 - `GeckoUISwitch` - Main container
-- `GeckoUISwitch--size-{sm|md|lg}` - Size modifiers
+- `GeckoUISwitch--size-{sm|md}` - Size modifiers
 - `GeckoUISwitch__thumb` - Toggle thumb element
-- `GeckoUISwitch__thumb--size-{sm|md|lg}` - Thumb size modifiers
+- `GeckoUISwitch__thumb--size-{sm|md}` - Thumb size modifiers
 
 The switch also supports HeadlessUI data attributes:
 - `data-[checked]` - Applied when checked

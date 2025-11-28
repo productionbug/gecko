@@ -4,6 +4,7 @@ description: Flexible button component with multiple variants, sizes, and colors
 ---
 
 import { Button } from '@productionbug/gecko';
+import { ButtonCustomColorsExample } from '@/components/examples/module-augmentation-examples';
 
 # Button
 
@@ -227,6 +228,90 @@ The component uses TailwindCSS classes that can be overridden. By default, the b
   Custom Border
 </Button>
 ```
+
+## Module Augmentation
+
+The Button component supports TypeScript module augmentation, allowing you to add custom variants, colors, and sizes with full type safety.
+
+### Live Example
+
+This documentation site demonstrates module augmentation with custom `secondary` and `danger` colors:
+
+<Preview>
+  <ButtonCustomColorsExample />
+</Preview>
+
+### Step 1: TypeScript Declaration
+
+Create a declaration file (e.g., `gecko.d.ts`) in your project:
+
+```typescript
+import "@productionbug/gecko";
+
+declare module "@productionbug/gecko" {
+  interface ButtonColorMap {
+    secondary: unknown;
+    danger: unknown;
+  }
+}
+```
+
+### Step 2: Add CSS Styles
+
+Add the corresponding styles to your global CSS/SCSS file. The class naming follows the pattern `GeckoUIButton--{variant}-{color}`:
+
+```scss
+.GeckoUIButton {
+  &--filled {
+    &-secondary {
+      @apply bg-gray-600 text-white border-gray-600 enabled:hover:bg-gray-700 enabled:hover:border-gray-700 disabled:bg-gray-600/50 disabled:border-border-disabled;
+    }
+
+    &-danger {
+      @apply bg-red-600 text-white border-red-600 enabled:hover:bg-red-700 enabled:hover:border-red-700 disabled:bg-red-600/50 disabled:border-border-disabled;
+    }
+  }
+
+  &--outlined {
+    &-secondary {
+      @apply border-gray-400 text-gray-600 enabled:hover:bg-gray-50 disabled:bg-surface-hover disabled:text-text-disabled;
+    }
+
+    &-danger {
+      @apply border-red-400 text-red-600 enabled:hover:bg-red-50 disabled:bg-surface-hover disabled:text-text-disabled;
+    }
+  }
+
+  &--ghost {
+    &-secondary {
+      @apply text-gray-600 enabled:hover:bg-gray-50 disabled:text-text-disabled;
+    }
+
+    &-danger {
+      @apply text-red-600 enabled:hover:bg-red-50 disabled:text-text-disabled;
+    }
+  }
+
+  &--icon {
+    &-secondary {
+      @apply text-gray-500 disabled:text-text-disabled;
+    }
+
+    &-danger {
+      @apply text-red-500 disabled:text-text-disabled;
+    }
+  }
+}
+```
+
+### Step 3: Use Your Custom Colors
+
+```tsx
+<Button color="secondary">Secondary</Button>
+<Button color="danger" variant="outlined">Delete</Button>
+```
+
+You can also extend `ButtonVariantMap` for custom variants or `ButtonSizeMap` for custom sizes following the same pattern.
 
 ## Accessibility
 
