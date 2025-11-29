@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.5] - 2025-11-29
+
+- Adjust some styling
+
 ## [1.0.4] - 2025-11-28
 
 - Added `disableDate` prop to Calendar component to disable specific dates.
