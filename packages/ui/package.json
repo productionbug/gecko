@@ -34,8 +34,7 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "tag": "beta"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "import:css": "node scripts/import-css.js",
